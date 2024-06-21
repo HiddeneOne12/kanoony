@@ -1,0 +1,223 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/common_widgets/common_text_widget.dart';
+import 'package:kanoony/core/constants/object_constants/object_constants.dart';
+import 'package:kanoony/core/routing/routing_config.dart';
+import 'package:kanoony/src/service_module/business_service_module/business_setup_freezone_screen/business_setup_freezone_screen.dart';
+import 'package:kanoony/src/service_module/business_service_module/business_setup_mainland_screen/business_setup_mainland_screen.dart';
+import 'package:kanoony/src/service_module/business_service_module/business_setup_offshore_screen/business_setup_offshore_screen.dart';
+import 'package:kanoony/src/service_module/widgets/faq_button.dart';
+import '../../../../../core/common_widgets/common_appbar.dart';
+import '../../../../../core/constants/image_paths/image_paths.dart';
+import '../../../../../core/constants/static_constants/static_constants.dart';
+import 'widgets/faq_cards_widget.dart';
+import 'widgets/options_card_widget.dart';
+
+class BusinessSetupBody extends ConsumerStatefulWidget {
+  const BusinessSetupBody({super.key});
+
+  @override
+  ConsumerState<BusinessSetupBody> createState() => _BusinessSetupBodyState();
+}
+
+class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
+  @override
+  Widget build(BuildContext context) {
+    var variables = ref.watch(allProviderList.dashboardProvider);
+    return Directionality(
+      textDirection: isArabic ? TextDirection.rtl : TextDirection.ltr,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CommonAppBar(
+            mainText: variables.staticData?.businessSetupInUae ?? '',
+            subText: '',
+            height: isArabic ? 0.24 : 0.21,
+            isBack: true,
+            isFilter: false,
+            isBlogTextField: false,
+            isButton: true,
+            isTextfield: false,
+            isImage: true,
+          ),
+          Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 0.3.sw),
+                child: Image.asset(
+                  PngImagePaths.dashboardDesignImg,
+                  height: 326.65.h,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              SizedBox(
+                height:isArabic ? 0.65.sh : 0.68.sh,
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CommonTextWidget(
+                        color: allColors.textColor,
+                        size: 18.sp,
+                        text:
+                            variables.staticData?.yourDreamNeedsTheBestStart ??
+                                '',
+                        weight: FontWeight.w700,
+                        align: TextAlign.start,
+                        padding:
+                            EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            right: isArabic ? 16.h : 0.92.sw,
+                            left: isArabic ? 0.92.sw : 16.h),
+                        child: Divider(
+                          color: allColors.primaryColor,
+                          thickness: 1.w,
+                          height: 1.h,
+                        ),
+                      ),
+                      CommonTextWidget(
+                        color: allColors.textColor,
+                        size: 13.sp,
+                        align: TextAlign.start,
+                        text: variables.staticData
+                                ?.theUnitedArabEmiratesUaeOffersADiverseRang ??
+                            '',
+                        weight: FontWeight.w400,
+                        padding: EdgeInsets.only(
+                            left: 16.h, right: 16.h, top: 10.h, bottom: 10.h),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          RoutesUtils.context.push(
+                              BusinessSetupFreeZoneScreen.businessSetupRoute);
+                        },
+                        child: buildOptionCard(
+                          context,
+                          variables.staticData?.freezone ?? '',
+                          variables.staticData
+                                  ?.ifYouAreSeekingSpecializedPrivilegesAndAMo ??
+                              '',
+                          variables.staticData?.learnMore ?? '',
+                        ),
+                      ),
+                      SizedBox(height: 10.h),
+                      InkWell(
+                        onTap: () {
+                          RoutesUtils.context.push(BusinessSetupMainLandScreen
+                              .businessSetupMainLandRoute);
+                        },
+                        child: buildOptionCard(
+                          context,
+                          variables.staticData?.mainland ?? '',
+                          variables.staticData
+                                  ?.stepIntoTheCoreOfTheUaesBusinessEnvironmen ??
+                              '',
+                          variables.staticData?.learnMore ?? '',
+                        ),
+                      ),
+                      SizedBox(height: 10.h),
+                      InkWell(
+                        onTap: () {
+                          RoutesUtils.context.push(BusinessSetupOffshoreScreen
+                              .businessSetupOffshoreRoute);
+                        },
+                        child: buildOptionCard(
+                          context,
+                          variables.staticData?.offshore ?? '',
+                          variables.staticData
+                                  ?.forThoseWithAVisionBeyondTheLocalHorizons_ ??
+                              '',
+                          variables.staticData?.learnMore ?? '',
+                        ),
+                      ),
+                      CommonTextWidget(
+                        color: allColors.textColor,
+                        size: 18.sp,
+                        text: variables.staticData
+                                ?.whyIsDubaiTheTopPickForSavvyBusinessLeade ??
+                            '',
+                        weight: FontWeight.w700,
+                        align: TextAlign.start,
+                        padding:
+                            EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            right: isArabic ? 16.h : 0.92.sw,
+                            left: isArabic ? 0.92.sw : 16.h),
+                        child: Divider(
+                          color: allColors.primaryColor,
+                          thickness: 1.w,
+                          height: 1.h,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      FaqItems(
+                        name: variables.staticData?.taxIncentives_1 ?? '',
+                        description: variables.staticData
+                                ?.oneOfThePrimaryLuresOfDubaiIsItsTaxfriend ??
+                            '',
+                        number: '01',
+                      ),
+                      FaqItems(
+                        name: variables
+                                .staticData?.strategicGeographicalLocation_2 ??
+                            '',
+                        description: variables.staticData
+                                ?.dubaisPositioningIsNothingShortOfStrategicB ??
+                            '',
+                        number: '02',
+                      ),
+                      FaqItems(
+                        name:
+                            variables.staticData?.worldclassInfrastructure_3 ??
+                                '',
+                        description: variables.staticData
+                                ?.dubaiDoesntJustProvideABusinessfriendlyEnvir ??
+                            '',
+                        number: '03',
+                      ),
+                      FaqItems(
+                        name:
+                            variables.staticData?.diverseEconomicLandscape_4 ??
+                                '',
+                        description: variables.staticData
+                                ?.contraryToThePrevalentPerceptionDubaisEconom ??
+                            '',
+                        number: '04',
+                      ),
+                      FaqItems(
+                        name: variables.staticData
+                                ?.streamlinedBusinessIncorporation_5 ??
+                            '',
+                        description: variables.staticData
+                                ?.dubaiUnderstandsTheValueOfTimeForBusinessL ??
+                            '',
+                        number: '05',
+                      ),
+                      FaqButton(
+                        isCallIcon: true,
+                        backgroundColor: allColors.textColor,
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}

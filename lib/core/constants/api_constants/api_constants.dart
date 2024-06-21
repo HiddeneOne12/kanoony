@@ -1,0 +1,40 @@
+class ApiConstants {
+  static const baseUrl = "https://kanoony.stgsvr.site/admin/public/api";
+  static const arabicKey = '/ar';
+  static const registerUrl = '$baseUrl/auth/register';
+  static const loginUrl = '$baseUrl/auth/login';
+  static const googleLoginUrl = '$baseUrl/auth/google';
+  static const getStaticContentUrl = '$baseUrl/static-content';
+  static const getMenuContentUrl = '$baseUrl/menus';
+  static const getHomeContentUrl = '$baseUrl/home';
+  static const getPrivacyPolicyContentUrl = '$baseUrl/cms-page/privacy-policy';
+  static const getTermsOfUseContentUrl = '$baseUrl/cms-page/terms-of-use';
+  static const getFaqsContentUrl = '$baseUrl/faqs';
+  static const getFreeDocumentsUrl = '$baseUrl/document-search/free-documents';
+  static const getDocumentsCategoriesUrl = '$baseUrl/categories';
+  static const getPaidDocumentsUrl = '$baseUrl/documents';
+  static const getUserProfileDetailUrl = '$baseUrl/user-detail';
+  static const postDeviceTokenUrl = '$baseUrl/users/device-token-update';
+  static const getMyDocUrl = '$baseUrl/documents-history';
+  static const getFavDocUrl = '$baseUrl/my-favorites';
+  static const postAddFavDocUrl = '$baseUrl/add-favorites';
+  static const getDocDetailUrl = '$baseUrl/document';
+  static const getHomeSearchUrl = '$baseUrl/home-search';
+  static const getSearchUrl = '$baseUrl/document-search';
+  static const downloadDocUrl = '$baseUrl/direct-document-purchase';
+  static const subscribePackageUrl = '$baseUrl/package-subscription';
+  static const cancelSubscriptionUrl = '$baseUrl/cancel-subscription';
+  static const downloadDocWithPackageUrl =
+      '$baseUrl/document-purchase-with-package';
+  static const deleteMyDocUrl = '$baseUrl/purchased-document-delete';
+  static const registerTrademarkUrl = '$baseUrl/trade-mark-request';
+  static const registerWillUrl = '$baseUrl/will-registration-request';
+  static const getMenuDocsUrl = '$baseUrl/templates';
+  static const translateDocUrl = '$baseUrl/legal-translation-request';
+  static const businessSetupUrl = '$baseUrl/set-up-business-request';
+  static const goldenVisaUrl = '$baseUrl/golden-visa-request';
+  static const resetPasswordUrl = '$baseUrl/password_reset';
+  static const verifyOtpUrl = '$baseUrl/verify_otp';
+  static const forgotPasswordUrl = '$baseUrl/forgot_pass';
+  static const updateProfileUrl = '$baseUrl/profile-update';
+}
