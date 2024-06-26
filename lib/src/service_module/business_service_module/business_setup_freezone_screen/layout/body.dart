@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kanoony/src/service_module/widgets/faq_button.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
 import '../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
+import '../../../../../core/routing/routing_config.dart';
+import '../../../../faq_screen/faq_screen.dart';
 import '../../business_setup_offshore_screen/layout/widgets/business_offshore_faq_cards.dart';
 import 'widgets/blueprints_card_listing.dart';
 import 'widgets/business_freezone_service_cards.dart';
@@ -53,16 +56,16 @@ class _BusinessSetupFreeZoneBodyState
                 ),
               ),
               SizedBox(
-                height: 0.68.sh,
+                height: 0.795.sh,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CommonTextWidget(
                         color: allColors.textColor,
-                        size: 18.sp,
+                        size: 20.sp,
                         text: variables.staticData?.keyFreeZonesInTheUae ?? '',
-                        weight: FontWeight.w700,
+                        weight: FontWeight.w500,
                         align: TextAlign.start,
                         padding:
                             EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
@@ -130,11 +133,11 @@ class _BusinessSetupFreeZoneBodyState
                           children: [
                             CommonTextWidget(
                               color: allColors.textColor,
-                              size: 18.sp,
+                              size: 20.sp,
                               text: variables.staticData
                                       ?.advantagesOfABusinessOdysseyInUaeFreeZones ??
                                   '',
-                              weight: FontWeight.w700,
+                              weight: FontWeight.w500,
                               align: TextAlign.start,
                               padding: EdgeInsets.only(
                                   left: 16.h, right: 16.h, top: 10.h),
@@ -229,14 +232,13 @@ class _BusinessSetupFreeZoneBodyState
                           ],
                         ),
                       ),
-                     
                       CommonTextWidget(
                         color: allColors.textColor,
-                        size: 18.sp,
+                        size: 20.sp,
                         text: variables.staticData
                                 ?.blueprintForEstablishingABusinessInUaeFree_ ??
                             '',
-                        weight: FontWeight.w700,
+                        weight: FontWeight.w500,
                         align: TextAlign.start,
                         padding:
                             EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
@@ -341,6 +343,18 @@ class _BusinessSetupFreeZoneBodyState
                         height: 10.h,
                       ),
                       FaqButton(
+                          onTap: () {
+                            RoutesUtils.context.push(
+                              FaqScreen.faqRoute,
+                              extra: {
+                                TextUtils.isBusiness: false,
+                                TextUtils.isFreeZone: true,
+                                TextUtils.isMainland: false,
+                                TextUtils.isOffshore: false,
+                                TextUtils.isTrademark: false
+                              },
+                            );
+                          },
                           backgroundColor: allColors.textColor,
                           isCallIcon: false),
                       SizedBox(

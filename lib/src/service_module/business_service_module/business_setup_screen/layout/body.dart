@@ -12,6 +12,7 @@ import 'package:kanoony/src/service_module/widgets/faq_button.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
+import '../../../../faq_screen/faq_screen.dart';
 import 'widgets/faq_cards_widget.dart';
 import 'widgets/options_card_widget.dart';
 
@@ -55,7 +56,7 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                 ),
               ),
               SizedBox(
-                height:isArabic ? 0.65.sh : 0.68.sh,
+                height: 0.795.sh,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,7 +67,7 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                         text:
                             variables.staticData?.yourDreamNeedsTheBestStart ??
                                 '',
-                        weight: FontWeight.w700,
+                        weight: FontWeight.w500,
                         align: TextAlign.start,
                         padding:
                             EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
@@ -142,7 +143,7 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                         text: variables.staticData
                                 ?.whyIsDubaiTheTopPickForSavvyBusinessLeade ??
                             '',
-                        weight: FontWeight.w700,
+                        weight: FontWeight.w500,
                         align: TextAlign.start,
                         padding:
                             EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
@@ -204,6 +205,18 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                         number: '05',
                       ),
                       FaqButton(
+                        onTap: () {
+                          RoutesUtils.context.push(
+                            FaqScreen.faqRoute,
+                            extra: {
+                              TextUtils.isBusiness: true,
+                              TextUtils.isFreeZone: false,
+                              TextUtils.isMainland: false,
+                              TextUtils.isOffshore: false,
+                              TextUtils.isTrademark: false
+                            },
+                          );
+                        },
                         isCallIcon: true,
                         backgroundColor: allColors.textColor,
                       ),

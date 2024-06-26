@@ -22,7 +22,9 @@ class _SplashBodyState extends State<SplashBody> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await checkIsUserLogin();
+      Future.delayed(const Duration(seconds: 1), () {
+        checkIsUserLogin();
+      });
     });
 
     super.initState();

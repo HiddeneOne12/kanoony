@@ -70,7 +70,7 @@ class _PackageBodyState extends ConsumerState<PackageBody> {
               Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                height: 0.73.sh,
+                height: 0.795.sh,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +84,7 @@ class _PackageBodyState extends ConsumerState<PackageBody> {
                           text: dashboardVariables
                                   .staticData?.contractTemplatePackages ??
                               '',
-                          weight: FontWeight.w700,
+                          weight: FontWeight.w500,
                           padding: EdgeInsets.only(left: 16.h, right: 16.h)),
                       Padding(
                         padding: EdgeInsets.only(

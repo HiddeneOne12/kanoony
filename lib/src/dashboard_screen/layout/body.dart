@@ -39,9 +39,23 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody> {
     PngImagePaths.technologyImg,
     PngImagePaths.marketImg,
   ];
+
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       //   if (userProfileHelper.userData.id.isNotEmpty) {
+      await ref
+          .read(allProviderList.dashboardProvider.notifier)
+          .sendGetStaticContentRequest();
+      await ref
+          .read(allProviderList.dashboardProvider.notifier)
+          .sendGetMenuContentRequest();
+      await ref
+          .read(allProviderList.dashboardProvider.notifier)
+          .sendGetQuickLinkCategoriesRequest();
+
+      await ref
+          .read(allProviderList.dashboardProvider.notifier)
+          .sendGetHomeContentRequest();
       await ref
           .read(allProviderList.dashboardProvider.notifier)
           .sendNotificationPostRequest();
@@ -49,18 +63,6 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody> {
           .read(allProviderList.userProfileProvider.notifier)
           .sendUserDetailRequest();
       // }
-      await ref
-          .read(allProviderList.dashboardProvider.notifier)
-          .sendGetMenuContentRequest();
-      await ref
-          .read(allProviderList.dashboardProvider.notifier)
-          .sendGetQuickLinkCategoriesRequest();
-      await ref
-          .read(allProviderList.dashboardProvider.notifier)
-          .sendGetStaticContentRequest();
-      await ref
-          .read(allProviderList.dashboardProvider.notifier)
-          .sendGetHomeContentRequest();
     });
     super.initState();
   }
@@ -103,7 +105,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody> {
                   ),
                 ),
                 SizedBox(
-                  height: 0.7.sh,
+                  height: 0.8.sh,
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,7 +117,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody> {
                             text: dashboardVariables
                                     .staticData?.contractTemplates ??
                                 '',
-                            weight: FontWeight.w700,
+                            weight: FontWeight.w500,
                             padding: EdgeInsets.only(left: 16.h, right: 16.h)),
                         Padding(
                           padding: EdgeInsets.only(
@@ -165,7 +167,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody> {
                             text: dashboardVariables
                                     .staticData?.corporateService ??
                                 '',
-                            weight: FontWeight.w700,
+                            weight: FontWeight.w500,
                             padding: EdgeInsets.only(left: 16.h, right: 16.h)),
                         Padding(
                           padding: EdgeInsets.only(
@@ -235,16 +237,16 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody> {
                                       text: dashboardVariables
                                               .staticData?.goldenVisa ??
                                           ''),
-                                  ServiceCard(
-                                      onTap: () {
-                                        RoutesUtils.context.push(
-                                            FreeDocumentScreen
-                                                .freeDocumentRoute);
-                                      },
-                                      icon: SvgImagesAssetPath.paperSvg,
-                                      text: dashboardVariables
-                                              .staticData?.freeDocuments ??
-                                          ''),
+                                  // ServiceCard(
+                                  //     onTap: () {
+                                  //       RoutesUtils.context.push(
+                                  //           FreeDocumentScreen
+                                  //               .freeDocumentRoute);
+                                  //     },
+                                  //     icon: SvgImagesAssetPath.paperSvg,
+                                  //     text: dashboardVariables
+                                  //             .staticData?.freeDocuments ??
+                                  //         ''),
                                 ],
                               ),
                         SizedBox(height: 10.h),
@@ -252,7 +254,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody> {
                             color: allColors.textColor,
                             size: 20.sp,
                             text: dashboardVariables.staticData?.package ?? '',
-                            weight: FontWeight.w700,
+                            weight: FontWeight.w500,
                             padding: EdgeInsets.only(left: 16.h, right: 16.h)),
                         Padding(
                           padding: EdgeInsets.only(

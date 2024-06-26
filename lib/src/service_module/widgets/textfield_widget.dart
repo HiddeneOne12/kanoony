@@ -87,6 +87,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                       textInputAction: TextInputAction.done,
                       autovalidateMode: AutovalidateMode.disabled,
                       keyboardType: widget.type,
+                      focusNode: widget.focusNode,
                       decoration: InputDecoration(
                         isDense: true,
                         hintText: '',

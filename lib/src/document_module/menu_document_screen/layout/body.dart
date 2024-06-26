@@ -72,13 +72,7 @@ class _MenuDocumentBodyState extends ConsumerState<MenuDocumentBody> {
                 ),
               ),
               SizedBox(
-                height: variables.isLoaded
-                    ? 0.6016.sh
-                    : dashboardVariables.searchedDoc.isNotEmpty
-                        ? 0.3.sh
-                        : variables.title!.length >= 30
-                            ? 0.6016.sh
-                            : 0.63.sh,
+                height: 0.795.sh,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

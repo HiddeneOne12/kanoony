@@ -3,19 +3,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
-
 import '../../../core/common_widgets/common_text_widget.dart';
 import '../../../core/constants/object_constants/object_constants.dart';
 import '../../../core/constants/static_constants/static_constants.dart';
-import '../../../core/routing/routing_config.dart';
-import '../../faq_screen/faq_screen.dart';
+
 
 class FaqButton extends ConsumerStatefulWidget {
   bool isCallIcon;
   Color backgroundColor;
+  void Function() onTap;
   FaqButton(
-      {super.key, required this.backgroundColor, required this.isCallIcon});
+      {super.key,
+      required this.backgroundColor,
+      required this.isCallIcon,
+      required this.onTap});
 
   @override
   ConsumerState<FaqButton> createState() => _FaqButtonState();
@@ -31,9 +32,7 @@ class _FaqButtonState extends ConsumerState<FaqButton> {
         Padding(
           padding: EdgeInsets.only(left: 16.h, right: 16.h),
           child: InkWell(
-            onTap: () {
-              RoutesUtils.context.push(FaqScreen.faqRoute);
-            },
+            onTap: widget.onTap,
             child: Container(
               height: 40.h,
               decoration: BoxDecoration(
@@ -83,9 +82,7 @@ class _FaqButtonState extends ConsumerState<FaqButton> {
           Padding(
             padding: EdgeInsets.only(left: 0.83.sw),
             child: InkWell(
-              onTap: () {
-                RoutesUtils.context.push(FaqScreen.faqRoute);
-              },
+              onTap: widget.onTap,
               child: Container(
                 height: 63.h,
                 width: 63.h,

@@ -66,9 +66,7 @@ class _FreeDocumentBodyState extends ConsumerState<FreeDocumentBody> {
                 ),
               ),
               SizedBox(
-                height: dashboardVariables.searchedDoc.isNotEmpty
-                    ? 0.5.sh
-                    : 0.68.sh,
+                height: 0.795.sh,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

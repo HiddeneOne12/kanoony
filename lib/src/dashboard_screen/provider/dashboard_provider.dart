@@ -12,6 +12,7 @@ import 'package:kanoony/core/constants/static_constants/static_constants.dart';
 import 'package:kanoony/core/helpers/logger.dart';
 import 'package:kanoony/core/routing/routing_config.dart';
 import 'package:kanoony/src/auth_module/login_screen/login_screen.dart';
+import 'package:kanoony/src/dashboard_screen/dashboard_screen.dart';
 import 'package:kanoony/src/dashboard_screen/services/dashboard_service.dart';
 import 'package:kanoony/src/splash_screen/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -31,17 +32,17 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
   TextEditingController searchController = TextEditingController();
 
   sendGetStaticContentRequest() async {
-    state = state.copyWith(areLoaded: true);
+    state = state.copyWith(areLoaded: true, staticData: null);
     var response = await dashboardService.getAllStaticContentRequest();
     var data = response!.toOption().toNullable();
 
     if (response.isRight()) {
       state = state.copyWith(
-          isError: false,
-          message: 'fetched Successfully',
-          staticData: data,
-          searchedDoc: [],
-          areLoaded: false);
+        isError: false,
+        message: 'fetched Successfully',
+        staticData: data,
+        searchedDoc: [],
+      );
       dp(msg: "Response", arg: data.toString());
     } else {
       state = state.copyWith(areLoaded: false);
@@ -51,7 +52,7 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
   }
 
   sendGetQuickLinkCategoriesRequest() async {
-    // state = state.copyWith(areLoaded: true);
+    //state = state.copyWith(areLoaded: true);
     var response = await dashboardService.getDocCategoriesRequest();
     var data = response!.toOption().toNullable();
 
@@ -160,7 +161,7 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
   }
 
   changeLanguage(bool isArabic) async {
-    state = state.copyWith(allPackages: [], staticData: null, quickLinks: []);
+     state = state.copyWith(allPackages: [], staticData: null, quickLinks: []);
     index = 0;
     RoutesUtils.context.pop();
     final localStorage = await SharedPreferences.getInstance();
@@ -214,7 +215,7 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
 
 class DashboardState extends Equatable {
   ValueNotifier<bool>? isLoading = ValueNotifier(false);
-  bool areLoaded = false;
+  bool areLoaded = true;
   bool isLoaded = false;
   StaticContentModel? staticData;
   List<Package> allPackages = [];
@@ -238,7 +239,7 @@ class DashboardState extends Equatable {
       this.blogs = const [],
       this.news = const [],
       this.allPackages = const [],
-      this.areLoaded = false,
+      this.areLoaded = true,
       this.id = 0,
       required this.staticData});
 

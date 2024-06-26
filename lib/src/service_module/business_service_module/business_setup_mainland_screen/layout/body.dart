@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kanoony/src/service_module/business_service_module/business_setup_mainland_screen/layout/widgets/business_mainland_faq_cards.dart';
 import 'package:kanoony/src/service_module/widgets/cards_popup.dart';
 
@@ -9,6 +10,8 @@ import '../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
+import '../../../../../core/routing/routing_config.dart';
+import '../../../../faq_screen/faq_screen.dart';
 import '../../../widgets/faq_button.dart';
 import 'widgets/business_mainland_service_cards.dart';
 
@@ -54,18 +57,18 @@ class _BusinessSetupMainLandBodyState
                 ),
               ),
               SizedBox(
-                height: isArabic ? 0.68.sh : 0.65.sh,
+                height: 0.795.sh,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CommonTextWidget(
                         color: allColors.textColor,
-                        size: 18.sp,
+                        size: 20.sp,
                         text: variables.staticData
                                 ?.whyChooseMainlandCompanyFormationInDubai ??
                             '',
-                        weight: FontWeight.w700,
+                        weight: FontWeight.w500,
                         align: TextAlign.start,
                         padding:
                             EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
@@ -262,11 +265,11 @@ class _BusinessSetupMainLandBodyState
                           children: [
                             CommonTextWidget(
                               color: allColors.canvasColor,
-                              size: 18.sp,
+                              size: 20.sp,
                               text: variables.staticData
                                       ?.processForEstablishingAMainlandCompanyInDub ??
                                   '',
-                              weight: FontWeight.w700,
+                              weight: FontWeight.w500,
                               align: TextAlign.start,
                               padding: EdgeInsets.only(
                                   left: 16.h, right: 16.h, top: 10.h),
@@ -348,6 +351,18 @@ class _BusinessSetupMainLandBodyState
                               height: 15.h,
                             ),
                             FaqButton(
+                              onTap: () {
+                                RoutesUtils.context.push(
+                                  FaqScreen.faqRoute,
+                                  extra: {
+                                    TextUtils.isBusiness: false,
+                                    TextUtils.isFreeZone: false,
+                                    TextUtils.isMainland: true,
+                                    TextUtils.isOffshore: false,
+                                    TextUtils.isTrademark: false
+                                  },
+                                );
+                              },
                               isCallIcon: false,
                               backgroundColor: allColors.primaryColor,
                             ),

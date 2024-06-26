@@ -32,7 +32,7 @@ class NameWidget extends ConsumerWidget {
               color: allColors.textColor,
               size: 18.sp,
               text: variable.content?.title ?? '',
-              weight: FontWeight.w700,
+              weight: FontWeight.w500,
               align: TextAlign.start,
               padding: EdgeInsets.only(left: 0.h, right: 0.h, top: 5.h)),
           Padding(

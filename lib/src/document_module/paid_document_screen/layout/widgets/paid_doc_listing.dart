@@ -26,15 +26,9 @@ class PaidDocListingItems extends StatefulWidget {
 }
 
 class _PaidDocListingItemsState extends State<PaidDocListingItems> {
-  int Sindex = -1;
-  int S2index = -1;
+  int Sindex = 0;
+  int S2index = 0;
   @override
-  void initState() {
-    Sindex = widget.list!.length == 1 ? 0 : -1;
-
-    super.initState();
-  }
-
   Widget build(BuildContext context) {
     return Column(
       children: [

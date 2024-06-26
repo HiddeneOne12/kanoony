@@ -62,7 +62,7 @@ class _RegisterWillFormBodyState extends ConsumerState<RegisterWillFormBody> {
                 ),
               ),
               SizedBox(
-                height: 620.h,
+                height: 0.795.sh,
                 child: SingleChildScrollView(
                   padding: EdgeInsets.only(
                       bottom: MediaQuery.of(context).viewInsets.bottom),

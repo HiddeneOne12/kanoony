@@ -23,7 +23,7 @@ class AllExpandableData extends StatelessWidget {
           text:
               variables.staticData?.trademarkRegistrationRequirementsInTheUae ??
                   '',
-          weight: FontWeight.w700,
+          weight: FontWeight.w500,
           padding:
               EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h, bottom: 10.h),
         ),
@@ -94,7 +94,7 @@ class AllExpandableData extends StatelessWidget {
           text: variables
                   .staticData?.trademarkRegistrationForIndividualsBusinesses_ ??
               '',
-          weight: FontWeight.w700,
+          weight: FontWeight.w500,
           padding:
               EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h, bottom: 10.h),
         ),

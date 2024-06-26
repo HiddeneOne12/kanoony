@@ -10,6 +10,7 @@ import 'package:kanoony/src/service_module/trademark_module/trademark_screen/lay
 import 'package:kanoony/src/service_module/trademark_module/trademark_screen/layout/widgets/footer_widget.dart';
 import 'package:kanoony/src/service_module/trademark_module/trademark_screen/layout/widgets/required_documents_cards.dart';
 
+import '../../../../../core/common_widgets/callback_button.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
 import '../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
@@ -61,11 +62,26 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                 ),
               ),
               SizedBox(
-                height: 0.685.sh,
+                height: 0.795.sh,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: isArabic ? 0 : 0.23.sw,
+                          right: isArabic ? 0.23.sw : 0,
+                        ),
+                        child: ClickHereButton(
+                          onTap: () {
+                            RoutesUtils.context
+                                .push(RegisterTradeMarkScreen.trademarkRoute);
+                          },
+                        ),
+                      ),
                       CommonTextWidget(
                         color: allColors.lightTextColor,
                         size: 14.sp,
@@ -75,7 +91,7 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                             '',
                         weight: FontWeight.w400,
                         padding:
-                            EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
+                            EdgeInsets.only(left: 16.h, right: 16.h, top: 15.h),
                       ),
                       SizedBox(
                         height: 10.h,
@@ -98,7 +114,7 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                         text: variables.staticData
                                 ?.benefitsOfTrademarkRegistrationInUae ??
                             '',
-                        weight: FontWeight.w700,
+                        weight: FontWeight.w500,
                         padding: EdgeInsets.only(
                             left: 16.h, right: 16.h, top: 10.h, bottom: 10.h),
                       ),
@@ -141,14 +157,14 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                                 padding: HtmlPaddings.zero,
                                 color: allColors.textColor,
                                 fontSize: FontSize(18.sp),
-                                fontWeight: FontWeight.w700,
+                                fontWeight: FontWeight.w500,
                                 fontFamily: 'Tajawal'),
                             "body": Style(
                                 color: allColors.textColor,
                                 margin: Margins.zero,
                                 padding: HtmlPaddings.zero,
                                 fontSize: FontSize(18.sp),
-                                fontWeight: FontWeight.w700,
+                                fontWeight: FontWeight.w500,
                                 fontFamily: 'Tajawal'),
                           },
                           data: variables.staticData
@@ -183,7 +199,7 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                         text: variables.staticData
                                 ?.trademarkRegistrationInThreeSteps ??
                             '',
-                        weight: FontWeight.w700,
+                        weight: FontWeight.w500,
                         padding: EdgeInsets.only(
                             left: 16.h, right: 16.h, top: 10.h, bottom: 10.h),
                       ),

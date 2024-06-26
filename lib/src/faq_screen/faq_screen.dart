@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
@@ -9,8 +11,19 @@ import '../../core/constants/static_constants/static_constants.dart';
 import 'layout/body.dart';
 
 class FaqScreen extends ConsumerWidget {
+  bool isBusiness;
+  bool isMainland;
+  bool isOffshore;
+  bool isFreeLand;
+  bool isTrademark;
   static const String faqRoute = "/FaqScreen";
-  const FaqScreen({super.key});
+  FaqScreen(
+      {super.key,
+      required this.isBusiness,
+      required this.isMainland,
+      required this.isTrademark,
+      required this.isFreeLand,
+      required this.isOffshore});
 
   @override
   Widget build(BuildContext context, ref) {
@@ -28,7 +41,13 @@ class FaqScreen extends ConsumerWidget {
               : AppEndProfileDrawer().appEndDrawer(context, ref),
           bottomNavigationBar: const CommonBottomBar(),
           resizeToAvoidBottomInset: false,
-          body: const FaqBody(),
+          body: FaqBody(
+            isBusiness: isBusiness,
+            isFreeLand: isFreeLand,
+            isMainland: isMainland,
+            isOffshore: isOffshore,
+            isTrademark: isTrademark,
+          ),
         ),
       ),
     );

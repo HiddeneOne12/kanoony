@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/src/service_module/widgets/expandable_card.dart';
 
+import '../../../../core/common_widgets/callback_button.dart';
 import '../../../../core/common_widgets/common_appbar.dart';
 import '../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../core/constants/image_paths/image_paths.dart';
@@ -56,11 +57,26 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                 ),
               ),
               SizedBox(
-                height: 0.683.sh,
+                height: 0.785.sh,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: isArabic ? 0 : 0.23.sw,
+                          right: isArabic ? 0.23.sw : 0,
+                        ),
+                        child: ClickHereButton(
+                          onTap: () async {
+                            await requestCallBackPopUp(
+                                context, ref, false, true);
+                          },
+                        ),
+                      ),
                       CommonTextWidget(
                         color: allColors.lightTextColor,
                         size: 14.sp,
@@ -70,7 +86,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                             '',
                         weight: FontWeight.w400,
                         padding: EdgeInsets.only(
-                            left: 16.h, right: 16.h, top: 20.h, bottom: 10.h),
+                            left: 16.h, right: 16.h, top: 15.h, bottom: 10.h),
                       ),
                       Container(
                         width: MediaQuery.sizeOf(context).width.sw,
@@ -83,7 +99,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                               size: 18.sp,
                               text: variables.staticData?.goldenVisaBenefits ??
                                   '',
-                              weight: FontWeight.w700,
+                              weight: FontWeight.w500,
                               align: TextAlign.center,
                               padding: EdgeInsets.only(
                                   left: 30.h, right: 30.h, top: 15.h),
@@ -158,7 +174,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                         text: variables.staticData
                                 ?.categories_EligibilityRequirements ??
                             '',
-                        weight: FontWeight.w700,
+                        weight: FontWeight.w500,
                         padding:
                             EdgeInsets.only(left: 16.w, right: 16.w, top: 15.h),
                       ),
@@ -242,7 +258,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                               text: variables.staticData
                                       ?.goldenVisasForPropertyOwnersScenarios ??
                                   '',
-                              weight: FontWeight.w700,
+                              weight: FontWeight.w500,
                               align: TextAlign.start,
                               padding: EdgeInsets.only(
                                   left: 16.h,

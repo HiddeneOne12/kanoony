@@ -1,11 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
-
 import '../../../../../core/common_widgets/common_appbar.dart';
 import '../../../../../core/common_widgets/common_button_widget.dart';
 import '../../../../../core/common_widgets/common_sizebox_widget.dart';
@@ -27,7 +23,6 @@ class RegisterTradeMarkBody extends ConsumerStatefulWidget {
 }
 
 class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
- 
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
@@ -69,7 +64,7 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                 ),
               ),
               SizedBox(
-                height: 620.h,
+                height: 0.795.sh,
                 child: SingleChildScrollView(
                   padding: EdgeInsets.only(
                       bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -88,7 +83,7 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                             text:
                                 variables.staticData?.applicantContactDetails ??
                                     '',
-                            weight: FontWeight.w700,
+                            weight: FontWeight.w500,
                             padding: EdgeInsets.only(left: 16.h, right: 16.h)),
                         Padding(
                           padding: EdgeInsets.only(
@@ -134,7 +129,7 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                             color: allColors.textColor,
                             size: 18.sp,
                             text: variables.staticData?.trademarkOwner ?? '',
-                            weight: FontWeight.w700,
+                            weight: FontWeight.w500,
                             padding: EdgeInsets.only(
                                 left: 16.h, right: 16.h, top: 5.h)),
                         Padding(
@@ -166,7 +161,7 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                             color: allColors.textColor,
                             size: 18.sp,
                             text: variables.staticData?.designatedCountry ?? '',
-                            weight: FontWeight.w700,
+                            weight: FontWeight.w500,
                             padding: EdgeInsets.only(
                                 left: 16.h, right: 16.h, top: 5.h)),
                         Padding(
@@ -198,7 +193,7 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                             color: allColors.textColor,
                             size: 18.sp,
                             text: variables.staticData?.trademarkName ?? '',
-                            weight: FontWeight.w700,
+                            weight: FontWeight.w500,
                             padding: EdgeInsets.only(
                                 left: 16.h, right: 16.h, top: 5.h)),
                         Padding(
@@ -231,7 +226,7 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                             color: allColors.textColor,
                             size: 18.sp,
                             text: variables.staticData?.trademarkType ?? '',
-                            weight: FontWeight.w700,
+                            weight: FontWeight.w500,
                             padding: EdgeInsets.only(
                                 left: 16.h, right: 16.h, top: 5.h)),
                         Padding(
@@ -255,7 +250,7 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                             color: allColors.textColor,
                             size: 18.sp,
                             text: variables.staticData?.attachFile ?? '',
-                            weight: FontWeight.w700,
+                            weight: FontWeight.w500,
                             padding: EdgeInsets.only(
                                 left: 16.h, right: 16.h, top: 5.h)),
                         Padding(
@@ -289,7 +284,7 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                             text: variables
                                     .staticData?.describeYourProductOrService ??
                                 '',
-                            weight: FontWeight.w700,
+                            weight: FontWeight.w500,
                             padding: EdgeInsets.only(
                                 left: 16.h, right: 16.h, top: 5.h)),
                         Padding(

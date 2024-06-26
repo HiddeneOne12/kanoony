@@ -69,7 +69,7 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
               Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                height: 0.73.sh,
+                height: 0.795.sh,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

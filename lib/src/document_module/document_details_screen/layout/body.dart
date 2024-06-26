@@ -76,7 +76,7 @@ class _DocumentDetailBodyState extends ConsumerState<DocumentDetailBody> {
               Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                height: 0.73.sh,
+                height: 0.795.sh,
                 child: SingleChildScrollView(
                   child: variables2.isLoaded || variables.isLoading
                       ? Padding(

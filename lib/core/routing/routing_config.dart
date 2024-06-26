@@ -174,7 +174,15 @@ var routerConfigs = GoRouter(
     GoRoute(
       path: FaqScreen.faqRoute,
       pageBuilder: (context, state) {
-        return const NoTransitionPage(child: FaqScreen());
+        var extra = state.extra as Map<String, dynamic>?;
+        return NoTransitionPage(
+            child: FaqScreen(
+          isBusiness: extra?[TextUtils.isBusiness],
+          isFreeLand: extra?[TextUtils.isFreeZone],
+          isMainland: extra?[TextUtils.isMainland],
+          isOffshore: extra?[TextUtils.isOffshore],
+          isTrademark: extra?[TextUtils.isTrademark],
+        ));
       },
     ),
     GoRoute(

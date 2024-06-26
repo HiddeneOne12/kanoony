@@ -28,7 +28,7 @@ class RelatedDocumentWidget extends ConsumerWidget {
             size: 18.sp,
             align: TextAlign.start,
             text: dashboard.staticData?.relatedDocuments ?? '',
-            weight: FontWeight.w700,
+            weight: FontWeight.w500,
             padding: EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h)),
         Padding(
           padding: EdgeInsets.only(

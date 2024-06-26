@@ -74,13 +74,7 @@ class _PaidDocumentBodyState extends ConsumerState<PaidDocumentBody> {
                       child: const ShimmerFaqCard(),
                     )
                   : PaidDocListingItems(
-                      height: variables.isLoaded
-                          ? 0.6
-                          : dashboardVariables.searchedDoc.isNotEmpty
-                              ? 0.38
-                              : variables.content!.first.title.length >= 30
-                                  ? 0.59
-                                  : 0.63,
+                      height: 0.795,
                       list: variables.content,
                     ),
             ],

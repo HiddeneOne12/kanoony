@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,13 +6,29 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
 import 'package:kanoony/src/faq_screen/layout/widgets/faq_cardlising.dart';
+import 'package:kanoony/src/faq_screen/layout/widgets/is_freezone_widget.dart';
+import 'package:kanoony/src/faq_screen/layout/widgets/is_offshore_widget.dart';
+import 'package:kanoony/src/faq_screen/layout/widgets/is_trademark_widget.dart';
 import 'package:kanoony/src/faq_screen/layout/widgets/shimmer.dart';
 
 import '../../../core/common_widgets/common_appbar.dart';
 import '../../../core/constants/image_paths/image_paths.dart';
+import 'widgets/is_business_widget.dart';
+import 'widgets/is_mainland_widget.dart';
 
 class FaqBody extends ConsumerStatefulWidget {
-  const FaqBody({super.key});
+  bool isBusiness;
+  bool isMainland;
+  bool isOffshore;
+  bool isFreeLand;
+  bool isTrademark;
+  FaqBody(
+      {super.key,
+      required this.isBusiness,
+      required this.isMainland,
+      required this.isTrademark,
+      required this.isFreeLand,
+      required this.isOffshore});
 
   @override
   ConsumerState<FaqBody> createState() => _FaqBodyState();
@@ -65,7 +81,7 @@ class _FaqBodyState extends ConsumerState<FaqBody> {
                   ),
                 ),
                 SizedBox(
-                  height: 0.75.sh,
+                  height: 0.795.sh,
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,11 +89,33 @@ class _FaqBodyState extends ConsumerState<FaqBody> {
                         SizedBox(
                           height: 16.h,
                         ),
-                        faqVariables.isLoaded
-                            ? ShimmerFaqCard()
-                            : FaqCardListing(
-                                faqs: faqVariables.content ?? [],
-                              ),
+                        if (widget.isBusiness) ...[
+                          isBusinessWidget(
+                            dashboardVariables: dashboardVariables,
+                          )
+                        ] else if (widget.isMainland) ...[
+                          isMainLandWidget(
+                            dashboardVariables: dashboardVariables,
+                          )
+                        ] else if (widget.isOffshore) ...[
+                          isOffshoreWidget(
+                            dashboardVariables: dashboardVariables,
+                          )
+                        ] else if (widget.isFreeLand) ...[
+                          isFreeZoneWidget(
+                            dashboardVariables: dashboardVariables,
+                          )
+                        ] else if (widget.isTrademark) ...[
+                          isTradeMarkWidget(
+                            dashboardVariables: dashboardVariables,
+                          )
+                        ] else ...[
+                          faqVariables.isLoaded
+                              ? ShimmerFaqCard()
+                              : FaqCardListing(
+                                  faqs: faqVariables.content ?? [],
+                                ),
+                        ],
                       ],
                     ),
                   ),

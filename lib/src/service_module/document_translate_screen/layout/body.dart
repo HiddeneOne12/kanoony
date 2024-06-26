@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/src/service_module/document_translate_screen/layout/widgets/operation_cards.dart';
 
+import '../../../../core/common_widgets/callback_button.dart';
 import '../../../../core/common_widgets/common_appbar.dart';
 import '../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../core/constants/image_paths/image_paths.dart';
@@ -56,7 +57,7 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                 ),
               ),
               SizedBox(
-                height: isArabic ? 0.66.sh : 0.683.sh,
+                height: 0.795.sh,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,6 +67,21 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                left: isArabic ? 0 : 0.23.sw,
+                                right: isArabic ? 0.23.sw : 0,
+                              ),
+                              child: ClickHereButton(
+                                onTap: () async {
+                                  await requestCallBackPopUp(
+                                      context, ref, false, false);
+                                },
+                              ),
+                            ),
                             CommonTextWidget(
                               color: allColors.textColor,
                               size: 18.sp,
@@ -73,11 +89,11 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                               text: variables.staticData
                                       ?.ourLegalTranslationServices ??
                                   '',
-                              weight: FontWeight.w700,
+                              weight: FontWeight.w500,
                               padding: EdgeInsets.only(
                                 left: 16.h,
                                 right: 16.h,
-                                top: 20.h,
+                                top: 15.h,
                               ),
                             ),
                             Padding(
@@ -217,7 +233,7 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                               text:
                                   variables.staticData?.theAttestationProcess ??
                                       '',
-                              weight: FontWeight.w700,
+                              weight: FontWeight.w500,
                               align: TextAlign.center,
                               padding: EdgeInsets.only(
                                   left: 30.h, right: 30.h, top: 15.h),
@@ -270,7 +286,7 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                         size: 18.sp,
                         align: TextAlign.center,
                         text: variables.staticData?.theFlowOfOurOperation ?? '',
-                        weight: FontWeight.w700,
+                        weight: FontWeight.w500,
                         padding: EdgeInsets.only(
                             left: 0.25.sw, right: 0.25.sw, top: 15.h),
                       ),

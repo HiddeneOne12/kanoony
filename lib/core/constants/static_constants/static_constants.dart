@@ -29,15 +29,9 @@ List bodyItems = [
 class TextUtils {
   static String slug = 'slug';
   static String email = 'email';
-}
-
-class MenuDocsSlugs {
-  static String contractTemplates = 'contract-templates';
-  static String businessTemplates = 'business_templates';
-  static String ndaTemplates = 'nda_templates';
-  static String noticeTemplates = 'notice-templates';
-  static String policyTemplates = 'ploicy-templates';
-  static String attornyTemplates = 'power_of_attorney_templates';
-  static String shareHolderTemplates = 'shareholders_templates';
-  static String termsTemplates = 'terms-privacy-templates';
+  static String isBusiness = 'isBusiness';
+  static String isOffshore = 'isOffshore';
+  static String isMainland = 'isMainland';
+  static String isFreeZone = 'isFreeZone';
+  static String isTrademark = 'isTrademark';
 }

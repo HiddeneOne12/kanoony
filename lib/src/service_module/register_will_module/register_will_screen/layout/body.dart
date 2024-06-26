@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:kanoony/src/service_module/register_will_module/register_will_form/register_will_form.dart';
 import 'package:kanoony/src/service_module/widgets/expandable_card.dart';
 
+import '../../../../../core/common_widgets/callback_button.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
 import '../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
@@ -59,11 +60,26 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                 ),
               ),
               SizedBox(
-                height: isArabic ? 0.683.sh : 0.66.sh,
+                height: 0.795.sh,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: isArabic ? 0 : 0.23.sw,
+                          right: isArabic ? 0.23.sw : 0,
+                        ),
+                        child: ClickHereButton(
+                          onTap: () {
+                            RoutesUtils.context
+                                .push(RegisterWillForm.registerWillFormRoute);
+                          },
+                        ),
+                      ),
                       CommonTextWidget(
                         color: allColors.lightTextColor,
                         size: 14.sp,
@@ -73,7 +89,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                             '',
                         weight: FontWeight.w400,
                         padding:
-                            EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
+                            EdgeInsets.only(left: 16.h, right: 16.h, top: 15.h),
                       ),
                       SizedBox(
                         height: 10.h,
@@ -90,7 +106,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                               text: variables.staticData
                                       ?.whatTypeOfDifcWillsMightBeRegistered ??
                                   '',
-                              weight: FontWeight.w700,
+                              weight: FontWeight.w500,
                               align: TextAlign.center,
                               padding: EdgeInsets.only(
                                   left: 30.h, right: 30.h, top: 15.h),
@@ -168,12 +184,12 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                       ),
                       CommonTextWidget(
                         color: allColors.textColor,
-                        size: 16.sp,
+                        size: 18.sp,
                         align: TextAlign.center,
                         text: variables.staticData
                                 ?.whatAreTheInformationTypicallyRequestedToRe ??
                             '',
-                        weight: FontWeight.w700,
+                        weight: FontWeight.w500,
                         padding: EdgeInsets.only(
                             left: 16.h, right: 16.h, top: 15.h, bottom: 10.h),
                       ),
@@ -222,7 +238,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                         size: 18.sp,
                         align: TextAlign.start,
                         text: variables.staticData?.ourSteps ?? '',
-                        weight: FontWeight.w700,
+                        weight: FontWeight.w500,
                         padding: EdgeInsets.only(
                           left: 16.h,
                           right: 16.h,
@@ -269,7 +285,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                               color: allColors.canvasColor,
                               size: 18.sp,
                               text: variables.staticData?.pricing ?? '',
-                              weight: FontWeight.w700,
+                              weight: FontWeight.w500,
                               align: TextAlign.start,
                               padding: EdgeInsets.only(
                                   left: 16.h,
@@ -353,7 +369,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                         size: 18.sp,
                         align: TextAlign.start,
                         text: variables.staticData?.timeline ?? '',
-                        weight: FontWeight.w700,
+                        weight: FontWeight.w500,
                         padding: EdgeInsets.only(
                           left: 16.h,
                           right: 16.h,

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kanoony/src/dashboard_screen/provider/dashboard_provider.dart';
 import 'package:kanoony/src/service_module/trademark_module/provider/trademark_provider.dart';
 
@@ -11,6 +12,9 @@ import '../../../../../../core/common_widgets/common_img_button_widget.dart';
 import '../../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../../core/constants/static_constants/static_constants.dart';
+import '../../../../../../core/routing/routing_config.dart';
+import '../../../../../faq_screen/faq_screen.dart';
+import '../../../../widgets/faq_button.dart';
 
 class FooterWidget extends ConsumerStatefulWidget {
   DashboardState variables;
@@ -109,6 +113,25 @@ class _FooterWidgetState extends ConsumerState<FooterWidget> {
                 )
               ],
             ),
+          ),
+          SizedBox(
+            height: 20.h,
+          ),
+          FaqButton(
+            onTap: () {
+              RoutesUtils.context.push(
+                FaqScreen.faqRoute,
+                extra: {
+                  TextUtils.isBusiness: false,
+                  TextUtils.isFreeZone: false,
+                  TextUtils.isMainland: false,
+                  TextUtils.isOffshore: false,
+                  TextUtils.isTrademark: true
+                },
+              );
+            },
+            isCallIcon: false,
+            backgroundColor: allColors.textColor,
           ),
         ],
       ),

@@ -30,7 +30,7 @@ class _PrivacyBodyState extends ConsumerState<PrivacyBody> {
   @override
   Widget build(BuildContext context) {
     var variables = ref.watch(allProviderList.privacyPolicyProvider);
-   
+
     return Directionality(
       textDirection: isArabic ? TextDirection.rtl : TextDirection.ltr,
       child: Column(
@@ -61,7 +61,7 @@ class _PrivacyBodyState extends ConsumerState<PrivacyBody> {
               Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                height: 0.7.sh,
+                height: 0.795.sh,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

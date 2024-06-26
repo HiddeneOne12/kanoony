@@ -13,6 +13,7 @@ import 'package:kanoony/core/constants/static_constants/static_constants.dart';
 import 'package:kanoony/core/routing/routing_config.dart';
 import 'package:kanoony/src/auth_module/login_screen/login_screen.dart';
 import 'package:kanoony/src/dashboard_screen/dashboard_screen.dart';
+import 'package:kanoony/src/faq_screen/faq_screen.dart';
 import 'package:kanoony/src/favorite_screen/favorite_screen.dart';
 import 'package:kanoony/src/document_module/my_documents_screen/my_document_screen.dart';
 import 'package:kanoony/src/privacy_policy_screen/privacy_screen.dart';
@@ -255,9 +256,28 @@ class AppMenuProfileDrawer {
             ),
             DrawerItem(
               padding: 0.1,
-              text: 'settings',
+              text: 'Settings',
               onTap: () {
                 RoutesUtils.context.pop();
+              },
+            ),
+            SizedBox(
+              height: 25.h,
+            ),
+            DrawerItem(
+              padding: 0.1,
+              text: dashboard.staticData?.faq ?? '',
+              onTap: () {
+                RoutesUtils.context.push(
+                  FaqScreen.faqRoute,
+                  extra: {
+                    TextUtils.isBusiness: false,
+                    TextUtils.isFreeZone: false,
+                    TextUtils.isMainland: false,
+                    TextUtils.isOffshore: false,
+                    TextUtils.isTrademark: false
+                  },
+                );
               },
             ),
             SizedBox(

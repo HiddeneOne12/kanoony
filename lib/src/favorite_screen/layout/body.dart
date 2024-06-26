@@ -64,12 +64,11 @@ class _FavoriteBodyState extends ConsumerState<FavoriteBody> {
               Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                height: 0.73.sh,
+                height: 0.795.sh,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      
                       variables2.isLoaded
                           ? const ShimmerFaqCard()
                           : ListView.builder(

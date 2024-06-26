@@ -15,7 +15,6 @@ import '../../../../core/routing/routing_config.dart';
 import '../../business_service_module/business_setup_screen/business_setup_screen.dart';
 import '../../../../core/common_widgets/service_cards.dart';
 import '../../../dashboard_screen/layout/widgets/shimmer.dart';
-import '../../../document_module/free_document_screen/free_document_screen.dart';
 import '../../document_translate_screen/document_translate_screen.dart';
 import '../../golden_visa_screen/golden_visa_screen.dart';
 
@@ -62,7 +61,7 @@ class _ServicesBodyState extends ConsumerState<ServicesBody> {
               Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                height: 0.68.sh,
+                height: 0.795.sh,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,8 +72,10 @@ class _ServicesBodyState extends ConsumerState<ServicesBody> {
                       CommonTextWidget(
                           color: allColors.textColor,
                           size: 20.sp,
-                          text: 'Corporate Services',
-                          weight: FontWeight.w700,
+                          text:
+                              dashboardVariables.staticData?.corporateService ??
+                                  '',
+                          weight: FontWeight.w500,
                           padding: EdgeInsets.only(left: 16.h, right: 16.h)),
                       Padding(
                         padding: EdgeInsets.only(
@@ -139,15 +140,6 @@ class _ServicesBodyState extends ConsumerState<ServicesBody> {
                                     icon: SvgImagesAssetPath.visaSvg,
                                     text: dashboardVariables
                                             .staticData?.goldenVisa ??
-                                        ''),
-                                ServiceCard(
-                                    onTap: () {
-                                      RoutesUtils.context.push(
-                                          FreeDocumentScreen.freeDocumentRoute);
-                                    },
-                                    icon: SvgImagesAssetPath.paperSvg,
-                                    text: dashboardVariables
-                                            .staticData?.freeDocuments ??
                                         ''),
                               ],
                             ),

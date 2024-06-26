@@ -38,7 +38,7 @@ class _FavButtonState extends ConsumerState<FavButton> {
       },
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(color: allColors.canvasColor, width: 1.w),
+            border: Border.all(color: allColors.borderColor, width: 1.w),
             borderRadius: BorderRadius.all(Radius.circular(4.r))),
         height: 34.h,
         width: 37.h,
