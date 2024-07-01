@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/common_widgets/common_appbar.dart';
 import '../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../core/constants/object_constants/object_constants.dart';
@@ -23,6 +22,11 @@ class _PaidDocumentBodyState extends ConsumerState<PaidDocumentBody> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      ref
+          .read(allProviderList.dashboardProvider.notifier)
+          .searchController
+          .clear();
+      ref.watch(allProviderList.dashboardProvider).searchedDoc.clear();
       await ref
           .read(allProviderList.paidDocProvider.notifier)
           .sendGetPaidDocRequest(widget.slug);

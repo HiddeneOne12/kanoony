@@ -50,7 +50,7 @@ class PackageService {
         RoutesUtils.context.pop();
         dp(msg: "status ", arg: response.statusCode.toString());
         showSnackBarMessage(
-            content: jsonResponse['message'].toString(),
+            content: jsonResponse['error'].toString(),
             backgroundColor: allColors.errorColor,
             contentColor: allColors.canvasColor);
         return left('Error ');

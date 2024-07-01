@@ -38,16 +38,7 @@ class _AppBarTemplateTextFieldState
                 child: TextFormField(
                   controller: provider.searchController,
                   onChanged: (val) async {
-                    if (val.length > 1) {
-                      provider.sendGetHomeSearchDocRequest(val);
-                    } else {
-                      setState(() {
-                        variables.searchedDoc.clear();
-                      });
-                      if (val.isEmpty) {
-                        FocusScope.of(context).unfocus();
-                      }
-                    }
+                    provider.sendGetHomeSearchDocRequest(val);
                   },
                   onFieldSubmitted: (val) {},
                   textAlignVertical: TextAlignVertical.center,

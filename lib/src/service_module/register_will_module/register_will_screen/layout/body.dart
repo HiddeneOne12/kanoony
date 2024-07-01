@@ -104,7 +104,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                               color: allColors.canvasColor,
                               size: 18.sp,
                               text: variables.staticData
-                                      ?.whatTypeOfDifcWillsMightBeRegistered ??
+                                      ?.whatTypeOfDifcWillsMightBeRegistered?.toUpperCase() ??
                                   '',
                               weight: FontWeight.w500,
                               align: TextAlign.center,
@@ -187,7 +187,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                         size: 18.sp,
                         align: TextAlign.center,
                         text: variables.staticData
-                                ?.whatAreTheInformationTypicallyRequestedToRe ??
+                                ?.whatAreTheInformationTypicallyRequestedToRe?.toUpperCase() ??
                             '',
                         weight: FontWeight.w500,
                         padding: EdgeInsets.only(
@@ -237,7 +237,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                         color: allColors.textColor,
                         size: 18.sp,
                         align: TextAlign.start,
-                        text: variables.staticData?.ourSteps ?? '',
+                        text: variables.staticData?.ourSteps?.toUpperCase() ?? '',
                         weight: FontWeight.w500,
                         padding: EdgeInsets.only(
                           left: 16.h,
@@ -245,16 +245,8 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                           top: 15.h,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            bottom: 10.h,
-                            right: isArabic ? 16.h : 0.92.sw,
-                            left: isArabic ? 0.92.sw : 16.h),
-                        child: Divider(
-                          color: allColors.primaryColor,
-                          thickness: 1.w,
-                          height: 1.h,
-                        ),
+                      SizedBox(
+                        height: 10.h,
                       ),
                       StepCards(
                         text: variables.staticData
@@ -284,7 +276,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                             CommonTextWidget(
                               color: allColors.canvasColor,
                               size: 18.sp,
-                              text: variables.staticData?.pricing ?? '',
+                              text: variables.staticData?.pricing?.toUpperCase() ?? '',
                               weight: FontWeight.w500,
                               align: TextAlign.start,
                               padding: EdgeInsets.only(
@@ -368,7 +360,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                         color: allColors.textColor,
                         size: 18.sp,
                         align: TextAlign.start,
-                        text: variables.staticData?.timeline ?? '',
+                        text: variables.staticData?.timeline?.toUpperCase() ?? '',
                         weight: FontWeight.w500,
                         padding: EdgeInsets.only(
                           left: 16.h,
@@ -376,16 +368,8 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                           top: 20.h,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            bottom: 15.h,
-                            right: isArabic ? 16.h : 0.92.sw,
-                            left: isArabic ? 0.92.sw : 16.h),
-                        child: Divider(
-                          color: allColors.primaryColor,
-                          thickness: 1.w,
-                          height: 1.h,
-                        ),
+                      SizedBox(
+                        height: 15.h,
                       ),
                       InfoForWillItem(
                         icon: "1",

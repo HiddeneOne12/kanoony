@@ -59,25 +59,22 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
               items: [
                 BottomNavigationBarItem(
                     label: '',
-                    activeIcon: Padding(
-                      padding: EdgeInsets.only(top: 10.h),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.home_outlined,
-                            size: 25.h,
+                    activeIcon: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.home_outlined,
+                          size: 25.h,
+                          color: allColors.primaryColor,
+                        ),
+                        CommonTextWidget(
                             color: allColors.primaryColor,
-                          ),
-                          CommonTextWidget(
-                              color: allColors.primaryColor,
-                              size: 11,
-                              text: "Home",
-                              weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 15.h))
-                        ],
-                      ),
+                            size: 11,
+                            text: "Home",
+                            weight: FontWeight.w400,
+                            padding: EdgeInsets.only(top: 10.h))
+                      ],
                     ),
                     icon: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -93,55 +90,49 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                             size: 11,
                             text: "Home",
                             weight: FontWeight.w400,
-                            padding: EdgeInsets.only(top: 15.h))
+                            padding: EdgeInsets.only(top: 10.h))
                       ],
                     )),
                 BottomNavigationBarItem(
-                    activeIcon: Padding(
-                      padding: EdgeInsets.only(top: 10.h),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 20.h,
-                            width: 20.h,
-                            child: SvgPicture.asset(
-                              SvgImagesAssetPath.willSvg,
-                              color: allColors.primaryColor,
-                            ),
+                    activeIcon: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 20.h,
+                          width: 20.h,
+                          child: SvgPicture.asset(
+                            SvgImagesAssetPath.willSvg,
+                            color: allColors.primaryColor,
                           ),
-                          CommonTextWidget(
-                              color: allColors.primaryColor,
-                              size: 11,
-                              text: 'Free \n Documents',
-                              weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 10.h))
-                        ],
-                      ),
+                        ),
+                        CommonTextWidget(
+                            color: allColors.primaryColor,
+                            size: 11,
+                            text: 'Corporate Services',
+                            weight: FontWeight.w400,
+                            padding: EdgeInsets.only(top: 10.h))
+                      ],
                     ),
-                    icon: Padding(
-                      padding: EdgeInsets.only(top: 10.h),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 20.h,
-                            width: 20.h,
-                            child: SvgPicture.asset(
-                              SvgImagesAssetPath.willSvg,
-                              color: allColors.textColor,
-                            ),
+                    icon: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 20.h,
+                          width: 20.h,
+                          child: SvgPicture.asset(
+                            SvgImagesAssetPath.willSvg,
+                            color: allColors.textColor,
                           ),
-                          CommonTextWidget(
-                              color: allColors.textColor,
-                              size: 11,
-                              text: 'Free \n Documents',
-                              weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 10.h))
-                        ],
-                      ),
+                        ),
+                        CommonTextWidget(
+                            color: allColors.textColor,
+                            size: 11,
+                            text: 'Corporate Services',
+                            weight: FontWeight.w400,
+                            padding: EdgeInsets.only(top: 15.h))
+                      ],
                     ),
                     label: ''),
                 BottomNavigationBarItem(
@@ -149,95 +140,41 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: 5.h),
-                          child: SizedBox(
-                            height: 23.h,
-                            width: 23.h,
-                            child: SvgPicture.asset(
-                              SvgImagesAssetPath.paperSvg,
-                              color: allColors.primaryColor,
-                            ),
+                        SizedBox(
+                          height: 23.h,
+                          width: 23.h,
+                          child: SvgPicture.asset(
+                            SvgImagesAssetPath.paperSvg,
+                            color: allColors.primaryColor,
                           ),
                         ),
                         CommonTextWidget(
                             color: allColors.primaryColor,
                             size: 11,
-                            text: "Packages",
+                            text: "Template Packages",
                             weight: FontWeight.w400,
-                            padding: EdgeInsets.only(top: 15.h))
+                            padding: EdgeInsets.only(top: 11.h))
                       ],
                     ),
                     icon: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: 5.h),
-                          child: SizedBox(
-                            height: 23.h,
-                            width: 23.h,
-                            child: SvgPicture.asset(
-                              SvgImagesAssetPath.paperSvg,
-                              color: allColors.textColor,
-                            ),
+                        SizedBox(
+                          height: 23.h,
+                          width: 23.h,
+                          child: SvgPicture.asset(
+                            SvgImagesAssetPath.paperSvg,
+                            color: allColors.textColor,
                           ),
                         ),
                         CommonTextWidget(
                             color: allColors.textColor,
                             size: 11,
-                            text: "Packages",
+                            text: "Template Packages",
                             weight: FontWeight.w400,
-                            padding: EdgeInsets.only(top: 15.h))
+                            padding: EdgeInsets.only(top: 11.h))
                       ],
-                    ),
-                    label: ''),
-                BottomNavigationBarItem(
-                    activeIcon: Padding(
-                      padding: EdgeInsets.only(top: 10.h),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 20.h,
-                            width: 20.h,
-                            child: SvgPicture.asset(
-                              SvgImagesAssetPath.businessSvg,
-                              color: allColors.primaryColor,
-                            ),
-                          ),
-                          CommonTextWidget(
-                              color: allColors.primaryColor,
-                              size: 11,
-                              text: 'Corporate Services',
-                              weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 10.h))
-                        ],
-                      ),
-                    ),
-                    icon: Padding(
-                      padding: EdgeInsets.only(top: 10.h),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 20.h,
-                            width: 20.h,
-                            child: SvgPicture.asset(
-                              SvgImagesAssetPath.businessSvg,
-                              color: allColors.textColor,
-                            ),
-                          ),
-                          CommonTextWidget(
-                              color: allColors.textColor,
-                              size: 11,
-                              text: 'Corporate Services',
-                              weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 10.h))
-                        ],
-                      ),
                     ),
                     label: ''),
                 BottomNavigationBarItem(
@@ -255,7 +192,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                             size: 11,
                             text: "Dashboard",
                             weight: FontWeight.w400,
-                            padding: EdgeInsets.only(top: 15.h))
+                            padding: EdgeInsets.only(top: 11.h))
                       ],
                     ),
                     icon: Column(
@@ -272,7 +209,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                             size: 11,
                             text: "Dashboard",
                             weight: FontWeight.w400,
-                            padding: EdgeInsets.only(top: 15.h))
+                            padding: EdgeInsets.only(top: 11.h))
                       ],
                     ),
                     label: ''),

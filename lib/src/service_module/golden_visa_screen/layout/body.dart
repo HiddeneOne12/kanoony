@@ -97,23 +97,15 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                             CommonTextWidget(
                               color: allColors.canvasColor,
                               size: 18.sp,
-                              text: variables.staticData?.goldenVisaBenefits ??
+                              text: variables.staticData?.goldenVisaBenefits?.toUpperCase() ??
                                   '',
                               weight: FontWeight.w500,
                               align: TextAlign.center,
                               padding: EdgeInsets.only(
                                   left: 30.h, right: 30.h, top: 15.h),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  bottom: 15.h,
-                                  right: isArabic ? 0.27.sw : 0.5.sw,
-                                  left: isArabic ? 0.5.sw : 0.27.sw),
-                              child: Divider(
-                                color: allColors.textColor,
-                                thickness: 1.w,
-                                height: 1.h,
-                              ),
+                            SizedBox(
+                              height: 15.h,
                             ),
                             ExpandableItems(
                               title: variables
@@ -172,22 +164,14 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                         size: 18.sp,
                         align: TextAlign.start,
                         text: variables.staticData
-                                ?.categories_EligibilityRequirements ??
+                                ?.categories_EligibilityRequirements?.toUpperCase() ??
                             '',
                         weight: FontWeight.w500,
                         padding:
                             EdgeInsets.only(left: 16.w, right: 16.w, top: 15.h),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            bottom: 15.h,
-                            right: isArabic ? 16.w : 0.9.sw,
-                            left: isArabic ? 0.9.sw : 16.w),
-                        child: Divider(
-                          color: allColors.primaryColor,
-                          thickness: 1.w,
-                          height: 1.h,
-                        ),
+                      SizedBox(
+                        height: 15.h,
                       ),
                       ExpandableItems(
                         isDoc: true,
@@ -256,7 +240,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                               color: allColors.canvasColor,
                               size: 18.sp,
                               text: variables.staticData
-                                      ?.goldenVisasForPropertyOwnersScenarios ??
+                                      ?.goldenVisasForPropertyOwnersScenarios?.toUpperCase() ??
                                   '',
                               weight: FontWeight.w500,
                               align: TextAlign.start,

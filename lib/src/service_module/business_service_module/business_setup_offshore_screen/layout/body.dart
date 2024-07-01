@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../../core/common_widgets/callback_button.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
 import '../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
@@ -62,26 +63,27 @@ class _BusinessSetupOffshoreBodyState
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: isArabic ? 0 : 0.23.sw,
+                          right: isArabic ? 0.23.sw : 0,
+                        ),
+                        child: const CallBackButton(),
+                      ),
                       CommonTextWidget(
                         color: allColors.textColor,
                         size: 20.sp,
                         text: variables.staticData
-                                ?.heresHowYouCanEffortlesslySetUpAnOffshore_ ??
+                                ?.heresHowYouCanEffortlesslySetUpAnOffshore_
+                                ?.toUpperCase() ??
                             '',
                         weight: FontWeight.w500,
                         align: TextAlign.start,
                         padding:
-                            EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            right: isArabic ? 16.h : 0.92.sw,
-                            left: isArabic ? 0.92.sw : 16.h),
-                        child: Divider(
-                          color: allColors.primaryColor,
-                          thickness: 1.w,
-                          height: 1.h,
-                        ),
+                            EdgeInsets.only(left: 16.h, right: 16.h, top: 15.h),
                       ),
                       GridView.count(
                         crossAxisCount: 2,
@@ -258,22 +260,12 @@ class _BusinessSetupOffshoreBodyState
                               color: allColors.textColor,
                               size: 20.sp,
                               text: variables.staticData
-                                      ?.benefitsOfRegisteringAnOffshoreCompany ??
+                                      ?.benefitsOfRegisteringAnOffshoreCompany?.toUpperCase() ??
                                   '',
                               weight: FontWeight.w500,
                               align: TextAlign.start,
                               padding: EdgeInsets.only(
                                   left: 16.h, right: 16.h, top: 10.h),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  right: isArabic ? 16.h : 0.92.sw,
-                                  left: isArabic ? 0.92.sw : 16.h),
-                              child: Divider(
-                                color: allColors.textColor,
-                                thickness: 1.w,
-                                height: 1.h,
-                              ),
                             ),
                             SizedBox(
                               height: 10.h,
@@ -341,23 +333,13 @@ class _BusinessSetupOffshoreBodyState
                         color: allColors.textColor,
                         size: 20.sp,
                         text: variables.staticData
-                                ?.streamlinedProcessWithMinimalCapitalAndSimpl ??
+                                ?.streamlinedProcessWithMinimalCapitalAndSimpl?.toUpperCase() ??
                             '',
                         weight: FontWeight.w500,
                         align: TextAlign.start,
                         padding: EdgeInsets.only(
                           left: 16.h,
                           right: 16.h,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            right: isArabic ? 16.h : 0.92.sw,
-                            left: isArabic ? 0.92.sw : 16.h),
-                        child: Divider(
-                          color: allColors.primaryColor,
-                          thickness: 1.w,
-                          height: 1.h,
                         ),
                       ),
                       Container(

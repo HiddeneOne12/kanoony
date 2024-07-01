@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
 import 'package:kanoony/src/document_module/document_details_screen/document_details_screen.dart';
 
+import '../../../../core/common_widgets/appbar_textfield.dart';
 import '../../../../core/common_widgets/common_appbar.dart';
 import '../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../core/constants/object_constants/object_constants.dart';
@@ -26,6 +27,14 @@ class _FreeDocumentBodyState extends ConsumerState<FreeDocumentBody> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      ref
+          .read(allProviderList.dashboardProvider.notifier)
+          .searchController
+          .clear();
+      ref
+          .watch(allProviderList.dashboardProvider)
+          .searchedDoc
+          .clear();
       await ref
           .read(allProviderList.freeDocProvider.notifier)
           .sendGetFreeDocRequest();
@@ -71,6 +80,10 @@ class _FreeDocumentBodyState extends ConsumerState<FreeDocumentBody> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      AppBarTemplateTextField(isFilter: false),
                       SizedBox(
                         height: 10.h,
                       ),

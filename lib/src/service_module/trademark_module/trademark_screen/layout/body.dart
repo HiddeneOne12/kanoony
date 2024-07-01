@@ -96,14 +96,7 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                       SizedBox(
                         height: 10.h,
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 25.h, right: 25.h),
-                        child: Divider(
-                          height: 1.h,
-                          color: allColors.dividerColor,
-                          thickness: 1.w,
-                        ),
-                      ),
+                    
                       SizedBox(
                         height: 10.h,
                       ),
@@ -112,7 +105,7 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                         size: 18.sp,
                         align: TextAlign.center,
                         text: variables.staticData
-                                ?.benefitsOfTrademarkRegistrationInUae ??
+                                ?.benefitsOfTrademarkRegistrationInUae?.toUpperCase() ??
                             '',
                         weight: FontWeight.w500,
                         padding: EdgeInsets.only(
@@ -168,7 +161,7 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                                 fontFamily: 'Tajawal'),
                           },
                           data: variables.staticData
-                                  ?.documentsRequiredForTrademarkRegistrationInU ??
+                                  ?.documentsRequiredForTrademarkRegistrationInU?.toUpperCase() ??
                               '',
                         ),
                       ),
@@ -197,7 +190,7 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                         size: 18.sp,
                         align: TextAlign.center,
                         text: variables.staticData
-                                ?.trademarkRegistrationInThreeSteps ??
+                                ?.trademarkRegistrationInThreeSteps?.toUpperCase() ??
                             '',
                         weight: FontWeight.w500,
                         padding: EdgeInsets.only(

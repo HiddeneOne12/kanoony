@@ -64,7 +64,7 @@ class _UserProfileBodyState extends ConsumerState<UserProfileBody> {
                 ),
               ),
               SizedBox(
-                height: 620.h,
+                height: 0.785.sh,
                 child: SingleChildScrollView(
                   padding: EdgeInsets.only(
                       bottom: MediaQuery.of(context).viewInsets.bottom),

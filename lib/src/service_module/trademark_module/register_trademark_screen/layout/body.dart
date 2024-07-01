@@ -80,21 +80,11 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                         CommonTextWidget(
                             color: allColors.textColor,
                             size: 18.sp,
-                            text:
-                                variables.staticData?.applicantContactDetails ??
-                                    '',
+                            text: variables.staticData?.applicantContactDetails
+                                    ?.toUpperCase() ??
+                                '',
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(left: 16.h, right: 16.h)),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: isArabic ? 0.91.sw : 16.h,
-                              right: isArabic ? 16.w : 0.91.sw),
-                          child: Divider(
-                            color: allColors.primaryColor,
-                            thickness: 1.w,
-                            height: 1.h,
-                          ),
-                        ),
                         SizedBox(
                           height: 15.h,
                         ),
@@ -128,20 +118,12 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                         CommonTextWidget(
                             color: allColors.textColor,
                             size: 18.sp,
-                            text: variables.staticData?.trademarkOwner ?? '',
+                            text: variables.staticData?.trademarkOwner
+                                    ?.toUpperCase() ??
+                                '',
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(
                                 left: 16.h, right: 16.h, top: 5.h)),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: isArabic ? 0.91.sw : 16.h,
-                              right: isArabic ? 16.w : 0.91.sw),
-                          child: Divider(
-                            color: allColors.primaryColor,
-                            thickness: 1.w,
-                            height: 1.h,
-                          ),
-                        ),
                         SizedBox(
                           height: 15.h,
                         ),
@@ -160,20 +142,12 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                         CommonTextWidget(
                             color: allColors.textColor,
                             size: 18.sp,
-                            text: variables.staticData?.designatedCountry ?? '',
+                            text: variables.staticData?.designatedCountry
+                                    ?.toUpperCase() ??
+                                '',
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(
                                 left: 16.h, right: 16.h, top: 5.h)),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: isArabic ? 0.91.sw : 16.h,
-                              right: isArabic ? 16.w : 0.91.sw),
-                          child: Divider(
-                            color: allColors.primaryColor,
-                            thickness: 1.w,
-                            height: 1.h,
-                          ),
-                        ),
                         SizedBox(
                           height: 15.h,
                         ),
@@ -196,16 +170,6 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(
                                 left: 16.h, right: 16.h, top: 5.h)),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: isArabic ? 0.91.sw : 16.h,
-                              right: isArabic ? 16.w : 0.91.sw),
-                          child: Divider(
-                            color: allColors.primaryColor,
-                            thickness: 1.w,
-                            height: 1.h,
-                          ),
-                        ),
                         SizedBox(
                           height: 15.h,
                         ),
@@ -225,20 +189,12 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                         CommonTextWidget(
                             color: allColors.textColor,
                             size: 18.sp,
-                            text: variables.staticData?.trademarkType ?? '',
+                            text: variables.staticData?.trademarkType
+                                    ?.toUpperCase() ??
+                                '',
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(
                                 left: 16.h, right: 16.h, top: 5.h)),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: isArabic ? 0.91.sw : 16.h,
-                              right: isArabic ? 16.w : 0.91.sw),
-                          child: Divider(
-                            color: allColors.primaryColor,
-                            thickness: 1.w,
-                            height: 1.h,
-                          ),
-                        ),
                         SizedBox(
                           height: 15.h,
                         ),
@@ -249,20 +205,12 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                         CommonTextWidget(
                             color: allColors.textColor,
                             size: 18.sp,
-                            text: variables.staticData?.attachFile ?? '',
+                            text: variables.staticData?.attachFile
+                                    ?.toUpperCase() ??
+                                '',
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(
                                 left: 16.h, right: 16.h, top: 5.h)),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: isArabic ? 0.91.sw : 16.h,
-                              right: isArabic ? 16.w : 0.91.sw),
-                          child: Divider(
-                            color: allColors.primaryColor,
-                            thickness: 1.w,
-                            height: 1.h,
-                          ),
-                        ),
                         SizedBox(
                           height: 15.h,
                         ),
@@ -282,21 +230,12 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                             color: allColors.textColor,
                             size: 18.sp,
                             text: variables
-                                    .staticData?.describeYourProductOrService ??
+                                    .staticData?.describeYourProductOrService
+                                    ?.toUpperCase() ??
                                 '',
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(
                                 left: 16.h, right: 16.h, top: 5.h)),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: isArabic ? 0.91.sw : 16.h,
-                              right: isArabic ? 16.w : 0.91.sw),
-                          child: Divider(
-                            color: allColors.primaryColor,
-                            thickness: 1.w,
-                            height: 1.h,
-                          ),
-                        ),
                         SizedBox(
                           height: 15.h,
                         ),

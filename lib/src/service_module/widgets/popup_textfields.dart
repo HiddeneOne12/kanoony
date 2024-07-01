@@ -39,7 +39,7 @@ class _PopUpTextFieldState extends State<PopUpTextField> {
       onTap: widget.onTap,
       style: Theme.of(context).textTheme.displaySmall!.copyWith(
             color: allColors.popUpTextFieldTextColor,
-            fontSize: 12.sp,
+            fontSize: 14.sp,
             fontWeight: FontWeight.w400,
           ),
       cursorColor: Theme.of(context).primaryColor,
@@ -55,7 +55,7 @@ class _PopUpTextFieldState extends State<PopUpTextField> {
           child: Icon(
             widget.icons,
             color: allColors.textColor,
-            size: 12.h,
+            size: 16.h,
           ),
         ),
         isDense: true,
@@ -64,7 +64,7 @@ class _PopUpTextFieldState extends State<PopUpTextField> {
         filled: true,
         hintStyle: Theme.of(context).textTheme.displaySmall!.copyWith(
               color: allColors.popUpTextFieldTextColor,
-              fontSize: 12.sp,
+              fontSize: 14.sp,
               fontWeight: FontWeight.w400,
             ),
         contentPadding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),

@@ -5,6 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/common_widgets/appbar_textfield.dart';
+import '../../../../core/common_widgets/callback_button.dart';
 import '../../../../core/common_widgets/common_appbar.dart';
 import '../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../core/constants/object_constants/object_constants.dart';
@@ -26,6 +28,11 @@ class _MenuDocumentBodyState extends ConsumerState<MenuDocumentBody> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      ref
+          .read(allProviderList.dashboardProvider.notifier)
+          .searchController
+          .clear();
+      ref.watch(allProviderList.dashboardProvider).searchedDoc.clear();
       await ref
           .read(allProviderList.menuDocProvider.notifier)
           .sendGetMenuDocRequest(widget.slug);
@@ -80,6 +87,20 @@ class _MenuDocumentBodyState extends ConsumerState<MenuDocumentBody> {
                       SizedBox(
                         height: 10.h,
                       ),
+                      AppBarTemplateTextField(isFilter: false),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      // Padding(
+                      //   padding: EdgeInsets.only(
+                      //     left: isArabic ? 0 : 0.23.sw,
+                      //     right: isArabic ? 0.23.sw : 0,
+                      //   ),
+                      //   child: const FreeTemplateButton(),
+                      // ),
+                      // SizedBox(
+                      //   height: 10.h,
+                      // ),
                       variables.isLoaded
                           ? const GridShimmer()
                           : Padding(

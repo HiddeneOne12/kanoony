@@ -59,7 +59,7 @@ class _FooterWidgetState extends ConsumerState<FooterWidget> {
                     fontFamily: 'Tajawal'),
               },
               data: widget.variables.staticData
-                      ?.downloadUaeTrademarkLawNiceClassification ??
+                      ?.downloadUaeTrademarkLawNiceClassification?.toUpperCase() ??
                   '',
             ),
           ),

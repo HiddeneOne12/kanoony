@@ -14,13 +14,10 @@ int index = 0;
 bool isArabic = false;
 List bodyItems = [
   const DashBoardBody(),
-  FreeDocumentBody(
+  ServicesBody(
     isHome: true,
   ),
   PackageBody(
-    isHome: true,
-  ),
-  ServicesBody(
     isHome: true,
   ),
   const LoggedInDashboardBody(),

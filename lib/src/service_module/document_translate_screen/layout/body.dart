@@ -87,7 +87,7 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                               size: 18.sp,
                               align: TextAlign.start,
                               text: variables.staticData
-                                      ?.ourLegalTranslationServices ??
+                                      ?.ourLegalTranslationServices?.toUpperCase() ??
                                   '',
                               weight: FontWeight.w500,
                               padding: EdgeInsets.only(
@@ -96,16 +96,8 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                                 top: 15.h,
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  bottom: 10.h,
-                                  right: isArabic ? 16.h : 0.92.sw,
-                                  left: isArabic ? 0.92.sw : 16.h),
-                              child: Divider(
-                                color: allColors.primaryColor,
-                                thickness: 1.w,
-                                height: 1.h,
-                              ),
+                            SizedBox(
+                              height: 10.h,
                             ),
                             CommonTextWidget(
                               color: allColors.lightTextColor,
@@ -231,23 +223,15 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                               color: allColors.canvasColor,
                               size: 18.sp,
                               text:
-                                  variables.staticData?.theAttestationProcess ??
+                                  variables.staticData?.theAttestationProcess?.toUpperCase() ??
                                       '',
                               weight: FontWeight.w500,
                               align: TextAlign.center,
                               padding: EdgeInsets.only(
                                   left: 30.h, right: 30.h, top: 15.h),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  bottom: 10.h,
-                                  right: isArabic ? 0.27.sw : 0.5.sw,
-                                  left: isArabic ? 0.5.sw : 0.27.sw),
-                              child: Divider(
-                                color: allColors.primaryColor,
-                                thickness: 1.w,
-                                height: 1.h,
-                              ),
+                            SizedBox(
+                              height: 10.h,
                             ),
                             ExpandableItems(
                               isDoc: true,
@@ -285,21 +269,13 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                         color: allColors.lightTextColor,
                         size: 18.sp,
                         align: TextAlign.center,
-                        text: variables.staticData?.theFlowOfOurOperation ?? '',
+                        text: variables.staticData?.theFlowOfOurOperation?.toUpperCase() ?? '',
                         weight: FontWeight.w500,
                         padding: EdgeInsets.only(
                             left: 0.25.sw, right: 0.25.sw, top: 15.h),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            bottom: 10.h,
-                            right: isArabic ? 0.25.sw : 0.5.sw,
-                            left: isArabic ? 0.5.sw : 0.25.sw),
-                        child: Divider(
-                          color: allColors.primaryColor,
-                          thickness: 1.w,
-                          height: 1.h,
-                        ),
+                      SizedBox(
+                        height: 10.h,
                       ),
                       GridView.count(
                         crossAxisCount: 2,

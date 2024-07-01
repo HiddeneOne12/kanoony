@@ -82,11 +82,19 @@ class PaidDocService {
             backgroundColor: allColors.successColor,
             contentColor: allColors.canvasColor);
         return Right(data);
+      } else if (response.statusCode == 500 || response.statusCode == 401) {
+        RoutesUtils.context.pop();
+        dp(msg: "status ", arg: response.statusCode.toString());
+        showSnackBarMessage(
+            content: 'Document not found!',
+            backgroundColor: allColors.errorColor,
+            contentColor: allColors.canvasColor);
+        return left('Error ');
       } else {
         RoutesUtils.context.pop();
         dp(msg: "status ", arg: response.statusCode.toString());
         showSnackBarMessage(
-            content: jsonResponse['message'].toString(),
+            content: jsonResponse['error'].toString(),
             backgroundColor: allColors.errorColor,
             contentColor: allColors.canvasColor);
         return left('Error ');
@@ -134,11 +142,19 @@ class PaidDocService {
             backgroundColor: allColors.successColor,
             contentColor: allColors.canvasColor);
         return Right(data);
+      } else if (response.statusCode == 500 || response.statusCode == 401) {
+        RoutesUtils.context.pop();
+        dp(msg: "status ", arg: response.statusCode.toString());
+        showSnackBarMessage(
+            content: 'Document not found!',
+            backgroundColor: allColors.errorColor,
+            contentColor: allColors.canvasColor);
+        return left('Error ');
       } else {
         RoutesUtils.context.pop();
         dp(msg: "status ", arg: response.statusCode.toString());
         showSnackBarMessage(
-            content: jsonResponse['message'].toString(),
+            content: jsonResponse['error'].toString(),
             backgroundColor: allColors.errorColor,
             contentColor: allColors.canvasColor);
         return left('Error ');

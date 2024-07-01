@@ -29,4 +29,5 @@ class ColorConstants {
   var dropdownItemColor = const Color.fromRGBO(25, 59, 72, 0.7);
   var lightDividerColor = const Color.fromRGBO(0, 0, 0, 0.09);
   var visaColor = const Color.fromRGBO(69, 194, 177, 1);
+  var drawerColor = const Color.fromRGBO(237, 245, 248, 1);
 }

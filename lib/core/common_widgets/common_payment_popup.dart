@@ -47,7 +47,7 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                 return Stack(children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(
-                      left: 120.h,
+                      left: 150.h,
                     ),
                     child: Image.asset(
                       PngImagePaths.authDesignImg,
@@ -64,16 +64,6 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                           top: 20.h,
                           left: isArabic ? 0 : 20.h,
                           right: isArabic ? 20.h : 0)),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: isArabic ? 0.7.sw : 20.h,
-                        right: isArabic ? 20.h : 0.7.sw,
-                        top: 0.04.sh),
-                    child: Divider(
-                      color: allColors.primaryColor,
-                      thickness: 1.w,
-                    ),
-                  ),
                   Padding(
                     padding: EdgeInsets.only(
                         left: isArabic ? 0 : 0.7.sw,
@@ -104,189 +94,92 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                   ),
                   Padding(
                     padding:
-                        EdgeInsets.only(left: 20.h, right: 20.h, top: 0.07.sh),
+                        EdgeInsets.only(left: 20.h, right: 20.h, top: 0.09.sh),
                     child: Form(
                       key: formKey,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          if (isPackage) ...[
-                            CommonTextWidget(
-                                color: allColors.textColor,
-                                size: 20.sp,
-                                text: data.title,
-                                align: TextAlign.center,
-                                weight: FontWeight.w700,
-                                maxLine: 5,
-                                padding:
-                                    EdgeInsets.only(left: 0.h, right: 0.h)),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            if (isPackage) ...[
+                              CommonTextWidget(
+                                  color: allColors.textColor,
+                                  size: 20.sp,
+                                  text: data.title,
+                                  align: TextAlign.center,
+                                  weight: FontWeight.w700,
+                                  maxLine: 5,
+                                  padding:
+                                      EdgeInsets.only(left: 0.h, right: 0.h)),
+                              SizedBox(
+                                height: 10.h,
+                              ),
+                              CommonTextWidget(
+                                  color: allColors.primaryColor,
+                                  align: TextAlign.center,
+                                  size: 18.sp,
+                                  text: "${data.price} AED + VAT",
+                                  weight: FontWeight.w900,
+                                  padding:
+                                      EdgeInsets.only(left: 0.h, right: 0.h)),
+                            ] else ...[
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(bottom: 10.h),
+                                    child: SizedBox(
+                                      height: 35.h,
+                                      width: 35.h,
+                                      child: SvgPicture.asset(
+                                          SvgImagesAssetPath.documentSvg),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 5.w,
+                                  ),
+                                  Flexible(
+                                    flex: 5,
+                                    child: CommonTextWidget(
+                                        color: allColors.textColor,
+                                        size: 14.sp,
+                                        text: data.title,
+                                        align: TextAlign.start,
+                                        weight: FontWeight.w700,
+                                        maxLine: 5,
+                                        padding: EdgeInsets.only(
+                                            left: 0.h, right: 0.h)),
+                                  ),
+                                  const Spacer(),
+                                  Flexible(
+                                    flex: 1,
+                                    child: CommonTextWidget(
+                                        color: allColors.primaryColor,
+                                        align: TextAlign.start,
+                                        size: 14.sp,
+                                        text: data.documentPrice == "0"
+                                            ? "FREE"
+                                            : "${data.documentPrice} AED",
+                                        weight: FontWeight.w900,
+                                        padding: EdgeInsets.only(
+                                            left: 0.h, right: 0.h)),
+                                  ),
+                                  SizedBox(
+                                    width: 5.w,
+                                  ),
+                                ],
+                              ),
+                            ],
                             SizedBox(
                               height: 10.h,
                             ),
-                            CommonTextWidget(
-                                color: allColors.primaryColor,
-                                align: TextAlign.center,
-                                size: 18.sp,
-                                text: "${data.price} AED + VAT",
-                                weight: FontWeight.w900,
-                                padding:
-                                    EdgeInsets.only(left: 0.h, right: 0.h)),
-                          ] else ...[
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10.h),
-                                  child: SizedBox(
-                                    height: 35.h,
-                                    width: 35.h,
-                                    child: SvgPicture.asset(
-                                        SvgImagesAssetPath.documentSvg),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 5.w,
-                                ),
-                                Flexible(
-                                  flex: 5,
-                                  child: CommonTextWidget(
-                                      color: allColors.textColor,
-                                      size: 14.sp,
-                                      text: data.title,
-                                      align: TextAlign.start,
-                                      weight: FontWeight.w700,
-                                      maxLine: 5,
-                                      padding: EdgeInsets.only(
-                                          left: 0.h, right: 0.h)),
-                                ),
-                                const Spacer(),
-                                Flexible(
-                                  flex: 1,
-                                  child: CommonTextWidget(
-                                      color: allColors.primaryColor,
-                                      align: TextAlign.start,
-                                      size: 14.sp,
-                                      text: data.documentPrice == "0"
-                                          ? "FREE"
-                                          : "${data.documentPrice} AED",
-                                      weight: FontWeight.w900,
-                                      padding: EdgeInsets.only(
-                                          left: 0.h, right: 0.h)),
-                                ),
-                                SizedBox(
-                                  width: 5.w,
-                                ),
-                              ],
-                            ),
-                          ],
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          TextFormField(
-                            validator: TextFieldValidator.validateText,
-                            enableSuggestions: false,
-                            controller: isPackage
-                                ? package.nameController
-                                : provider.nameController,
-                            maxLines: 1,
-                            style: Theme.of(context)
-                                .textTheme
-                                .displaySmall!
-                                .copyWith(
-                                  color: allColors.textColor,
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                            cursorColor: Theme.of(context).primaryColor,
-                            scrollPadding: EdgeInsets.only(
-                                bottom:
-                                    MediaQuery.of(context).viewInsets.bottom +
-                                        1.sh),
-                            maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                            textCapitalization: TextCapitalization.none,
-                            textInputAction: TextInputAction.done,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            keyboardType: TextInputType.name,
-                            decoration: InputDecoration(
-                              suffixIcon: Padding(
-                                padding: EdgeInsets.only(
-                                    right: isArabic ? 0 : 10.h,
-                                    left: isArabic ? 10.h : 0),
-                                child: Icon(
-                                  Icons.person_2_outlined,
-                                  color: allColors.textColor,
-                                  size: 12.h,
-                                ),
-                              ),
-                              isDense: true,
-                              hintText: 'Card Holder Name',
-                              fillColor: allColors.popUpTextFieldFillColor,
-                              filled: true,
-                              hintStyle: Theme.of(context)
-                                  .textTheme
-                                  .displaySmall!
-                                  .copyWith(
-                                    color: allColors.popUpTextFieldTextColor,
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 15.w, vertical: 15.h),
-                              counterText: '',
-                              alignLabelWithHint: true,
-                              border: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(6.r)),
-                                  borderSide: const BorderSide(
-                                      color: Colors.transparent)),
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      width: 1.w,
-                                      color:
-                                          allColors.popUpTextFieldBorderColor),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(6.r))),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(6.r)),
-                                borderSide: BorderSide(
-                                    width: 2.w,
-                                    color: allColors.popUpTextFieldBorderColor),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(6.r)),
-                                  borderSide: BorderSide(
-                                      color:
-                                          Theme.of(context).colorScheme.error)),
-                              suffixIconConstraints:
-                                  BoxConstraints(maxHeight: 25.h),
-                              errorBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(6.r)),
-                                borderSide: BorderSide(
-                                    width: 1.0,
-                                    color: Theme.of(context).colorScheme.error),
-                              ),
-                              errorMaxLines: 3,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          if (isGuest) ...[
                             TextFormField(
-                              validator: TextFieldValidator.validateEmail,
-                              //  textAlign: widget._textAlign,
-
+                              validator: TextFieldValidator.validateText,
                               enableSuggestions: false,
-
                               controller: isPackage
-                                  ? package.emailController
-                                  : provider.emailController,
-                              //  maxLength: widget.textFieldMaxLength,
+                                  ? package.nameController
+                                  : provider.nameController,
                               maxLines: 1,
                               style: Theme.of(context)
                                   .textTheme
@@ -308,20 +201,19 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               keyboardType: TextInputType.name,
-
                               decoration: InputDecoration(
                                 suffixIcon: Padding(
                                   padding: EdgeInsets.only(
                                       right: isArabic ? 0 : 10.h,
                                       left: isArabic ? 10.h : 0),
                                   child: Icon(
-                                    Icons.email,
+                                    Icons.person_2_outlined,
                                     color: allColors.textColor,
                                     size: 12.h,
                                   ),
                                 ),
                                 isDense: true,
-                                hintText: 'Card Holder Email',
+                                hintText: 'Card Holder Name',
                                 fillColor: allColors.popUpTextFieldFillColor,
                                 filled: true,
                                 hintStyle: Theme.of(context)
@@ -379,134 +271,251 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                             SizedBox(
                               height: 10.h,
                             ),
-                          ],
-                          CardField(
-                            style: Theme.of(context)
-                                .textTheme
-                                .displaySmall!
-                                .copyWith(
-                                  color: allColors.textColor,
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                            cursorColor: Theme.of(context).primaryColor,
-                            decoration: InputDecoration(
-                              suffixIcon: Padding(
-                                padding:
-                                    EdgeInsets.only(right: 10.h, left: 10.h),
-                                child: Icon(
-                                  Icons.credit_card,
-                                  color: allColors.textColor,
-                                  size: 12.h,
+                            if (isGuest) ...[
+                              TextFormField(
+                                validator: TextFieldValidator.validateEmail,
+                                //  textAlign: widget._textAlign,
+
+                                enableSuggestions: false,
+
+                                controller: isPackage
+                                    ? package.emailController
+                                    : provider.emailController,
+                                //  maxLength: widget.textFieldMaxLength,
+                                maxLines: 1,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displaySmall!
+                                    .copyWith(
+                                      color: allColors.textColor,
+                                      fontSize: 13.sp,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                cursorColor: Theme.of(context).primaryColor,
+                                scrollPadding: EdgeInsets.only(
+                                    bottom: MediaQuery.of(context)
+                                            .viewInsets
+                                            .bottom +
+                                        1.sh),
+                                maxLengthEnforcement:
+                                    MaxLengthEnforcement.enforced,
+                                textCapitalization: TextCapitalization.none,
+                                textInputAction: TextInputAction.done,
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                keyboardType: TextInputType.name,
+
+                                decoration: InputDecoration(
+                                  suffixIcon: Padding(
+                                    padding: EdgeInsets.only(
+                                        right: isArabic ? 0 : 10.h,
+                                        left: isArabic ? 10.h : 0),
+                                    child: Icon(
+                                      Icons.email,
+                                      color: allColors.textColor,
+                                      size: 12.h,
+                                    ),
+                                  ),
+                                  isDense: true,
+                                  hintText: 'Card Holder Email',
+                                  fillColor: allColors.popUpTextFieldFillColor,
+                                  filled: true,
+                                  hintStyle: Theme.of(context)
+                                      .textTheme
+                                      .displaySmall!
+                                      .copyWith(
+                                        color:
+                                            allColors.popUpTextFieldTextColor,
+                                        fontSize: 11.sp,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                  contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 15.w, vertical: 15.h),
+                                  counterText: '',
+                                  alignLabelWithHint: true,
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(6.r)),
+                                      borderSide: const BorderSide(
+                                          color: Colors.transparent)),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          width: 1.w,
+                                          color: allColors
+                                              .popUpTextFieldBorderColor),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(6.r))),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(6.r)),
+                                    borderSide: BorderSide(
+                                        width: 2.w,
+                                        color: allColors
+                                            .popUpTextFieldBorderColor),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(6.r)),
+                                      borderSide: BorderSide(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .error)),
+                                  suffixIconConstraints:
+                                      BoxConstraints(maxHeight: 25.h),
+                                  errorBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(6.r)),
+                                    borderSide: BorderSide(
+                                        width: 1.0,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .error),
+                                  ),
+                                  errorMaxLines: 3,
                                 ),
                               ),
-                              isDense: true,
-                              hintText: 'Card Number',
-                              fillColor: allColors.popUpTextFieldFillColor,
-                              filled: true,
-                              hintStyle: Theme.of(context)
+                              SizedBox(
+                                height: 10.h,
+                              ),
+                            ],
+                            CardField(
+                              dangerouslyGetFullCardDetails: true,
+                              style: Theme.of(context)
                                   .textTheme
                                   .displaySmall!
                                   .copyWith(
-                                    color: allColors.popUpTextFieldTextColor,
-                                    fontSize: 11.sp,
+                                    color: allColors.textColor,
+                                    fontSize: 13.sp,
                                     fontWeight: FontWeight.w400,
                                   ),
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 15.w, vertical: 15.h),
-                              counterText: '',
-                              alignLabelWithHint: true,
-                              border: OutlineInputBorder(
+                              cursorColor: Theme.of(context).primaryColor,
+                              decoration: InputDecoration(
+                                suffixIcon: Padding(
+                                  padding:
+                                      EdgeInsets.only(right: 10.h, left: 10.h),
+                                  child: Icon(
+                                    Icons.credit_card,
+                                    color: allColors.textColor,
+                                    size: 12.h,
+                                  ),
+                                ),
+                                isDense: true,
+                                hintText: 'Card Number',
+                                fillColor: allColors.popUpTextFieldFillColor,
+                                filled: true,
+                                hintStyle: Theme.of(context)
+                                    .textTheme
+                                    .displaySmall!
+                                    .copyWith(
+                                      color: allColors.popUpTextFieldTextColor,
+                                      fontSize: 11.sp,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                contentPadding: EdgeInsets.symmetric(
+                                    horizontal: 15.w, vertical: 15.h),
+                                counterText: '',
+                                alignLabelWithHint: true,
+                                border: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(6.r)),
+                                    borderSide: const BorderSide(
+                                        color: Colors.transparent)),
+                                enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 1.w,
+                                        color: allColors
+                                            .popUpTextFieldBorderColor),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(6.r))),
+                                focusedBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
-                                  borderSide: const BorderSide(
-                                      color: Colors.transparent)),
-                              enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                      width: 1.w,
+                                      width: 2.w,
                                       color:
                                           allColors.popUpTextFieldBorderColor),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(6.r))),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(6.r)),
-                                borderSide: BorderSide(
-                                    width: 2.w,
-                                    color: allColors.popUpTextFieldBorderColor),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(6.r)),
+                                    borderSide: BorderSide(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .error)),
+                                suffixIconConstraints:
+                                    BoxConstraints(maxHeight: 25.h),
+                                errorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(6.r)),
                                   borderSide: BorderSide(
+                                      width: 1.0,
                                       color:
-                                          Theme.of(context).colorScheme.error)),
-                              suffixIconConstraints:
-                                  BoxConstraints(maxHeight: 25.h),
-                              errorBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(6.r)),
-                                borderSide: BorderSide(
-                                    width: 1.0,
-                                    color: Theme.of(context).colorScheme.error),
+                                          Theme.of(context).colorScheme.error),
+                                ),
+                                errorMaxLines: 3,
                               ),
-                              errorMaxLines: 3,
+                              controller: isPackage
+                                  ? package.cardFieldController
+                                  : provider.cardFieldController,
                             ),
-                            controller: isPackage
-                                ? package.cardFieldController
-                                : provider.cardFieldController,
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          CommonButton(
-                              isEnabledNotifier: isLoading,
-                              height: 35.h,
-                              backgroundColor: allColors.primaryColor,
-                              borderSides:
-                                  BorderSide(color: allColors.primaryColor),
-                              radius: 4.r,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .displayLarge!
-                                  .copyWith(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 16.sp,
-                                      color: allColors.canvasColor),
-                              text: isLoading.value
-                                  ? "PLEASE WAIT..."
-                                  : 'PAY NOW',
-                              onPressed: () async {
-                                FocusScope.of(context).unfocus();
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            CommonButton(
+                                isEnabledNotifier: isLoading,
+                                height: 35.h,
+                                backgroundColor: allColors.primaryColor,
+                                borderSides:
+                                    BorderSide(color: allColors.primaryColor),
+                                radius: 4.r,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displayLarge!
+                                    .copyWith(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 16.sp,
+                                        color: allColors.canvasColor),
+                                text: isLoading.value
+                                    ? "PLEASE WAIT..."
+                                    : 'PAY NOW',
+                                onPressed: () async {
+                                  FocusScope.of(context).unfocus();
 
-                                if (isPackage) {
-                                  if (formKey.currentState!.validate()) {
-                                    setState(() {
-                                      isLoading.value = true;
-                                    });
-                                    await package.sendSubscribePackageRequest(
-                                        int.parse(data.packgeId), isGuest);
-                                    setState(() {
-                                      isLoading.value = false;
-                                    });
+                                  if (isPackage) {
+                                    if (formKey.currentState!.validate() &&
+                                        package.cardFieldController.details
+                                                .number ==
+                                            '4242424242424242') {
+                                      setState(() {
+                                        isLoading.value = true;
+                                      });
+                                      await package.sendSubscribePackageRequest(
+                                          int.parse(data.packgeId), isGuest);
+                                      setState(() {
+                                        isLoading.value = false;
+                                      });
+                                    }
+                                  } else {
+                                    if (formKey.currentState!.validate() &&
+                                        provider.cardFieldController.details
+                                                .number ==
+                                            '4242424242424242') {
+                                      setState(() {
+                                        isLoading.value = true;
+                                      });
+                                      await provider.sendDownloadPaidDocRequest(
+                                          int.parse(data.id),
+                                          selectedValue,
+                                          isGuest);
+                                      setState(() {
+                                        isLoading.value = false;
+                                      });
+                                    }
                                   }
-                                } else {
-                                  if (formKey.currentState!.validate()) {
-                                    setState(() {
-                                      isLoading.value = true;
-                                    });
-                                    await provider.sendDownloadPaidDocRequest(
-                                        int.parse(data.id),
-                                        selectedValue,
-                                        isGuest);
-                                    setState(() {
-                                      isLoading.value = false;
-                                    });
-                                  }
-                                }
-                                formKey.currentState!.reset();
-                              }),
-                        ],
+                                  formKey.currentState!.reset();
+                                }),
+                          ],
+                        ),
                       ),
                     ),
                   )

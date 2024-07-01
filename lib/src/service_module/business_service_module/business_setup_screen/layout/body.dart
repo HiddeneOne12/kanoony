@@ -9,6 +9,7 @@ import 'package:kanoony/src/service_module/business_service_module/business_setu
 import 'package:kanoony/src/service_module/business_service_module/business_setup_mainland_screen/business_setup_mainland_screen.dart';
 import 'package:kanoony/src/service_module/business_service_module/business_setup_offshore_screen/business_setup_offshore_screen.dart';
 import 'package:kanoony/src/service_module/widgets/faq_button.dart';
+import '../../../../../core/common_widgets/callback_button.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
@@ -61,26 +62,26 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: isArabic ? 0 : 0.23.sw,
+                          right: isArabic ? 0.23.sw : 0,
+                        ),
+                        child: const CallBackButton(),
+                      ),
                       CommonTextWidget(
                         color: allColors.textColor,
                         size: 18.sp,
                         text:
-                            variables.staticData?.yourDreamNeedsTheBestStart ??
+                            variables.staticData?.yourDreamNeedsTheBestStart?.toUpperCase() ??
                                 '',
                         weight: FontWeight.w500,
                         align: TextAlign.start,
                         padding:
-                            EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            right: isArabic ? 16.h : 0.92.sw,
-                            left: isArabic ? 0.92.sw : 16.h),
-                        child: Divider(
-                          color: allColors.primaryColor,
-                          thickness: 1.w,
-                          height: 1.h,
-                        ),
+                            EdgeInsets.only(left: 16.h, right: 16.h, top: 15.h),
                       ),
                       CommonTextWidget(
                         color: allColors.textColor,
@@ -141,22 +142,12 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                         color: allColors.textColor,
                         size: 18.sp,
                         text: variables.staticData
-                                ?.whyIsDubaiTheTopPickForSavvyBusinessLeade ??
+                                ?.whyIsDubaiTheTopPickForSavvyBusinessLeade?.toUpperCase() ??
                             '',
                         weight: FontWeight.w500,
                         align: TextAlign.start,
                         padding:
                             EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            right: isArabic ? 16.h : 0.92.sw,
-                            left: isArabic ? 0.92.sw : 16.h),
-                        child: Divider(
-                          color: allColors.primaryColor,
-                          thickness: 1.w,
-                          height: 1.h,
-                        ),
                       ),
                       SizedBox(
                         height: 10.h,

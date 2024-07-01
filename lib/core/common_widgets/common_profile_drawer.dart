@@ -191,7 +191,7 @@ class AppMenuProfileDrawer {
             DrawerItem(
               text: dashboard.staticData?.dashboard ?? '',
               onTap: () {
-                index = 4;
+                index = 3;
                 RoutesUtils.context.push(DashBoardScreen.dashboardRoute);
               },
               padding: 0.1,

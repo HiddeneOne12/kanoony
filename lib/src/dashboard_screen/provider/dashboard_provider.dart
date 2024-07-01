@@ -1,5 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 // ignore_for_file: must_be_immutable, use_build_context_synchronously
 import 'package:equatable/equatable.dart';
@@ -92,9 +94,6 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
   }
 
   sendGetHomeSearchDocRequest(String input) async {
-    state = state.copyWith(
-      isLoaded: true,
-    );
     var response = await dashboardService.getHomeSearchRequest(input);
     var data = response!.toOption().toNullable()?.categories.first.data;
 
@@ -105,10 +104,6 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
           searchedDoc: data,
           isLoaded: false);
       dp(msg: "Response", arg: data.toString());
-    } else {
-      state = state.copyWith(isLoaded: false);
-      state = DashboardState.error(
-          isError: true, message: "Error in getting data please try again");
     }
   }
 
@@ -127,6 +122,7 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
           allPackages: data,
           blogs: blogs,
           searchedDoc: [],
+          areLoaded: false,
           news: news,
           isLoaded: false);
       dp(msg: "Response", arg: blogs.toString());
@@ -144,7 +140,6 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
       if (response.isRight()) {
         state = state.copyWith(
             isError: false,
-            areLoaded: false,
             searchedDoc: [],
             message: 'Notification Pushed Successfully');
         dp(msg: "Notifications", arg: data.toString());
@@ -161,7 +156,7 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
   }
 
   changeLanguage(bool isArabic) async {
-     state = state.copyWith(allPackages: [], staticData: null, quickLinks: []);
+    state = state.copyWith(allPackages: [], staticData: null, quickLinks: []);
     index = 0;
     RoutesUtils.context.pop();
     final localStorage = await SharedPreferences.getInstance();
@@ -215,7 +210,7 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
 
 class DashboardState extends Equatable {
   ValueNotifier<bool>? isLoading = ValueNotifier(false);
-  bool areLoaded = true;
+  bool areLoaded = false;
   bool isLoaded = false;
   StaticContentModel? staticData;
   List<Package> allPackages = [];

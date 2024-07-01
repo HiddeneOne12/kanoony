@@ -3,16 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kanoony/core/common_widgets/appbar_textfield.dart';
-import 'package:kanoony/core/common_widgets/common_sizebox_widget.dart';
-import 'package:kanoony/core/common_widgets/common_text_widget.dart';
 import 'package:kanoony/core/common_widgets/fav_button.dart';
 import 'package:kanoony/core/constants/image_paths/image_paths.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
 import 'package:kanoony/core/routing/routing_config.dart';
 import '../../src/dashboard_screen/dashboard_screen.dart';
-import 'callback_button.dart';
+
 
 class CommonAppBar extends StatelessWidget {
   String mainText;
@@ -61,13 +58,13 @@ class CommonAppBar extends StatelessWidget {
                   fit: BoxFit.cover,
                   image: AssetImage(PngImagePaths.appBarBackgroundImg))
               : null),
-      height: 85.h,
+      height: 100.h,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 16.h, right: 16.h, top: 16.h),
+            padding: EdgeInsets.only(left: 16.h, right: 16.h, top: 0.04.sh),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,

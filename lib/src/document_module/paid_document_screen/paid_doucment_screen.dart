@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -16,10 +17,16 @@ class PaidDocumentScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    var variable = ref.watch(allProviderList.dashboardProvider);
+    var provider = ref.read(allProviderList.dashboardProvider.notifier);
     return Container(
       color: Theme.of(context).scaffoldBackgroundColor,
       child: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
+        onTap: () {
+          FocusScope.of(context).unfocus();
+          provider.searchController.clear();
+          variable.searchedDoc = [];
+        },
         child: Scaffold(
           backgroundColor: allColors.scaffoldColor,
           drawer: AppMenuProfileDrawer().appProfileDrawer(context, ref),

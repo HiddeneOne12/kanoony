@@ -63,7 +63,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                   children: [
                     CommonTextWidget(
                         color: allColors.blackColor,
-                        size: 12.sp,
+                        size: 13.sp,
                         text: widget.label,
                         weight: FontWeight.w700,
                         padding: EdgeInsets.only(
@@ -132,7 +132,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                 child: Icon(
                   widget.icon,
                   color: allColors.primaryColor,
-                  size: 13.h,
+                  size: 16.h,
                 ),
               )
             ],

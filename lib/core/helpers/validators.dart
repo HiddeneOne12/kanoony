@@ -4,13 +4,11 @@ String? errorMsg2 = '';
 class TextFieldValidator {
   static String? validateText(String? value) {
     errorMsg = 'Field Empty';
-    errorMsg2 = 'Maximum 64 characters allowed';
+
     if (value!.isEmpty) {
       return errorMsg;
     }
-    if (value.length >= 62) {
-      return errorMsg2;
-    }
+
     return null;
   }
 

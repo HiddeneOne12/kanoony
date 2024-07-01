@@ -118,10 +118,7 @@ class DashboardService {
     } catch (e, s) {
       dp(msg: "Error", arg: s);
       logger.e("Get In Error $e");
-      showSnackBarMessage(
-          contentColor: allColors.canvasColor,
-          content: "Server Failure",
-          backgroundColor: allColors.errorColor);
+
       return left('Failed to connect to the server: $e');
     }
   }

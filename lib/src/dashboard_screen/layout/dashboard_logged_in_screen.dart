@@ -30,25 +30,46 @@ class LoggedInDashboardBody extends ConsumerStatefulWidget {
 }
 
 class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
+  final ScrollController scrollController = ScrollController();
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await ref
-          .read(allProviderList.dashboardProvider.notifier)
-          .sendNotificationPostRequest();
-
-      await ref
-          .read(allProviderList.dashboardProvider.notifier)
-          .sendGetStaticContentRequest();
-      await ref
           .read(allProviderList.userProfileProvider.notifier)
           .sendUserDetailRequest();
+      await ref
+          .read(allProviderList.dashboardProvider.notifier)
+          .sendNotificationPostRequest();
     });
     super.initState();
   }
 
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  void scrollForward() {
+    scrollController.animateTo(
+      scrollController.offset + 500, // Scroll forward by 100 pixels
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  void scrollBackward() {
+    scrollController.animateTo(
+      scrollController.offset - 500, // Scroll backward by 100 pixels
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     var dashboardVariables = ref.watch(allProviderList.dashboardProvider);
+
     var userVariables = ref.watch(allProviderList.userProfileProvider);
     var packageProvider = ref.read(allProviderList.packageProvider.notifier);
 
@@ -61,20 +82,17 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    dashboardVariables.areLoaded
-                        ? const ShimmerAppBar()
-                        : CommonAppBar(
-                            height: 0.16,
-                            isBack: false,
-                            isFilter: true,
-                            isBlogTextField: false,
-                            isDashboard: true,
-                            isButton: false,
-                            isTextfield: false,
-                            mainText:
-                                dashboardVariables.staticData?.dashboard ?? '',
-                            subText: '',
-                          ),
+                    CommonAppBar(
+                      height: 0.16,
+                      isBack: false,
+                      isFilter: true,
+                      isBlogTextField: false,
+                      isDashboard: true,
+                      isButton: false,
+                      isTextfield: false,
+                      mainText: dashboardVariables.staticData?.dashboard ?? '',
+                      subText: '',
+                    ),
                     Stack(
                       alignment: Alignment.topCenter,
                       children: [
@@ -146,86 +164,166 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                                                       .staticData
                                                       ?.myFavorites ??
                                                   ''),
-                                          ServiceCard(
-                                              onTap: () {},
-                                              icon: SvgImagesAssetPath
-                                                  .browseDocSvg,
-                                              text: dashboardVariables
-                                                      .staticData
-                                                      ?.browseFreeDocuments ??
-                                                  ''),
                                         ],
                                       ),
                                 SizedBox(height: 10.h),
-                                CommonTextWidget(
-                                    color: allColors.textColor,
-                                    size: 20.sp,
-                                    text:
-                                        userProfileHelper
-                                                    .userData.packageName !=
-                                                'null'
-                                            ? dashboardVariables.staticData
-                                                    ?.currentPackage ??
-                                                ''
-                                            : dashboardVariables
-                                                    .staticData?.package ??
-                                                '',
-                                    weight: FontWeight.w700,
+                                if (userProfileHelper.userData.packageName !=
+                                    'null') ...[
+                                  CommonTextWidget(
+                                      color: allColors.textColor,
+                                      size: 20.sp,
+                                      text: dashboardVariables
+                                              .staticData?.currentPackage
+                                              ?.toUpperCase() ??
+                                          '',
+                                      weight: FontWeight.w700,
+                                      padding: EdgeInsets.only(
+                                          left: 16.h, right: 16.h)),
+                                ] else ...[
+                                  Padding(
                                     padding: EdgeInsets.only(
-                                        left: 16.h, right: 16.h)),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      bottom: 5.h,
-                                      left: isArabic ? 0.91.sw : 16.h,
-                                      right: isArabic ? 16.h : 0.91.sw),
-                                  child: Divider(
-                                    color: allColors.primaryColor,
-                                    thickness: 1.w,
-                                    height: 1.h,
+                                        right: isArabic ? 0 : 16.h,
+                                        left: isArabic ? 16.h : 0),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          child: CommonTextWidget(
+                                              color: allColors.textColor,
+                                              size: 20.sp,
+                                              text: dashboardVariables
+                                                      .staticData
+                                                      ?.contractTemplatePackages
+                                                      ?.toUpperCase() ??
+                                                  '',
+                                              weight: FontWeight.w500,
+                                              padding: EdgeInsets.only(
+                                                  right: isArabic ? 0 : 20.h,
+                                                  left: isArabic ? 135.h : 0)),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsets.only(bottom: 10.h),
+                                          child: InkWell(
+                                            onTap: () {
+                                              scrollBackward();
+                                            },
+                                            child: Container(
+                                              height: 25.h,
+                                              width: 25.h,
+                                              alignment: Alignment.center,
+                                              decoration: BoxDecoration(
+                                                  color: allColors.primaryColor,
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              50.r))),
+                                              child: Padding(
+                                                padding: EdgeInsets.only(
+                                                    left: isArabic ? 0 : 3.h,
+                                                    right: isArabic ? 3.h : 0),
+                                                child: Icon(
+                                                  Icons.arrow_back_ios,
+                                                  color: allColors.textColor,
+                                                  size: 12.h,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 5.w,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(bottom: 9.h),
+                                          child: InkWell(
+                                            onTap: () {
+                                              scrollForward();
+                                            },
+                                            child: Container(
+                                              height: 25.h,
+                                              width: 25.h,
+                                              alignment: Alignment.center,
+                                              decoration: BoxDecoration(
+                                                  color: allColors.primaryColor,
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              50.r))),
+                                              child: Padding(
+                                                padding: EdgeInsets.only(
+                                                    left: isArabic ? 0 : 3.h,
+                                                    right: isArabic ? 3.h : 0),
+                                                child: Icon(
+                                                  Icons.arrow_forward_ios,
+                                                  color: allColors.textColor,
+                                                  size: 12.h,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                ),
+                                ],
                                 userVariables.isLoading
                                     ? const ShimmerPackageCard()
                                     : userVariables.userProfile?.packageName ==
                                             "null"
-                                        ? ListView.builder(
-                                            itemCount: dashboardVariables
-                                                .allPackages.length,
-                                            padding: EdgeInsets.all(0.h),
-                                            shrinkWrap: true,
-                                            physics:
-                                                const NeverScrollableScrollPhysics(),
-                                            itemBuilder: (context, index) {
-                                              var data = dashboardVariables
-                                                  .allPackages[index];
-                                              return InkWell(
-                                                onTap: () async {
-                                                  await paymentPopUp(
-                                                      context,
-                                                      ref,
-                                                      data,
-                                                      userProfileHelper.userData
-                                                              .id.isEmpty
-                                                          ? true
-                                                          : false,
-                                                      '',
-                                                      true);
-                                                },
-                                                child: PackageCard(
-                                                  fifty: dashboardVariables
-                                                          .staticData
-                                                          ?.saveMoreThan_50 ??
-                                                      '',
-                                                  price: data.price.toString(),
-                                                  title: data.title,
-                                                  description: data.description,
-                                                  getItNow: dashboardVariables
-                                                          .staticData
-                                                          ?.monthlyAction ??
-                                                      '',
-                                                ),
-                                              );
-                                            },
+                                        ? SizedBox(
+                                            height: 286.h,
+                                            child: ListView.builder(
+                                              itemCount: dashboardVariables
+                                                  .allPackages.length,
+                                              controller: scrollController,
+                                              padding: EdgeInsets.all(0.h),
+                                              scrollDirection: Axis.horizontal,
+                                              shrinkWrap: true,
+                                              physics:
+                                                  const AlwaysScrollableScrollPhysics(),
+                                              itemBuilder: (context, index) {
+                                                var data = dashboardVariables
+                                                    .allPackages[index];
+                                                return SizedBox(
+                                                  width: 1.sw,
+                                                  child: InkWell(
+                                                    onTap: () async {
+                                                      await paymentPopUp(
+                                                          context,
+                                                          ref,
+                                                          data,
+                                                          userProfileHelper
+                                                                  .userData
+                                                                  .id
+                                                                  .isEmpty
+                                                              ? true
+                                                              : false,
+                                                          '',
+                                                          true);
+                                                    },
+                                                    child: PackageCard(
+                                                      fifty: dashboardVariables
+                                                              .staticData
+                                                              ?.saveMoreThan_50 ??
+                                                          '',
+                                                      price:
+                                                          data.price.toString(),
+                                                      title: data.title,
+                                                      description:
+                                                          data.description,
+                                                      getItNow: dashboardVariables
+                                                              .staticData
+                                                              ?.monthlyAction ??
+                                                          '',
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ),
                                           )
                                         : CurrentPackageCard(
                                             onCancel: () async {
@@ -249,7 +347,10 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                                                     .userProfile
                                                     ?.remainingDocument ??
                                                 '',
-                                            getItNow: 'GET IT NOW',
+                                            getItNow: dashboardVariables
+                                                    .staticData
+                                                    ?.monthlyAction ??
+                                                '',
                                             cancelNow: dashboardVariables
                                                     .staticData
                                                     ?.cancelSubscription ??

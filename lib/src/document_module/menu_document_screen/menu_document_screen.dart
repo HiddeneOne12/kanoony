@@ -17,10 +17,16 @@ class MenuDocumentScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    var variable = ref.watch(allProviderList.dashboardProvider);
+    var provider = ref.read(allProviderList.dashboardProvider.notifier);
     return Container(
       color: Theme.of(context).scaffoldBackgroundColor,
       child: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
+        onTap: () {
+          FocusScope.of(context).unfocus();
+          provider.searchController.clear();
+          variable.searchedDoc = [];
+        },
         child: Scaffold(
           backgroundColor: allColors.scaffoldColor,
           drawer: isArabic

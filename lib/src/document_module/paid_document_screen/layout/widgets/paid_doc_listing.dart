@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../../core/common_widgets/appbar_textfield.dart';
+import '../../../../../core/common_widgets/callback_button.dart';
 import '../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/object_constants/object_constants.dart';
@@ -41,6 +43,20 @@ class _PaidDocListingItemsState extends State<PaidDocListingItems> {
                 SizedBox(
                   height: 10.h,
                 ),
+                AppBarTemplateTextField(isFilter: false),
+                SizedBox(
+                  height: 10.h,
+                ),
+                // Padding(
+                //   padding: EdgeInsets.only(
+                //     left: isArabic ? 0 : 0.23.sw,
+                //     right: isArabic ? 0.23.sw : 0,
+                //   ),
+                //   child: const FreeTemplateButton(),
+                // ),
+                // SizedBox(
+                //   height: 10.h,
+                // ),
                 ListView.builder(
                   itemCount: widget.list!.length,
                   padding: EdgeInsets.only(left: 16.h, right: 16.h),

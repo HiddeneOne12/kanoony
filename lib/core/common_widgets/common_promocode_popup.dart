@@ -50,7 +50,7 @@ promoCodePopUp(context, WidgetRef ref, DocDetail data) {
                 return Stack(children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(
-                      left: 120.h,
+                      left: 150.h,
                     ),
                     child: Image.asset(
                       PngImagePaths.authDesignImg,
@@ -67,16 +67,6 @@ promoCodePopUp(context, WidgetRef ref, DocDetail data) {
                           top: 20.h,
                           left: isArabic ? 0 : 20.h,
                           right: isArabic ? 20.h : 0)),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: isArabic ? 0.7.sw : 20.h,
-                        right: isArabic ? 20.h : 0.7.sw,
-                        top: 0.04.sh),
-                    child: Divider(
-                      color: allColors.primaryColor,
-                      thickness: 1.w,
-                    ),
-                  ),
                   Padding(
                     padding: EdgeInsets.only(
                         left: isArabic ? 0 : 0.7.sw,
@@ -96,335 +86,344 @@ promoCodePopUp(context, WidgetRef ref, DocDetail data) {
                   ),
                   Padding(
                     padding:
-                        EdgeInsets.only(left: 20.h, right: 20.h, top: 0.07.sh),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        if (isError) ...[
-                          CommonTextWidget(
-                              color: allColors.errorColor,
-                              size: 13.sp,
-                              text: 'Please select language to download!',
-                              align: TextAlign.center,
-                              weight: FontWeight.w400,
-                              maxLine: 7,
-                              padding: EdgeInsets.only(
-                                  left: 0.h, right: 0.h, bottom: 10.h)),
-                        ],
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 10.h),
-                              child: SizedBox(
-                                height: 35.h,
-                                width: 35.h,
-                                child: SvgPicture.asset(
-                                    SvgImagesAssetPath.documentSvg),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 5.w,
-                            ),
-                            Flexible(
-                              flex: 5,
-                              child: CommonTextWidget(
-                                  color: allColors.textColor,
-                                  size: 14.sp,
-                                  text: data.title,
-                                  align: TextAlign.start,
-                                  weight: FontWeight.w700,
-                                  maxLine: 5,
-                                  padding:
-                                      EdgeInsets.only(left: 0.h, right: 0.h)),
-                            ),
-                            const Spacer(),
-                            Flexible(
-                              flex: 1,
-                              child: CommonTextWidget(
-                                  color: allColors.primaryColor,
-                                  align: TextAlign.start,
-                                  size: 14.sp,
-                                  text: data.documentPrice == "0"
-                                      ? "FREE"
-                                      : "${data.documentPrice} AED",
-                                  weight: FontWeight.w900,
-                                  padding:
-                                      EdgeInsets.only(left: 0.h, right: 0.h)),
-                            ),
-                            SizedBox(
-                              width: 5.w,
-                            ),
+                        EdgeInsets.only(left: 20.h, right: 20.h, top: 0.09.sh),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          if (isError) ...[
+                            CommonTextWidget(
+                                color: allColors.errorColor,
+                                size: 13.sp,
+                                text: 'Please select language to download!',
+                                align: TextAlign.center,
+                                weight: FontWeight.w400,
+                                maxLine: 7,
+                                padding: EdgeInsets.only(
+                                    left: 0.h, right: 0.h, bottom: 10.h)),
                           ],
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        CommonTextField(
-                            padding: EdgeInsets.all(0.h),
-                            labelText: 'PROMO CODE',
-                            textEditingController: provider.promoCodeController,
-                            icon: Icon(
-                              Icons.code,
-                              size: 16.h,
-                            ),
-                            hintText: 'Enter Promo Code',
-                            focusNode: promoFocus),
-                        Padding(
-                          padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
-                          child: Row(
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              if (data.englishattachment != 'null') ...[
-                                Flexible(
-                                  child: InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        selectedValue = 'englishattachment';
-                                        isError = false;
-                                      });
-                                    },
-                                    child: Container(
-                                      height: 20.h,
-                                      width: 46.h,
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                          color: selectedValue ==
-                                                  'englishattachment'
-                                              ? allColors.primaryColor
-                                              : allColors.canvasColor,
-                                          border: Border.all(
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 10.h),
+                                child: SizedBox(
+                                  height: 35.h,
+                                  width: 35.h,
+                                  child: SvgPicture.asset(
+                                      SvgImagesAssetPath.documentSvg),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5.w,
+                              ),
+                              Flexible(
+                                flex: 5,
+                                child: CommonTextWidget(
+                                    color: allColors.textColor,
+                                    size: 14.sp,
+                                    text: data.title,
+                                    align: TextAlign.start,
+                                    weight: FontWeight.w700,
+                                    maxLine: 5,
+                                    padding:
+                                        EdgeInsets.only(left: 0.h, right: 0.h)),
+                              ),
+                              const Spacer(),
+                              Flexible(
+                                flex: 1,
+                                child: CommonTextWidget(
+                                    color: allColors.primaryColor,
+                                    align: TextAlign.start,
+                                    size: 14.sp,
+                                    text: data.documentPrice == "0"
+                                        ? "FREE"
+                                        : "${data.documentPrice} AED",
+                                    weight: FontWeight.w900,
+                                    padding:
+                                        EdgeInsets.only(left: 0.h, right: 0.h)),
+                              ),
+                              SizedBox(
+                                width: 5.w,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          CommonTextField(
+                              padding: EdgeInsets.all(0.h),
+                              labelText: 'PROMO CODE',
+                              textEditingController:
+                                  provider.promoCodeController,
+                              icon: Icon(
+                                Icons.code,
+                                size: 16.h,
+                              ),
+                              hintText: 'Enter Promo Code',
+                              focusNode: promoFocus),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
+                            child: Row(
+                              children: [
+                                if (data.englishattachment != 'null') ...[
+                                  Flexible(
+                                    child: InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          selectedValue = 'englishattachment';
+                                          isError = false;
+                                        });
+                                      },
+                                      child: Container(
+                                        height: 20.h,
+                                        width: 46.h,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
                                             color: selectedValue ==
                                                     'englishattachment'
                                                 ? allColors.primaryColor
+                                                : allColors.canvasColor,
+                                            border: Border.all(
+                                              color: selectedValue ==
+                                                      'englishattachment'
+                                                  ? allColors.primaryColor
+                                                  : allColors.textColor,
+                                            ),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(2.r))),
+                                        child: CommonTextWidget(
+                                            color: selectedValue ==
+                                                    'englishattachment'
+                                                ? allColors.canvasColor
                                                 : allColors.textColor,
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(2.r))),
-                                      child: CommonTextWidget(
-                                          color: selectedValue ==
-                                                  'englishattachment'
-                                              ? allColors.canvasColor
-                                              : allColors.textColor,
-                                          size: 10.sp,
-                                          align: TextAlign.justify,
-                                          text: 'English',
-                                          weight: FontWeight.w800,
-                                          padding: EdgeInsets.only(
-                                              right: 0.h, top: 5.h, left: 0.h)),
+                                            size: 10.sp,
+                                            align: TextAlign.justify,
+                                            text: 'English',
+                                            weight: FontWeight.w800,
+                                            padding: EdgeInsets.only(
+                                                right: 0.h,
+                                                top: 5.h,
+                                                left: 0.h)),
+                                      ),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  width: 5.h,
-                                ),
-                              ],
-                              if (data.arabicattachment != 'null') ...[
-                                Flexible(
-                                  child: InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        selectedValue = 'arabicattachment';
-                                        isError = false;
-                                      });
-                                    },
-                                    child: Container(
-                                      height: 20.h,
-                                      width: 46.h,
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                          color: selectedValue ==
-                                                  'arabicattachment'
-                                              ? allColors.primaryColor
-                                              : allColors.canvasColor,
-                                          border: Border.all(
+                                  SizedBox(
+                                    width: 5.h,
+                                  ),
+                                ],
+                                if (data.arabicattachment != 'null') ...[
+                                  Flexible(
+                                    child: InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          selectedValue = 'arabicattachment';
+                                          isError = false;
+                                        });
+                                      },
+                                      child: Container(
+                                        height: 20.h,
+                                        width: 46.h,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
                                             color: selectedValue ==
                                                     'arabicattachment'
                                                 ? allColors.primaryColor
+                                                : allColors.canvasColor,
+                                            border: Border.all(
+                                              color: selectedValue ==
+                                                      'arabicattachment'
+                                                  ? allColors.primaryColor
+                                                  : allColors.textColor,
+                                            ),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(2.r))),
+                                        child: CommonTextWidget(
+                                            color: selectedValue ==
+                                                    'arabicattachment'
+                                                ? allColors.canvasColor
                                                 : allColors.textColor,
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(2.r))),
-                                      child: CommonTextWidget(
-                                          color: selectedValue ==
-                                                  'arabicattachment'
-                                              ? allColors.canvasColor
-                                              : allColors.textColor,
-                                          size: 10.sp,
-                                          align: TextAlign.justify,
-                                          text: 'Arabic',
-                                          weight: FontWeight.w800,
-                                          padding: EdgeInsets.only(
-                                              right: 0.h, top: 5.h, left: 0.h)),
+                                            size: 10.sp,
+                                            align: TextAlign.justify,
+                                            text: 'Arabic',
+                                            weight: FontWeight.w800,
+                                            padding: EdgeInsets.only(
+                                                right: 0.h,
+                                                top: 5.h,
+                                                left: 0.h)),
+                                      ),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  width: 5.h,
-                                ),
-                              ],
-                              if (data.combineattacment != 'null') ...[
-                                Flexible(
-                                  child: InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        selectedValue = 'combineattacment';
-                                        isError = false;
-                                      });
-                                    },
-                                    child: Container(
-                                      height: 20.h,
-                                      width: 85.h,
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                          color: selectedValue ==
-                                                  'combineattacment'
-                                              ? allColors.primaryColor
-                                              : allColors.canvasColor,
-                                          border: Border.all(
+                                  SizedBox(
+                                    width: 5.h,
+                                  ),
+                                ],
+                                if (data.combineattacment != 'null') ...[
+                                  Flexible(
+                                    child: InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          selectedValue = 'combineattacment';
+                                          isError = false;
+                                        });
+                                      },
+                                      child: Container(
+                                        height: 20.h,
+                                        width: 85.h,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
                                             color: selectedValue ==
                                                     'combineattacment'
                                                 ? allColors.primaryColor
+                                                : allColors.canvasColor,
+                                            border: Border.all(
+                                              color: selectedValue ==
+                                                      'combineattacment'
+                                                  ? allColors.primaryColor
+                                                  : allColors.textColor,
+                                            ),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(2.r))),
+                                        child: CommonTextWidget(
+                                            color: selectedValue ==
+                                                    'combineattacment'
+                                                ? allColors.canvasColor
                                                 : allColors.textColor,
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(2.r))),
-                                      child: CommonTextWidget(
-                                          color: selectedValue ==
-                                                  'combineattacment'
-                                              ? allColors.canvasColor
-                                              : allColors.textColor,
-                                          size: 10.sp,
-                                          align: TextAlign.justify,
-                                          text: 'English & Arabic',
-                                          weight: FontWeight.w800,
-                                          padding: EdgeInsets.only(
-                                              right: 0.h, top: 5.h, left: 0.h)),
+                                            size: 10.sp,
+                                            align: TextAlign.justify,
+                                            text: 'English & Arabic',
+                                            weight: FontWeight.w800,
+                                            padding: EdgeInsets.only(
+                                                right: 0.h,
+                                                top: 5.h,
+                                                left: 0.h)),
+                                      ),
                                     ),
                                   ),
+                                  SizedBox(
+                                    width: 5.h,
+                                  ),
+                                ],
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          if (userProfileHelper.userData.id.isNotEmpty) ...[
+                            CommonButton(
+                                isEnabledNotifier: isLoading,
+                                height: 35.h,
+                                backgroundColor: allColors.primaryColor,
+                                borderSides:
+                                    BorderSide(color: allColors.primaryColor),
+                                radius: 4.r,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displayLarge!
+                                    .copyWith(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 16.sp,
+                                        color: allColors.canvasColor),
+                                text: 'CHECKOUT',
+                                onPressed: () async {
+                                  if (selectedValue.isEmpty) {
+                                    setState(() {
+                                      isError = true;
+                                    });
+                                    return;
+                                  }
+                                  RoutesUtils.context.pop();
+
+                                  await paymentPopUp(context, ref, data, false,
+                                      selectedValue, false);
+                                  selectedValue = '';
+                                }),
+                          ] else ...[
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CommonButton(
+                                      height: 35.h,
+                                      backgroundColor: allColors.textColor,
+                                      borderSides: BorderSide(
+                                          color: allColors.textColor),
+                                      radius: 4.r,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displayLarge!
+                                          .copyWith(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 9.sp,
+                                              color: allColors.canvasColor),
+                                      text: 'SIGN IN',
+                                      onPressed: () async {
+                                        RoutesUtils.context.pop();
+                                        RoutesUtils.context
+                                            .go(LoginScreen.loginRoute);
+                                      }),
                                 ),
                                 SizedBox(
-                                  width: 5.h,
+                                  width: 10.w,
+                                ),
+                                Expanded(
+                                  child: CommonButton(
+                                      height: 35.h,
+                                      backgroundColor: allColors.primaryColor,
+                                      borderSides: BorderSide(
+                                          color: allColors.primaryColor),
+                                      radius: 4.r,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displayLarge!
+                                          .copyWith(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 11.sp,
+                                              color: allColors.canvasColor),
+                                      text: 'SIGN UP',
+                                      onPressed: () async {
+                                        RoutesUtils.context.pop();
+                                        RoutesUtils.context
+                                            .go(RegisterScreen.registerRoute);
+                                      }),
+                                ),
+                                SizedBox(
+                                  width: 10.h,
+                                ),
+                                Expanded(
+                                  child: CommonButton(
+                                      height: 35.h,
+                                      backgroundColor: allColors.canvasColor,
+                                      borderSides: BorderSide(
+                                          color: allColors.textColor),
+                                      radius: 4.r,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displayLarge!
+                                          .copyWith(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 11.sp,
+                                              color: allColors.textColor),
+                                      text: 'AS GUEST',
+                                      onPressed: () async {
+                                        if (selectedValue.isEmpty) {
+                                          setState(() {
+                                            isError = true;
+                                          });
+                                          return;
+                                        }
+                                        RoutesUtils.context.pop();
+                                        await paymentPopUp(context, ref, data,
+                                            true, selectedValue, false);
+                                        selectedValue = '';
+                                      }),
                                 ),
                               ],
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        if (userProfileHelper.userData.id.isNotEmpty) ...[
-                          CommonButton(
-                              isEnabledNotifier: isLoading,
-                              height: 35.h,
-                              backgroundColor: allColors.primaryColor,
-                              borderSides:
-                                  BorderSide(color: allColors.primaryColor),
-                              radius: 4.r,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .displayLarge!
-                                  .copyWith(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 16.sp,
-                                      color: allColors.canvasColor),
-                              text: 'CHECKOUT',
-                              onPressed: () async {
-                                if (selectedValue.isEmpty) {
-                                  setState(() {
-                                    isError = true;
-                                  });
-                                  return;
-                                }
-                                RoutesUtils.context.pop();
-
-                                await paymentPopUp(context, ref, data, false,
-                                    selectedValue, false);
-                                selectedValue = '';
-                              }),
-                        ] else ...[
-                          Row(
-                            children: [
-                              Expanded(
-                                child: CommonButton(
-                                    height: 35.h,
-                                    backgroundColor: allColors.textColor,
-                                    borderSides:
-                                        BorderSide(color: allColors.textColor),
-                                    radius: 4.r,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displayLarge!
-                                        .copyWith(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 9.sp,
-                                            color: allColors.canvasColor),
-                                    text: 'SIGN IN',
-                                    onPressed: () async {
-                                      RoutesUtils.context.pop();
-                                      RoutesUtils.context
-                                          .go(LoginScreen.loginRoute);
-                                    }),
-                              ),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              Expanded(
-                                child: CommonButton(
-                                    height: 35.h,
-                                    backgroundColor: allColors.primaryColor,
-                                    borderSides: BorderSide(
-                                        color: allColors.primaryColor),
-                                    radius: 4.r,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displayLarge!
-                                        .copyWith(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 11.sp,
-                                            color: allColors.canvasColor),
-                                    text: 'SIGN UP',
-                                    onPressed: () async {
-                                      RoutesUtils.context.pop();
-                                      RoutesUtils.context
-                                          .go(RegisterScreen.registerRoute);
-                                    }),
-                              ),
-                              SizedBox(
-                                width: 10.h,
-                              ),
-                              Expanded(
-                                child: CommonButton(
-                                    height: 35.h,
-                                    backgroundColor: allColors.canvasColor,
-                                    borderSides:
-                                        BorderSide(color: allColors.textColor),
-                                    radius: 4.r,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displayLarge!
-                                        .copyWith(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 11.sp,
-                                            color: allColors.textColor),
-                                    text: 'AS GUEST',
-                                    onPressed: () async {
-                                      if (selectedValue.isEmpty) {
-                                        setState(() {
-                                          isError = true;
-                                        });
-                                        return;
-                                      }
-                                      RoutesUtils.context.pop();
-                                      await paymentPopUp(context, ref, data,
-                                          true, selectedValue, false);
-                                      selectedValue = '';
-                                    }),
-                              ),
-                            ],
-                          )
+                            )
+                          ],
                         ],
-                      ],
+                      ),
                     ),
                   )
                 ]);

@@ -82,20 +82,11 @@ class _PackageBodyState extends ConsumerState<PackageBody> {
                           color: allColors.textColor,
                           size: 20.sp,
                           text: dashboardVariables
-                                  .staticData?.contractTemplatePackages ??
+                                  .staticData?.contractTemplatePackages
+                                  ?.toUpperCase() ??
                               '',
                           weight: FontWeight.w500,
                           padding: EdgeInsets.only(left: 16.h, right: 16.h)),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: isArabic ? 0.91.sw : 16.h,
-                            right: isArabic ? 16.h : 0.91.sw),
-                        child: Divider(
-                          height: 1.h,
-                          color: allColors.primaryColor,
-                          thickness: 1.w,
-                        ),
-                      ),
                       dashboardVariables.isLoaded
                           ? const ShimmerPackageCard()
                           : ListView.builder(

@@ -12,6 +12,7 @@ class ServiceCard extends StatelessWidget {
   final String text;
   final bool isPng;
   final bool isBold;
+  bool isSlider;
   void Function()? onTap;
 
   ServiceCard(
@@ -19,13 +20,14 @@ class ServiceCard extends StatelessWidget {
       required this.text,
       required this.onTap,
       this.isBold = false,
+      this.isSlider = false,
       this.isPng = false});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(bottom: 7.h),
-      child: InkWell(
+      child: GestureDetector(
         onTap: onTap,
         child: Card(
           elevation: 0,
@@ -41,15 +43,15 @@ class ServiceCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                    height: isBold ? 40.h : 35.h,
-                    width: isBold ? 33.h : 35.h,
+                    height: isBold ? 40.h : 37.h,
+                    width: isBold ? 33.h : 37.h,
                     child: isPng
                         ? Image.asset(icon)
                         : SvgPicture.asset(
                             icon,
                           ),
                   ),
-                  SizedBox(height: 10.h),
+                  SizedBox(height: 12.h),
                   CommonTextWidget(
                       color: allColors.textColor,
                       size: 13.sp,
