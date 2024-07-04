@@ -7,6 +7,7 @@ import 'package:kanoony/core/common_widgets/common_text_widget.dart';
 import 'package:kanoony/core/constants/image_paths/image_paths.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 
 import '../../../core/routing/routing_config.dart';
 import '../../document_module/document_details_screen/document_details_screen.dart';
@@ -119,10 +120,12 @@ class _FavoriteBodyState extends ConsumerState<FavoriteBody> {
                                                           color: allColors
                                                               .textColor,
                                                           size: 11.sp,
-                                                          text: variables2
-                                                              .content![index]
-                                                              .documentsLang
-                                                              .title,
+                                                          text: toPascalCase(
+                                                              variables2
+                                                                  .content![
+                                                                      index]
+                                                                  .documentsLang
+                                                                  .title),
                                                           weight:
                                                               FontWeight.w700,
                                                           align:
@@ -139,19 +142,19 @@ class _FavoriteBodyState extends ConsumerState<FavoriteBody> {
                                               ],
                                             ),
                                           ),
-                                          InkWell(
-                                            onTap: () {},
-                                            child: SizedBox(
-                                              height: 20.h,
-                                              width: 20.h,
-                                              child: Image.asset(
-                                                PngImagePaths.binImg,
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 10.w,
-                                          ),
+                                          // InkWell(
+                                          //   onTap: () {},
+                                          //   child: SizedBox(
+                                          //     height: 20.h,
+                                          //     width: 20.h,
+                                          //     child: Image.asset(
+                                          //       PngImagePaths.binImg,
+                                          //     ),
+                                          //   ),
+                                          // ),
+                                          // SizedBox(
+                                          //   width: 10.w,
+                                          // ),
                                         ],
                                       ),
                                     ),

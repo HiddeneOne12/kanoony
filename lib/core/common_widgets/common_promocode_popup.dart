@@ -337,7 +337,7 @@ promoCodePopUp(context, WidgetRef ref, DocDetail data) {
                                   RoutesUtils.context.pop();
 
                                   await paymentPopUp(context, ref, data, false,
-                                      selectedValue, false);
+                                      selectedValue, false,'','','');
                                   selectedValue = '';
                                 }),
                           ] else ...[
@@ -415,7 +415,7 @@ promoCodePopUp(context, WidgetRef ref, DocDetail data) {
                                         }
                                         RoutesUtils.context.pop();
                                         await paymentPopUp(context, ref, data,
-                                            true, selectedValue, false);
+                                            true, selectedValue, false,'','','');
                                         selectedValue = '';
                                       }),
                                 ),

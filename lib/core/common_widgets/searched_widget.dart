@@ -109,10 +109,12 @@ class _SearchedHomeTileState extends ConsumerState<SearchedHomeTile> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.searchedItem![widget.index].title,
+                      widget.searchedItem![widget.index].title.toUpperCase(),
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                          fontSize: 15.sp, color: allColors.textColor),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16.sp,
+                          color: allColors.textColor),
                     ),
                   ],
                 ),

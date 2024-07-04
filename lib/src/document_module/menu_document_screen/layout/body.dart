@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 
 import '../../../../core/common_widgets/appbar_textfield.dart';
 import '../../../../core/common_widgets/callback_button.dart';
 import '../../../../core/common_widgets/common_appbar.dart';
+import '../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../core/constants/static_constants/static_constants.dart';
@@ -82,15 +84,26 @@ class _MenuDocumentBodyState extends ConsumerState<MenuDocumentBody> {
                 height: 0.795.sh,
                 child: SingleChildScrollView(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: 10.h,
+                        height: 20.h,
+                      ),
+                      CommonTextWidget(
+                          color: allColors.textColor,
+                          size: 18.sp,
+                          align: TextAlign.center,
+                          text: variables.title?.toUpperCase() ?? '',
+                          weight: FontWeight.w500,
+                          padding: EdgeInsets.only(top: 0.h)),
+                      SizedBox(
+                        height: 15.h,
                       ),
                       AppBarTemplateTextField(isFilter: false),
                       SizedBox(
-                        height: 10.h,
+                        height: 15.h,
                       ),
+
                       // Padding(
                       //   padding: EdgeInsets.only(
                       //     left: isArabic ? 0 : 0.23.sw,
@@ -130,7 +143,7 @@ class _MenuDocumentBodyState extends ConsumerState<MenuDocumentBody> {
                                         );
                                       },
                                       icon: SvgImagesAssetPath.documentSvg,
-                                      text: data.title);
+                                      text: toPascalCase(data.title));
                                 },
                               ),
                             ),

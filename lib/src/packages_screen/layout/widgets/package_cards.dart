@@ -14,10 +14,12 @@ class PackageCard extends StatelessWidget {
   String description;
   String getItNow;
   String fifty;
+  Function()? onTap;
   PackageCard(
       {super.key,
       required this.price,
       required this.fifty,
+      required this.onTap,
       required this.title,
       required this.description,
       required this.getItNow});
@@ -108,23 +110,26 @@ class PackageCard extends StatelessWidget {
               ),
             ),
 
-            Container(
-              width: MediaQuery.sizeOf(context).width.w,
-              height: 43.h,
-              decoration: BoxDecoration(
-                  color: allColors.textColor,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(10.r),
-                      topLeft: Radius.zero,
-                      topRight: Radius.zero,
-                      bottomRight: Radius.circular(10.r))),
-              child: Center(
-                child: CommonTextWidget(
-                    color: allColors.canvasColor,
-                    size: 13.sp,
-                    text: getItNow,
-                    weight: FontWeight.w700,
-                    padding: noPadding),
+            InkWell(
+              onTap: onTap,
+              child: Container(
+                width: MediaQuery.sizeOf(context).width.w,
+                height: 43.h,
+                decoration: BoxDecoration(
+                    color: allColors.textColor,
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(10.r),
+                        topLeft: Radius.zero,
+                        topRight: Radius.zero,
+                        bottomRight: Radius.circular(10.r))),
+                child: Center(
+                  child: CommonTextWidget(
+                      color: allColors.canvasColor,
+                      size: 13.sp,
+                      text: getItNow,
+                      weight: FontWeight.w700,
+                      padding: noPadding),
+                ),
               ),
             )
           ],

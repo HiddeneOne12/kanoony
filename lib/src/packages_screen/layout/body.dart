@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/common_widgets/common_payment_popup.dart';
+import 'package:kanoony/core/common_widgets/common_snackbar_widget.dart';
 
 import 'package:kanoony/src/packages_screen/layout/widgets/package_cards.dart';
 import '../../../core/common_widgets/common_appbar.dart';
@@ -99,17 +100,108 @@ class _PackageBodyState extends ConsumerState<PackageBody> {
                                     dashboardVariables.allPackages[index];
                                 return InkWell(
                                   onTap: () async {
-                                    await paymentPopUp(
-                                        context,
-                                        ref,
-                                        data,
-                                        userProfileHelper.userData.id.isEmpty
-                                            ? true
-                                            : false,
-                                        '',
-                                        true);
+                                    if (userProfileHelper.userData.id.isEmpty) {
+                                      await paymentPopUp(
+                                          context,
+                                          ref,
+                                          data,
+                                          userProfileHelper.userData.id.isEmpty
+                                              ? true
+                                              : false,
+                                          '',
+                                          true,
+                                          '',
+                                          '',
+                                          '');
+                                      return;
+                                    }
+                                    if (userProfileHelper
+                                                .userData.packageName !=
+                                            "null" ||
+                                        userProfileHelper.userData
+                                                    .remainingDocument !=
+                                                "0" &&
+                                            DateTime.now().isAfter(
+                                                DateTime.tryParse(
+                                                        userProfileHelper
+                                                            .userData
+                                                            .packageExpiry) ??
+                                                    DateTime.now())) {
+                                      showSnackBarMessage(
+                                          content:
+                                              "You have already subscribed a package!",
+                                          backgroundColor:
+                                              allColors.primaryColor,
+                                          contentColor: allColors.canvasColor);
+                                    } else {
+                                      await paymentPopUp(
+                                          context,
+                                          ref,
+                                          data,
+                                          userProfileHelper.userData.id.isEmpty
+                                              ? true
+                                              : false,
+                                          '',
+                                          true,
+                                          '',
+                                          '',
+                                          '');
+                                    }
                                   },
                                   child: PackageCard(
+                                      onTap: () async {
+                                        if (userProfileHelper
+                                            .userData.id.isEmpty) {
+                                          await paymentPopUp(
+                                              context,
+                                              ref,
+                                              data,
+                                              userProfileHelper
+                                                      .userData.id.isEmpty
+                                                  ? true
+                                                  : false,
+                                              '',
+                                              true,
+                                              '',
+                                              '',
+                                              '');
+                                          return;
+                                        }
+                                        if (userProfileHelper
+                                                    .userData.packageName !=
+                                                "null" ||
+                                            userProfileHelper.userData
+                                                        .remainingDocument !=
+                                                    "0" &&
+                                                DateTime.now().isAfter(
+                                                    DateTime.tryParse(
+                                                            userProfileHelper
+                                                                .userData
+                                                                .packageExpiry) ??
+                                                        DateTime.now())) {
+                                          showSnackBarMessage(
+                                              content:
+                                                  "You have already subscribed a package!",
+                                              backgroundColor:
+                                                  allColors.primaryColor,
+                                              contentColor:
+                                                  allColors.canvasColor);
+                                        } else {
+                                          await paymentPopUp(
+                                              context,
+                                              ref,
+                                              data,
+                                              userProfileHelper
+                                                      .userData.id.isEmpty
+                                                  ? true
+                                                  : false,
+                                              '',
+                                              true,
+                                              '',
+                                              '',
+                                              '');
+                                        }
+                                      },
                                       fifty: dashboardVariables
                                               .staticData?.saveMoreThan_50 ??
                                           '',

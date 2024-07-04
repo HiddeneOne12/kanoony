@@ -7,6 +7,7 @@ import 'package:kanoony/core/common_widgets/common_text_widget.dart';
 import 'package:kanoony/core/constants/image_paths/image_paths.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/core/routing/routing_config.dart';
 import 'package:kanoony/src/document_module/document_details_screen/document_details_screen.dart';
 
@@ -129,10 +130,12 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                                                           color: allColors
                                                               .textColor,
                                                           size: 11.sp,
-                                                          text: variables2
-                                                              .content![index]
-                                                              .documentsLang
-                                                              .title,
+                                                          text: toPascalCase(
+                                                              variables2
+                                                                  .content![
+                                                                      index]
+                                                                  .documentsLang
+                                                                  .title),
                                                           weight:
                                                               FontWeight.w700,
                                                           align:

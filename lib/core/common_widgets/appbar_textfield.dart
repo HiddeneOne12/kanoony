@@ -38,6 +38,15 @@ class _AppBarTemplateTextFieldState
                 child: TextFormField(
                   controller: provider.searchController,
                   onChanged: (val) async {
+                    if (val.isEmpty) {
+                      setState(() {
+                        provider.searchController.clear();
+                        variables.searchedDoc.clear();
+                        variables.searchedDoc = [];
+                      });
+                      print("data cleared nigga");
+                      return;
+                    }
                     provider.sendGetHomeSearchDocRequest(val);
                   },
                   onFieldSubmitted: (val) {},

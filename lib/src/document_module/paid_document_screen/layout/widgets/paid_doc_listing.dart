@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import '../../../../../core/common_widgets/appbar_textfield.dart';
 import '../../../../../core/common_widgets/callback_button.dart';
 import '../../../../../core/common_widgets/common_text_widget.dart';
@@ -17,10 +18,12 @@ import '../../model/get_paid_doc_model.dart';
 class PaidDocListingItems extends StatefulWidget {
   List<Category>? list;
   double height;
+  String title;
   PaidDocListingItems({
     super.key,
     required this.list,
     required this.height,
+    required this.title,
   });
 
   @override
@@ -38,14 +41,24 @@ class _PaidDocListingItemsState extends State<PaidDocListingItems> {
           height: widget.height.sh,
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 10.h,
+                  height: 20.h,
+                ),
+                CommonTextWidget(
+                    color: allColors.textColor,
+                    size: 18.sp,
+                    align: TextAlign.center,
+                    text: widget.title.toUpperCase(),
+                    weight: FontWeight.w500,
+                    padding: EdgeInsets.only(top: 0.h)),
+                SizedBox(
+                  height: 15.h,
                 ),
                 AppBarTemplateTextField(isFilter: false),
                 SizedBox(
-                  height: 10.h,
+                  height: 15.h,
                 ),
                 // Padding(
                 //   padding: EdgeInsets.only(
@@ -101,7 +114,7 @@ class _PaidDocListingItemsState extends State<PaidDocListingItems> {
                                               color: allColors.textColor,
                                               size: 14.sp,
                                               align: TextAlign.start,
-                                              text: data.title,
+                                              text: data.title.toUpperCase(),
                                               weight: FontWeight.w500,
                                               padding:
                                                   EdgeInsets.only(top: 0.h))),
@@ -185,8 +198,8 @@ class _PaidDocListingItemsState extends State<PaidDocListingItems> {
                                                                 size: 14.sp,
                                                                 align: TextAlign
                                                                     .start,
-                                                                text:
-                                                                    data.title,
+                                                                text: toPascalCase(
+                                                                    data.title),
                                                                 weight:
                                                                     FontWeight
                                                                         .w500,
@@ -271,7 +284,8 @@ class _PaidDocListingItemsState extends State<PaidDocListingItems> {
                                                               },
                                                               icon: SvgImagesAssetPath
                                                                   .documentSvg,
-                                                              text: data.title,
+                                                              text: toPascalCase(
+                                                                  data.title),
                                                               price: data
                                                                   .documentPrice);
                                                         },

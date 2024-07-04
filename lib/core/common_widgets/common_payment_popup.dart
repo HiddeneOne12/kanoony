@@ -16,7 +16,7 @@ import 'package:kanoony/core/helpers/validators.dart';
 import 'package:kanoony/core/routing/routing_config.dart';
 
 paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
-    bool isPackage) {
+    bool isPackage, name, packageId, price) {
   var provider = ref.read(allProviderList.paidDocProvider.notifier);
   var package = ref.read(allProviderList.packageProvider.notifier);
 
@@ -72,19 +72,21 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                     child: InkWell(
                         onTap: () {
                           selectedValue = '';
-
-                          if (isPackage) {
-                            package.emailController.clear();
-                            package.nameController.clear();
-                            package.cardFieldController = CardEditController();
-                          } else {
-                            provider.emailController.clear();
-                            provider.nameController.clear();
-                            provider.cardFieldController = CardEditController();
-                          }
-
-                          formKey.currentState!.reset();
+                          setState(() {
+                            if (isPackage) {
+                              package.emailController.clear();
+                              package.nameController.clear();
+                              package.cardFieldController =
+                                  CardEditController();
+                            } else {
+                              provider.emailController.clear();
+                              provider.nameController.clear();
+                              provider.cardFieldController =
+                                  CardEditController();
+                            }
+                          });
                           RoutesUtils.context.pop();
+                          // formKey.currentState!.reset();
                         },
                         child: Icon(
                           Icons.close,
@@ -105,7 +107,7 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                               CommonTextWidget(
                                   color: allColors.textColor,
                                   size: 20.sp,
-                                  text: data.title,
+                                  text: data == null ? name : data.title,
                                   align: TextAlign.center,
                                   weight: FontWeight.w700,
                                   maxLine: 5,
@@ -118,7 +120,8 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                                   color: allColors.primaryColor,
                                   align: TextAlign.center,
                                   size: 18.sp,
-                                  text: "${data.price} AED + VAT",
+                                  text:
+                                      "${data == null ? price : data.price} AED + VAT",
                                   weight: FontWeight.w900,
                                   padding:
                                       EdgeInsets.only(left: 0.h, right: 0.h)),
@@ -186,7 +189,7 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                                   .displaySmall!
                                   .copyWith(
                                     color: allColors.textColor,
-                                    fontSize: 13.sp,
+                                    fontSize: 15.sp,
                                     fontWeight: FontWeight.w400,
                                   ),
                               cursorColor: Theme.of(context).primaryColor,
@@ -209,7 +212,7 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                                   child: Icon(
                                     Icons.person_2_outlined,
                                     color: allColors.textColor,
-                                    size: 12.h,
+                                    size: 17.h,
                                   ),
                                 ),
                                 isDense: true,
@@ -221,7 +224,7 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                                     .displaySmall!
                                     .copyWith(
                                       color: allColors.popUpTextFieldTextColor,
-                                      fontSize: 11.sp,
+                                      fontSize: 15.sp,
                                       fontWeight: FontWeight.w400,
                                     ),
                                 contentPadding: EdgeInsets.symmetric(
@@ -288,7 +291,7 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                                     .displaySmall!
                                     .copyWith(
                                       color: allColors.textColor,
-                                      fontSize: 13.sp,
+                                      fontSize: 15.sp,
                                       fontWeight: FontWeight.w400,
                                     ),
                                 cursorColor: Theme.of(context).primaryColor,
@@ -313,7 +316,7 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                                     child: Icon(
                                       Icons.email,
                                       color: allColors.textColor,
-                                      size: 12.h,
+                                      size: 17.h,
                                     ),
                                   ),
                                   isDense: true,
@@ -326,7 +329,7 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                                       .copyWith(
                                         color:
                                             allColors.popUpTextFieldTextColor,
-                                        fontSize: 11.sp,
+                                        fontSize: 15.sp,
                                         fontWeight: FontWeight.w400,
                                       ),
                                   contentPadding: EdgeInsets.symmetric(
@@ -385,7 +388,7 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                                   .displaySmall!
                                   .copyWith(
                                     color: allColors.textColor,
-                                    fontSize: 13.sp,
+                                    fontSize: 15.sp,
                                     fontWeight: FontWeight.w400,
                                   ),
                               cursorColor: Theme.of(context).primaryColor,
@@ -396,7 +399,7 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                                   child: Icon(
                                     Icons.credit_card,
                                     color: allColors.textColor,
-                                    size: 12.h,
+                                    size: 17.h,
                                   ),
                                 ),
                                 isDense: true,
@@ -408,7 +411,7 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                                     .displaySmall!
                                     .copyWith(
                                       color: allColors.popUpTextFieldTextColor,
-                                      fontSize: 11.sp,
+                                      fontSize: 15.sp,
                                       fontWeight: FontWeight.w400,
                                     ),
                                 contentPadding: EdgeInsets.symmetric(
@@ -490,9 +493,16 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                                         isLoading.value = true;
                                       });
                                       await package.sendSubscribePackageRequest(
-                                          int.parse(data.packgeId), isGuest);
+                                          int.parse(data == null
+                                              ? packageId
+                                              : data.packgeId),
+                                          isGuest);
                                       setState(() {
                                         isLoading.value = false;
+                                        package.emailController.clear();
+                                        package.nameController.clear();
+                                        package.cardFieldController =
+                                            CardEditController();
                                       });
                                     }
                                   } else {
@@ -509,10 +519,14 @@ paymentPopUp(context, WidgetRef ref, data, bool isGuest, String selectedValue,
                                           isGuest);
                                       setState(() {
                                         isLoading.value = false;
+                                        provider.emailController.clear();
+                                        provider.nameController.clear();
+                                        provider.cardFieldController =
+                                            CardEditController();
                                       });
                                     }
                                   }
-                                  formKey.currentState!.reset();
+                                  // formKey.currentState!.reset();
                                 }),
                           ],
                         ),

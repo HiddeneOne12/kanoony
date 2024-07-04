@@ -99,10 +99,10 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
 
     if (response.isRight()) {
       state = state.copyWith(
-          isError: false,
-          message: 'fetched Successfully',
-          searchedDoc: data,
-          isLoaded: false);
+        isError: false,
+        message: 'fetched Successfully',
+        searchedDoc: data,
+      );
       dp(msg: "Response", arg: data.toString());
     }
   }
@@ -234,7 +234,7 @@ class DashboardState extends Equatable {
       this.blogs = const [],
       this.news = const [],
       this.allPackages = const [],
-      this.areLoaded = true,
+      this.areLoaded = false,
       this.id = 0,
       required this.staticData});
 

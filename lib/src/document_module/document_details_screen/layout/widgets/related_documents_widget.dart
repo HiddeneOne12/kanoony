@@ -24,20 +24,13 @@ class RelatedDocumentWidget extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         CommonTextWidget(
-            color: allColors.textColor,
-            size: 18.sp,
-            align: TextAlign.start,
-            text: dashboard.staticData?.relatedDocuments ?? '',
-            weight: FontWeight.w500,
-            padding: EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h)),
-        Padding(
-          padding: EdgeInsets.only(
-              left: isArabic ? 0.94.sw : 16.h, right: isArabic ? 16.h : 0.9.sw),
-          child: Divider(
-            height: 1.h,
-            color: allColors.primaryColor,
-            thickness: 1.w,
-          ),
+          color: allColors.textColor,
+          size: 18.sp,
+          align: TextAlign.start,
+          text: dashboard.staticData?.relatedDocuments ?? '',
+          weight: FontWeight.w500,
+          padding:
+              EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h,),
         ),
         GridView.builder(
           physics: const NeverScrollableScrollPhysics(),

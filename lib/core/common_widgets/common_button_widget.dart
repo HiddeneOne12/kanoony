@@ -86,9 +86,15 @@ class CommonButton extends StatelessWidget {
                         backgroundColor: backgroundColor,
                         side: borderSides),
                     child: (isLoading)
-                        ? CircularProgressIndicator.adaptive(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                                Theme.of(context).scaffoldBackgroundColor))
+                        ? SizedBox(
+                            height: 15.h,
+                            width: 15.h,
+                            child: CircularProgressIndicator(
+                              backgroundColor: allColors.textColor,
+                              color: allColors.canvasColor,
+                              strokeWidth: 2.w,
+                            ),
+                          )
                         : Text(
                             text,
                             style: Theme.of(context)

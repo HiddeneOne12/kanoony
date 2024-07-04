@@ -79,6 +79,7 @@ class _PaidDocumentBodyState extends ConsumerState<PaidDocumentBody> {
                     )
                   : PaidDocListingItems(
                       height: 0.795,
+                      title: variables.title ?? '',
                       list: variables.content,
                     ),
             ],

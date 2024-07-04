@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/src/document_module/document_details_screen/document_details_screen.dart';
 
 import '../../../../core/common_widgets/appbar_textfield.dart';
@@ -31,10 +32,7 @@ class _FreeDocumentBodyState extends ConsumerState<FreeDocumentBody> {
           .read(allProviderList.dashboardProvider.notifier)
           .searchController
           .clear();
-      ref
-          .watch(allProviderList.dashboardProvider)
-          .searchedDoc
-          .clear();
+      ref.watch(allProviderList.dashboardProvider).searchedDoc.clear();
       await ref
           .read(allProviderList.freeDocProvider.notifier)
           .sendGetFreeDocRequest();
@@ -116,7 +114,7 @@ class _FreeDocumentBodyState extends ConsumerState<FreeDocumentBody> {
                                         );
                                       },
                                       icon: SvgImagesAssetPath.documentSvg,
-                                      text: data.title);
+                                      text: toPascalCase(data.title));
                                 },
                               ),
                             ),

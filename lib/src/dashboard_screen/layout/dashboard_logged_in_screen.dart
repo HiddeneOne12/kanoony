@@ -9,6 +9,7 @@ import 'dart:ui' as Ui;
 import '../../../core/common_widgets/common_appbar.dart';
 import '../../../core/common_widgets/common_confirmation_dialog.dart';
 import '../../../core/common_widgets/common_payment_popup.dart';
+import '../../../core/common_widgets/common_snackbar_widget.dart';
 import '../../../core/common_widgets/common_text_widget.dart';
 import '../../../core/constants/image_paths/image_paths.dart';
 import '../../../core/constants/object_constants/object_constants.dart';
@@ -292,20 +293,131 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                                                   width: 1.sw,
                                                   child: InkWell(
                                                     onTap: () async {
-                                                      await paymentPopUp(
-                                                          context,
-                                                          ref,
-                                                          data,
-                                                          userProfileHelper
+                                                      if (userProfileHelper
+                                                          .userData
+                                                          .id
+                                                          .isEmpty) {
+                                                        await paymentPopUp(
+                                                            context,
+                                                            ref,
+                                                            data,
+                                                            userProfileHelper
+                                                                    .userData
+                                                                    .id
+                                                                    .isEmpty
+                                                                ? true
+                                                                : false,
+                                                            '',
+                                                            true,
+                                                            '',
+                                                            '',
+                                                            '');
+                                                        return;
+                                                      }
+                                                      if (userProfileHelper
                                                                   .userData
-                                                                  .id
-                                                                  .isEmpty
-                                                              ? true
-                                                              : false,
-                                                          '',
-                                                          true);
+                                                                  .packageName !=
+                                                              "null" ||
+                                                          userProfileHelper
+                                                                      .userData
+                                                                      .remainingDocument !=
+                                                                  "0" &&
+                                                              DateTime.now().isAfter(DateTime.tryParse(
+                                                                      userProfileHelper
+                                                                          .userData
+                                                                          .packageExpiry) ??
+                                                                  DateTime
+                                                                      .now())) {
+                                                        showSnackBarMessage(
+                                                            content:
+                                                                "You have already subscribed a package!",
+                                                            backgroundColor:
+                                                                allColors
+                                                                    .primaryColor,
+                                                            contentColor:
+                                                                allColors
+                                                                    .canvasColor);
+                                                      } else {
+                                                        await paymentPopUp(
+                                                            context,
+                                                            ref,
+                                                            data,
+                                                            userProfileHelper
+                                                                    .userData
+                                                                    .id
+                                                                    .isEmpty
+                                                                ? true
+                                                                : false,
+                                                            '',
+                                                            true,
+                                                            '',
+                                                            '',
+                                                            '');
+                                                      }
                                                     },
                                                     child: PackageCard(
+                                                      onTap: () async {
+                                                        if (userProfileHelper
+                                                            .userData
+                                                            .id
+                                                            .isEmpty) {
+                                                          await paymentPopUp(
+                                                              context,
+                                                              ref,
+                                                              data,
+                                                              userProfileHelper
+                                                                      .userData
+                                                                      .id
+                                                                      .isEmpty
+                                                                  ? true
+                                                                  : false,
+                                                              '',
+                                                              true,
+                                                              '',
+                                                              '',
+                                                              '');
+                                                          return;
+                                                        }
+                                                        if (userProfileHelper
+                                                                    .userData
+                                                                    .packageName !=
+                                                                "null" ||
+                                                            userProfileHelper
+                                                                        .userData
+                                                                        .remainingDocument !=
+                                                                    "0" &&
+                                                                DateTime.now().isAfter(DateTime.tryParse(userProfileHelper
+                                                                        .userData
+                                                                        .packageExpiry) ??
+                                                                    DateTime
+                                                                        .now())) {
+                                                          showSnackBarMessage(
+                                                              content:
+                                                                  "You have already subscribed a package!",
+                                                              backgroundColor:
+                                                                  allColors
+                                                                      .primaryColor,
+                                                              contentColor:
+                                                                  allColors
+                                                                      .canvasColor);
+                                                        } else {
+                                                          await paymentPopUp(
+                                                              context,
+                                                              ref,
+                                                              data,
+                                                              userProfileHelper
+                                                                      .userData
+                                                                      .id
+                                                                      .isEmpty
+                                                                  ? true
+                                                                  : false,
+                                                              '',
+                                                              true,
+                                                              '',
+                                                              '',
+                                                              '');
+                                                        }
+                                                      },
                                                       fifty: dashboardVariables
                                                               .staticData
                                                               ?.saveMoreThan_50 ??
@@ -326,6 +438,27 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                                             ),
                                           )
                                         : CurrentPackageCard(
+                                            resubscribe: () async {
+                                              await paymentPopUp(
+                                                  context,
+                                                  ref,
+                                                  null,
+                                                  userProfileHelper
+                                                          .userData.id.isEmpty
+                                                      ? true
+                                                      : false,
+                                                  '',
+                                                  true,
+                                                  userVariables.userProfile
+                                                          ?.packageName ??
+                                                      '',
+                                                  userVariables.userProfile
+                                                          ?.packageId ??
+                                                      '',
+                                                  userVariables.userProfile
+                                                          ?.packagePrice ??
+                                                      '');
+                                            },
                                             onCancel: () async {
                                               String formattedDate = DateFormat(
                                                       'd MMMM, yyyy')

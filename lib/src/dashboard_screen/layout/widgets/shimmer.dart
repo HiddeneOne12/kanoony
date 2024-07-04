@@ -67,6 +67,38 @@ class ShimmerAppBar extends StatelessWidget {
   }
 }
 
+class QuickLinksShimmer extends StatelessWidget {
+  const QuickLinksShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 110.h,
+      padding: EdgeInsets.only(left: 16.h, right: 16.h),
+      child: ListView.builder(
+        physics: const AlwaysScrollableScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        itemCount: 4,
+        itemBuilder: (context, index) {
+          return Shimmer.fromColors(
+            baseColor: allColors.shimmerBaseColor!,
+            highlightColor: allColors.shimmerHighlightColor!,
+            child: Padding(
+              padding: EdgeInsets.only(left: 5.h, right: 5.h),
+              child: Container(
+                width: 169.0,
+                height: 70.h,
+                color: Colors.white,
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
 class GridShimmer extends StatelessWidget {
   const GridShimmer({super.key});
 
@@ -101,6 +133,48 @@ class GridShimmer extends StatelessWidget {
   }
 }
 
+class DocDetailShimmer extends StatelessWidget {
+  const DocDetailShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: 16.h, right: 16.h),
+      child: Column(
+        children: [
+          shimmerContainer(
+              height: 60.h, width: double.infinity), // NameWidget shimmer
+          SizedBox(height: 20),
+          shimmerContainer(
+              height: 100, width: double.infinity), // BasicInfoWidget shimmer
+          SizedBox(height: 20),
+          shimmerContainer(
+              height: 160, width: double.infinity), // DescriptionWidget shimmer
+          SizedBox(height: 20),
+          shimmerContainer(
+              height: 200, width: double.infinity), // SummeryWidget shimmer
+          SizedBox(height: 20),
+          shimmerContainer(
+              height: 250,
+              width: double.infinity), // RelatedDocumentWidget shimmer
+        ],
+      ),
+    );
+  }
+}
+
+Widget shimmerContainer({required double height, required double width}) {
+  return Shimmer.fromColors(
+    baseColor: Colors.grey[300]!,
+    highlightColor: Colors.grey[100]!,
+    child: Container(
+      height: height,
+      width: width,
+      color: Colors.white,
+    ),
+  );
+}
+
 class ShimmerPackageCard extends StatelessWidget {
   const ShimmerPackageCard({super.key});
 
@@ -114,7 +188,7 @@ class ShimmerPackageCard extends StatelessWidget {
             baseColor: allColors.shimmerBaseColor!,
             highlightColor: allColors.shimmerHighlightColor!,
             child: Container(
-              height: 1.sh,
+              height: 350.h,
               decoration: BoxDecoration(
                 color: Colors.grey[300],
                 borderRadius: BorderRadius.circular(10.r),

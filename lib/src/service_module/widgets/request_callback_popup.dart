@@ -39,11 +39,53 @@ requestCallBackPopUp(context, WidgetRef ref, bool isBusiness, bool isVisa) {
           ),
           contentPadding: EdgeInsets.all(0.h),
           titlePadding: EdgeInsets.only(top: 0.h, bottom: 0.h),
+          actions: [
+            StatefulBuilder(builder: (context, setState) {
+              return Column(
+                children: [
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  CommonButton(
+                      isEnabledNotifier: isLoading,
+                      height: 35.h,
+                      backgroundColor: allColors.primaryColor,
+                      radius: 6,
+                      style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 13.sp,
+                          color: allColors.canvasColor),
+                      text: isLoading.value
+                          ? 'PLEASE WAIT...'
+                          : variable.staticData?.submit?.toUpperCase() ?? '',
+                      onPressed: () async {
+                        FocusScope.of(context).unfocus();
+                        if (formKey.currentState!.validate()) {
+                          setState(() {
+                            isLoading.value = true;
+                          });
+                          if (isBusiness) {
+                            await business.sendRequest();
+                          } else if (isVisa) {
+                            await visa.sendRequest();
+                          } else {
+                            await doc.sendRequest();
+                          }
+
+                          setState(() {
+                            isLoading.value = false;
+                          });
+                        }
+                      }),
+                ],
+              );
+            })
+          ],
           content: Directionality(
             textDirection: isArabic ? TextDirection.rtl : TextDirection.ltr,
             child: StatefulBuilder(builder: (context, setState) {
               return SizedBox(
-                height: 0.6.sh,
+                height: 0.53.sh,
                 child: Stack(children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(
@@ -279,51 +321,8 @@ requestCallBackPopUp(context, WidgetRef ref, bool isBusiness, bool isVisa) {
                                     ),
                                   ],
                                 ),
-                                SizedBox(
-                                  height: 10.h,
-                                ),
                               ],
                             ],
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            CommonButton(
-                                isEnabledNotifier: isLoading,
-                                height: 35.h,
-                                backgroundColor: allColors.primaryColor,
-                                radius: 6,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displayLarge!
-                                    .copyWith(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 13.sp,
-                                        color: allColors.canvasColor),
-                                text: isLoading.value
-                                    ? 'PLEASE WAIT...'
-                                    : variable.staticData?.submit ?? '',
-                                onPressed: () async {
-                                  FocusScope.of(context).unfocus();
-                                  if (formKey.currentState!.validate()) {
-                                    setState(() {
-                                      isLoading.value = true;
-                                    });
-                                    if (isBusiness) {
-                                      await business.sendRequest();
-                                    } else if (isVisa) {
-                                      await visa.sendRequest();
-                                    } else {
-                                      await doc.sendRequest();
-                                    }
-
-                                    setState(() {
-                                      isLoading.value = false;
-                                    });
-                                  }
-                                }),
-                            SizedBox(
-                              height: 20.h,
-                            )
                           ],
                         ),
                       ),

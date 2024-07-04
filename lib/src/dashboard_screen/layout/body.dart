@@ -17,7 +17,9 @@ import 'package:kanoony/src/dashboard_screen/layout/widgets/shimmer.dart';
 import 'package:kanoony/src/document_module/paid_document_screen/paid_doucment_screen.dart';
 import 'package:kanoony/src/service_module/document_translate_screen/document_translate_screen.dart';
 import 'package:kanoony/src/service_module/trademark_module/trademark_screen/trademark_screen.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../../core/common_widgets/common_payment_popup.dart';
+import '../../../core/common_widgets/common_snackbar_widget.dart';
 import '../../service_module/business_service_module/business_setup_screen/business_setup_screen.dart';
 import '../../packages_screen/layout/widgets/package_cards.dart';
 import '../../service_module/golden_visa_screen/golden_visa_screen.dart';
@@ -32,7 +34,8 @@ class DashBoardBody extends ConsumerStatefulWidget {
   ConsumerState<DashBoardBody> createState() => _DashBoardBodyState();
 }
 
-class _DashBoardBodyState extends ConsumerState<DashBoardBody> {
+class _DashBoardBodyState extends ConsumerState<DashBoardBody>
+    with SingleTickerProviderStateMixin {
   List<String> icons = [
     PngImagePaths.agentImg,
     PngImagePaths.teamImg,
@@ -43,10 +46,13 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody> {
   ];
   final ScrollController _scrollController = ScrollController();
   final ScrollController scrollController2 = ScrollController();
-  late Timer _timer;
+  AnimationController? _animationController;
   bool _scrollingForward = true;
   void initState() {
-    _startAutoScroll();
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 100))
+      ..addListener(_autoScroll)
+      ..repeat();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       //   if (userProfileHelper.userData.id.isNotEmpty) {
       await ref
@@ -68,6 +74,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody> {
       await ref
           .read(allProviderList.userProfileProvider.notifier)
           .sendUserDetailRequest();
+
       // }
     });
     super.initState();
@@ -75,7 +82,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody> {
 
   @override
   void dispose() {
-    _timer.cancel();
+    _animationController!.dispose();
     _scrollController.dispose();
     scrollController2.dispose();
     super.dispose();
@@ -97,36 +104,31 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody> {
     );
   }
 
-  void _startAutoScroll() {
-    _timer = Timer.periodic(Duration(milliseconds: 100), (timer) {
-      if (_scrollController.hasClients) {
-        double maxScrollExtent = _scrollController.position.maxScrollExtent;
-        double minScrollExtent = _scrollController.position.minScrollExtent;
-        double currentOffset = _scrollController.offset;
+  void _autoScroll() {
+    if (_scrollController.hasClients) {
+      double maxScrollExtent = _scrollController.position.maxScrollExtent;
+      double minScrollExtent = _scrollController.position.minScrollExtent;
+      double currentOffset = _scrollController.offset;
 
-        if (_scrollingForward) {
-          if (currentOffset >= maxScrollExtent) {
-            _scrollingForward = false;
-          } else {
-            _scrollController.animateTo(
-              currentOffset + 3.0,
-              duration: const Duration(milliseconds: 30),
-              curve: Curves.linear,
-            );
-          }
+      if (_scrollingForward) {
+        if (currentOffset >= maxScrollExtent) {
+          _scrollingForward = false;
         } else {
-          if (currentOffset <= minScrollExtent) {
-            _scrollingForward = true;
+          _scrollController.jumpTo(currentOffset + 0.6);
+        }
+      } else {
+        if (currentOffset <= minScrollExtent) {
+          _scrollingForward = true;
+        } else {
+          if (_scrollController.position.pixels >=
+              _scrollController.position.maxScrollExtent) {
+            _scrollController.jumpTo(0.0);
           } else {
-            _scrollController.animateTo(
-              currentOffset - 3.0,
-              duration: const Duration(milliseconds: 30),
-              curve: Curves.linear,
-            );
+            _scrollController.jumpTo(currentOffset - 0.6);
           }
         }
       }
-    });
+    }
   }
 
   Widget build(BuildContext context) {
@@ -188,7 +190,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody> {
                                 bottom: 10.h,
                                 top: 10.h)),
                         dashboardVariables.areLoaded
-                            ? const GridShimmer()
+                            ? const QuickLinksShimmer()
                             : Container(
                                 height: 110.h,
                                 padding:
@@ -204,6 +206,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody> {
                                   itemBuilder: (context, index) {
                                     var data =
                                         dashboardVariables.quickLinks![index];
+
                                     return InkWell(
                                       onTap: () {
                                         RoutesUtils.context.push(
@@ -412,18 +415,112 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody> {
                                       width: 1.sw,
                                       child: InkWell(
                                         onTap: () async {
-                                          await paymentPopUp(
-                                              context,
-                                              ref,
-                                              data,
-                                              userProfileHelper
-                                                      .userData.id.isEmpty
-                                                  ? true
-                                                  : false,
-                                              '',
-                                              true);
+                                          if (userProfileHelper
+                                              .userData.id.isEmpty) {
+                                            await paymentPopUp(
+                                                context,
+                                                ref,
+                                                data,
+                                                userProfileHelper
+                                                        .userData.id.isEmpty
+                                                    ? true
+                                                    : false,
+                                                '',
+                                                true,
+                                                '',
+                                                '',
+                                                '');
+                                            return;
+                                          }
+                                          if (userProfileHelper
+                                                      .userData.packageName !=
+                                                  "null" ||
+                                              userProfileHelper.userData
+                                                          .remainingDocument !=
+                                                      "0" &&
+                                                  DateTime.now().isAfter(
+                                                      DateTime.tryParse(
+                                                              userProfileHelper
+                                                                  .userData
+                                                                  .packageExpiry) ??
+                                                          DateTime.now())) {
+                                            showSnackBarMessage(
+                                                content:
+                                                    "You have already subscribed a package!",
+                                                backgroundColor:
+                                                    allColors.primaryColor,
+                                                contentColor:
+                                                    allColors.canvasColor);
+                                          } else {
+                                            await paymentPopUp(
+                                                context,
+                                                ref,
+                                                data,
+                                                userProfileHelper
+                                                        .userData.id.isEmpty
+                                                    ? true
+                                                    : false,
+                                                '',
+                                                true,
+                                                '',
+                                                '',
+                                                '');
+                                          }
                                         },
                                         child: PackageCard(
+                                          onTap: () async {
+                                            if (userProfileHelper
+                                                .userData.id.isEmpty) {
+                                              await paymentPopUp(
+                                                  context,
+                                                  ref,
+                                                  data,
+                                                  userProfileHelper
+                                                          .userData.id.isEmpty
+                                                      ? true
+                                                      : false,
+                                                  '',
+                                                  true,
+                                                  '',
+                                                  '',
+                                                  '');
+                                              return;
+                                            }
+                                            if (userProfileHelper
+                                                        .userData.packageName !=
+                                                    "null" ||
+                                                userProfileHelper.userData
+                                                            .remainingDocument !=
+                                                        "0" &&
+                                                    DateTime.now().isAfter(
+                                                        DateTime.tryParse(
+                                                                userProfileHelper
+                                                                    .userData
+                                                                    .packageExpiry) ??
+                                                            DateTime.now())) {
+                                              showSnackBarMessage(
+                                                  content:
+                                                      "You have already subscribed a package!",
+                                                  backgroundColor:
+                                                      allColors.primaryColor,
+                                                  contentColor:
+                                                      allColors.canvasColor);
+                                            } else {
+                                              await paymentPopUp(
+                                                  context,
+                                                  ref,
+                                                  data,
+                                                  userProfileHelper
+                                                          .userData.id.isEmpty
+                                                      ? true
+                                                      : false,
+                                                  '',
+                                                  true,
+                                                  '',
+                                                  '',
+                                                  '');
+                                            }
+                                          },
                                           fifty: dashboardVariables.staticData
                                                   ?.saveMoreThan_50 ??
                                               '',

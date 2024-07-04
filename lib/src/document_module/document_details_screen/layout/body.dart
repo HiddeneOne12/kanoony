@@ -81,7 +81,7 @@ class _DocumentDetailBodyState extends ConsumerState<DocumentDetailBody> {
                   child: variables2.isLoaded || variables.isLoading
                       ? Padding(
                           padding: EdgeInsets.only(top: 16.h),
-                          child: const ShimmerPackageCard(),
+                          child: const DocDetailShimmer(),
                         )
                       : Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

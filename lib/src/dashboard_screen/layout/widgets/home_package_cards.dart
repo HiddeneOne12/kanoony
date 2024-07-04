@@ -18,12 +18,14 @@ class CurrentPackageCard extends StatelessWidget {
   String cancelNow;
   String expiryDate;
   String remainingDoc;
+  void Function()? resubscribe;
   void Function()? onCancel;
   CurrentPackageCard(
       {required this.price,
       required this.title,
       required this.cancelNow,
       required this.onCancel,
+      required this.resubscribe,
       required this.getItNow,
       required this.expiryDate,
       required this.remainingDoc,
@@ -163,9 +165,7 @@ class CurrentPackageCard extends StatelessWidget {
                                   fontSize: 12.sp,
                                   color: allColors.canvasColor),
                           text: getItNow,
-                          onPressed: () async {
-                            
-                          }),
+                          onPressed: resubscribe),
                     ),
                     SizedBox(
                       width: 10.h,
@@ -188,7 +188,7 @@ class CurrentPackageCard extends StatelessWidget {
                           text: cancelNow,
                           onPressed: onCancel),
                     ),
-                  ] 
+                  ]
                 ],
               ),
             ),

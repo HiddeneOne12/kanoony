@@ -40,7 +40,7 @@ class MyDocService {
       logger.e("Get In Error $e");
       showSnackBarMessage(
           contentColor: allColors.canvasColor,
-          content: "Server Failure",
+          content: "$e",
           backgroundColor: allColors.errorColor);
       return left('Failed to connect to the server: $e');
     }

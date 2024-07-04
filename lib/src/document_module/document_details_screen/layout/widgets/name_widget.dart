@@ -31,22 +31,12 @@ class NameWidget extends ConsumerWidget {
           CommonTextWidget(
               color: allColors.textColor,
               size: 18.sp,
-              text: variable.content?.title ?? '',
+              text: variable.content?.title.toUpperCase() ?? '',
               weight: FontWeight.w500,
               align: TextAlign.start,
               padding: EdgeInsets.only(left: 0.h, right: 0.h, top: 5.h)),
-          Padding(
-            padding: EdgeInsets.only(
-                left: isArabic ? 0.85.sw : 0.h,
-                right: isArabic ? 0.h : 0.85.sw),
-            child: Divider(
-              height: 1.h,
-              color: allColors.primaryColor,
-              thickness: 1.w,
-            ),
-          ),
           SizedBox(
-            height: 10.h,
+            height: 15.h,
           ),
           Row(
             children: [
