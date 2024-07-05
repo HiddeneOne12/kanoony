@@ -16,23 +16,13 @@ class PointsWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(bottom: 5.h),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.only(bottom: 3.h),
-            child: Container(
-              height: 11.h,
-              width: 11.h,
-              decoration: BoxDecoration(
-                  border: Border.all(color: allColors.errorColor),
-                  borderRadius: BorderRadius.all(Radius.circular(30.r))),
-              child: Icon(
-                Icons.circle,
-                size: 7.h,
-                color: allColors.errorColor,
-              ),
-            ),
+          Icon(
+            Icons.circle,
+            size: 7.h,
+            color: allColors.errorColor,
           ),
           SizedBox(
             width: 10.h,

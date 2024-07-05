@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/src/service_module/trademark_module/trademark_screen/trademark_screen.dart';
-
 import '../../../../core/common_widgets/common_appbar.dart';
 import '../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../core/constants/image_paths/image_paths.dart';
@@ -16,7 +15,6 @@ import '../../../../core/routing/routing_config.dart';
 import '../../business_service_module/business_setup_screen/business_setup_screen.dart';
 import '../../../../core/common_widgets/service_cards.dart';
 import '../../../dashboard_screen/layout/widgets/shimmer.dart';
-import '../../../document_module/free_document_screen/free_document_screen.dart';
 import '../../document_translate_screen/document_translate_screen.dart';
 import '../../golden_visa_screen/golden_visa_screen.dart';
 
@@ -71,15 +69,19 @@ class _ServicesBodyState extends ConsumerState<ServicesBody> {
                       SizedBox(
                         height: 10.h,
                       ),
-                      CommonTextWidget(
-                          color: allColors.textColor,
-                          size: 20.sp,
-                          text: dashboardVariables.staticData?.corporateService
-                                  ?.toUpperCase() ??
-                              '',
-                          weight: FontWeight.w500,
-                          padding: EdgeInsets.only(left: 16.h, right: 16.h)),
-                      dashboardVariables.areLoaded
+                      dashboardVariables.isLoaded
+                          ? const SizedBox.shrink()
+                          : CommonTextWidget(
+                              color: allColors.textColor,
+                              size: 20.sp,
+                              text: dashboardVariables
+                                      .staticData?.corporateService
+                                      ?.toUpperCase() ??
+                                  '',
+                              weight: FontWeight.w500,
+                              padding:
+                                  EdgeInsets.only(left: 16.h, right: 16.h)),
+                      dashboardVariables.isLoaded
                           ? const GridShimmer()
                           : GridView.count(
                               crossAxisCount: 2,

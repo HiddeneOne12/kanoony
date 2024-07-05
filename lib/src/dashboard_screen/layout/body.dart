@@ -1,13 +1,11 @@
 // ignore_for_file: annotate_overrides
-
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kanoony/core/common_widgets/common_appbar.dart';
 import 'package:kanoony/core/common_widgets/common_text_widget.dart';
+import 'package:kanoony/core/common_widgets/directionality_widget.dart';
 import 'package:kanoony/core/constants/image_paths/image_paths.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
@@ -17,7 +15,6 @@ import 'package:kanoony/src/dashboard_screen/layout/widgets/shimmer.dart';
 import 'package:kanoony/src/document_module/paid_document_screen/paid_doucment_screen.dart';
 import 'package:kanoony/src/service_module/document_translate_screen/document_translate_screen.dart';
 import 'package:kanoony/src/service_module/trademark_module/trademark_screen/trademark_screen.dart';
-import 'package:shimmer/shimmer.dart';
 import '../../../core/common_widgets/common_payment_popup.dart';
 import '../../../core/common_widgets/common_snackbar_widget.dart';
 import '../../service_module/business_service_module/business_setup_screen/business_setup_screen.dart';
@@ -80,6 +77,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
     super.initState();
   }
 
+  int selectedIndex = -1;
   @override
   void dispose() {
     _animationController!.dispose();
@@ -105,6 +103,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
   }
 
   void _autoScroll() {
+    
     if (_scrollController.hasClients) {
       double maxScrollExtent = _scrollController.position.maxScrollExtent;
       double minScrollExtent = _scrollController.position.minScrollExtent;
@@ -114,7 +113,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
         if (currentOffset >= maxScrollExtent) {
           _scrollingForward = false;
         } else {
-          _scrollController.jumpTo(currentOffset + 0.6);
+          _scrollController.jumpTo(currentOffset + 1);
         }
       } else {
         if (currentOffset <= minScrollExtent) {
@@ -124,7 +123,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
               _scrollController.position.maxScrollExtent) {
             _scrollController.jumpTo(0.0);
           } else {
-            _scrollController.jumpTo(currentOffset - 0.6);
+            _scrollController.jumpTo(currentOffset - 1);
           }
         }
       }
@@ -139,336 +138,298 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
       textDirection: isArabic ? Ui.TextDirection.rtl : Ui.TextDirection.ltr,
       child: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            dashboardVariables.areLoaded
-                ? const ShimmerAppBar()
-                : CommonAppBar(
-                    height:
-                        dashboardVariables.searchedDoc.isEmpty ? 0.21 : 0.35,
-                    isBack: false,
-                    isFilter: true,
-                    isBlogTextField: false,
-                    isDashboard: true,
-                    isButton: false,
-                    isTextfield: true,
-                    mainText:
-                        dashboardVariables.staticData?.corporateService ?? '',
-                    subText: '',
+        child: CommonDirectionality(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              dashboardVariables.areLoaded
+                  ? const ShimmerAppBar()
+                  : CommonAppBar(
+                      height:
+                          dashboardVariables.searchedDoc.isEmpty ? 0.21 : 0.35,
+                      isBack: false,
+                      isFilter: true,
+                      isBlogTextField: false,
+                      isDashboard: true,
+                      isButton: false,
+                      isTextfield: true,
+                      mainText:
+                          dashboardVariables.staticData?.corporateService ?? '',
+                      subText: '',
+                    ),
+              Stack(
+                alignment: Alignment.topCenter,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 0.3.sw),
+                    child: Image.asset(
+                      PngImagePaths.dashboardDesignImg,
+                      height: 326.65.h,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-            Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 0.3.sw),
-                  child: Image.asset(
-                    PngImagePaths.dashboardDesignImg,
-                    height: 326.65.h,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                SizedBox(
-                  height: 0.82.sh,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 10.h),
-                        CommonTextWidget(
-                            color: allColors.textColor,
-                            size: 20.sp,
-                            text: dashboardVariables
-                                    .staticData?.contractTemplates
-                                    ?.toUpperCase() ??
-                                '',
-                            weight: FontWeight.w500,
-                            padding: EdgeInsets.only(
-                                left: 16.h,
-                                right: 16.h,
-                                bottom: 10.h,
-                                top: 10.h)),
-                        dashboardVariables.areLoaded
-                            ? const QuickLinksShimmer()
-                            : Container(
-                                height: 110.h,
-                                padding:
-                                    EdgeInsets.only(left: 16.h, right: 16.h),
-                                child: ListView.builder(
-                                  physics:
-                                      const AlwaysScrollableScrollPhysics(),
-                                  scrollDirection: Axis.horizontal,
-                                  controller: _scrollController,
-                                  shrinkWrap: true,
-                                  itemCount:
-                                      dashboardVariables.quickLinks!.length,
-                                  itemBuilder: (context, index) {
-                                    var data =
-                                        dashboardVariables.quickLinks![index];
+                  SizedBox(
+                    height: 0.82.sh,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 10.h),
+                          dashboardVariables.areLoaded
+                              ? const QuickLinksShimmer()
+                              : CommonTextWidget(
+                                  color: allColors.textColor,
+                                  size: 20.sp,
+                                  text: dashboardVariables
+                                          .staticData?.contractTemplates
+                                          ?.toUpperCase() ??
+                                      '',
+                                  weight: FontWeight.w500,
+                                  padding: EdgeInsets.only(
+                                      left: 16.h,
+                                      right: 16.h,
+                                      bottom: 10.h,
+                                      top: 10.h)),
+                          dashboardVariables.areLoaded
+                              ? const QuickLinksShimmer() :
+                             Container(
+                                  height: 110.h,
+                                  padding:
+                                      EdgeInsets.only(left: 16.h, right: 16.h),
+                                  child: ListView.builder(
+                                    physics:
+                                        const AlwaysScrollableScrollPhysics(),
+                                    scrollDirection: Axis.horizontal,
+                                    controller: _scrollController,
+                                    shrinkWrap: true,
+                                    itemCount:
+                                        dashboardVariables.quickLinks!.length,
+                                    itemBuilder: (context, index) {
+                                      var data =
+                                          dashboardVariables.quickLinks![index];
 
-                                    return InkWell(
-                                      onTap: () {
-                                        RoutesUtils.context.push(
-                                          PaidDocumentScreen.paidDocumentRoute,
-                                          extra: {
-                                            TextUtils.slug: data.slug.toString()
-                                          },
-                                        );
-                                        setState(() {
-                                          dashboardProvider.searchController
-                                              .clear();
-                                          dashboardVariables.searchedDoc = [];
-                                        });
-                                      },
-                                      child: SizedBox(
-                                        width: 169.h,
-                                        child: ServiceCard(
-                                            isPng: true,
-                                            onTap: () {
-                                              RoutesUtils.context.push(
-                                                PaidDocumentScreen
-                                                    .paidDocumentRoute,
-                                                extra: {
-                                                  TextUtils.slug:
-                                                      data.slug.toString()
-                                                },
-                                              );
+                                      return InkWell(
+                                        onTap: () {
+                                          RoutesUtils.context.push(
+                                            PaidDocumentScreen
+                                                .paidDocumentRoute,
+                                            extra: {
+                                              TextUtils.slug:
+                                                  data.slug.toString()
                                             },
-                                            icon: icons[index],
-                                            text: toPascalCase(data.title)),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
-                        CommonTextWidget(
-                            color: allColors.textColor,
-                            size: 20.sp,
-                            text: dashboardVariables
-                                    .staticData?.corporateService
-                                    ?.toUpperCase() ??
-                                '',
-                            weight: FontWeight.w500,
-                            padding: EdgeInsets.only(
-                                left: 16.h, right: 16.h, top: 10.h)),
-                        dashboardVariables.areLoaded
-                            ? const GridShimmer()
-                            : GridView.count(
-                                crossAxisCount: 2,
-                                shrinkWrap: true,
-                                childAspectRatio: 1.76,
-                                crossAxisSpacing: 7.h,
-                                padding: EdgeInsets.only(
-                                    left: 15.h, right: 15.h, top: 10.h),
-                                physics: const NeverScrollableScrollPhysics(),
-                                children: [
-                                  ServiceCard(
-                                      onTap: () async {
-                                        RoutesUtils.context.push(
-                                            BusinessSetupScreen
-                                                .businessSetupRoute);
-                                      },
-                                      icon: SvgImagesAssetPath.businessSvg,
-                                      text: toPascalCase(dashboardVariables
-                                              .staticData?.setupABusiness ??
-                                          '')),
-                                  ServiceCard(
-                                      onTap: () {
-                                        RoutesUtils.context.push(
-                                            TradeMarkScreen.trademarkRoute);
-                                      },
-                                      icon: SvgImagesAssetPath.tradeMarkSvg,
-                                      text: toPascalCase(dashboardVariables
-                                              .staticData?.registerATrademark ??
-                                          '')),
-                                  ServiceCard(
-                                      onTap: () {
-                                        RoutesUtils.context
-                                            .push(RegisterWillScreen.willRoute);
-                                      },
-                                      icon: SvgImagesAssetPath.willSvg,
-                                      text: toPascalCase(dashboardVariables
-                                              .staticData?.registerAWill ??
-                                          '')),
-                                  ServiceCard(
-                                      onTap: () {
-                                        RoutesUtils.context.push(
-                                            DocTranslateScreen
-                                                .docTranslateRoute);
-                                      },
-                                      icon: SvgImagesAssetPath.documentSvg,
-                                      text: toPascalCase(dashboardVariables
-                                              .staticData?.translateADocument ??
-                                          '')),
-                                  ServiceCard(
-                                      onTap: () {
-                                        RoutesUtils.context
-                                            .push(GoldenVisaScreen.visaRoute);
-                                      },
-                                      icon: SvgImagesAssetPath.visaSvg,
-                                      text: toPascalCase(dashboardVariables
-                                              .staticData?.goldenVisa ??
-                                          '')),
-                                ],
-                              ),
-                        SizedBox(height: 10.h),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              right: isArabic ? 0 : 16.h,
-                              left: isArabic ? 16.h : 0),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: CommonTextWidget(
-                                    color: allColors.textColor,
-                                    size: 20.sp,
-                                    text: dashboardVariables.staticData
-                                            ?.contractTemplatePackages
-                                            ?.toUpperCase() ??
-                                        '',
-                                    weight: FontWeight.w500,
-                                    padding: EdgeInsets.only(
-                                        right: isArabic ? 0 : 20.h,
-                                        left: isArabic ? 135.h : 0)),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(bottom: 10.h),
-                                child: InkWell(
-                                  onTap: () {
-                                    scrollBackward();
-                                  },
-                                  child: Container(
-                                    height: 25.h,
-                                    width: 25.h,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        color: allColors.primaryColor,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(50.r))),
-                                    child: Padding(
-                                      padding: EdgeInsets.only(
-                                          left: isArabic ? 0 : 3.h,
-                                          right: isArabic ? 3.h : 0),
-                                      child: Icon(
-                                        Icons.arrow_back_ios,
-                                        color: allColors.textColor,
-                                        size: 12.h,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 5.w,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(bottom: 9.h),
-                                child: InkWell(
-                                  onTap: () {
-                                    scrollForward();
-                                  },
-                                  child: Container(
-                                    height: 25.h,
-                                    width: 25.h,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        color: allColors.primaryColor,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(50.r))),
-                                    child: Padding(
-                                      padding: EdgeInsets.only(
-                                          left: isArabic ? 0 : 3.h,
-                                          right: isArabic ? 3.h : 0),
-                                      child: Icon(
-                                        Icons.arrow_forward_ios,
-                                        color: allColors.textColor,
-                                        size: 12.h,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 5.h),
-                        dashboardVariables.isLoaded
-                            ? const ShimmerPackageCard()
-                            : SizedBox(
-                                height: 286.h,
-                                child: ListView.builder(
-                                  itemCount:
-                                      dashboardVariables.allPackages.length,
-                                  controller: scrollController2,
-                                  padding: EdgeInsets.all(0.h),
-                                  scrollDirection: Axis.horizontal,
-                                  shrinkWrap: true,
-                                  physics:
-                                      const AlwaysScrollableScrollPhysics(),
-                                  itemBuilder: (context, index) {
-                                    var data =
-                                        dashboardVariables.allPackages[index];
-                                    return SizedBox(
-                                      width: 1.sw,
-                                      child: InkWell(
-                                        onTap: () async {
-                                          if (userProfileHelper
-                                              .userData.id.isEmpty) {
-                                            await paymentPopUp(
-                                                context,
-                                                ref,
-                                                data,
-                                                userProfileHelper
-                                                        .userData.id.isEmpty
-                                                    ? true
-                                                    : false,
-                                                '',
-                                                true,
-                                                '',
-                                                '',
-                                                '');
-                                            return;
-                                          }
-                                          if (userProfileHelper
-                                                      .userData.packageName !=
-                                                  "null" ||
-                                              userProfileHelper.userData
-                                                          .remainingDocument !=
-                                                      "0" &&
-                                                  DateTime.now().isAfter(
-                                                      DateTime.tryParse(
-                                                              userProfileHelper
-                                                                  .userData
-                                                                  .packageExpiry) ??
-                                                          DateTime.now())) {
-                                            showSnackBarMessage(
-                                                content:
-                                                    "You have already subscribed a package!",
-                                                backgroundColor:
-                                                    allColors.primaryColor,
-                                                contentColor:
-                                                    allColors.canvasColor);
-                                          } else {
-                                            await paymentPopUp(
-                                                context,
-                                                ref,
-                                                data,
-                                                userProfileHelper
-                                                        .userData.id.isEmpty
-                                                    ? true
-                                                    : false,
-                                                '',
-                                                true,
-                                                '',
-                                                '',
-                                                '');
-                                          }
+                                          );
+                                          setState(() {
+                                            dashboardProvider.searchController
+                                                .clear();
+                                            dashboardVariables.searchedDoc = [];
+                                          });
                                         },
-                                        child: PackageCard(
+                                        child: SizedBox(
+                                          width: 169.h,
+                                          child: ServiceCard(
+                                              isPng: true,
+                                              onTap: () {
+                                                RoutesUtils.context.push(
+                                                  PaidDocumentScreen
+                                                      .paidDocumentRoute,
+                                                  extra: {
+                                                    TextUtils.slug:
+                                                        data.slug.toString()
+                                                  },
+                                                );
+                                              },
+                                              icon: icons[index],
+                                              text: toPascalCase(data.title)),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                          dashboardVariables.areLoaded
+                              ? const QuickLinksShimmer()
+                              : CommonTextWidget(
+                                  color: allColors.textColor,
+                                  size: 20.sp,
+                                  text: dashboardVariables
+                                          .staticData?.corporateService
+                                          ?.toUpperCase() ??
+                                      '',
+                                  weight: FontWeight.w500,
+                                  padding: EdgeInsets.only(
+                                      left: 16.h, right: 16.h, top: 10.h)),
+                          dashboardVariables.areLoaded
+                              ? const GridShimmer()
+                              : GridView.count(
+                                  crossAxisCount: 2,
+                                  shrinkWrap: true,
+                                  childAspectRatio: 1.76,
+                                  crossAxisSpacing: 7.h,
+                                  padding: EdgeInsets.only(
+                                      left: 15.h, right: 15.h, top: 10.h),
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  children: [
+                                    ServiceCard(
+                                        onTap: () async {
+                                          RoutesUtils.context.push(
+                                              BusinessSetupScreen
+                                                  .businessSetupRoute);
+                                        },
+                                        icon: SvgImagesAssetPath.businessSvg,
+                                        text: toPascalCase(dashboardVariables
+                                                .staticData?.setupABusiness ??
+                                            '')),
+                                    ServiceCard(
+                                        onTap: () {
+                                          RoutesUtils.context.push(
+                                              TradeMarkScreen.trademarkRoute);
+                                        },
+                                        icon: SvgImagesAssetPath.tradeMarkSvg,
+                                        text: toPascalCase(dashboardVariables
+                                                .staticData
+                                                ?.registerATrademark ??
+                                            '')),
+                                    ServiceCard(
+                                        onTap: () {
+                                          RoutesUtils.context.push(
+                                              RegisterWillScreen.willRoute);
+                                        },
+                                        icon: SvgImagesAssetPath.willSvg,
+                                        text: toPascalCase(dashboardVariables
+                                                .staticData?.registerAWill ??
+                                            '')),
+                                    ServiceCard(
+                                        onTap: () {
+                                          RoutesUtils.context.push(
+                                              DocTranslateScreen
+                                                  .docTranslateRoute);
+                                        },
+                                        icon: SvgImagesAssetPath.documentSvg,
+                                        text: toPascalCase(dashboardVariables
+                                                .staticData
+                                                ?.translateADocument ??
+                                            '')),
+                                    ServiceCard(
+                                        onTap: () {
+                                          RoutesUtils.context
+                                              .push(GoldenVisaScreen.visaRoute);
+                                        },
+                                        icon: SvgImagesAssetPath.visaSvg,
+                                        text: toPascalCase(dashboardVariables
+                                                .staticData?.goldenVisa ??
+                                            '')),
+                                  ],
+                                ),
+                          SizedBox(height: 10.h),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                right: isArabic ? 0 : 16.h,
+                                left: isArabic ? 16.h : 0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: dashboardVariables.areLoaded
+                                      ? const QuickLinksShimmer()
+                                      : CommonTextWidget(
+                                          color: allColors.textColor,
+                                          size: 20.sp,
+                                          text: dashboardVariables.staticData
+                                                  ?.contractTemplatePackages
+                                                  ?.toUpperCase() ??
+                                              '',
+                                          weight: FontWeight.w500,
+                                          padding: EdgeInsets.only(
+                                              right: isArabic ? 0 : 20.h,
+                                              left: isArabic ? 135.h : 0)),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(bottom: 10.h),
+                                  child: InkWell(
+                                    onTap: () {
+                                      scrollBackward();
+                                    },
+                                    child: Container(
+                                      height: 25.h,
+                                      width: 25.h,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                          color: allColors.primaryColor,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(50.r))),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            left: isArabic ? 0 : 3.h,
+                                            right: isArabic ? 3.h : 0),
+                                        child: Icon(
+                                          Icons.arrow_back_ios,
+                                          color: allColors.textColor,
+                                          size: 12.h,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 5.w,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(bottom: 9.h),
+                                  child: InkWell(
+                                    onTap: () {
+                                      scrollForward();
+                                      print("Scroll Sized:   " +
+                                          scrollController2.positions
+                                              .toString());
+                                    },
+                                    child: Container(
+                                      height: 25.h,
+                                      width: 25.h,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                          color: allColors.primaryColor,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(50.r))),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            left: isArabic ? 0 : 3.h,
+                                            right: isArabic ? 3.h : 0),
+                                        child: Icon(
+                                          Icons.arrow_forward_ios,
+                                          color: allColors.textColor,
+                                          size: 12.h,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 5.h),
+                          dashboardVariables.isLoaded
+                              ? const ShimmerPackageCard()
+                              : SizedBox(
+                                  height: 286.h,
+                                  child: ListView.builder(
+                                    itemCount:
+                                        dashboardVariables.allPackages.length,
+                                    controller: scrollController2,
+                                    padding: EdgeInsets.all(0.h),
+                                    scrollDirection: Axis.horizontal,
+                                    shrinkWrap: true,
+                                    physics:
+                                        const AlwaysScrollableScrollPhysics(),
+                                    itemBuilder: (context, index) {
+                                      var data =
+                                          dashboardVariables.allPackages[index];
+                                      return SizedBox(
+                                        width: 1.sw,
+                                        child: InkWell(
                                           onTap: () async {
+                                            selectedIndex = index;
+                                            setState(() {});
                                             if (userProfileHelper
                                                 .userData.id.isEmpty) {
                                               await paymentPopUp(
@@ -521,31 +482,97 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                                   '');
                                             }
                                           },
-                                          fifty: dashboardVariables.staticData
-                                                  ?.saveMoreThan_50 ??
-                                              '',
-                                          price: data.price.toString(),
-                                          title: data.title,
-                                          description: data.description,
-                                          getItNow: dashboardVariables
-                                                  .staticData?.monthlyAction ??
-                                              '',
+                                          child: PackageCard(
+                                            onTap: () async {
+                                              if (userProfileHelper
+                                                  .userData.id.isEmpty) {
+                                                await paymentPopUp(
+                                                    context,
+                                                    ref,
+                                                    data,
+                                                    userProfileHelper
+                                                            .userData.id.isEmpty
+                                                        ? true
+                                                        : false,
+                                                    '',
+                                                    true,
+                                                    '',
+                                                    '',
+                                                    '');
+                                                return;
+                                              }
+                                              if (userProfileHelper.userData
+                                                          .packageName !=
+                                                      "null" ||
+                                                  userProfileHelper.userData
+                                                              .remainingDocument !=
+                                                          "0" &&
+                                                      DateTime.now().isAfter(
+                                                          DateTime.tryParse(
+                                                                  userProfileHelper
+                                                                      .userData
+                                                                      .packageExpiry) ??
+                                                              DateTime.now())) {
+                                                showSnackBarMessage(
+                                                    content:
+                                                        "You have already subscribed a package!",
+                                                    backgroundColor:
+                                                        allColors.primaryColor,
+                                                    contentColor:
+                                                        allColors.canvasColor);
+                                              } else {
+                                                await paymentPopUp(
+                                                    context,
+                                                    ref,
+                                                    data,
+                                                    userProfileHelper
+                                                            .userData.id.isEmpty
+                                                        ? true
+                                                        : false,
+                                                    '',
+                                                    true,
+                                                    '',
+                                                    '',
+                                                    '');
+                                              }
+                                            },
+                                            fifty: dashboardVariables.staticData
+                                                    ?.saveMoreThan_50 ??
+                                                '',
+                                            price: data.price.toString(),
+                                            title: data.title,
+                                            description: data.description,
+                                            getItNow: dashboardVariables
+                                                    .staticData
+                                                    ?.monthlyAction ??
+                                                '',
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                  },
+                                      );
+                                    },
+                                  ),
                                 ),
-                              ),
-                        SizedBox(height: 50.h),
-                      ],
+                          SizedBox(height: 50.h),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  bool _isSubscribed(index) {
+    return selectedIndex == index &&
+            userProfileHelper.userData.id.isNotEmpty &&
+            userProfileHelper.userData.packageName != "null" ||
+        userProfileHelper.userData.remainingDocument != "0" &&
+            DateTime.now().isAfter(
+                DateTime.tryParse(userProfileHelper.userData.packageExpiry) ??
+                    DateTime.now());
   }
 }

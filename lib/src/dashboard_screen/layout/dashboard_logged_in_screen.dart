@@ -116,7 +116,7 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                                     color: allColors.textColor,
                                     size: 20.sp,
                                     text:
-                                        'HELLO ${userProfileHelper.userData.name}',
+                                        'HELLO ${userProfileHelper.userData.name.toUpperCase()}',
                                     weight: FontWeight.w700,
                                     padding: EdgeInsets.only(
                                         left: 16.h, right: 16.h)),
@@ -170,7 +170,8 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                                 SizedBox(height: 10.h),
                                 if (userProfileHelper.userData.packageName !=
                                     'null') ...[
-                                  CommonTextWidget(
+                                userVariables.isLoading
+                                    ? SizedBox.shrink() :  CommonTextWidget(
                                       color: allColors.textColor,
                                       size: 20.sp,
                                       text: dashboardVariables
@@ -576,5 +577,12 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                   ),
                 ],
               ));
+  }
+      bool _isSubscribed() {
+    return userProfileHelper.userData.id.isNotEmpty  && userProfileHelper.userData.packageName != "null" ||
+        userProfileHelper.userData.remainingDocument != "0" &&
+            DateTime.now().isAfter(
+                DateTime.tryParse(userProfileHelper.userData.packageExpiry) ??
+                    DateTime.now());
   }
 }

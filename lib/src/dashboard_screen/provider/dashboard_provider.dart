@@ -14,7 +14,6 @@ import 'package:kanoony/core/constants/static_constants/static_constants.dart';
 import 'package:kanoony/core/helpers/logger.dart';
 import 'package:kanoony/core/routing/routing_config.dart';
 import 'package:kanoony/src/auth_module/login_screen/login_screen.dart';
-import 'package:kanoony/src/dashboard_screen/dashboard_screen.dart';
 import 'package:kanoony/src/dashboard_screen/services/dashboard_service.dart';
 import 'package:kanoony/src/splash_screen/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,6 +31,35 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
   DashboardService dashboardService;
 
   TextEditingController searchController = TextEditingController();
+
+
+  setEndDrawerValues({bool? isService, 
+  bool? isLegal, 
+  bool? isLegalTem, 
+  bool? isLegalTrans, 
+  bool? isBusiness, 
+  bool? isSetup, 
+  bool? isWillReg, 
+  bool? isVisa,} ){
+    if(isService != null)  state.isService = isService;
+    if(isLegal != null) state.isLegal = isLegal;
+    if(isLegalTem != null) state.isLegalTem = isLegalTem;
+    if(isLegalTrans != null) state.isLegalTrans = isLegalTrans;
+    if(isBusiness != null) state.isBusiness = isBusiness;
+    if(isSetup != null) state.isSetup = isSetup;
+    if(isWillReg != null) state.isWillReg = isWillReg;
+    if(isVisa != null) state.isVisa = isVisa;
+  }
+  disposeEndDrawerValue(){
+    state.isService = false;
+     state.isLegal = false;
+     state.isLegalTem = false;
+     state.isLegalTrans = false;
+     state.isBusiness = false;
+     state.isSetup = false;
+     state.isWillReg = false;
+     state.isVisa = false;
+  }
 
   sendGetStaticContentRequest() async {
     state = state.copyWith(areLoaded: true, staticData: null);
@@ -209,6 +237,14 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
 }
 
 class DashboardState extends Equatable {
+  bool isService = false;
+  bool isLegal = false;
+  bool isLegalTem = false;
+  bool isLegalTrans = false;
+  bool isBusiness = false;
+  bool isSetup = false;
+  bool isWillReg = false;
+  bool isVisa = false;
   ValueNotifier<bool>? isLoading = ValueNotifier(false);
   bool areLoaded = false;
   bool isLoaded = false;

@@ -99,7 +99,7 @@ class CommonButton extends StatelessWidget {
                             text,
                             style: Theme.of(context)
                                 .textTheme
-                                .button!
+                                .labelMedium!
                                 .copyWith(height: 1.5),
                           ),
                   );

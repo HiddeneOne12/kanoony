@@ -72,23 +72,36 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                     bottom: MediaQuery.of(context).viewInsets.bottom),
                 height: 0.795.sh,
                 child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 16.h,
-                      ),
-                      variables2.isLoaded
-                          ? const ShimmerFaqCard()
-                          : ListView.builder(
-                              itemCount: variables2.content!.length,
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 16.h, right: 16.h, bottom: 10.h),
-                                  child: InkWell(
+                  child: Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        variables2.isLoaded || variables2.content?.isEmpty == true
+                            ? const SizedBox()
+                            : Text(
+                                "My Documents",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelMedium!
+                                    .copyWith(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700),
+                              ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        SizedBox(
+                          height: 16.h,
+                        ),
+                        variables2.isLoaded
+                            ? const ShimmerFaqCard()
+                            : ListView.builder(
+                                itemCount: variables2.content!.length,
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  return InkWell(
                                     onTap: () async {
                                       RoutesUtils.context.push(
                                         DocumentDetailScreen
@@ -228,14 +241,14 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                                         ],
                                       ),
                                     ),
-                                  ),
-                                );
-                              },
-                            ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                    ],
+                                  );
+                                },
+                              ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

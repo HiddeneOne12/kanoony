@@ -2,7 +2,7 @@ import '../static_constants/static_constants.dart';
 
 class StaticTextTranslations {
   String login = isArabic ? "تسجيل الدخول" : "LOGIN";
-  String enterEmail = isArabic ? "أدخل البريد الإلكتروني" : 'Enter Email';
+   String enterEmail = isArabic ? "أدخل البريد الإلكتروني" : 'Enter Email';
   String email = isArabic ? "بريد إلكتروني" : 'EMAIL';
   String password = isArabic ? "كلمة المرور" : 'PASSWORD';
   String enterPassword = isArabic ? "أدخل كلمة المرور" : 'Enter Password';
@@ -64,4 +64,11 @@ class StaticTextTranslations {
   String aboutUs = isArabic ? "معلومات عنا" : "About us";
   String package = isArabic ? "طَرد" : "Package";
   String contactUs = isArabic ? "اتصل بنا" : "Contact Us";
+   String home = isArabic ? "بيت" : "Home";
+    printCalled(){
+      print("IsArabic or Nor" + isArabic.toString());
+    }
+   String corporateServices = isArabic ? "خدمات للشركات" : "Corporate Services";
+   String templatePackages = isArabic ? "حزم القالب" : "Template Packages";
+   String dashboard = isArabic ? "لوحة القيادة" : "Dashboard";
 }

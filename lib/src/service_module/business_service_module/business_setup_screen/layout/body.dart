@@ -9,7 +9,6 @@ import 'package:kanoony/src/service_module/business_service_module/business_setu
 import 'package:kanoony/src/service_module/business_service_module/business_setup_mainland_screen/business_setup_mainland_screen.dart';
 import 'package:kanoony/src/service_module/business_service_module/business_setup_offshore_screen/business_setup_offshore_screen.dart';
 import 'package:kanoony/src/service_module/widgets/faq_button.dart';
-import '../../../../../core/common_widgets/callback_button.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
@@ -64,13 +63,6 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                     children: [
                       SizedBox(
                         height: 10.h,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          left: isArabic ? 0 : 0.23.sw,
-                          right: isArabic ? 0.23.sw : 0,
-                        ),
-                        child: const CallBackButton(),
                       ),
                       CommonTextWidget(
                         color: allColors.textColor,
@@ -208,7 +200,7 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                             },
                           );
                         },
-                        isCallIcon: true,
+                        isCallIcon: false,
                         backgroundColor: allColors.textColor,
                       ),
                       SizedBox(

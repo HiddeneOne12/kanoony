@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/common_widgets/phone_call_button.dart';
 
 import '../../../../core/common_widgets/common_bottombar.dart';
 import '../../../../core/common_widgets/common_end_drawer.dart';
@@ -31,6 +32,7 @@ class BusinessSetupScreen extends ConsumerWidget {
           backgroundColor: allColors.scaffoldColor,
           resizeToAvoidBottomInset: false,
           bottomNavigationBar: const CommonBottomBar(),
+          floatingActionButton: const PhoneCallButton(),
           body: const BusinessSetupBody(),
         ),
       ),

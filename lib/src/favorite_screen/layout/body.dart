@@ -67,31 +67,35 @@ class _FavoriteBodyState extends ConsumerState<FavoriteBody> {
                     bottom: MediaQuery.of(context).viewInsets.bottom),
                 height: 0.795.sh,
                 child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      variables2.isLoaded
-                          ? const ShimmerFaqCard()
-                          : ListView.builder(
-                              itemCount: variables2
-                                  .content?.length, // Length of the data list
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemBuilder: (context, index) {
-                                return InkWell(
-                                  onTap: () async {
-                                    RoutesUtils.context.push(
-                                      DocumentDetailScreen.documentDetailRoute,
-                                      extra: {
-                                        TextUtils.slug: variables2
-                                            .content![index].documentsLang.slug
-                                            .toString()
-                                      },
-                                    );
-                                  },
-                                  child: Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 16.h, right: 16.h, bottom: 10.h),
+                  child: Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        variables2.isLoaded || variables2.content?.isEmpty == true
+                            ? const SizedBox()
+                            : Text("Favorites",style: Theme.of(context).textTheme.labelMedium!.copyWith(fontSize: 16,fontWeight: FontWeight.w700),),
+                        const SizedBox(height: 10,),
+                        variables2.isLoaded
+                            ? const ShimmerFaqCard()
+                            : ListView.builder(
+                              padding: EdgeInsets.zero,
+                                itemCount: variables2
+                                    .content?.length, // Length of the data list
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  return InkWell(
+                                    onTap: () async {
+                                      RoutesUtils.context.push(
+                                        DocumentDetailScreen.documentDetailRoute,
+                                        extra: {
+                                          TextUtils.slug: variables2
+                                              .content![index].documentsLang.slug
+                                              .toString()
+                                        },
+                                      );
+                                    },
                                     child: Container(
                                       padding: EdgeInsets.all(3.h),
                                       width: MediaQuery.sizeOf(context).width.w,
@@ -158,14 +162,14 @@ class _FavoriteBodyState extends ConsumerState<FavoriteBody> {
                                         ],
                                       ),
                                     ),
-                                  ),
-                                );
-                              },
-                            ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                    ],
+                                  );
+                                },
+                              ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

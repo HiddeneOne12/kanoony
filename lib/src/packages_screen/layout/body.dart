@@ -35,7 +35,7 @@ class _PackageBodyState extends ConsumerState<PackageBody> {
     });
     super.initState();
   }
-
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     var dashboardVariables = ref.watch(allProviderList.dashboardProvider);
@@ -79,7 +79,9 @@ class _PackageBodyState extends ConsumerState<PackageBody> {
                       SizedBox(
                         height: 10.h,
                       ),
-                      CommonTextWidget(
+                      dashboardVariables.isLoaded
+                          ? const SizedBox.shrink()
+                          : CommonTextWidget(
                           color: allColors.textColor,
                           size: 20.sp,
                           text: dashboardVariables
@@ -96,58 +98,10 @@ class _PackageBodyState extends ConsumerState<PackageBody> {
                               padding: EdgeInsets.only(top: 10.h),
                               physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (context, index) {
+                                selectedIndex = index;
                                 var data =
                                     dashboardVariables.allPackages[index];
                                 return InkWell(
-                                  onTap: () async {
-                                    if (userProfileHelper.userData.id.isEmpty) {
-                                      await paymentPopUp(
-                                          context,
-                                          ref,
-                                          data,
-                                          userProfileHelper.userData.id.isEmpty
-                                              ? true
-                                              : false,
-                                          '',
-                                          true,
-                                          '',
-                                          '',
-                                          '');
-                                      return;
-                                    }
-                                    if (userProfileHelper
-                                                .userData.packageName !=
-                                            "null" ||
-                                        userProfileHelper.userData
-                                                    .remainingDocument !=
-                                                "0" &&
-                                            DateTime.now().isAfter(
-                                                DateTime.tryParse(
-                                                        userProfileHelper
-                                                            .userData
-                                                            .packageExpiry) ??
-                                                    DateTime.now())) {
-                                      showSnackBarMessage(
-                                          content:
-                                              "You have already subscribed a package!",
-                                          backgroundColor:
-                                              allColors.primaryColor,
-                                          contentColor: allColors.canvasColor);
-                                    } else {
-                                      await paymentPopUp(
-                                          context,
-                                          ref,
-                                          data,
-                                          userProfileHelper.userData.id.isEmpty
-                                              ? true
-                                              : false,
-                                          '',
-                                          true,
-                                          '',
-                                          '',
-                                          '');
-                                    }
-                                  },
                                   child: PackageCard(
                                       onTap: () async {
                                         if (userProfileHelper
@@ -167,7 +121,7 @@ class _PackageBodyState extends ConsumerState<PackageBody> {
                                               '');
                                           return;
                                         }
-                                        if (userProfileHelper
+                                        if (userProfileHelper.userData.packageId == dashboardVariables.allPackages[index].packgeId && userProfileHelper
                                                     .userData.packageName !=
                                                 "null" ||
                                             userProfileHelper.userData
@@ -179,13 +133,13 @@ class _PackageBodyState extends ConsumerState<PackageBody> {
                                                                 .userData
                                                                 .packageExpiry) ??
                                                         DateTime.now())) {
-                                          showSnackBarMessage(
-                                              content:
-                                                  "You have already subscribed a package!",
-                                              backgroundColor:
-                                                  allColors.primaryColor,
-                                              contentColor:
-                                                  allColors.canvasColor);
+                                          // showSnackBarMessage(
+                                          //     content:
+                                          //         "You have already subscribed a package!",
+                                          //     backgroundColor:
+                                          //         allColors.primaryColor,
+                                          //     contentColor:
+                                          //         allColors.canvasColor);
                                         } else {
                                           await paymentPopUp(
                                               context,
@@ -210,7 +164,8 @@ class _PackageBodyState extends ConsumerState<PackageBody> {
                                       description: data.description,
                                       getItNow: dashboardVariables
                                               .staticData?.monthlyAction ??
-                                          ''),
+                                          '',
+                                          ),
                                 );
                               },
                             ),
@@ -226,5 +181,12 @@ class _PackageBodyState extends ConsumerState<PackageBody> {
         ],
       ),
     );
+  }
+     bool _isSubscribed() {
+    return userProfileHelper.userData.id.isNotEmpty  && userProfileHelper.userData.packageName != "null" ||
+        userProfileHelper.userData.remainingDocument != "0" &&
+            DateTime.now().isAfter(
+                DateTime.tryParse(userProfileHelper.userData.packageExpiry) ??
+                    DateTime.now());
   }
 }

@@ -22,7 +22,7 @@ class PackageCard extends StatelessWidget {
       required this.onTap,
       required this.title,
       required this.description,
-      required this.getItNow});
+      required this.getItNow, required });
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -125,7 +125,7 @@ class PackageCard extends StatelessWidget {
                 child: Center(
                   child: CommonTextWidget(
                       color: allColors.canvasColor,
-                      size: 13.sp,
+                      size: 15.sp,
                       text: getItNow,
                       weight: FontWeight.w700,
                       padding: noPadding),
