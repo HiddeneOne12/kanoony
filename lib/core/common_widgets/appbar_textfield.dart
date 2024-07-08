@@ -28,7 +28,7 @@ class _AppBarTemplateTextFieldState
     return Stack(
       children: [
         Container(
-          height: 38.h,
+          height: 45.h,
           padding: EdgeInsets.only(left: 16.h, right: 16.h),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -75,7 +75,7 @@ class _AppBarTemplateTextFieldState
                     hintStyle:
                         Theme.of(context).textTheme.displaySmall!.copyWith(
                               color: allColors.greyTextColor,
-                              fontSize: 12.sp,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.w400,
                             ),
                     contentPadding: EdgeInsets.only(

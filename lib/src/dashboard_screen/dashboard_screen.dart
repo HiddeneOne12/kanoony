@@ -27,12 +27,14 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
       child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: CommonDirectionality(
-          child: Scaffold(
-            onEndDrawerChanged: (isOpened){
-              if(!isOpened){
-                ref.read(allProviderList.dashboardProvider.notifier).disposeEndDrawerValue();
-              }
-            },
+            child: Scaffold(
+              onEndDrawerChanged: (isOpened) {
+                if (!isOpened) {
+                  ref
+                      .read(allProviderList.dashboardProvider.notifier)
+                      .disposeEndDrawerValue();
+                }
+              },
               drawer: isArabic
                   ? AppEndProfileDrawer().appEndDrawer(context, ref)
                   : AppMenuProfileDrawer().appProfileDrawer(context, ref),
@@ -47,21 +49,10 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                 selectedItemColor: allColors.primaryColor,
                 currentIndex: index,
                 type: BottomNavigationBarType.fixed,
-                selectedLabelStyle:
-                    Theme.of(context).textTheme.displayLarge!.copyWith(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 10.sp,
-                          color: allColors.primaryColor,
-                        ),
-                unselectedLabelStyle:
-                    Theme.of(context).textTheme.displayLarge!.copyWith(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 10.sp,
-                          color: allColors.textColor,
-                        ),
+                selectedFontSize: 0,
+                unselectedFontSize: 0,
                 onTap: (ind) {
-                  StaticTextTranslations().printCalled()
-;                  print("IsARABIC TRUE or Not" + isArabic.toString());
+                  StaticTextTranslations().printCalled();
                   setState(() {
                     index = ind;
                   });
@@ -73,76 +64,89 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            Icons.home_outlined,
-                            size: 25.h,
-                            color: allColors.primaryColor,
+                          SizedBox(
+                            height: 22.h,
+                            width: 22.h,
+                            child: SvgPicture.asset(
+                              SvgImagesAssetPath.icHome,
+                              color: allColors.primaryColor,
+                            ),
                           ),
                           CommonTextWidget(
                               color: allColors.primaryColor,
                               size: 11,
                               text: StaticTextTranslations().home,
                               weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 10.h))
+                              padding: EdgeInsets.only(top: 5 .h))
                         ],
                       ),
                       icon: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            Icons.home_outlined,
-                            size: 25.h,
-                            color: allColors.textColor,
+                          SizedBox(
+                            height: 22.h,
+                            width: 22.h,
+                            child: SvgPicture.asset(
+                              SvgImagesAssetPath.icHome,
+                              color: allColors.textColor,
+                            ),
                           ),
                           CommonTextWidget(
                               color: allColors.textColor,
                               size: 11,
                               text: StaticTextTranslations().home,
                               weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 10.h))
+                              padding: EdgeInsets.only(top: 9.h))
                         ],
                       )),
                   BottomNavigationBarItem(
-                      activeIcon: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 20.h,
-                            width: 20.h,
-                            child: SvgPicture.asset(
-                              SvgImagesAssetPath.willSvg,
-                              color: allColors.primaryColor,
+                      activeIcon: Padding(
+                        padding: const EdgeInsets.only(right: 15.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: 20.h,
+                              width: 20.h,
+                              child: SvgPicture.asset(
+                                SvgImagesAssetPath.willSvg,
+                                color: allColors.primaryColor,
+                              ),
                             ),
-                          ),
-                          CommonTextWidget(
-                              color: allColors.primaryColor,
-                              size: 11,
-                              text: StaticTextTranslations().corporateServices,
-                              weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 10.h))
-                        ],
+                            CommonTextWidget(
+                              maxLine: 1,
+                                color: allColors.primaryColor,
+                                size: 11,
+                                text: StaticTextTranslations().corporateServices,
+                                weight: FontWeight.w400,
+                                padding: EdgeInsets.only(top: 9.h))
+                          ],
+                        ),
                       ),
-                      icon: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 20.h,
-                            width: 20.h,
-                            child: SvgPicture.asset(
-                              SvgImagesAssetPath.willSvg,
-                              color: allColors.textColor,
+                      icon:  Padding(
+                        padding: const EdgeInsets.only(right: 15.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: 20.h,
+                              width: 20.h,
+                              child: SvgPicture.asset(
+                                SvgImagesAssetPath.willSvg,
+                                color: allColors.textColor,
+                              ),
                             ),
-                          ),
-                          CommonTextWidget(
-                              color: allColors.textColor,
-                              size: 11,
-                              text: StaticTextTranslations().corporateServices,
-                              weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 15.h))
-                        ],
+                            CommonTextWidget(
+                                color: allColors.textColor,
+                                size: 11,
+                                text: StaticTextTranslations().corporateServices,
+                                weight: FontWeight.w400,
+                                padding: EdgeInsets.only(top: 9.h))
+                          ],
+                        ),
                       ),
                       label: ''),
                   BottomNavigationBarItem(
@@ -163,7 +167,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                               size: 11,
                               text: StaticTextTranslations().templatePackages,
                               weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 11.h))
+                              padding: EdgeInsets.only(top: 9.h))
                         ],
                       ),
                       icon: Column(
@@ -183,7 +187,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                               size: 11,
                               text: StaticTextTranslations().templatePackages,
                               weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 11.h))
+                              padding: EdgeInsets.only(top: 9.h))
                         ],
                       ),
                       label: ''),
@@ -202,7 +206,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                               size: 11,
                               text: StaticTextTranslations().dashboard,
                               weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 11.h))
+                              padding: EdgeInsets.only(top: 9.h))
                         ],
                       ),
                       icon: Column(
@@ -219,7 +223,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                               size: 11,
                               text: StaticTextTranslations().dashboard,
                               weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 11.h))
+                              padding: EdgeInsets.only(top: 9.h))
                         ],
                       ),
                       label: ''),

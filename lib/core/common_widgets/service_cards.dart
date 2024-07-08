@@ -53,10 +53,12 @@ class ServiceCard extends StatelessWidget {
                   ),
                   SizedBox(height: 12.h),
                   CommonTextWidget(
+                      maxLine: 1,
                       color: allColors.textColor,
-                      size: 13.sp,
-                      text: text,
+                      size: 16.sp,
                       weight: FontWeight.w400,
+                      text: text,
+                      
                       padding: noPadding)
                 ],
               ),

@@ -77,7 +77,7 @@ class _PrivacyBodyState extends ConsumerState<PrivacyBody> {
                                     padding: HtmlPaddings.only(
                                         left: 5.h, right: 5.h),
                                     color: allColors.textColor,
-                                    fontSize: FontSize(13.sp),
+                                    fontSize: FontSize(16),
                                     fontWeight: FontWeight.w400,
                                     fontFamily: 'Tajawal'),
                               },

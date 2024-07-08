@@ -118,6 +118,7 @@ class _LoginBodyState extends ConsumerState<LoginBody> {
                                 });
                               },
                               child: Container(
+                                margin: EdgeInsets.only(bottom: 7),
                                   height: 19.h,
                                   width: 21.w,
                                   decoration: BoxDecoration(
@@ -137,9 +138,9 @@ class _LoginBodyState extends ConsumerState<LoginBody> {
                             CommonSizeBoxWidget(height: 0, width: 10.w),
                             CommonTextWidget(
                                 color: allColors.blackColor,
-                                size: 11.sp,
+                                size: 16,
                                 text: translation.rememberMe,
-                                weight: FontWeight.w300,
+                                weight: FontWeight.w500,
                                 padding: noPadding),
                             const Spacer(),
                             InkWell(
@@ -149,9 +150,9 @@ class _LoginBodyState extends ConsumerState<LoginBody> {
                               },
                               child: CommonTextWidget(
                                   color: allColors.blueColor,
-                                  size: 11.sp,
+                                  size: 16,
                                   text: translation.forgotPassword,
-                                  weight: FontWeight.w300,
+                                  weight: FontWeight.w500,
                                   padding: noPadding),
                             ),
                           ],
@@ -207,7 +208,7 @@ class _LoginBodyState extends ConsumerState<LoginBody> {
                         },
                         child: Text.rich(
                           TextSpan(
-                            text: translation.dontHaveAccount,
+                            text: "${translation.dontHaveAccount} ",
                             style: Theme.of(context)
                                 .textTheme
                                 .displayLarge!

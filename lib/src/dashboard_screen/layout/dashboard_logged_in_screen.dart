@@ -111,7 +111,7 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(height: 10.h),
+                                SizedBox(height: 20.h),
                                 CommonTextWidget(
                                     color: allColors.textColor,
                                     size: 20.sp,
@@ -138,7 +138,7 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                                         childAspectRatio: 1.76,
                                         crossAxisSpacing: 7.h,
                                         padding: EdgeInsets.only(
-                                            left: 16.h, right: 16.h, top: 10.h),
+                                            left: 16.h, right: 16.h, top: 5.h),
                                         physics:
                                             const NeverScrollableScrollPhysics(),
                                         children: [
@@ -171,7 +171,7 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                                 if (userProfileHelper.userData.packageName !=
                                     'null') ...[
                                 userVariables.isLoading
-                                    ? SizedBox.shrink() :  CommonTextWidget(
+                                    ? const SizedBox.shrink() :  CommonTextWidget(
                                       color: allColors.textColor,
                                       size: 20.sp,
                                       text: dashboardVariables

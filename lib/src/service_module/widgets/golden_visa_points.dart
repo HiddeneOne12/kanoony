@@ -31,7 +31,7 @@ class GoldenVisaPoints extends StatelessWidget {
         Flexible(
           child: CommonTextWidget(
               color: allColors.textColor,
-              size: 14.sp,
+              size: 16,
               align: TextAlign.start,
               text: title,
               weight: FontWeight.w400,

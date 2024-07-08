@@ -30,7 +30,7 @@ class PointsWidget extends StatelessWidget {
           Flexible(
             child: CommonTextWidget(
                 color: allColors.textColor,
-                size: 14.sp,
+                size: 16,
                 align: TextAlign.justify,
                 text: point,
                 weight: FontWeight.w400,

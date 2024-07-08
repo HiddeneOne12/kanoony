@@ -29,16 +29,9 @@ class _CommonBottomBarState extends ConsumerState<CommonBottomBar> {
         selectedItemColor: allColors.primaryColor,
         currentIndex: index,
         type: BottomNavigationBarType.fixed,
-        selectedLabelStyle: Theme.of(context).textTheme.displayLarge!.copyWith(
-              fontWeight: FontWeight.w400,
-              fontSize: 10.sp,
-              color: allColors.primaryColor,
-            ),
-        unselectedLabelStyle: Theme.of(context).textTheme.displayLarge!.copyWith(
-              fontWeight: FontWeight.w400,
-              fontSize: 10.sp,
-              color: allColors.textColor,
-            ),
+        selectedFontSize: 0,
+        
+        unselectedFontSize: 0,
         onTap: (ind) {
           setState(() {
             index = ind;
@@ -46,163 +39,168 @@ class _CommonBottomBarState extends ConsumerState<CommonBottomBar> {
           RoutesUtils.context.push(DashBoardScreen.dashboardRoute);
         },
         items: [
-          BottomNavigationBarItem(
-              label: '',
-              activeIcon: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.home_outlined,
-                    size: 25.h,
-                    color: allColors.primaryColor,
-                  ),
-                  CommonTextWidget(
-                      color: allColors.primaryColor,
-                      size: 11,
-                      text: StaticTextTranslations().home,
-                      weight: FontWeight.w400,
-                      padding: EdgeInsets.only(top: 10.h))
-                ],
-              ),
-              icon: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.home_outlined,
-                    size: 25.h,
-                    color: allColors.textColor,
-                  ),
-                  CommonTextWidget(
-                      color: allColors.textColor,
-                      size: 11,
-                      text: StaticTextTranslations().home,
-                      weight: FontWeight.w400,
-                      padding: EdgeInsets.only(top: 10.h))
-                ],
-              )),
-          BottomNavigationBarItem(
-              activeIcon: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 20.h,
-                    width: 20.h,
-                    child: SvgPicture.asset(
-                      SvgImagesAssetPath.willSvg,
-                      color: allColors.primaryColor,
-                    ),
-                  ),
-                  CommonTextWidget(
-                      color: allColors.primaryColor,
-                      size: 11,
-                      text: StaticTextTranslations().corporateServices,
-                      weight: FontWeight.w400,
-                      padding: EdgeInsets.only(top: 10.h))
-                ],
-              ),
-              icon: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 20.h,
-                    width: 20.h,
-                    child: SvgPicture.asset(
-                      SvgImagesAssetPath.willSvg,
-                      color: allColors.textColor,
-                    ),
-                  ),
-                  CommonTextWidget(
-                      color: allColors.textColor,
-                      size: 11,
-                      text: StaticTextTranslations().corporateServices,
-                      weight: FontWeight.w400,
-                      padding: EdgeInsets.only(top: 15.h))
-                ],
-              ),
-              label: ''),
-          BottomNavigationBarItem(
-              activeIcon: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 23.h,
-                    width: 23.h,
-                    child: SvgPicture.asset(
-                      SvgImagesAssetPath.paperSvg,
-                      color: allColors.primaryColor,
-                    ),
-                  ),
-                  CommonTextWidget(
-                      color: allColors.primaryColor,
-                      size: 11,
-                      text: StaticTextTranslations().templatePackages,
-                      weight: FontWeight.w400,
-                      padding: EdgeInsets.only(top: 11.h))
-                ],
-              ),
-              icon: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 23.h,
-                    width: 23.h,
-                    child: SvgPicture.asset(
-                      SvgImagesAssetPath.paperSvg,
-                      color: allColors.textColor,
-                    ),
-                  ),
-                  CommonTextWidget(
-                      color: allColors.textColor,
-                      size: 11,
-                      text: StaticTextTranslations().templatePackages,
-                      weight: FontWeight.w400,
-                      padding: EdgeInsets.only(top: 11.h))
-                ],
-              ),
-              label: ''),
-          BottomNavigationBarItem(
-              activeIcon: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.dashboard_customize_outlined,
-                    size: 23.h,
-                    color: allColors.primaryColor,
-                  ),
-                  CommonTextWidget(
-                      color: allColors.primaryColor,
-                      size: 11,
-                      text: StaticTextTranslations().dashboard,
-                      weight: FontWeight.w400,
-                      padding: EdgeInsets.only(top: 11.h))
-                ],
-              ),
-              icon: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.dashboard_customize_outlined,
-                    size: 23.h,
-                    color: allColors.textColor,
-                  ),
-                  CommonTextWidget(
-                      color: allColors.textColor,
-                      size: 11,
-                      text: StaticTextTranslations().dashboard,
-                      weight: FontWeight.w400,
-                      padding: EdgeInsets.only(top: 11.h))
-                ],
-              ),
-              label: ''),
-        ],
+                  BottomNavigationBarItem(
+                      label: '',
+                      activeIcon: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 22.h,
+                            width: 22.h,
+                            child: SvgPicture.asset(
+                              SvgImagesAssetPath.icHome,
+                              color: allColors.primaryColor,
+                            ),
+                          ),
+                          CommonTextWidget(
+                              color: allColors.primaryColor,
+                              size: 11,
+                              text: StaticTextTranslations().home,
+                              weight: FontWeight.w400,
+                              padding: EdgeInsets.only(top: 5 .h))
+                        ],
+                      ),
+                      icon: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 22.h,
+                            width: 22.h,
+                            child: SvgPicture.asset(
+                              SvgImagesAssetPath.icHome,
+                              color: allColors.textColor,
+                            ),
+                          ),
+                          CommonTextWidget(
+                              color: allColors.textColor,
+                              size: 11,
+                              text: StaticTextTranslations().home,
+                              weight: FontWeight.w400,
+                              padding: EdgeInsets.only(top: 9.h))
+                        ],
+                      )),
+                  BottomNavigationBarItem(
+                      activeIcon: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                     
+                            child: SvgPicture.asset(
+                              SvgImagesAssetPath.willSvg,
+                              color: allColors.primaryColor,
+                            ),
+                          ),
+                          CommonTextWidget(
+                              color: allColors.primaryColor,
+                              size: 11,
+                              text: StaticTextTranslations().corporateServices,
+                              weight: FontWeight.w400,
+                              padding: EdgeInsets.only(top: 9.h))
+                        ],
+                      ),
+                      icon: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 20.h,
+                            width: 20.h,
+                            child: SvgPicture.asset(
+                              SvgImagesAssetPath.willSvg,
+                              color: allColors.textColor,
+                            ),
+                          ),
+                          CommonTextWidget(
+                              color: allColors.textColor,
+                              size: 11,
+                              text: StaticTextTranslations().corporateServices,
+                              weight: FontWeight.w400,
+                              padding: EdgeInsets.only(top: 9.h))
+                        ],
+                      ),
+                      label: ''),
+                  BottomNavigationBarItem(
+                      activeIcon: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 23.h,
+                            width: 23.h,
+                            child: SvgPicture.asset(
+                              SvgImagesAssetPath.paperSvg,
+                              color: allColors.primaryColor,
+                            ),
+                          ),
+                          CommonTextWidget(
+                              color: allColors.primaryColor,
+                              size: 11,
+                              text: StaticTextTranslations().templatePackages,
+                              weight: FontWeight.w400,
+                              padding: EdgeInsets.only(top: 9.h))
+                        ],
+                      ),
+                      icon: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 23.h,
+                            width: 23.h,
+                            child: SvgPicture.asset(
+                              SvgImagesAssetPath.paperSvg,
+                              color: allColors.textColor,
+                            ),
+                          ),
+                          CommonTextWidget(
+                              color: allColors.textColor,
+                              size: 11,
+                              text: StaticTextTranslations().templatePackages,
+                              weight: FontWeight.w400,
+                              padding: EdgeInsets.only(top: 9.h))
+                        ],
+                      ),
+                      label: ''),
+                  BottomNavigationBarItem(
+                      activeIcon: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.dashboard_customize_outlined,
+                            size: 23.h,
+                            color: allColors.primaryColor,
+                          ),
+                          CommonTextWidget(
+                              color: allColors.primaryColor,
+                              size: 11,
+                              text: StaticTextTranslations().dashboard,
+                              weight: FontWeight.w400,
+                              padding: EdgeInsets.only(top: 9.h))
+                        ],
+                      ),
+                      icon: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.dashboard_customize_outlined,
+                            size: 23.h,
+                            color: allColors.textColor,
+                          ),
+                          CommonTextWidget(
+                              color: allColors.textColor,
+                              size: 11,
+                              text: StaticTextTranslations().dashboard,
+                              weight: FontWeight.w400,
+                              padding: EdgeInsets.only(top: 9.h))
+                        ],
+                      ),
+                      label: ''),
+        ]
       ),
     );
   }

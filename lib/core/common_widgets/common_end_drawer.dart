@@ -133,15 +133,15 @@ class AppEndProfileDrawer {
                                                   .categories[0].menus[index];
                                               return Padding(
                                                 padding:
-                                                    EdgeInsets.only(bottom: 5.h),
+                                                    EdgeInsets.only(bottom: 10.h),
                                                 child: Container(
-                                                  padding: EdgeInsets.all(10.h),
+                                                  padding: EdgeInsets.only(top:12.h,left: 10.w,right: 10.w,bottom: 8.h),
                                                   decoration: BoxDecoration(
                                                       color:
                                                           allColors.canvasColor,
                                                       borderRadius:
                                                           BorderRadius.all(
-                                                              Radius.circular(
+                                                              Radius.circular(  
                                                                   10.r))),
                                                   child: DrawerItem(
                                                     padding: 0.06,
@@ -187,7 +187,7 @@ class AppEndProfileDrawer {
                                                     left: 16.h,
                                                     right: 16.h),
                                                 child: Container(
-                                                  padding: EdgeInsets.all(10.h),
+                                                   padding: EdgeInsets.only(top:12.h,left: 10.w,right: 10.w,bottom: 8.h),
                                                   decoration: BoxDecoration(
                                                       color:
                                                           allColors.canvasColor,
@@ -249,9 +249,7 @@ class AppEndProfileDrawer {
                                   .menuContent[1].categories[0].categoryName),
                               onTap: () {
                                 setState(() {
-                                  if (index == 0) {
                                     variables.isSetup = !variables.isSetup;
-                                  }
                                 });
                               },
                             ),
@@ -284,7 +282,8 @@ class AppEndProfileDrawer {
                                                 left: 16.h,
                                                 right: 16.h),
                                             child: Container(
-                                              padding: EdgeInsets.all(10.h),
+                                               padding: EdgeInsets.only(left: 10.w,right: 10.w,bottom: 10.h,top: 8.h
+                                               ),
                                               decoration: BoxDecoration(
                                                   color: index == 3
                                                       ? allColors.drawerColor
@@ -403,7 +402,7 @@ class AppEndProfileDrawer {
                                               left: 16.h,
                                               right: 16.h),
                                           child: Container(
-                                            padding: EdgeInsets.all(10.h),
+                                             padding: EdgeInsets.only(top:12.h,left: 10.w,right: 10.w,bottom: 8.h),
                                             decoration: BoxDecoration(
                                                 color: allColors.canvasColor,
                                                 borderRadius: BorderRadius.all(
@@ -457,7 +456,7 @@ class AppEndProfileDrawer {
                                               left: 16.h,
                                               right: 16.h),
                                           child: Container(
-                                            padding: EdgeInsets.all(10.h),
+                                             padding: EdgeInsets.only(top:12.h,left: 10.w,right: 10.w,bottom: 8.h),
                                             decoration: BoxDecoration(
                                                 color: allColors.canvasColor,
                                                 borderRadius: BorderRadius.all(

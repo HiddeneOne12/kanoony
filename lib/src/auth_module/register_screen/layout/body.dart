@@ -187,7 +187,7 @@ class _RegisterBodyState extends ConsumerState<RegisterBody> {
                         },
                         child: Text.rich(
                           TextSpan(
-                            text: translation.alreadyAccount,
+                            text: "${translation.alreadyAccount} ",
                             style: Theme.of(context)
                                 .textTheme
                                 .displayLarge!

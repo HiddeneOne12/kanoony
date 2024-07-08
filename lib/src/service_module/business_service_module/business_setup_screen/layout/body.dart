@@ -65,6 +65,7 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                         height: 10.h,
                       ),
                       CommonTextWidget(
+                        
                         color: allColors.textColor,
                         size: 18.sp,
                         text:
@@ -74,10 +75,12 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                         align: TextAlign.start,
                         padding:
                             EdgeInsets.only(left: 16.h, right: 16.h, top: 15.h),
+                            
                       ),
                       CommonTextWidget(
+                        
                         color: allColors.textColor,
-                        size: 13.sp,
+                        size: 16,
                         align: TextAlign.start,
                         text: variables.staticData
                                 ?.theUnitedArabEmiratesUaeOffersADiverseRang ??
@@ -187,6 +190,7 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                             '',
                         number: '05',
                       ),
+                      const SizedBox(height: 10,),
                       FaqButton(
                         onTap: () {
                           RoutesUtils.context.push(

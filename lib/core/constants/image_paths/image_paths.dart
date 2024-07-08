@@ -97,4 +97,5 @@ class SvgImagesAssetPath {
   static const String browseDocSvg = 'assets/svgs/browse_docSvg.svg';
   static const String favDocSvg = 'assets/svgs/fav_docSvg.svg';
   static const String fullWillSvg = 'assets/svgs/full_willSvg.svg';
+  static const String icHome = 'assets/svgs/ic_home.svg';
 }

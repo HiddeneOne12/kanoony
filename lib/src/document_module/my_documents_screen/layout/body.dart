@@ -80,23 +80,19 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                         variables2.isLoaded || variables2.content?.isEmpty == true
                             ? const SizedBox()
                             : Text(
-                                "My Documents",
+                                "MY DOCUMENTS",
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelMedium!
                                     .copyWith(
-                                        fontSize: 16,
+                                        fontSize: 18,
                                         fontWeight: FontWeight.w700),
                               ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        SizedBox(
-                          height: 16.h,
-                        ),
+                          SizedBox(height: 10,),
                         variables2.isLoaded
                             ? const ShimmerFaqCard()
                             : ListView.builder(
+                                padding: EdgeInsets.zero,
                                 itemCount: variables2.content!.length,
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
@@ -116,7 +112,9 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                                       );
                                     },
                                     child: Container(
-                                      padding: EdgeInsets.all(3.h),
+                                      margin: EdgeInsets.only(bottom: 15),
+                                      height: 55,
+                                      padding: EdgeInsets.symmetric(horizontal :3 , vertical: 6),
                                       width: MediaQuery.sizeOf(context).width.w,
                                       decoration: BoxDecoration(
                                           color: allColors.canvasColor,
@@ -140,9 +138,10 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                                                   children: [
                                                     Flexible(
                                                       child: CommonTextWidget(
+                                                        maxLine: 1,
                                                           color: allColors
                                                               .textColor,
-                                                          size: 11.sp,
+                                                          size: 16,
                                                           text: toPascalCase(
                                                               variables2
                                                                   .content![
@@ -150,7 +149,7 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                                                                   .documentsLang
                                                                   .title),
                                                           weight:
-                                                              FontWeight.w700,
+                                                              FontWeight.w500,
                                                           align:
                                                               TextAlign.start,
                                                           padding:
@@ -176,12 +175,11 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                                                     variables2.content![index]
                                                         .wordFilePath);
                                               },
-                                              child: SizedBox(
-                                                height: 20.h,
-                                                width: 20.h,
-                                                child: Image.asset(
-                                                  PngImagePaths.wordImg,
-                                                ),
+                                              child: Image.asset(
+                                                PngImagePaths.wordImg,
+                                                 height: 26.h,
+                                              width: 26.h,
+                                              fit: BoxFit.cover,
                                               ),
                                             ),
                                           ),
@@ -200,14 +198,12 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                                                       variables2.content![index]
                                                           .pdfFilePath);
                                                 },
-                                                child: SizedBox(
-                                                    height: 20.h,
-                                                    width: 20.h,
-                                                    child: Icon(
-                                                      Icons.picture_as_pdf,
-                                                      color:
-                                                          allColors.errorColor,
-                                                    )),
+                                                child: Icon(
+                                                  Icons.picture_as_pdf,
+                                                  color:
+                                                      allColors.errorColor,
+                                                      size: 26,
+                                                ),
                                               ),
                                             ),
                                             SizedBox(
@@ -227,12 +223,11 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                                                 print("call");
                                               }, 'Do you want to delete this document!');
                                             },
-                                            child: SizedBox(
-                                              height: 14.h,
-                                              width: 14.h,
-                                              child: Image.asset(
-                                                PngImagePaths.binImg,
-                                              ),
+                                            child: Image.asset(
+                                              PngImagePaths.binImg,
+                                              height: 18,
+                                            width: 18,
+                                            fit: BoxFit.cover,
                                             ),
                                           ),
                                           SizedBox(

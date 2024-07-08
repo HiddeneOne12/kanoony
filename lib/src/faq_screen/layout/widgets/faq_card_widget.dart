@@ -67,7 +67,7 @@ class _FaqCardState extends State<FaqCard> {
                         flex: 10,
                         child: CommonTextWidget(
                             color: allColors.textColor,
-                            size: 14.sp,
+                            size: 16,
                             align: TextAlign.start,
                             text: widget.questions,
                             weight: FontWeight.w500,
@@ -102,7 +102,7 @@ class _FaqCardState extends State<FaqCard> {
                     "p": Style(
                         padding: HtmlPaddings.only(left: 0, right: 0),
                         color: allColors.textColor,
-                        fontSize: FontSize(11.sp),
+                        fontSize: FontSize(16),
                         fontWeight: FontWeight.w400,
                         fontFamily: 'Tajawal'),
                   },

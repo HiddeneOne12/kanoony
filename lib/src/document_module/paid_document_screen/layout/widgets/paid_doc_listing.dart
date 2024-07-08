@@ -112,12 +112,12 @@ class _PaidDocListingItemsState extends State<PaidDocListingItems> {
                                           flex: 10,
                                           child: CommonTextWidget(
                                               color: allColors.textColor,
-                                              size: 14.sp,
+                                             size: 17.sp,
                                               align: TextAlign.start,
                                               text: data.title.toUpperCase(),
                                               weight: FontWeight.w500,
                                               padding:
-                                                  EdgeInsets.only(top: 0.h))),
+                                                  EdgeInsets.only(top: 05.h,bottom: 5.h))),
                                       Padding(
                                         padding: EdgeInsets.only(bottom: 5.h),
                                         child: Container(
@@ -132,7 +132,7 @@ class _PaidDocListingItemsState extends State<PaidDocListingItems> {
                                                 ? Icons.keyboard_arrow_up
                                                 : Icons.keyboard_arrow_down,
                                             color: allColors.textColor,
-                                            size: 13.h,
+                                            size: 19.h,
                                           ),
                                         ),
                                       ),
@@ -195,7 +195,7 @@ class _PaidDocListingItemsState extends State<PaidDocListingItems> {
                                                             child: CommonTextWidget(
                                                                 color: allColors
                                                                     .textColor,
-                                                                size: 14.sp,
+                                                                size: 17.sp,
                                                                 align: TextAlign
                                                                     .start,
                                                                 text: toPascalCase(
@@ -229,7 +229,7 @@ class _PaidDocListingItemsState extends State<PaidDocListingItems> {
                                                                       .keyboard_arrow_down,
                                                               color: allColors
                                                                   .textColor,
-                                                              size: 13.h,
+                                                              size: 20.h,
                                                             ),
                                                           ),
                                                         ),
@@ -248,7 +248,7 @@ class _PaidDocListingItemsState extends State<PaidDocListingItems> {
                                                         gridDelegate:
                                                             SliverGridDelegateWithFixedCrossAxisCount(
                                                           crossAxisCount: 2,
-                                                          childAspectRatio: 1.5,
+                                                          childAspectRatio: 1.4,
                                                           crossAxisSpacing: 5.h,
                                                         ),
                                                         shrinkWrap: true,

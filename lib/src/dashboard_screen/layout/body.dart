@@ -411,7 +411,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                           dashboardVariables.isLoaded
                               ? const ShimmerPackageCard()
                               : SizedBox(
-                                  height: 286.h,
+                                  height: 302.h,
                                   child: ListView.builder(
                                     itemCount:
                                         dashboardVariables.allPackages.length,
@@ -420,7 +420,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                     scrollDirection: Axis.horizontal,
                                     shrinkWrap: true,
                                     physics:
-                                        const AlwaysScrollableScrollPhysics(),
+                                        const NeverScrollableScrollPhysics(),
                                     itemBuilder: (context, index) {
                                       var data =
                                           dashboardVariables.allPackages[index];

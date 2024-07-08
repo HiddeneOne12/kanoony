@@ -19,8 +19,9 @@ Widget buildOptionCard(BuildContext context, String title, String description,St
             child: Column(
               children: [
                 CommonTextWidget(
+                 
                     color: allColors.textColor,
-                    size: 14.sp,
+                     size: 16,
                     text: description,
                     weight: FontWeight.w400,
                     align: TextAlign.center,
@@ -28,6 +29,7 @@ Widget buildOptionCard(BuildContext context, String title, String description,St
                     padding: EdgeInsets.only(
                         top: 40.h, bottom: 15.h, left: 16.h, right: 16.h)),
                 Container(
+                  alignment: Alignment.center,
                   width: MediaQuery.sizeOf(context).width.w,
                   height: 43.h,
                   decoration: BoxDecoration(
@@ -37,10 +39,11 @@ Widget buildOptionCard(BuildContext context, String title, String description,St
                           topLeft: Radius.zero,
                           topRight: Radius.zero,
                           bottomRight: Radius.circular(10.r))),
-                  child: Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 5),
                     child: CommonTextWidget(
                         color: allColors.canvasColor,
-                        size: 13.sp,
+                        size: 16.sp,
                         text: more,
                         weight: FontWeight.w700,
                         padding: noPadding),

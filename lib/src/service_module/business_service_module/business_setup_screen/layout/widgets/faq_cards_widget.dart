@@ -65,7 +65,7 @@ class _FaqItemsState extends State<FaqItems> {
                             flex: 10,
                             child: CommonTextWidget(
                                 color: allColors.textColor,
-                                size: 14.sp,
+                                size:16,
                                 align: TextAlign.start,
                                 text: widget.name,
                                 weight: FontWeight.w500,
@@ -84,7 +84,7 @@ class _FaqItemsState extends State<FaqItems> {
                                   ? Icons.keyboard_arrow_up
                                   : Icons.keyboard_arrow_down,
                               color: allColors.textColor,
-                              size: 13.h,
+                              size: 19.h,
                             ),
                           ),
                         ),
@@ -97,7 +97,7 @@ class _FaqItemsState extends State<FaqItems> {
                     ),
                     CommonTextWidget(
                         color: allColors.textColor,
-                        size: 11.sp,
+                        size: 16,
                         align: TextAlign.justify,
                         text: widget.description,
                         weight: FontWeight.w400,

@@ -47,8 +47,8 @@ class DocCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        height: 25.h,
-                        width: 25.h,
+                        height: 34.h,
+                        width: 34.h,
                         child: SvgPicture.asset(
                           icon,
                         ),
@@ -58,10 +58,10 @@ class DocCard extends StatelessWidget {
                       ),
                       CommonTextWidget(
                           color: allColors.textColor,
-                          size: 10.sp,
+                          size: 15,
                           text: text,
-                          maxLine: 3,
-                          weight: FontWeight.w500,
+                          maxLine: 2,
+                          weight: FontWeight.w400,
                           padding: noPadding)
                     ],
                   ),
@@ -84,7 +84,7 @@ class DocCard extends StatelessWidget {
                         image: AssetImage(PngImagePaths.flagImg))),
                 child: CommonTextWidget(
                     color: allColors.canvasColor,
-                    size: price == '0' ? 12.sp : 8.sp,
+                    size: price == '0' ? 14.sp : 10.sp,
                     text: price == '0' ? "FREE" : "AED $price",
                     weight: FontWeight.w800,
                     padding: EdgeInsets.only(top: 5.h))),

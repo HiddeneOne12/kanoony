@@ -82,7 +82,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                       ),
                       CommonTextWidget(
                         color: allColors.lightTextColor,
-                        size: 14.sp,
+                        size: 16,
                         align: TextAlign.start,
                         text: variables.staticData
                                 ?.aWillIsOneOfTheMostImportantDocumentsThat ??
@@ -113,7 +113,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                             ),
                             CommonTextWidget(
                               color: allColors.canvasColor,
-                              size: 14.sp,
+                              size: 16,
                               text: variables.staticData
                                       ?.currentlyItIsPossibleToRegisterFive_5Differ ??
                                   '',
@@ -167,7 +167,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                             ),
                             CommonTextWidget(
                               color: allColors.canvasColor,
-                              size: 14.sp,
+                              size: 16,
                               text: variables.staticData
                                       ?.difcMirrorWillsAreAlsoAvailableInTheEvent_ ??
                                   '',

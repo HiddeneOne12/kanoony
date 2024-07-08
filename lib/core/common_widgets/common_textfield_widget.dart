@@ -108,7 +108,7 @@ class _CommonTextFieldState extends State<CommonTextField> {
                   children: [
                     CommonTextWidget(
                         color: allColors.textColor,
-                        size: 10.sp,
+                        size: 13.sp,
                         text: widget.labelText!,
                         weight: FontWeight.w700,
                         padding: EdgeInsets.only(
@@ -127,8 +127,8 @@ class _CommonTextFieldState extends State<CommonTextField> {
                       maxLines: widget.textFieldMaxLines ?? 1,
                       style: Theme.of(context).textTheme.displaySmall!.copyWith(
                             color: allColors.textColor,
-                            fontSize: widget.isProfile ? 13.sp : 14.sp,
-                            fontWeight: FontWeight.w300,
+                            fontSize: widget.isProfile ? 15.sp : 16.sp,
+                            fontWeight: FontWeight.w500,
                           ),
                       cursorColor: Theme.of(context).primaryColor,
                       scrollPadding: EdgeInsets.only(
@@ -165,7 +165,7 @@ class _CommonTextFieldState extends State<CommonTextField> {
                         hintStyle:
                             Theme.of(context).textTheme.displaySmall!.copyWith(
                                   color: allColors.greyTextColor,
-                                  fontSize: widget.isProfile ? 13.sp : 14.sp,
+                                  fontSize: widget.isProfile ? 14.sp : 15.sp,
                                   fontWeight: FontWeight.w300,
                                 ),
                         contentPadding: EdgeInsets.symmetric(

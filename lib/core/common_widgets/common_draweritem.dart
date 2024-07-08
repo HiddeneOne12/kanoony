@@ -30,11 +30,12 @@ class DrawerItem extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
               child: CommonTextWidget(
+                    height: 1,
                   color: color ?? allColors.textColor,
                   size: 17.sp,
                   align: TextAlign.start,
@@ -48,7 +49,7 @@ class DrawerItem extends StatelessWidget {
                 child: Icon(
                   Icons.keyboard_arrow_down_outlined,
                   color: color ?? allColors.textColor,
-                  size: 20.h,
+                  size: 24.h,
                 ),
               ),
             ]

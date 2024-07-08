@@ -125,10 +125,10 @@ class _ExpandableCardsState extends State<ExpandableCards> {
                                 flex: 10,
                                 child: CommonTextWidget(
                                     color: allColors.textColor,
-                                    size: 16.sp,
+                                    size: 18,
                                     align: TextAlign.start,
                                     text: widget.name,
-                                    weight: FontWeight.w700,
+                                    weight: FontWeight.w500,
                                     padding: noPadding)),
                           ],
                           Padding(
@@ -144,7 +144,7 @@ class _ExpandableCardsState extends State<ExpandableCards> {
                                     ? Icons.keyboard_arrow_up
                                     : Icons.keyboard_arrow_down,
                                 color: allColors.textColor,
-                                size: 13.h,
+                                size: 19.h,
                               ),
                             ),
                           ),
@@ -163,28 +163,28 @@ class _ExpandableCardsState extends State<ExpandableCards> {
                       if (widget.isVisa) ...[
                         CommonTextWidget(
                             color: allColors.textColor,
-                            size: 15.sp,
+                            size: 16,
                             align: TextAlign.start,
                             text: widget.isWillTitle,
                             weight: FontWeight.w700,
                             padding: EdgeInsets.only(bottom: 5.h)),
                         CommonTextWidget(
                             color: allColors.textColor,
-                            size: 14.sp,
+                            size: 16,
                             align: TextAlign.start,
                             text: widget.point1,
                             weight: FontWeight.w400,
                             padding: EdgeInsets.only(bottom: 5.h)),
                         CommonTextWidget(
                             color: allColors.errorColor,
-                            size: 15.sp,
+                            size: 16,
                             align: TextAlign.start,
                             text: widget.point2,
                             weight: FontWeight.w700,
                             padding: EdgeInsets.only(bottom: 10.h)),
                         CommonTextWidget(
                             color: allColors.textColor,
-                            size: 15.sp,
+                            size: 16,
                             align: TextAlign.start,
                             text: widget.point3,
                             weight: FontWeight.w700,
@@ -294,7 +294,7 @@ class _ExpandableCardsState extends State<ExpandableCards> {
                           ),
                           CommonTextWidget(
                               color: allColors.textColor,
-                              size: 14.sp,
+                              size: 15,
                               align: TextAlign.start,
                               text: widget.point6,
                               weight: FontWeight.w400,
@@ -304,7 +304,7 @@ class _ExpandableCardsState extends State<ExpandableCards> {
                                   right: isArabic ? 0.h : 0)),
                           CommonTextWidget(
                               color: allColors.textColor,
-                              size: 14.sp,
+                              size: 15,
                               align: TextAlign.start,
                               text: widget.point7,
                               weight: FontWeight.w400,

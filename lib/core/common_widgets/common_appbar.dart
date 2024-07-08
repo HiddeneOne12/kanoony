@@ -67,7 +67,7 @@ class CommonAppBar extends StatelessWidget {
             padding: EdgeInsets.only(left: 16.h, right: 16.h, top: 0.04.sh),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 if (isBack) ...[
                   InkWell(

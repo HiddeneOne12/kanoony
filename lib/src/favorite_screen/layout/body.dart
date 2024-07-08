@@ -74,7 +74,7 @@ class _FavoriteBodyState extends ConsumerState<FavoriteBody> {
                       children: [
                         variables2.isLoaded || variables2.content?.isEmpty == true
                             ? const SizedBox()
-                            : Text("Favorites",style: Theme.of(context).textTheme.labelMedium!.copyWith(fontSize: 16,fontWeight: FontWeight.w700),),
+                            : Text("FAVORITES",style: Theme.of(context).textTheme.labelMedium!.copyWith(fontSize: 18,fontWeight: FontWeight.w700),),
                         const SizedBox(height: 10,),
                         variables2.isLoaded
                             ? const ShimmerFaqCard()
@@ -97,7 +97,8 @@ class _FavoriteBodyState extends ConsumerState<FavoriteBody> {
                                       );
                                     },
                                     child: Container(
-                                      padding: EdgeInsets.all(3.h),
+                                      margin: EdgeInsets.only(bottom: 12),
+                                      padding: EdgeInsets.symmetric(horizontal: 3 ,vertical: 6),
                                       width: MediaQuery.sizeOf(context).width.w,
                                       decoration: BoxDecoration(
                                           color: allColors.canvasColor,
@@ -123,7 +124,7 @@ class _FavoriteBodyState extends ConsumerState<FavoriteBody> {
                                                       child: CommonTextWidget(
                                                           color: allColors
                                                               .textColor,
-                                                          size: 11.sp,
+                                                          size: 16,
                                                           text: toPascalCase(
                                                               variables2
                                                                   .content![
@@ -131,7 +132,7 @@ class _FavoriteBodyState extends ConsumerState<FavoriteBody> {
                                                                   .documentsLang
                                                                   .title),
                                                           weight:
-                                                              FontWeight.w700,
+                                                              FontWeight.w500,
                                                           align:
                                                               TextAlign.start,
                                                           padding:

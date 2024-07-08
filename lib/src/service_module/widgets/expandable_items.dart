@@ -76,12 +76,10 @@ class _ExpandableItemsState extends State<ExpandableItems> {
                             color: widget.isVisa
                                 ? allColors.textColor
                                 : allColors.canvasColor,
-                            size: 16.sp,
+                            size: 18,
                             align: TextAlign.start,
                             text: widget.title,
-                            weight: widget.isDoc
-                                ? FontWeight.w700
-                                : FontWeight.w500,
+                            weight: FontWeight.w500,
                             padding: EdgeInsets.only(
                                 left: isArabic
                                     ? 0
@@ -108,7 +106,7 @@ class _ExpandableItemsState extends State<ExpandableItems> {
                           color: widget.isVisa
                               ? allColors.textColor
                               : allColors.canvasColor,
-                          size: 13.h,
+                          size: 19.h,
                         ),
                       ),
                     ),
@@ -131,7 +129,7 @@ class _ExpandableItemsState extends State<ExpandableItems> {
                       color: widget.isVisa
                           ? allColors.textColor
                           : allColors.scaffoldColor,
-                      size: 14.sp,
+                      size: 16,
                       align: TextAlign.justify,
                       text: widget.description,
                       weight: FontWeight.w400,
@@ -142,7 +140,7 @@ class _ExpandableItemsState extends State<ExpandableItems> {
                   if (!widget.isVisa) ...[
                     CommonTextWidget(
                         color: allColors.scaffoldColor,
-                        size: 14.sp,
+                        size: 16,
                         align: TextAlign.justify,
                         text: widget.p2,
                         weight: FontWeight.w400,
@@ -152,7 +150,7 @@ class _ExpandableItemsState extends State<ExpandableItems> {
                             bottom: 5.h)),
                     CommonTextWidget(
                         color: allColors.scaffoldColor,
-                        size: 14.sp,
+                        size: 16,
                         align: TextAlign.justify,
                         text: widget.p3,
                         weight: FontWeight.w400,
@@ -164,10 +162,10 @@ class _ExpandableItemsState extends State<ExpandableItems> {
                 ] else ...[
                   CommonTextWidget(
                       color: allColors.scaffoldColor,
-                      size: 13.sp,
+                      size: 16,
                       align: TextAlign.justify,
                       text: widget.description,
-                      weight: FontWeight.w500,
+                      weight: FontWeight.w400,
                       padding: EdgeInsets.only(
                           right: isArabic ? 0 : 20.h,
                           left: isArabic ? 20.h : 0,

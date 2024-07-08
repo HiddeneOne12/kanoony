@@ -116,7 +116,7 @@ class CurrentPackageCard extends StatelessWidget {
                     padding: HtmlPaddings.only(
                         left: 16.0.h, right: isArabic ? 0.0.sw : 16.h),
                     color: allColors.textColor,
-                    fontSize: FontSize(14.sp),
+                    fontSize: FontSize(16),
                     textAlign: TextAlign.center,
                     fontWeight: FontWeight.w400,
                     fontFamily: 'Tajawal'),
@@ -126,19 +126,19 @@ class CurrentPackageCard extends StatelessWidget {
             CommonTextWidget(
                 color: allColors.textColor,
                 align: TextAlign.center,
-                size: 14.sp,
+                size: 16,
                 text: 'You have $remainingDoc documents remaining',
                 weight: FontWeight.w400,
                 padding: EdgeInsets.only(top: 5.h)),
             CommonTextWidget(
                 color: allColors.textColor,
-                size: 14.sp,
+                size: 16,
                 text: 'Your package will auto-renew on',
                 weight: FontWeight.w400,
                 padding: noPadding),
             CommonTextWidget(
                 color: allColors.errorColor,
-                size: 14.sp,
+                size: 16,
                 text: formattedDate,
                 weight: FontWeight.w400,
                 padding: noPadding),
@@ -174,7 +174,7 @@ class CurrentPackageCard extends StatelessWidget {
                   if (status == "subscribed") ...[
                     Expanded(
                       child: CommonButton(
-                          height: 33.h,
+                          height: 42.h,
                           backgroundColor: allColors.canvasColor,
                           borderSides: BorderSide(color: allColors.textColor),
                           radius: 10.r,
@@ -183,7 +183,7 @@ class CurrentPackageCard extends StatelessWidget {
                               .displayLarge!
                               .copyWith(
                                   fontWeight: FontWeight.w700,
-                                  fontSize: 12.sp,
+                                  fontSize: 16,
                                   color: allColors.textColor),
                           text: cancelNow,
                           onPressed: onCancel),

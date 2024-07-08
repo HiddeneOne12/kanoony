@@ -49,7 +49,7 @@ class BenefitItem extends StatelessWidget {
                   size: 18.sp,
                   align: TextAlign.start,
                   text: text,
-                  weight: FontWeight.w700,
+                  weight: FontWeight.w400,
                   padding: EdgeInsets.only(left: 16.h, right: 16.h, top: 5.h),
                 ),
               ),
@@ -73,7 +73,7 @@ class BenefitItem extends StatelessWidget {
               Expanded(
                 child: CommonTextWidget(
                   color: allColors.lightTextColor,
-                  size: 16.sp,
+                  size: 16 ,
                   align: TextAlign.start,
                   text: text,
                   weight: FontWeight.w400,

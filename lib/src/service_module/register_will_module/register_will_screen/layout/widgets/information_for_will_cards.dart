@@ -65,20 +65,22 @@ class InfoForWillItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CommonTextWidget(
+                      height: 1,
                       color: allColors.lightTextColor,
-                      size: 16.sp,
+                      size: 18,
                       align: TextAlign.start,
                       text: text,
-                      weight: FontWeight.w700,
+                      weight: FontWeight.w500,
                       padding:
                           EdgeInsets.only(left: 16.h, right: 16.h, top: 5.h),
                     ),
                     CommonTextWidget(
                       color: allColors.lightTextColor,
-                      size: 14.sp,
+                      size:16,
                       align: TextAlign.start,
                       text: des,
                       weight: FontWeight.w400,
+                      height: 1,
                       padding:
                           EdgeInsets.only(left: 16.h, right: 16.h, top: 5.h),
                     ),
@@ -104,10 +106,10 @@ class InfoForWillItem extends StatelessWidget {
               Expanded(
                 child: CommonTextWidget(
                   color: allColors.lightTextColor,
-                  size: 18.sp,
+                  size: 16,
                   align: TextAlign.start,
                   text: text,
-                  weight: FontWeight.w500,
+                  weight: FontWeight.w400,
                   padding: EdgeInsets.only(left: 16.h, right: 16.h, top: 5.h),
                 ),
               ),

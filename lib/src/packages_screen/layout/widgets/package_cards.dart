@@ -44,9 +44,8 @@ class PackageCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                    height: 49.h,
-                    width: 58.h,
-                    padding: EdgeInsets.only(top: 6.h),
+                    
+                    padding: EdgeInsets.symmetric(horizontal : 4.h ,vertical: 2),
                     decoration: BoxDecoration(
                         color: allColors.primaryColor,
                         borderRadius: BorderRadius.all(Radius.circular(6.r))),
@@ -54,13 +53,16 @@ class PackageCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          SizedBox(height: 5,),
                           CommonTextWidget(
+                            height: 1,
                               color: allColors.canvasColor,
                               size: 15.sp,
                               text: 'AED',
                               weight: FontWeight.w400,
                               padding: noPadding),
                           CommonTextWidget(
+                             height: 1,
                               color: allColors.canvasColor,
                               size: 20.sp,
                               text: price,

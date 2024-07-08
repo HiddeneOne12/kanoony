@@ -26,7 +26,7 @@ class OperationCards extends StatelessWidget {
           children: [
             CommonTextWidget(
               color: allColors.primaryColor,
-              size: 40.sp,
+              size: 34.sp,
               align: TextAlign.center,
               text: num,
               weight: FontWeight.w800,
@@ -34,10 +34,11 @@ class OperationCards extends StatelessWidget {
             ),
             CommonTextWidget(
               color: allColors.lightTextColor,
-              size: 14.sp,
+              size: 16,
               align: TextAlign.center,
               text: title,
-              weight: FontWeight.w500,
+              weight: FontWeight.w400,
+              maxLine: 2,
               padding: EdgeInsets.only(left: 10.h, right: 10.h),
             ),
           ],

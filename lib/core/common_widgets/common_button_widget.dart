@@ -97,7 +97,7 @@ class CommonButton extends StatelessWidget {
                           )
                         : Text(
                             text,
-                            style: Theme.of(context)
+                            style: style ?? Theme.of(context)
                                 .textTheme
                                 .labelMedium!
                                 .copyWith(height: 1.5),

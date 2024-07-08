@@ -101,7 +101,7 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                             ),
                             CommonTextWidget(
                               color: allColors.lightTextColor,
-                              size: 14.sp,
+                              size: 16,
                               align: TextAlign.start,
                               text: variables.staticData
                                       ?.kanoonyOffersLegalTranslationServicesForAVa ??

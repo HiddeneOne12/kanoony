@@ -27,6 +27,7 @@ class AppTheme {
         buttonTheme: const ButtonThemeData(textTheme: ButtonTextTheme.normal),
         textTheme: TextTheme(
             displayLarge: TextStyle(
+              height: 1.26,
                 color: allColors.textColor,
                 fontSize: 24.0.sp,
                 fontWeight: FontWeight.bold),
