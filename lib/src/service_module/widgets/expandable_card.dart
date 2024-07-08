@@ -127,7 +127,7 @@ class _ExpandableCardsState extends State<ExpandableCards> {
                                     color: allColors.textColor,
                                     size: 18,
                                     align: TextAlign.start,
-                                    text: widget.name,
+                                    text: widget.name.toUpperCase(),
                                     weight: FontWeight.w500,
                                     padding: noPadding)),
                           ],

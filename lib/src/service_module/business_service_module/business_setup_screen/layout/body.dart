@@ -152,7 +152,7 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                         description: variables.staticData
                                 ?.oneOfThePrimaryLuresOfDubaiIsItsTaxfriend ??
                             '',
-                        number: '01',
+                        number: '',
                       ),
                       FaqItems(
                         name: variables
@@ -161,7 +161,7 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                         description: variables.staticData
                                 ?.dubaisPositioningIsNothingShortOfStrategicB ??
                             '',
-                        number: '02',
+                        number: '',
                       ),
                       FaqItems(
                         name:
@@ -170,7 +170,7 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                         description: variables.staticData
                                 ?.dubaiDoesntJustProvideABusinessfriendlyEnvir ??
                             '',
-                        number: '03',
+                        number: '',
                       ),
                       FaqItems(
                         name:
@@ -179,7 +179,7 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                         description: variables.staticData
                                 ?.contraryToThePrevalentPerceptionDubaisEconom ??
                             '',
-                        number: '04',
+                        number: '',
                       ),
                       FaqItems(
                         name: variables.staticData
@@ -188,7 +188,7 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                         description: variables.staticData
                                 ?.dubaiUnderstandsTheValueOfTimeForBusinessL ??
                             '',
-                        number: '05',
+                        number: '',
                       ),
                       const SizedBox(height: 10,),
                       FaqButton(

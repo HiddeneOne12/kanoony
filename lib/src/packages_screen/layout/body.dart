@@ -77,7 +77,7 @@ class _PackageBodyState extends ConsumerState<PackageBody> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        height: 10.h,
+                        height: 20.h,
                       ),
                       dashboardVariables.isLoaded
                           ? const SizedBox.shrink()

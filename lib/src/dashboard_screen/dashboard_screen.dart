@@ -140,6 +140,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                               ),
                             ),
                             CommonTextWidget(
+                               maxLine: 1,
                                 color: allColors.textColor,
                                 size: 11,
                                 text: StaticTextTranslations().corporateServices,

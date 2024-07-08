@@ -54,8 +54,10 @@ class _DescriptionWidgetState extends ConsumerState<DescriptionWidget> {
                             color: allColors.textColor,
                             size: 18.sp,
                             align: TextAlign.start,
-                            text: dashboard.staticData?.description ?? '',
-                            weight: FontWeight.w700,
+                            text: dashboard.staticData?.description
+                                    ?.toUpperCase() ??
+                                '',
+                            weight: FontWeight.w500,
                             padding: EdgeInsets.only(left: 0.h, right: 0.h))),
                     Padding(
                       padding: EdgeInsets.only(bottom: 5.h),
@@ -70,7 +72,7 @@ class _DescriptionWidgetState extends ConsumerState<DescriptionWidget> {
                               ? Icons.keyboard_arrow_up
                               : Icons.keyboard_arrow_down,
                           color: allColors.textColor,
-                          size: 13.h,
+                          size: 20.h,
                         ),
                       ),
                     ),
@@ -80,10 +82,17 @@ class _DescriptionWidgetState extends ConsumerState<DescriptionWidget> {
               if (selectedDescription) ...[
                 Html(
                   style: {
+                    "body": Style(
+                        color: allColors.textColor,
+                        margin: Margins.zero,
+                        padding: HtmlPaddings.zero,
+                        fontSize: FontSize(16),
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Tajawal'),
                     "p": Style(
                         padding: HtmlPaddings.only(left: 0.h, right: 0.h),
                         color: allColors.textColor,
-                        fontSize: FontSize(13.sp),
+                        fontSize: FontSize(16),
                         fontWeight: FontWeight.w400,
                         textAlign: TextAlign.justify,
                         fontFamily: 'Tajawal'),

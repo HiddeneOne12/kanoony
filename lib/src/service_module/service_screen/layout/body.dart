@@ -67,7 +67,7 @@ class _ServicesBodyState extends ConsumerState<ServicesBody> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        height: 10.h,
+                        height: 20.h,
                       ),
                       dashboardVariables.isLoaded
                           ? const SizedBox.shrink()
@@ -77,7 +77,7 @@ class _ServicesBodyState extends ConsumerState<ServicesBody> {
                               text: dashboardVariables
                                       .staticData?.corporateService
                                       ?.toUpperCase() ??
-                                  '',
+                                  '', 
                               weight: FontWeight.w500,
                               padding:
                                   EdgeInsets.only(left: 16.h, right: 16.h)),

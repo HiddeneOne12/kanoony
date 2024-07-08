@@ -55,6 +55,7 @@ class RelatedDocumentWidget extends ConsumerWidget {
                     );
                   },
                   child: Container(
+                    padding: EdgeInsets.all(7),
                     height: 34.h,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -63,9 +64,10 @@ class RelatedDocumentWidget extends ConsumerWidget {
                     child: CommonTextWidget(
                         color: allColors.textColor,
                         align: TextAlign.center,
-                        size: 11.sp,
-                        text: data?.title ?? '',
-                        weight: FontWeight.w400,
+                        size: 13,
+                        text: data?.title.toUpperCase() ?? '',
+                        maxLine: 3,
+                        weight: FontWeight.w500,
                         padding: EdgeInsets.only(
                             top: 5.h, bottom: 5.h, left: 10.h, right: 10.h)),
                   )),

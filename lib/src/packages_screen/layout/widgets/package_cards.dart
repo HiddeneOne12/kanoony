@@ -22,7 +22,8 @@ class PackageCard extends StatelessWidget {
       required this.onTap,
       required this.title,
       required this.description,
-      required this.getItNow, required });
+      required this.getItNow,
+      required});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -44,8 +45,7 @@ class PackageCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                    
-                    padding: EdgeInsets.symmetric(horizontal : 4.h ,vertical: 2),
+                    padding: EdgeInsets.symmetric(horizontal: 4.h, vertical: 2),
                     decoration: BoxDecoration(
                         color: allColors.primaryColor,
                         borderRadius: BorderRadius.all(Radius.circular(6.r))),
@@ -53,16 +53,18 @@ class PackageCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(height: 5,),
+                          const SizedBox(
+                            height: 5,
+                          ),
                           CommonTextWidget(
-                            height: 1,
+                              height: 1,
                               color: allColors.canvasColor,
                               size: 15.sp,
                               text: 'AED',
                               weight: FontWeight.w400,
                               padding: noPadding),
                           CommonTextWidget(
-                             height: 1,
+                              height: 1,
                               color: allColors.canvasColor,
                               size: 20.sp,
                               text: price,
@@ -111,7 +113,7 @@ class PackageCard extends StatelessWidget {
                 data: description,
               ),
             ),
-
+            
             InkWell(
               onTap: onTap,
               child: Container(

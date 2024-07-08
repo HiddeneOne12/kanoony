@@ -68,8 +68,8 @@ class AppEndProfileDrawer {
                               color: variables.isLegal
                                   ? allColors.primaryColor
                                   : allColors.textColor,
-                              text: toPascalCase(
-                                  variables.menuContent.first.menuTitle),
+                              text: 
+                                  variables.menuContent.first.menuTitle.toUpperCase(),
                               onTap: () {
                                 setState(() {
                                   variables.isLegal = !variables.isLegal;
@@ -245,8 +245,8 @@ class AppEndProfileDrawer {
                                   ? allColors.primaryColor
                                   : allColors.textColor,
                               weight: variables.isSetup ? FontWeight.w700 : FontWeight.w500,
-                              text: toPascalCase(variables
-                                  .menuContent[1].categories[0].categoryName),
+                              text: variables
+                                  .menuContent[1].categories[0].categoryName.toUpperCase(),
                               onTap: () {
                                 setState(() {
                                     variables.isSetup = !variables.isSetup;
@@ -282,7 +282,7 @@ class AppEndProfileDrawer {
                                                 left: 16.h,
                                                 right: 16.h),
                                             child: Container(
-                                               padding: EdgeInsets.only(left: 10.w,right: 10.w,bottom: 10.h,top: 8.h
+                                               padding: EdgeInsets.only(left: 10.w,right: 10.w,bottom: 10.h,top: 2.h
                                                ),
                                               decoration: BoxDecoration(
                                                   color: index == 3
@@ -370,7 +370,7 @@ class AppEndProfileDrawer {
                                             variables.isVisa && index == 1
                                         ? FontWeight.w700
                                         : FontWeight.w500,
-                                    text: toPascalCase(data.categoryName),
+                                    text: data.categoryName.toUpperCase(),
                                     onTap: () {
                                       setState(() {
                                         if (index == 0) {

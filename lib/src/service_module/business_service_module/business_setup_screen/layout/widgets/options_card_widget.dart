@@ -66,7 +66,7 @@ Widget buildOptionCard(BuildContext context, String title, String description,St
               child: CommonTextWidget(
                   color: allColors.canvasColor,
                   size: 16.sp,
-                  text: title,
+                  text: title.toUpperCase(),
                   weight: FontWeight.w700,
                   padding: EdgeInsets.only(top: 5.h))),
         ),

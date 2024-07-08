@@ -58,8 +58,9 @@ class DocCard extends StatelessWidget {
                       ),
                       CommonTextWidget(
                           color: allColors.textColor,
-                          size: 15,
+                          size: 14,
                           text: text,
+                          height: 1,
                           maxLine: 2,
                           weight: FontWeight.w400,
                           padding: noPadding)

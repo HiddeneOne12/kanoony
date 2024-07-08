@@ -26,15 +26,16 @@ class BasicInfoCards extends StatelessWidget {
           children: [
             CommonTextWidget(
                 color: allColors.textColor,
-                size: 13.sp,
+                size: 15,
                 align: TextAlign.justify,
                 text: name,
                 weight: FontWeight.w500,
+                maxLine: 1,
                 padding:
-                    EdgeInsets.only(right: 20.h, bottom: 10.h, left: 20.h)),
+                    EdgeInsets.only(right: 20.h,    left: 20.h)),
             CommonTextWidget(
                 color: allColors.textColor,
-                size: 13.sp,
+                size: 16,
                 align: TextAlign.justify,
                 text: value,
                 weight: FontWeight.w700,

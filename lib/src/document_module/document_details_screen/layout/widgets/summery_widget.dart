@@ -15,7 +15,7 @@ class SummeryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding:
-            EdgeInsets.only(left: 16.h, right: 16.h, bottom: 0.h, top: 10.h),
+            EdgeInsets.only(left: 16.h, right: 16.h, bottom: 10.h, top: 10.h),
         child: Container(
           alignment: Alignment.center,
           padding:
@@ -34,7 +34,7 @@ class SummeryWidget extends StatelessWidget {
                   "p": Style(
                       padding: HtmlPaddings.only(left: 0.h, right: 0.h),
                       color: allColors.textColor,
-                      fontSize: FontSize(13.sp),
+                      fontSize: FontSize(16),
                       fontWeight: FontWeight.w400,
                       textAlign: TextAlign.justify,
                       fontFamily: 'Tajawal'),

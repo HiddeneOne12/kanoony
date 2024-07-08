@@ -254,8 +254,8 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                               isVisa: true,
                               isSix: false,
                               isWillTitle:
-                                  variables.staticData?.titleDeed ?? '',
-                              name: variables.staticData?.option_01 ?? '',
+                                  variables.staticData?.titleDeed  ?? '',
+                              name: variables.staticData?.option_01?.toUpperCase() ?? '',
                               isSeven: false,
                               isThree: false,
                               point1: variables.staticData
@@ -297,7 +297,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                               isSix: false,
                               isWillTitle:
                                   variables.staticData?.titleDeed ?? '',
-                              name: variables.staticData?.option_02 ?? '',
+                              name: variables.staticData?.option_02?.toUpperCase() ?? '',
                               isSeven: false,
                               isThree: false,
                               point1: variables.staticData
@@ -342,7 +342,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                               isSix: false,
                               isWillTitle:
                                   variables.staticData?.offplanProperty ?? '',
-                              name: variables.staticData?.option_03 ?? '',
+                              name: variables.staticData?.option_03?.toUpperCase() ?? '',
                               isSeven: false,
                               isThree: false,
                               point1:
@@ -392,7 +392,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                               isVisa: true,
                               isSix: false,
                               isWillTitle:
-                                  variables.staticData?.titleDeedWithPartner ??
+                                  variables.staticData?.titleDeedWithPartner?.toUpperCase() ??
                                       '',
                               name: variables.staticData?.option_04 ?? '',
                               isSeven: false,

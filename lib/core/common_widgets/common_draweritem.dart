@@ -13,20 +13,21 @@ class DrawerItem extends StatelessWidget {
   bool isIcon;
   Color? color = allColors.textColor;
   FontWeight? weight = FontWeight.w500;
+ final  bool? isProfileDrawer;
   DrawerItem(
-      {required this.text,
+      {super.key, required this.text,
       required this.onTap,
       this.color,
       this.weight,
       required this.padding,
-      this.isIcon = false});
+      this.isIcon = false, this.isProfileDrawer});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          left: isArabic ? 16.h : padding.sw,
-          right: isArabic ? padding.sw : 16.h),
+          left:  isArabic ? 16.h : isProfileDrawer == true ? padding.sw : isIcon? padding.sw : 3,
+          right: isArabic ? padding.sw : isProfileDrawer == true ? padding.sw : isIcon  ? 16.h : 3),
       child: InkWell(
         onTap: onTap,
         child: Row(
@@ -34,14 +35,17 @@ class DrawerItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-              child: CommonTextWidget(
-                    height: 1,
-                  color: color ?? allColors.textColor,
-                  size: 17.sp,
-                  align: TextAlign.start,
-                  text: text,
-                  weight: weight ?? FontWeight.w500,
-                  padding: noPadding),
+              child: Padding(
+                padding: const EdgeInsets.only(top:4.0),
+                child: CommonTextWidget(
+                      height: 1,
+                    color: color ?? allColors.textColor,
+                    size: 18.sp,
+                    align: TextAlign.start,
+                    text: text,
+                    weight: weight ?? FontWeight.w500,
+                    padding: noPadding),
+              ),
             ),
             if (isIcon) ...[
               Padding(

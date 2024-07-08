@@ -76,9 +76,9 @@ class _ExpandableItemsState extends State<ExpandableItems> {
                             color: widget.isVisa
                                 ? allColors.textColor
                                 : allColors.canvasColor,
-                            size: 18,
+                            size: 16,
                             align: TextAlign.start,
-                            text: widget.title,
+                            text: widget.title.toUpperCase(),
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(
                                 left: isArabic

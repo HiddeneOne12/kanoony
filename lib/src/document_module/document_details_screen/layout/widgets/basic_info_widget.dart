@@ -73,7 +73,7 @@ class _BasicInfoWidgetState extends ConsumerState<BasicInfoWidget> {
                               ? Icons.keyboard_arrow_up
                               : Icons.keyboard_arrow_down,
                           color: allColors.textColor,
-                          size: 13.h,
+                          size: 20.h,
                         ),
                       ),
                     ),
@@ -128,37 +128,34 @@ class _BasicInfoWidgetState extends ConsumerState<BasicInfoWidget> {
                       children: [
                         CommonTextWidget(
                             color: allColors.textColor,
-                            size: 13.sp,
+                            size: 16,
                             align: TextAlign.justify,
                             text:
                                 dashboard.staticData?.availableLanguages ?? '',
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(
-                                right: 20.h, bottom: 10.h, left: 20.h)),
+                                right: 20.h, bottom: 5.h, left: 20.h)),
                         Padding(
                           padding: EdgeInsets.only(left: 16.h, right: 16.h),
                           child: Row(
                             children: [
                               if (widget.variables.content?.englishattachment !=
                                   'null') ...[
-                                Flexible(
-                                  child: Container(
-                                    height: 20.h,
-                                    width: 46.h,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        color: allColors.primaryColor,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(2.r))),
-                                    child: CommonTextWidget(
-                                        color: allColors.canvasColor,
-                                        size: 10.sp,
-                                        align: TextAlign.justify,
-                                        text: 'English',
-                                        weight: FontWeight.w800,
-                                        padding: EdgeInsets.only(
-                                            right: 0.h, top: 5.h, left: 0.h)),
-                                  ),
+                                Container(
+                                padding: EdgeInsets.symmetric(vertical: 2,horizontal: 15),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      color: allColors.primaryColor,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(2.r))),
+                                  child: CommonTextWidget(
+                                      color: allColors.canvasColor,
+                                      size: 14,
+                                      align: TextAlign.justify,
+                                      text: 'English',
+                                      weight: FontWeight.w500,
+                                      padding: EdgeInsets.only(
+                                          right: 0.h, top: 5.h, left: 0.h)),
                                 ),
                                 SizedBox(
                                   width: 5.h,
@@ -166,24 +163,21 @@ class _BasicInfoWidgetState extends ConsumerState<BasicInfoWidget> {
                               ],
                               if (widget.variables.content?.arabicattachment !=
                                   'null') ...[
-                                Flexible(
-                                  child: Container(
-                                    height: 20.h,
-                                    width: 46.h,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        color: allColors.primaryColor,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(2.r))),
-                                    child: CommonTextWidget(
-                                        color: allColors.canvasColor,
-                                        size: 10.sp,
-                                        align: TextAlign.justify,
-                                        text: 'Arabic',
-                                        weight: FontWeight.w800,
-                                        padding: EdgeInsets.only(
-                                            right: 0.h, top: 5.h, left: 0.h)),
-                                  ),
+                                Container(
+                                padding: EdgeInsets.symmetric(vertical: 2,horizontal: 15),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      color: allColors.primaryColor,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(2.r))),
+                                  child: CommonTextWidget(
+                                      color: allColors.canvasColor,
+                                      size: 4,
+                                      align: TextAlign.justify,
+                                      text: 'Arabic',
+                                      weight: FontWeight.w500,
+                                      padding: EdgeInsets.only(
+                                          right: 0.h, top: 5.h, left: 0.h)),
                                 ),
                                 SizedBox(
                                   width: 5.h,
@@ -191,24 +185,22 @@ class _BasicInfoWidgetState extends ConsumerState<BasicInfoWidget> {
                               ],
                               if (widget.variables.content?.combineattacment !=
                                   'null') ...[
-                                Flexible(
-                                  child: Container(
-                                    height: 20.h,
-                                    width: 85.h,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        color: allColors.primaryColor,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(2.r))),
-                                    child: CommonTextWidget(
-                                        color: allColors.canvasColor,
-                                        size: 10.sp,
-                                        align: TextAlign.center,
-                                        text: 'English & Arabic',
-                                        weight: FontWeight.w800,
-                                        padding: EdgeInsets.only(
-                                            right: 0.h, top: 5.h, left: 0.h)),
-                                  ),
+                                Container(
+                                  padding: EdgeInsets.symmetric(vertical: 2,horizontal: 15),
+                                  
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      color: allColors.primaryColor,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(2.r))),
+                                  child: CommonTextWidget(
+                                      color: allColors.canvasColor,
+                                      size: 14,
+                                      align: TextAlign.center,
+                                      text: 'English & Arabic',
+                                      weight: FontWeight.w500,
+                                      padding: EdgeInsets.only(
+                                          right: 0.h, top: 5.h, left: 0.h)),
                                 ),
                                 SizedBox(
                                   width: 5.h,

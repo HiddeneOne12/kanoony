@@ -105,8 +105,8 @@ class AppMenuProfileDrawer {
                 color: allColors.textColor,
                 size: 24.sp,
                 text: userProfileHelper.userData.name.isNotEmpty
-                    ? userProfileHelper.userData.name
-                    : 'Guest User',
+                    ? userProfileHelper.userData.name.toUpperCase()
+                    : 'GUEST USER',
                 weight: FontWeight.w700,
                 padding: EdgeInsets.only(top: 15.h, bottom: 5.h)),
             Padding(
@@ -188,8 +188,8 @@ class AppMenuProfileDrawer {
             SizedBox(
               height: 0.05.sh,
             ),
-            DrawerItem(
-              text: dashboard.staticData?.dashboard ?? '',
+            DrawerItem(isProfileDrawer: true,
+              text: dashboard.staticData?.dashboard?.toUpperCase() ?? '',
               onTap: () {
                 index = 3;
                 RoutesUtils.context.push(DashBoardScreen.dashboardRoute);
@@ -200,8 +200,8 @@ class AppMenuProfileDrawer {
               height: 25.h,
             ),
             userProfileHelper.userData.id.isNotEmpty
-                ? DrawerItem(
-                    text: dashboard.staticData?.myDocuments ?? '',
+                ? DrawerItem(isProfileDrawer: true,
+                    text: dashboard.staticData?.myDocuments?.toUpperCase() ?? '',
                     onTap: () async {
                       if (userProfileHelper.userData.id.isNotEmpty) {
                         RoutesUtils.context
@@ -217,9 +217,9 @@ class AppMenuProfileDrawer {
                   )
                 : SizedBox(),
             userProfileHelper.userData.id.isNotEmpty
-                ? DrawerItem(
+                ? DrawerItem(isProfileDrawer: true,
                     padding: 0.1,
-                    text: dashboard.staticData?.myFavorites ?? '',
+                    text: dashboard.staticData?.myFavorites?.toUpperCase() ?? '',
                     onTap: () {
                       if (userProfileHelper.userData.id.isNotEmpty) {
                         RoutesUtils.context.push(FavoriteScreen.favoriteRoute);
@@ -234,9 +234,9 @@ class AppMenuProfileDrawer {
                     height: 25.h,
                   )
                 : SizedBox(),
-            DrawerItem(
+            DrawerItem(isProfileDrawer: true,
               padding: 0.1,
-              text: 'Privacy Policy',
+              text: 'Privacy Policy'.toUpperCase(),
               onTap: () {
                 RoutesUtils.context.push(PrivacyScreen.privacyRoute);
               },
@@ -244,9 +244,9 @@ class AppMenuProfileDrawer {
             SizedBox(
               height: 25.h,
             ),
-            DrawerItem(
+            DrawerItem(isProfileDrawer: true,
               padding: 0.1,
-              text: 'Terms of Use',
+              text: 'Terms of Use'.toUpperCase(),
               onTap: () {
                 RoutesUtils.context.push(TermsOfUseScreen.termOfUseRoute);
               },
@@ -254,9 +254,9 @@ class AppMenuProfileDrawer {
             SizedBox(
               height: 25.h,
             ),
-            DrawerItem(
+            DrawerItem(isProfileDrawer: true,
               padding: 0.1,
-              text: 'Settings',
+              text: 'Settings'.toUpperCase(),
               onTap: () {
                 RoutesUtils.context.pop();
               },
@@ -264,7 +264,7 @@ class AppMenuProfileDrawer {
             SizedBox(
               height: 25.h,
             ),
-            DrawerItem(
+            DrawerItem(isProfileDrawer: true,
               padding: 0.1,
               text: dashboard.staticData?.faq ?? '',
               onTap: () {
@@ -284,9 +284,9 @@ class AppMenuProfileDrawer {
               height: 25.h,
             ),
             userProfileHelper.userData.id.isNotEmpty
-                ? DrawerItem(
+                ? DrawerItem(isProfileDrawer: true,
                     padding: 0.1,
-                    text: 'Logout',
+                    text: 'Logout'.toUpperCase(),
                     onTap: () {
                       confirmationDialogBox(RoutesUtils.context, () async {
                         RoutesUtils.context.pop();
@@ -294,7 +294,8 @@ class AppMenuProfileDrawer {
                         print("call");
                       }, 'Are you sure you want to logout?');
                     })
-                : DrawerItem(
+                : DrawerItem( 
+                  isProfileDrawer: true,
                     padding: 0.1,
                     text: dashboard.staticData?.signIn ?? '',
                     onTap: () {
@@ -304,7 +305,7 @@ class AppMenuProfileDrawer {
             // SizedBox(
             //   height: 25.h,
             // ),
-            // DrawerItem(
+            // DrawerItem(isProfileDrawer: true,
             //   padding: 0.1,
             //   text: 'FAQ',
             //   onTap: () {
@@ -314,7 +315,7 @@ class AppMenuProfileDrawer {
             // SizedBox(
             //   height: 25.h,
             // ),
-            // DrawerItem(
+            // DrawerItem(isProfileDrawer: true,
             //   padding: 0.1,
             //   text: 'COOKIES POLICY',
             //   onTap: () {

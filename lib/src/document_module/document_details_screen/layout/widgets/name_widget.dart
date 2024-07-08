@@ -31,12 +31,12 @@ class NameWidget extends ConsumerWidget {
           CommonTextWidget(
               color: allColors.textColor,
               size: 18.sp,
-              text: variable.content?.title.toUpperCase() ?? '',
+              text: variable.content?.title ?? '',
               weight: FontWeight.w500,
               align: TextAlign.start,
               padding: EdgeInsets.only(left: 0.h, right: 0.h, top: 5.h)),
           SizedBox(
-            height: 15.h,
+            height: 10.h,
           ),
           Row(
             children: [
@@ -44,7 +44,7 @@ class NameWidget extends ConsumerWidget {
                 child: InkWell(
                   onTap: () {},
                   child: Container(
-                    height: 30.h,
+                    height: 40.h,
                     padding: EdgeInsets.only(left: 2.h, right: 2.h),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -53,11 +53,11 @@ class NameWidget extends ConsumerWidget {
                     ),
                     child: CommonTextWidget(
                         color: allColors.canvasColor,
-                        size: 10.sp,
+                        size: 16.sp,
                         text: variable.content?.documentPrice == '0'
                             ? "FREE"
                             : '${variable.content?.documentPrice} AED + VAT',
-                        weight: FontWeight.w700,
+                        weight: FontWeight.w600,
                         align: TextAlign.center,
                         padding:
                             EdgeInsets.only(left: 0.h, right: 0.h, top: 5.h)),
@@ -93,7 +93,7 @@ class NameWidget extends ConsumerWidget {
                     }
                   },
                   child: Container(
-                    height: 30.h,
+                    height: 40.h,
                     padding: EdgeInsets.only(left: 2.h, right: 2.h),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -102,9 +102,9 @@ class NameWidget extends ConsumerWidget {
                     ),
                     child: CommonTextWidget(
                         color: allColors.canvasColor,
-                        size: 10.sp,
+                        size: 16.sp,
                         text: dashboard.staticData?.downloadNow ?? '',
-                        weight: FontWeight.w700,
+                        weight: FontWeight.w600,
                         align: TextAlign.center,
                         padding:
                             EdgeInsets.only(left: 0.h, right: 0.h, top: 5.h)),
