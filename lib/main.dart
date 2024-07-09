@@ -23,13 +23,14 @@ void main() async {
   Stripe.publishableKey =
       'pk_test_51N2xNsBozUf5joGRDVYeGaZT6CEgvN3IIshXGO8W83N2UhF48afcuZfsXDQCpy3e8OEozBd0JAG5CgfWX3ZXlJUm00zR2arFlu';
   await Firebase.initializeApp(
+      name: 'kanoony',
       options: const FirebaseOptions(
           apiKey: "AIzaSyCZYXlEbka0HK4wHOcZgd_FEFebT9HUE4k",
           authDomain: "kanoony-fe8c1.firebaseapp.com",
           projectId: "kanoony-fe8c1",
           storageBucket: "kanoony-fe8c1.appspot.com",
           messagingSenderId: "557517649496",
-          appId: "1:557517649496:web:661c4fc7ab506ee2887c2d",
+          appId: "1:557517649496:ios:f1f6a2eafd7b293e887c2d",
           measurementId: "G-S19NVTG0JP"));
   Stripe.merchantIdentifier = 'stripe payment';
   await Stripe.instance.applySettings();
