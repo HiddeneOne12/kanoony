@@ -128,6 +128,7 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                           height: 15.h,
                         ),
                         TextFieldWidget(
+                          readOnly: true,
                           controller: provider.ownerController,
                           maxLines: 1,
                           type: TextInputType.none,
@@ -152,6 +153,7 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                           height: 15.h,
                         ),
                         TextFieldWidget(
+                          readOnly: true,
                           controller: provider.countryController,
                           maxLines: 1,
                           type: TextInputType.none,
@@ -215,6 +217,7 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                           height: 15.h,
                         ),
                         TextFieldWidget(
+                          readOnly: true,
                           onTap: () {
                             provider.pickAttachment();
                           },

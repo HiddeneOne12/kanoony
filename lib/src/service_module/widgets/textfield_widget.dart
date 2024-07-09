@@ -30,7 +30,8 @@ class TextFieldWidget extends StatefulWidget {
       this.validator = null,
       required this.maxLines,
       required this.icon,
-      required this.label});
+      required this.label,
+      });
 
   @override
   State<TextFieldWidget> createState() => _TextFieldWidgetState();
@@ -88,6 +89,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                       autovalidateMode: AutovalidateMode.disabled,
                       keyboardType: widget.type,
                       focusNode: widget.focusNode,
+                      
                       decoration: InputDecoration(
                         isDense: true,
                         hintText: '',
