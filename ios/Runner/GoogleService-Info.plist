@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>557517649496-suk5epflsc4mjf1q5pmjupp2pgm9mmqt.apps.googleusercontent.com</string>
+	<string>557517649496-opaqoc305k21u25rfjuv20vdpdmptgdp.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.557517649496-suk5epflsc4mjf1q5pmjupp2pgm9mmqt</string>
+	<string>com.googleusercontent.apps.557517649496-opaqoc305k21u25rfjuv20vdpdmptgdp</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>557517649496-rupupg8kjspr3ho5r2tdqpquj12j8cc0.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.kanoony</string>
+	<string>com.kanoony.ae</string>
 	<key>PROJECT_ID</key>
 	<string>kanoony-fe8c1</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:557517649496:ios:5de95aef2c594925887c2d</string>
+	<string>1:557517649496:ios:f1f6a2eafd7b293e887c2d</string>
 </dict>
 </plist>
