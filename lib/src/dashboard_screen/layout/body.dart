@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/common_widgets/appbar_textfield.dart';
 import 'package:kanoony/core/common_widgets/common_appbar.dart';
 import 'package:kanoony/core/common_widgets/common_text_widget.dart';
 import 'package:kanoony/core/common_widgets/directionality_widget.dart';
@@ -103,7 +104,6 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
   }
 
   void _autoScroll() {
-    
     if (_scrollController.hasClients) {
       double maxScrollExtent = _scrollController.position.maxScrollExtent;
       double minScrollExtent = _scrollController.position.minScrollExtent;
@@ -192,59 +192,68 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                       bottom: 10.h,
                                       top: 10.h)),
                           dashboardVariables.areLoaded
-                              ? const QuickLinksShimmer() :
-                             Container(
-                                  height: 110.h,
-                                  padding:
-                                      EdgeInsets.only(left: 16.h, right: 16.h),
-                                  child: ListView.builder(
-                                    physics:
-                                        const AlwaysScrollableScrollPhysics(),
-                                    scrollDirection: Axis.horizontal,
-                                    controller: _scrollController,
-                                    shrinkWrap: true,
-                                    itemCount:
-                                        dashboardVariables.quickLinks!.length,
-                                    itemBuilder: (context, index) {
-                                      var data =
-                                          dashboardVariables.quickLinks![index];
+                              ? const QuickLinksShimmer()
+                              : Column(
+                                  children: [
+                                    AppBarTemplateTextField(isFilter: false),
+                                    SizedBox(
+                                      height: 15.h,
+                                    ),
+                                    Container(
+                                      height: 110.h,
+                                      child: ListView.builder(
+                                        physics:
+                                            const AlwaysScrollableScrollPhysics(),
+                                        scrollDirection: Axis.horizontal,
+                                        controller: _scrollController,
+                                        shrinkWrap: true,
+                                        itemCount: dashboardVariables
+                                            .quickLinks!.length,
+                                        itemBuilder: (context, index) {
+                                          var data = dashboardVariables
+                                              .quickLinks![index];
 
-                                      return InkWell(
-                                        onTap: () {
-                                          RoutesUtils.context.push(
-                                            PaidDocumentScreen
-                                                .paidDocumentRoute,
-                                            extra: {
-                                              TextUtils.slug:
-                                                  data.slug.toString()
+                                          return InkWell(
+                                            onTap: () {
+                                              RoutesUtils.context.push(
+                                                PaidDocumentScreen
+                                                    .paidDocumentRoute,
+                                                extra: {
+                                                  TextUtils.slug:
+                                                      data.slug.toString()
+                                                },
+                                              );
+                                              setState(() {
+                                                dashboardProvider
+                                                    .searchController
+                                                    .clear();
+                                                dashboardVariables.searchedDoc =
+                                                    [];
+                                              });
                                             },
-                                          );
-                                          setState(() {
-                                            dashboardProvider.searchController
-                                                .clear();
-                                            dashboardVariables.searchedDoc = [];
-                                          });
-                                        },
-                                        child: SizedBox(
-                                          width: 169.h,
-                                          child: ServiceCard(
-                                              isPng: true,
-                                              onTap: () {
-                                                RoutesUtils.context.push(
-                                                  PaidDocumentScreen
-                                                      .paidDocumentRoute,
-                                                  extra: {
-                                                    TextUtils.slug:
-                                                        data.slug.toString()
+                                            child: SizedBox(
+                                              width: 169.h,
+                                              child: ServiceCard(
+                                                  isPng: true,
+                                                  onTap: () {
+                                                    RoutesUtils.context.push(
+                                                      PaidDocumentScreen
+                                                          .paidDocumentRoute,
+                                                      extra: {
+                                                        TextUtils.slug:
+                                                            data.slug.toString()
+                                                      },
+                                                    );
                                                   },
-                                                );
-                                              },
-                                              icon: icons[index],
-                                              text: toPascalCase(data.title)),
-                                        ),
-                                      );
-                                    },
-                                  ),
+                                                  icon: icons[index],
+                                                  text:
+                                                      toPascalCase(data.title)),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
                                 ),
                           dashboardVariables.areLoaded
                               ? const QuickLinksShimmer()
@@ -271,6 +280,14 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                   children: [
                                     ServiceCard(
                                         onTap: () async {
+                                          var variables = ref.watch(
+                                              allProviderList
+                                                  .dashboardProvider);
+                                          var provider = ref.read(
+                                              allProviderList
+                                                  .dashboardProvider.notifier);
+                                          provider.searchController.clear();
+                                          variables.searchedDoc = [];
                                           RoutesUtils.context.push(
                                               BusinessSetupScreen
                                                   .businessSetupRoute);
@@ -281,6 +298,14 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                             '')),
                                     ServiceCard(
                                         onTap: () {
+                                          var variables = ref.watch(
+                                              allProviderList
+                                                  .dashboardProvider);
+                                          var provider = ref.read(
+                                              allProviderList
+                                                  .dashboardProvider.notifier);
+                                          provider.searchController.clear();
+                                          variables.searchedDoc = [];
                                           RoutesUtils.context.push(
                                               TradeMarkScreen.trademarkRoute);
                                         },
@@ -291,6 +316,14 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                             '')),
                                     ServiceCard(
                                         onTap: () {
+                                          var variables = ref.watch(
+                                              allProviderList
+                                                  .dashboardProvider);
+                                          var provider = ref.read(
+                                              allProviderList
+                                                  .dashboardProvider.notifier);
+                                          provider.searchController.clear();
+                                          variables.searchedDoc = [];
                                           RoutesUtils.context.push(
                                               RegisterWillScreen.willRoute);
                                         },
@@ -300,6 +333,14 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                             '')),
                                     ServiceCard(
                                         onTap: () {
+                                          var variables = ref.watch(
+                                              allProviderList
+                                                  .dashboardProvider);
+                                          var provider = ref.read(
+                                              allProviderList
+                                                  .dashboardProvider.notifier);
+                                          provider.searchController.clear();
+                                          variables.searchedDoc = [];
                                           RoutesUtils.context.push(
                                               DocTranslateScreen
                                                   .docTranslateRoute);
@@ -311,6 +352,14 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                             '')),
                                     ServiceCard(
                                         onTap: () {
+                                          var variables = ref.watch(
+                                              allProviderList
+                                                  .dashboardProvider);
+                                          var provider = ref.read(
+                                              allProviderList
+                                                  .dashboardProvider.notifier);
+                                          provider.searchController.clear();
+                                          variables.searchedDoc = [];
                                           RoutesUtils.context
                                               .push(GoldenVisaScreen.visaRoute);
                                         },
@@ -413,7 +462,6 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                               : SizedBox(
                                   height: 291.h,
                                   child: ListView.builder(
-                                    
                                     itemCount:
                                         dashboardVariables.allPackages.length,
                                     controller: scrollController2,

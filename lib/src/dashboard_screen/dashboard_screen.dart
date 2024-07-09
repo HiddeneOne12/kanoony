@@ -52,6 +52,16 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                 selectedFontSize: 0,
                 unselectedFontSize: 0,
                 onTap: (ind) {
+                   
+                    if (ind != 0) {
+                      var variables =
+                          ref.watch(allProviderList.dashboardProvider);
+                      var provider =
+                          ref.read(allProviderList.dashboardProvider.notifier);
+                      provider.searchController.clear();
+                      variables.searchedDoc = [];
+                    }
+                  
                   StaticTextTranslations().printCalled();
                   setState(() {
                     index = ind;
@@ -77,7 +87,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                               size: 11,
                               text: StaticTextTranslations().home,
                               weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 5 .h))
+                              padding: EdgeInsets.only(top: 5.h))
                         ],
                       ),
                       icon: Column(
@@ -116,16 +126,17 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                               ),
                             ),
                             CommonTextWidget(
-                              maxLine: 1,
+                                maxLine: 1,
                                 color: allColors.primaryColor,
                                 size: 11,
-                                text: StaticTextTranslations().corporateServices,
+                                text:
+                                    StaticTextTranslations().corporateServices,
                                 weight: FontWeight.w400,
                                 padding: EdgeInsets.only(top: 9.h))
                           ],
                         ),
                       ),
-                      icon:  Padding(
+                      icon: Padding(
                         padding: const EdgeInsets.only(right: 15.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -140,10 +151,11 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                               ),
                             ),
                             CommonTextWidget(
-                               maxLine: 1,
+                                maxLine: 1,
                                 color: allColors.textColor,
                                 size: 11,
-                                text: StaticTextTranslations().corporateServices,
+                                text:
+                                    StaticTextTranslations().corporateServices,
                                 weight: FontWeight.w400,
                                 padding: EdgeInsets.only(top: 9.h))
                           ],

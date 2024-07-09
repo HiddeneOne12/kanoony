@@ -23,13 +23,14 @@ class _SearchListingWidgetState extends ConsumerState<SearchListingWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 16.h, right: 16.h, top: 6.h),
-      child: Container(
-        height: 120.h,
+      padding: EdgeInsets.only(left: 12.h, right: 12.h, top: 10.h),
+      child: SizedBox(
+        height: 160.h,
         child: Card(
-          elevation: 5,
-          color: allColors.scaffoldColor,
-          surfaceTintColor: allColors.scaffoldColor,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0), ),
+          elevation: 4,
+          color: Colors.white,
+          surfaceTintColor: Colors.white,
           child: SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
             child: Column(
@@ -38,10 +39,10 @@ class _SearchListingWidgetState extends ConsumerState<SearchListingWidget> {
               children: [
                 if (widget.list.isNotEmpty) ...[
                   Padding(
-                    padding: EdgeInsets.only(left: 16.h, right: 16.h),
+                    padding: EdgeInsets.only(),
                     child: ListView.separated(
                       physics: const NeverScrollableScrollPhysics(),
-                      padding: EdgeInsets.only(bottom: 5.h, top: 5.h),
+                      padding: EdgeInsets.only(left: 16.h, right: 16.h,top: 16,bottom: 16),
                       itemBuilder: (context, index) {
                         return SearchedHomeTile(
                           index: index,
@@ -49,7 +50,7 @@ class _SearchListingWidgetState extends ConsumerState<SearchListingWidget> {
                         );
                       },
                       separatorBuilder: (BuildContext context, int index) =>
-                          const Divider(),
+                           Divider(color: allColors.borderColor.withOpacity(0.2),height: 28,),
                       itemCount: widget.list.length,
                       shrinkWrap: true,
                     ),
