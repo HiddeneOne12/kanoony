@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import '../../src/dashboard_screen/model/search_home_docs_model.dart';
 import '../../src/document_module/document_details_screen/document_details_screen.dart';
 import '../constants/object_constants/object_constants.dart';
@@ -110,7 +111,7 @@ class _SearchedHomeTileState extends ConsumerState<SearchedHomeTile> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.searchedItem![widget.index].title.toUpperCase(),
+                      capitalizeFirst(widget.searchedItem![widget.index].title),
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                           fontWeight: FontWeight.w400,

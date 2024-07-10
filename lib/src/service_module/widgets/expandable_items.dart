@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/common_widgets/common_text_widget.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 
 class ExpandableItems extends StatefulWidget {
   String title;
@@ -78,7 +79,7 @@ class _ExpandableItemsState extends State<ExpandableItems> {
                                 : allColors.canvasColor,
                             size: 16,
                             align: TextAlign.start,
-                            text: widget.title.toUpperCase(),
+                            text: capitalizeFirst(widget.title),
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(
                                 left: isArabic

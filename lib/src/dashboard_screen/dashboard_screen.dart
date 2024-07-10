@@ -74,35 +74,23 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            height: 22.h,
-                            width: 22.h,
-                            child: SvgPicture.asset(
-                              SvgImagesAssetPath.icHome,
-                              color: allColors.primaryColor,
-                            ),
-                          ),
+                          const Icon(Icons.home,size: 25,),
                           CommonTextWidget(
-                              color: allColors.primaryColor,
+                            height: 0.6,
+                              color: allColors.textColor,
                               size: 11,
                               text: StaticTextTranslations().home,
                               weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 5.h))
+                              padding: EdgeInsets.only(top: 9.h))
                         ],
                       ),
                       icon: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            height: 22.h,
-                            width: 22.h,
-                            child: SvgPicture.asset(
-                              SvgImagesAssetPath.icHome,
-                              color: allColors.textColor,
-                            ),
-                          ),
+                          const Icon(Icons.home,size: 25,),
                           CommonTextWidget(
+                            height: 0.6,
                               color: allColors.textColor,
                               size: 11,
                               text: StaticTextTranslations().home,
@@ -117,22 +105,26 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                                                        SizedBox(height: 7,),
+
                             SizedBox(
-                              height: 20.h,
-                              width: 20.h,
+                              height: 19,
+                              width: 19,
                               child: SvgPicture.asset(
                                 SvgImagesAssetPath.willSvg,
                                 color: allColors.primaryColor,
+                                 height: 19,
+                              width: 19,
                               ),
                             ),
                             CommonTextWidget(
                                 maxLine: 1,
                                 color: allColors.primaryColor,
                                 size: 11,
-                                text:
+                                 text:
                                     StaticTextTranslations().corporateServices,
                                 weight: FontWeight.w400,
-                                padding: EdgeInsets.only(top: 9.h))
+                                padding: EdgeInsets.only(top: 7.h))
                           ],
                         ),
                       ),
@@ -142,22 +134,25 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            SizedBox(height: 7,),
                             SizedBox(
-                              height: 20.h,
-                              width: 20.h,
+                              height: 19,
+                              width: 19,
                               child: SvgPicture.asset(
                                 SvgImagesAssetPath.willSvg,
                                 color: allColors.textColor,
+                                 height: 19,
+                              width: 19,
                               ),
                             ),
                             CommonTextWidget(
                                 maxLine: 1,
                                 color: allColors.textColor,
                                 size: 11,
-                                text:
+                                 text:
                                     StaticTextTranslations().corporateServices,
                                 weight: FontWeight.w400,
-                                padding: EdgeInsets.only(top: 9.h))
+                                padding: EdgeInsets.only(top: 7.h))
                           ],
                         ),
                       ),
@@ -167,12 +162,15 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          SizedBox(height: 3,),
                           SizedBox(
-                            height: 23.h,
-                            width: 23.h,
+                            height: 23,
+                            width: 23,
                             child: SvgPicture.asset(
                               SvgImagesAssetPath.paperSvg,
                               color: allColors.primaryColor,
+                               height: 23,
+                            width: 23,
                             ),
                           ),
                           CommonTextWidget(
@@ -180,19 +178,23 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                               size: 11,
                               text: StaticTextTranslations().templatePackages,
                               weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 9.h))
+                              padding: EdgeInsets.only(top: 5.h))
                         ],
                       ),
                       icon: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                                                    SizedBox(height: 3,),
+
                           SizedBox(
-                            height: 23.h,
-                            width: 23.h,
+                            height: 23,
+                            width: 23,
                             child: SvgPicture.asset(
                               SvgImagesAssetPath.paperSvg,
                               color: allColors.textColor,
+                               height: 23,
+                            width: 23,
                             ),
                           ),
                           CommonTextWidget(
@@ -200,7 +202,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                               size: 11,
                               text: StaticTextTranslations().templatePackages,
                               weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 9.h))
+                              padding: EdgeInsets.only(top: 7.h))
                         ],
                       ),
                       label: ''),
@@ -226,7 +228,8 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          SizedBox(height: 2,)
+,                          Icon(
                             Icons.dashboard_customize_outlined,
                             size: 23.h,
                             color: allColors.textColor,
@@ -236,7 +239,7 @@ class _DashBoardScreenState extends ConsumerState<DashBoardScreen> {
                               size: 11,
                               text: StaticTextTranslations().dashboard,
                               weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 9.h))
+                              padding: EdgeInsets.only(top: 7.h))
                         ],
                       ),
                       label: ''),

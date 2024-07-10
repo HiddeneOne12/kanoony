@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 
 import '../../../core/common_widgets/common_text_widget.dart';
 import '../../../core/constants/object_constants/object_constants.dart';
@@ -44,9 +45,11 @@ class BusinessOffshoreLandServiceCard extends StatelessWidget {
                   SizedBox(height: 10.h),
                   CommonTextWidget(
                       color: allColors.blackColor,
-                      size: 12.sp,
-                      text: text,
+                      size: 15,
+                      text: text.capitalizeFirstLetter() ?? "",
                       weight: FontWeight.w500,
+                      maxLine: 2,
+                      height: 1.2,
                       padding: noPadding)
                 ],
               ),

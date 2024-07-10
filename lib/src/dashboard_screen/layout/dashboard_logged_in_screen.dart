@@ -3,6 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kanoony/core/common_widgets/common_button_widget.dart';
+import 'package:kanoony/core/constants/translations/translations.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/src/auth_module/login_screen/login_screen.dart';
 import 'package:kanoony/src/dashboard_screen/layout/widgets/shimmer.dart';
 import 'dart:ui' as Ui;
@@ -116,7 +119,7 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                                     color: allColors.textColor,
                                     size: 20.sp,
                                     text:
-                                        'HELLO ${userProfileHelper.userData.name.toUpperCase()}',
+                                        'Hello ${capitalizeFirst(userProfileHelper.userData.name)}',
                                     weight: FontWeight.w700,
                                     padding: EdgeInsets.only(
                                         left: 16.h, right: 16.h)),
@@ -174,10 +177,10 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                                     ? const SizedBox.shrink() :  CommonTextWidget(
                                       color: allColors.textColor,
                                       size: 20.sp,
-                                      text: dashboardVariables
+                                      text: capitalizeFirst(dashboardVariables
                                               .staticData?.currentPackage
-                                              ?.toUpperCase() ??
-                                          '',
+                                              ??
+                                          ''),
                                       weight: FontWeight.w700,
                                       padding: EdgeInsets.only(
                                           left: 16.h, right: 16.h)),
@@ -198,8 +201,8 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                                               size: 20.sp,
                                               text: dashboardVariables
                                                       .staticData
-                                                      ?.contractTemplatePackages
-                                                      ?.toUpperCase() ??
+                                                      ?.contractTemplatePackages.capitalizeFirstLetter()
+                                                       ??
                                                   '',
                                               weight: FontWeight.w500,
                                               padding: EdgeInsets.only(
@@ -562,7 +565,7 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                                 padding:
                                     EdgeInsets.only(left: 16.h, right: 16.h),
                                 child: CommonButton(
-                                    text: "SIGN IN",
+                                    text: StaticTextTranslations().signIn,
                                     backgroundColor: allColors.primaryColor,
                                     onPressed: () {
                                       RoutesUtils.context

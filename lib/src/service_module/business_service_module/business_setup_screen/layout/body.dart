@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kanoony/core/common_widgets/common_text_widget.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/core/routing/routing_config.dart';
 import 'package:kanoony/src/service_module/business_service_module/business_setup_freezone_screen/business_setup_freezone_screen.dart';
 import 'package:kanoony/src/service_module/business_service_module/business_setup_mainland_screen/business_setup_mainland_screen.dart';
@@ -69,8 +71,8 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                         color: allColors.textColor,
                         size: 18.sp,
                         text:
-                            variables.staticData?.yourDreamNeedsTheBestStart?.toUpperCase() ??
-                                '',
+                            capitalizeFirst(variables.staticData?.yourDreamNeedsTheBestStart ??
+                                ''),
                         weight: FontWeight.w500,
                         align: TextAlign.start,
                         padding:
@@ -137,7 +139,7 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                         color: allColors.textColor,
                         size: 18.sp,
                         text: variables.staticData
-                                ?.whyIsDubaiTheTopPickForSavvyBusinessLeade?.toUpperCase() ??
+                                ?.whyIsDubaiTheTopPickForSavvyBusinessLeade.capitalizeFirstLetter() ??
                             '',
                         weight: FontWeight.w500,
                         align: TextAlign.start,

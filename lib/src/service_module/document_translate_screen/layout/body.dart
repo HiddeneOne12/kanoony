@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/src/service_module/document_translate_screen/layout/widgets/operation_cards.dart';
 
 import '../../../../core/common_widgets/callback_button.dart';
@@ -86,9 +87,9 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                               color: allColors.textColor,
                               size: 18.sp,
                               align: TextAlign.start,
-                              text: variables.staticData
-                                      ?.ourLegalTranslationServices?.toUpperCase() ??
-                                  '',
+                              text: capitalizeFirst(variables.staticData
+                                      ?.ourLegalTranslationServices ??
+                                  ''),
                               weight: FontWeight.w500,
                               padding: EdgeInsets.only(
                                 left: 16.h,
@@ -223,8 +224,8 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                               color: allColors.canvasColor,
                               size: 18.sp,
                               text:
-                                  variables.staticData?.theAttestationProcess?.toUpperCase() ??
-                                      '',
+                                  capitalizeFirst(variables.staticData?.theAttestationProcess ??
+                                      ''),
                               weight: FontWeight.w500,
                               align: TextAlign.center,
                               padding: EdgeInsets.only(
@@ -269,7 +270,7 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                         color: allColors.lightTextColor,
                         size: 18.sp,
                         align: TextAlign.center,
-                        text: variables.staticData?.theFlowOfOurOperation?.toUpperCase() ?? '',
+                        text: capitalizeFirst(variables.staticData?.theFlowOfOurOperation ?? ''),
                         weight: FontWeight.w500,
                         padding: EdgeInsets.only(
                             left: 0.25.sw, right: 0.25.sw, top: 15.h),

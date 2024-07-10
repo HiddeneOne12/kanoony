@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 
 class CommonTextWidget extends StatelessWidget {
   String text;
@@ -32,7 +33,7 @@ class CommonTextWidget extends StatelessWidget {
     return Padding(
       padding: padding,
       child: Text(
-        text,
+        text.capitalizeFirstLetter() ?? "",
         style: Theme.of(context).textTheme.displayLarge!.copyWith(
               height: height,
               fontWeight: weight,

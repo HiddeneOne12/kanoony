@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 
 import '../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../core/constants/object_constants/object_constants.dart';
@@ -110,7 +111,7 @@ class PackageCard extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       fontFamily: 'Tajawal'),
                 },
-                data: description,
+                data: description.capitalizeFirstLetter(),
               ),
             ),
             
@@ -130,7 +131,7 @@ class PackageCard extends StatelessWidget {
                   child: CommonTextWidget(
                       color: allColors.canvasColor,
                       size: 15.sp,
-                      text: getItNow,
+                      text: getItNow.capitalizeFirstLetter()??"",
                       weight: FontWeight.w700,
                       padding: noPadding),
                 ),

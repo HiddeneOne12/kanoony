@@ -76,7 +76,10 @@ class LoginNotifier extends StateNotifier<LoginState> {
   }
 
   googleSignIn() async {
-    googleAccount.value = await googleLoginIn.signIn();
+    googleAccount.value = await googleLoginIn.signIn().then((result){
+      print("Reuslt${result?.email}");
+      return result;
+    });
     if (googleAccount.value != null) {
       state = state.copyWith(isGoogleLoading: ValueNotifier(true));
       var response = await loginService.postGoogleLoginRequest(

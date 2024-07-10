@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/src/document_module/document_details_screen/provider/doc_detail_provider.dart';
 
 import '../../../../../core/common_widgets/common_text_widget.dart';
@@ -54,9 +55,9 @@ class _DescriptionWidgetState extends ConsumerState<DescriptionWidget> {
                             color: allColors.textColor,
                             size: 18.sp,
                             align: TextAlign.start,
-                            text: dashboard.staticData?.description
-                                    ?.toUpperCase() ??
-                                '',
+                            text: capitalizeFirst(dashboard.staticData?.description
+                                     ??
+                                ''),
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(left: 0.h, right: 0.h))),
                     Padding(

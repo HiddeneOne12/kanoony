@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
 import '../../../../../core/common_widgets/common_button_widget.dart';
 import '../../../../../core/common_widgets/common_sizebox_widget.dart';
@@ -81,7 +82,7 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                             color: allColors.textColor,
                             size: 18.sp,
                             text: variables.staticData?.applicantContactDetails
-                                    ?.toUpperCase() ??
+                                    ?.capitalizeFirstLetter() ??
                                 '',
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(left: 16.h, right: 16.h)),
@@ -119,7 +120,7 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                             color: allColors.textColor,
                             size: 18.sp,
                             text: variables.staticData?.trademarkOwner
-                                    ?.toUpperCase() ??
+                                    ?.capitalizeFirstLetter() ??
                                 '',
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(
@@ -144,7 +145,7 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                             color: allColors.textColor,
                             size: 18.sp,
                             text: variables.staticData?.designatedCountry
-                                    ?.toUpperCase() ??
+                                    ?.capitalizeFirstLetter() ??
                                 '',
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(
@@ -192,7 +193,7 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                             color: allColors.textColor,
                             size: 18.sp,
                             text: variables.staticData?.trademarkType
-                                    ?.toUpperCase() ??
+                                    ?.capitalizeFirstLetter() ??
                                 '',
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(
@@ -208,7 +209,7 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                             color: allColors.textColor,
                             size: 18.sp,
                             text: variables.staticData?.attachFile
-                                    ?.toUpperCase() ??
+                                    ?.capitalizeFirstLetter() ??
                                 '',
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(
@@ -234,7 +235,7 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                             size: 18.sp,
                             text: variables
                                     .staticData?.describeYourProductOrService
-                                    ?.toUpperCase() ??
+                                    ?.capitalizeFirstLetter() ??
                                 '',
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(

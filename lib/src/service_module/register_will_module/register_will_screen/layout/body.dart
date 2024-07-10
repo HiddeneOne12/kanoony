@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/src/service_module/register_will_module/register_will_form/register_will_form.dart';
 import 'package:kanoony/src/service_module/widgets/expandable_card.dart';
 
@@ -104,7 +105,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                               color: allColors.canvasColor,
                               size: 18.sp,
                               text: variables.staticData
-                                      ?.whatTypeOfDifcWillsMightBeRegistered?.toUpperCase() ??
+                                      ?.whatTypeOfDifcWillsMightBeRegistered?.capitalizeFirstLetter() ??
                                   '',
                               weight: FontWeight.w500,
                               align: TextAlign.center,
@@ -187,7 +188,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                         size: 18.sp,
                         align: TextAlign.center,
                         text: variables.staticData
-                                ?.whatAreTheInformationTypicallyRequestedToRe?.toUpperCase() ??
+                                ?.whatAreTheInformationTypicallyRequestedToRe?.capitalizeFirstLetter() ??
                             '',
                         weight: FontWeight.w500,
                         padding: EdgeInsets.only(
@@ -237,7 +238,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                         color: allColors.textColor,
                         size: 18.sp,
                         align: TextAlign.start,
-                        text: variables.staticData?.ourSteps?.toUpperCase() ?? '',
+                        text: variables.staticData?.ourSteps?.capitalizeFirstLetter() ?? '',
                         weight: FontWeight.w500,
                         padding: EdgeInsets.only(
                           left: 16.h,
@@ -276,7 +277,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                             CommonTextWidget(
                               color: allColors.canvasColor,
                               size: 18.sp,
-                              text: variables.staticData?.pricing?.toUpperCase() ?? '',
+                              text: variables.staticData?.pricing?.capitalizeFirstLetter() ?? '',
                               weight: FontWeight.w500,
                               align: TextAlign.start,
                               padding: EdgeInsets.only(
@@ -360,7 +361,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                         color: allColors.textColor,
                         size: 18.sp,
                         align: TextAlign.start,
-                        text: variables.staticData?.timeline?.toUpperCase() ?? '',
+                        text: variables.staticData?.timeline?.capitalizeFirstLetter() ?? '',
                         weight: FontWeight.w500,
                         padding: EdgeInsets.only(
                           left: 16.h,

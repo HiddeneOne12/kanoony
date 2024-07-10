@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import '../../../../../core/common_widgets/callback_button.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
 import '../../../../../core/common_widgets/common_text_widget.dart';
@@ -64,7 +66,7 @@ class _BusinessSetupOffshoreBodyState
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        height: 10.h,
+                        height: 20.h,
                       ),
                       Padding(
                         padding: EdgeInsets.only(
@@ -73,22 +75,25 @@ class _BusinessSetupOffshoreBodyState
                         ),
                         child: const CallBackButton(),
                       ),
+                       SizedBox(
+                        height: 10.h,
+                      ),
                       CommonTextWidget(
                         color: allColors.textColor,
                         size: 20.sp,
                         text: variables.staticData
-                                ?.heresHowYouCanEffortlesslySetUpAnOffshore_
-                                ?.toUpperCase() ??
+                                ?.heresHowYouCanEffortlesslySetUpAnOffshore_.capitalizeFirstLetter()
+                                 ??
                             '',
                         weight: FontWeight.w500,
                         align: TextAlign.start,
                         padding:
-                            EdgeInsets.only(left: 16.h, right: 16.h, top: 15.h),
+                            EdgeInsets.only(left: 16.h, right: 16.h, top: 12.h),
                       ),
                       GridView.count(
                         crossAxisCount: 2,
                         shrinkWrap: true,
-                        childAspectRatio: 1.5,
+                        childAspectRatio: 1.35,
                         crossAxisSpacing: 7.h,
                         padding:
                             EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
@@ -260,7 +265,7 @@ class _BusinessSetupOffshoreBodyState
                               color: allColors.textColor,
                               size: 20.sp,
                               text: variables.staticData
-                                      ?.benefitsOfRegisteringAnOffshoreCompany?.toUpperCase() ??
+                                      ?.benefitsOfRegisteringAnOffshoreCompany.capitalizeFirstLetter() ??
                                   '',
                               weight: FontWeight.w500,
                               align: TextAlign.start,
@@ -333,7 +338,7 @@ class _BusinessSetupOffshoreBodyState
                         color: allColors.textColor,
                         size: 20.sp,
                         text: variables.staticData
-                                ?.streamlinedProcessWithMinimalCapitalAndSimpl?.toUpperCase() ??
+                                ?.streamlinedProcessWithMinimalCapitalAndSimpl.capitalizeFirstLetter() ??
                             '',
                         weight: FontWeight.w500,
                         align: TextAlign.start,
@@ -356,7 +361,7 @@ class _BusinessSetupOffshoreBodyState
                                 img: PngImagePaths.companyNameImg,
                                 num: variables.staticData?.the01 ?? '',
                                 description: variables.staticData
-                                        ?.theNameSelectionPlaysAnIntegralRoleInTheP ??
+                                        ?.theNameSelectionPlaysAnIntegralRoleInTheP.capitalizeFirstLetter() ??
                                     '',
                                 title: variables.staticData
                                         ?.choosingAUniqueCompanyName ??

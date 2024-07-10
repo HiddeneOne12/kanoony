@@ -9,6 +9,7 @@ import 'package:kanoony/core/common_widgets/common_text_widget.dart';
 import 'package:kanoony/core/constants/image_paths/image_paths.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/helpers/validators.dart';
 import 'package:kanoony/src/service_module/widgets/popup_textfields.dart';
 
@@ -56,8 +57,8 @@ requestCallBackPopUp(context, WidgetRef ref, bool isBusiness, bool isVisa) {
                           fontSize: 13.sp,
                           color: allColors.canvasColor),
                       text: isLoading.value
-                          ? 'PLEASE WAIT...'
-                          : variable.staticData?.submit?.toUpperCase() ?? '',
+                          ? 'Please wait...'
+                          : variable.staticData?.submit?.capitalizeFirstLetter() ?? '',
                       onPressed: () async {
                         FocusScope.of(context).unfocus();
                         if (formKey.currentState!.validate()) {
@@ -101,7 +102,7 @@ requestCallBackPopUp(context, WidgetRef ref, bool isBusiness, bool isVisa) {
                       color: allColors.textColor,
                       size: 18.sp,
                       text: variable.staticData?.requestACallBack
-                              ?.toUpperCase() ??
+                              ?.capitalizeFirstLetter() ??
                           '',
                       weight: FontWeight.w500,
                       padding: EdgeInsets.only(

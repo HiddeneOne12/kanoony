@@ -93,7 +93,7 @@ class _MenuDocumentBodyState extends ConsumerState<MenuDocumentBody> {
                           color: allColors.textColor,
                           size: 18.sp,
                           align: TextAlign.center,
-                          text: variables.title?.toUpperCase() ?? '',
+                          text: capitalizeFirst(variables.title ?? ''),
                           weight: FontWeight.w500,
                           padding: EdgeInsets.only(top: 0.h)),
                       SizedBox(
@@ -143,7 +143,7 @@ class _MenuDocumentBodyState extends ConsumerState<MenuDocumentBody> {
                                         );
                                       },
                                       icon: SvgImagesAssetPath.documentSvg,
-                                      text: toPascalCase(data.title));
+                                      text: capitalizeFirst(data.title));
                                 },
                               ),
                             ),

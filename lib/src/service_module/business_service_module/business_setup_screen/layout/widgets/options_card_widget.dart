@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/common_widgets/common_text_widget.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 
 Widget buildOptionCard(BuildContext context, String title, String description,String more) {
   return Padding(
@@ -66,7 +67,7 @@ Widget buildOptionCard(BuildContext context, String title, String description,St
               child: CommonTextWidget(
                   color: allColors.canvasColor,
                   size: 16.sp,
-                  text: title.toUpperCase(),
+                  text: capitalizeFirst(title),
                   weight: FontWeight.w700,
                   padding: EdgeInsets.only(top: 5.h))),
         ),

@@ -10,6 +10,7 @@ import 'package:kanoony/core/common_widgets/common_snackbar_widget.dart';
 import 'package:kanoony/core/common_widgets/common_text_widget.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/core/routing/routing_config.dart';
 import 'package:kanoony/src/auth_module/login_screen/login_screen.dart';
 import 'package:kanoony/src/dashboard_screen/dashboard_screen.dart';
@@ -105,8 +106,8 @@ class AppMenuProfileDrawer {
                 color: allColors.textColor,
                 size: 24.sp,
                 text: userProfileHelper.userData.name.isNotEmpty
-                    ? userProfileHelper.userData.name.toUpperCase()
-                    : 'GUEST USER',
+                    ? capitalizeFirst(userProfileHelper.userData.name)
+                    : 'Guest user',
                 weight: FontWeight.w700,
                 padding: EdgeInsets.only(top: 15.h, bottom: 5.h)),
             Padding(
@@ -189,7 +190,7 @@ class AppMenuProfileDrawer {
               height: 0.05.sh,
             ),
             DrawerItem(isProfileDrawer: true,
-              text: dashboard.staticData?.dashboard?.toUpperCase() ?? '',
+              text: capitalizeFirst(dashboard.staticData?.dashboard ?? ''),
               onTap: () {
                 index = 3;
                 RoutesUtils.context.push(DashBoardScreen.dashboardRoute);
@@ -201,7 +202,7 @@ class AppMenuProfileDrawer {
             ),
             userProfileHelper.userData.id.isNotEmpty
                 ? DrawerItem(isProfileDrawer: true,
-                    text: dashboard.staticData?.myDocuments?.toUpperCase() ?? '',
+                    text: capitalizeFirst(dashboard.staticData?.myDocuments ?? ''),
                     onTap: () async {
                       if (userProfileHelper.userData.id.isNotEmpty) {
                         RoutesUtils.context
@@ -219,7 +220,7 @@ class AppMenuProfileDrawer {
             userProfileHelper.userData.id.isNotEmpty
                 ? DrawerItem(isProfileDrawer: true,
                     padding: 0.1,
-                    text: dashboard.staticData?.myFavorites?.toUpperCase() ?? '',
+                    text: capitalizeFirst(dashboard.staticData?.myFavorites ?? ''),
                     onTap: () {
                       if (userProfileHelper.userData.id.isNotEmpty) {
                         RoutesUtils.context.push(FavoriteScreen.favoriteRoute);
@@ -236,7 +237,7 @@ class AppMenuProfileDrawer {
                 : SizedBox(),
             DrawerItem(isProfileDrawer: true,
               padding: 0.1,
-              text: 'Privacy Policy'.toUpperCase(),
+              text: 'Privacy policy',
               onTap: () {
                 RoutesUtils.context.push(PrivacyScreen.privacyRoute);
               },
@@ -246,7 +247,7 @@ class AppMenuProfileDrawer {
             ),
             DrawerItem(isProfileDrawer: true,
               padding: 0.1,
-              text: 'Terms of Use'.toUpperCase(),
+              text: 'Terms of use',
               onTap: () {
                 RoutesUtils.context.push(TermsOfUseScreen.termOfUseRoute);
               },
@@ -256,7 +257,7 @@ class AppMenuProfileDrawer {
             ),
             DrawerItem(isProfileDrawer: true,
               padding: 0.1,
-              text: 'Settings'.toUpperCase(),
+              text: 'Settings',
               onTap: () {
                 RoutesUtils.context.pop();
               },
@@ -286,7 +287,7 @@ class AppMenuProfileDrawer {
             userProfileHelper.userData.id.isNotEmpty
                 ? DrawerItem(isProfileDrawer: true,
                     padding: 0.1,
-                    text: 'Logout'.toUpperCase(),
+                    text: 'Logout',
                     onTap: () {
                       confirmationDialogBox(RoutesUtils.context, () async {
                         RoutesUtils.context.pop();

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/src/service_module/widgets/faq_button.dart';
 import '../../../../../core/common_widgets/callback_button.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
@@ -75,7 +77,7 @@ class _BusinessSetupFreeZoneBodyState
                       CommonTextWidget(
                         color: allColors.textColor,
                         size: 20.sp,
-                        text: variables.staticData?.keyFreeZonesInTheUae?.toUpperCase() ?? '',
+                        text: variables.staticData?.keyFreeZonesInTheUae.capitalizeFirstLetter() ?? '',
                         weight: FontWeight.w500,
                         align: TextAlign.start,
                         padding:
@@ -135,9 +137,9 @@ class _BusinessSetupFreeZoneBodyState
                             CommonTextWidget(
                               color: allColors.textColor,
                               size: 20.sp,
-                              text: variables.staticData
-                                      ?.advantagesOfABusinessOdysseyInUaeFreeZones?.toUpperCase() ??
-                                  '',
+                              text: capitalizeFirst(variables.staticData
+                                      ?.advantagesOfABusinessOdysseyInUaeFreeZones ??
+                                  ''),
                               weight: FontWeight.w500,
                               align: TextAlign.start,
                               padding: EdgeInsets.only(
@@ -227,7 +229,7 @@ class _BusinessSetupFreeZoneBodyState
                         color: allColors.textColor,
                         size: 20.sp,
                         text: variables.staticData
-                                ?.blueprintForEstablishingABusinessInUaeFree_?.toUpperCase() ??
+                                ?.blueprintForEstablishingABusinessInUaeFree_.capitalizeFirstLetter() ??
                             '',
                         weight: FontWeight.w500,
                         align: TextAlign.start,

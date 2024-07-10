@@ -3,6 +3,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/routing/routing_config.dart';
 import 'package:kanoony/src/service_module/trademark_module/register_trademark_screen/register_trademark_screen.dart';
 import 'package:kanoony/src/service_module/trademark_module/trademark_screen/layout/widgets/all_expandable_data.dart';
@@ -87,7 +88,7 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                         size: 16  ,
                         align: TextAlign.start,
                         text: variables.staticData
-                                ?.theUaesStrictTrademarkRegistrationSystemAids ??
+                                ?.theUaesStrictTrademarkRegistrationSystemAids.capitalizeFirstLetter() ??
                             '',
                         weight: FontWeight.w400,
                         padding:
@@ -105,7 +106,7 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                         size: 18.sp,
                         align: TextAlign.center,
                         text: variables.staticData
-                                ?.benefitsOfTrademarkRegistrationInUae?.toUpperCase() ??
+                                ?.benefitsOfTrademarkRegistrationInUae ??
                             '',
                         weight: FontWeight.w500,
                         padding: EdgeInsets.only(
@@ -161,7 +162,7 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                                 fontFamily: 'Tajawal'),
                           },
                           data: variables.staticData
-                                  ?.documentsRequiredForTrademarkRegistrationInU?.toUpperCase() ??
+                                  ?.documentsRequiredForTrademarkRegistrationInU??
                               '',
                         ),
                       ),
@@ -190,7 +191,7 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                         size: 18.sp,
                         align: TextAlign.center,
                         text: variables.staticData
-                                ?.trademarkRegistrationInThreeSteps?.toUpperCase() ??
+                                ?.trademarkRegistrationInThreeSteps?.capitalizeFirstLetter() ??
                             '',
                         weight: FontWeight.w500,
                         padding: EdgeInsets.only(

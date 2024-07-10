@@ -69,7 +69,7 @@ class AppEndProfileDrawer {
                                   ? allColors.primaryColor
                                   : allColors.textColor,
                               text: 
-                                  variables.menuContent.first.menuTitle.toUpperCase(),
+                                  capitalizeFirst(variables.menuContent.first.menuTitle),
                               onTap: () {
                                 setState(() {
                                   variables.isLegal = !variables.isLegal;
@@ -103,7 +103,7 @@ class AppEndProfileDrawer {
                                         DrawerItem(
                                           padding: 0.06,
                                           isIcon: true,
-                                          text: toPascalCase(data.categoryName),
+                                          text: capitalizeFirst(data.categoryName),
                                           onTap: () {
                                             setState(() {
                                               if (index == 0) {
@@ -146,7 +146,7 @@ class AppEndProfileDrawer {
                                                   child: DrawerItem(
                                                     padding: 0.06,
                                                     isIcon: false,
-                                                    text: toPascalCase(
+                                                    text: capitalizeFirst(
                                                         data.menuTitle),
                                                     onTap: () {
                                                       RoutesUtils.context.push(
@@ -198,7 +198,7 @@ class AppEndProfileDrawer {
                                                   child: DrawerItem(
                                                     padding: 0.06,
                                                     isIcon: false,
-                                                    text: toPascalCase(
+                                                    text: capitalizeFirst(
                                                         data.menuTitle),
                                                     onTap: () {
                                                       RoutesUtils.context.push(
@@ -245,8 +245,8 @@ class AppEndProfileDrawer {
                                   ? allColors.primaryColor
                                   : allColors.textColor,
                               weight: variables.isSetup ? FontWeight.w700 : FontWeight.w500,
-                              text: variables
-                                  .menuContent[1].categories[0].categoryName.toUpperCase(),
+                              text: capitalizeFirst( variables
+                                  .menuContent[1].categories[0].categoryName),
                               onTap: () {
                                 setState(() {
                                     variables.isSetup = !variables.isSetup;
@@ -299,7 +299,7 @@ class AppEndProfileDrawer {
                                                     DrawerItem(
                                                       padding: 0.06,
                                                       isIcon: false,
-                                                      text: toPascalCase(
+                                                      text: capitalizeFirst(
                                                           data.menuTitle),
                                                       onTap: () {
                                                         if (index == 0) {
@@ -370,7 +370,7 @@ class AppEndProfileDrawer {
                                             variables.isVisa && index == 1
                                         ? FontWeight.w700
                                         : FontWeight.w500,
-                                    text: data.categoryName.toUpperCase(),
+                                    text: capitalizeFirst(data.categoryName),
                                     onTap: () {
                                       setState(() {
                                         if (index == 0) {
@@ -410,7 +410,7 @@ class AppEndProfileDrawer {
                                             child: DrawerItem(
                                               padding: 0.06,
                                               isIcon: false,
-                                              text: toPascalCase(
+                                              text: capitalizeFirst(
                                                   data.menus[0].menuTitle),
                                               onTap: () {
                                                 RoutesUtils.context.push(
@@ -464,7 +464,7 @@ class AppEndProfileDrawer {
                                             child: DrawerItem(
                                               padding: 0.06,
                                               isIcon: false,
-                                              text: toPascalCase(
+                                              text: capitalizeFirst(
                                                   data.menus[0].menuTitle),
                                               onTap: () {
                                                 RoutesUtils.context.push(

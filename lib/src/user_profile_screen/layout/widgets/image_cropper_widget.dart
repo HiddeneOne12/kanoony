@@ -45,7 +45,7 @@ class _ImageCropperState extends State<ImageCropper> {
       appBar: AppBar(
         backgroundColor: allColors.primaryColor,
         title: Text(
-          "Crop Image",
+          "Crop image",
           style: Theme.of(context).textTheme.displayLarge!.copyWith(
               fontWeight: FontWeight.w700, color: allColors.canvasColor),
         ),

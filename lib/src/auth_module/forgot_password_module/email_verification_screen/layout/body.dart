@@ -132,7 +132,7 @@ class _EmailVerificationBodyState extends ConsumerState<EmailVerificationBody> {
                       text: translation.submit,
                       style: Theme.of(context).textTheme.displayLarge!.copyWith(
                             fontWeight: FontWeight.w700,
-                            fontSize: 13.sp,
+                            fontSize: 16,
                             color: allColors.canvasColor,
                           ),
                       onPressed: () async {

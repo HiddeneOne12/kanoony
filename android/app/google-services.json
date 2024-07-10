@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "557517649496-ggs6jq35gvp65lg3rms24j8mtamt4fc4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kanoony",
+            "certificate_hash": "a9fa0664a8682c85892bb719d56fa2cdd3173de0"
+          }
+        },
+        {
           "client_id": "557517649496-rupupg8kjspr3ho5r2tdqpquj12j8cc0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -37,6 +45,13 @@
             {
               "client_id": "557517649496-i34op9grt21lkn26e11gpkm347549q8k.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "557517649496-opaqoc305k21u25rfjuv20vdpdmptgdp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kanoony.ae"
+              }
             }
           ]
         }

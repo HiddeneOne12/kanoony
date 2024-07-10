@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/src/service_module/widgets/golden_visa_points.dart';
 import 'package:kanoony/src/service_module/widgets/points_widget.dart';
 
@@ -106,18 +108,18 @@ class _ExpandableCardsState extends State<ExpandableCards> {
                                       margin: Margins.zero,
                                       padding: HtmlPaddings.zero,
                                       color: allColors.textColor,
-                                      fontSize: FontSize(16.sp),
+                                      fontSize: FontSize(17),
                                       fontWeight: FontWeight.w500,
                                       fontFamily: 'Tajawal'),
                                   "body": Style(
                                       color: allColors.textColor,
                                       margin: Margins.zero,
                                       padding: HtmlPaddings.zero,
-                                      fontSize: FontSize(16.sp),
+                                      fontSize: FontSize(17),
                                       fontWeight: FontWeight.w500,
                                       fontFamily: 'Tajawal'),
                                 },
-                                data: widget.name,
+                                data: widget.name.capitalizeFirstLetter(),
                               ),
                             ),
                           ] else ...[
@@ -125,9 +127,9 @@ class _ExpandableCardsState extends State<ExpandableCards> {
                                 flex: 10,
                                 child: CommonTextWidget(
                                     color: allColors.textColor,
-                                    size: 18,
+                                    size: 16,
                                     align: TextAlign.start,
-                                    text: widget.name.toUpperCase(),
+                                    text: widget.name,
                                     weight: FontWeight.w500,
                                     padding: noPadding)),
                           ],
@@ -165,7 +167,7 @@ class _ExpandableCardsState extends State<ExpandableCards> {
                             color: allColors.textColor,
                             size: 16,
                             align: TextAlign.start,
-                            text: widget.isWillTitle,
+                            text: widget.isWillTitle.capitalizeFirstLetter() ?? "",
                             weight: FontWeight.w700,
                             padding: EdgeInsets.only(bottom: 5.h)),
                         CommonTextWidget(
@@ -200,7 +202,7 @@ class _ExpandableCardsState extends State<ExpandableCards> {
                         ],
                         CommonTextWidget(
                             color: allColors.textColor,
-                            size: 15.sp,
+                            size: 16,
                             align: TextAlign.start,
                             text: widget.point7,
                             weight: FontWeight.w700,
@@ -225,9 +227,9 @@ class _ExpandableCardsState extends State<ExpandableCards> {
                       if (widget.isEight) ...[
                         CommonTextWidget(
                             color: allColors.textColor,
-                            size: 15.sp,
+                            size: 16,
                             align: TextAlign.start,
-                            text: widget.isWillTitle,
+                            text: widget.isWillTitle.capitalizeFirstLetter() ?? "",
                             weight: FontWeight.w700,
                             padding: EdgeInsets.only(bottom: 5.h, top: 5.h)),
                         PointsWidget(point: widget.point1),
@@ -271,7 +273,7 @@ class _ExpandableCardsState extends State<ExpandableCards> {
                               color: allColors.textColor,
                               size: 18.sp,
                               align: TextAlign.start,
-                              text: widget.isWillTitle,
+                              text: widget.isWillTitle.capitalizeFirstLetter() ?? "",
                               weight: FontWeight.w500,
                               padding: EdgeInsets.only(
                                   bottom: 10.h,

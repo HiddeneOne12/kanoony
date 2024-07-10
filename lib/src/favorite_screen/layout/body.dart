@@ -74,7 +74,7 @@ class _FavoriteBodyState extends ConsumerState<FavoriteBody> {
                       children: [
                         variables2.isLoaded || variables2.content?.isEmpty == true
                             ? const SizedBox()
-                            : Text("FAVORITES",style: Theme.of(context).textTheme.labelMedium!.copyWith(fontSize: 18,fontWeight: FontWeight.w700),),
+                            : Text("Favorites",style: Theme.of(context).textTheme.labelMedium!.copyWith(fontSize: 18,fontWeight: FontWeight.w700),),
                         const SizedBox(height: 10,),
                         variables2.isLoaded
                             ? const ShimmerFaqCard()
@@ -125,7 +125,7 @@ class _FavoriteBodyState extends ConsumerState<FavoriteBody> {
                                                           color: allColors
                                                               .textColor,
                                                           size: 16,
-                                                          text: toPascalCase(
+                                                          text: capitalizeFirst(
                                                               variables2
                                                                   .content![
                                                                       index]

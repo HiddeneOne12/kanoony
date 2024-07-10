@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/src/service_module/widgets/expandable_card.dart';
 
 import '../../../../core/common_widgets/callback_button.dart';
@@ -97,7 +98,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                             CommonTextWidget(
                               color: allColors.canvasColor,
                               size: 18.sp,
-                              text: variables.staticData?.goldenVisaBenefits?.toUpperCase() ??
+                              text: variables.staticData?.goldenVisaBenefits ??
                                   '',
                               weight: FontWeight.w500,
                               align: TextAlign.center,
@@ -164,7 +165,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                         size: 18.sp,
                         align: TextAlign.start,
                         text: variables.staticData
-                                ?.categories_EligibilityRequirements?.toUpperCase() ??
+                                ?.categories_EligibilityRequirements ??
                             '',
                         weight: FontWeight.w500,
                         padding:
@@ -240,7 +241,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                               color: allColors.canvasColor,
                               size: 18.sp,
                               text: variables.staticData
-                                      ?.goldenVisasForPropertyOwnersScenarios?.toUpperCase() ??
+                                      ?.goldenVisasForPropertyOwnersScenarios ??
                                   '',
                               weight: FontWeight.w500,
                               align: TextAlign.start,
@@ -255,7 +256,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                               isSix: false,
                               isWillTitle:
                                   variables.staticData?.titleDeed  ?? '',
-                              name: variables.staticData?.option_01?.toUpperCase() ?? '',
+                              name: variables.staticData?.option_01 ?? '',
                               isSeven: false,
                               isThree: false,
                               point1: variables.staticData
@@ -297,7 +298,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                               isSix: false,
                               isWillTitle:
                                   variables.staticData?.titleDeed ?? '',
-                              name: variables.staticData?.option_02?.toUpperCase() ?? '',
+                              name: variables.staticData?.option_02 ?? '',
                               isSeven: false,
                               isThree: false,
                               point1: variables.staticData
@@ -342,7 +343,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                               isSix: false,
                               isWillTitle:
                                   variables.staticData?.offplanProperty ?? '',
-                              name: variables.staticData?.option_03?.toUpperCase() ?? '',
+                              name: variables.staticData?.option_03 ?? '',
                               isSeven: false,
                               isThree: false,
                               point1:
@@ -392,7 +393,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                               isVisa: true,
                               isSix: false,
                               isWillTitle:
-                                  variables.staticData?.titleDeedWithPartner?.toUpperCase() ??
+                                  variables.staticData?.titleDeedWithPartner ??
                                       '',
                               name: variables.staticData?.option_04 ?? '',
                               isSeven: false,
@@ -571,7 +572,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                         isWillTitle:
                             variables.staticData?.goldenVisaRequirements ?? '',
                         name: variables.staticData
-                                ?.goldenVisaForSpecialistsInEngineering_Scienc ??
+                                ?.goldenVisaForSpecialistsInEngineering_Scienc  ??
                             '',
                         isSeven: false,
                         isThree: false,
@@ -633,7 +634,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                         isWillTitle:
                             variables.staticData?.goldenVisaRequirements ?? '',
                         name:
-                            variables.staticData?.goldenVisaForSpecialTalent ??
+                            variables.staticData?.goldenVisaForSpecialTalent  ??
                                 '',
                         isSeven: false,
                         isThree: false,

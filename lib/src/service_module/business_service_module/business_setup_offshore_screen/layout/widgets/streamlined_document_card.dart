@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 
 import '../../../../../../core/constants/object_constants/object_constants.dart';
 
@@ -22,14 +23,14 @@ class StreamLinedCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 235.h,
+      height: 240.h,
       child: Padding(
         padding: EdgeInsets.only(right: 10.h),
         child: InkWell(
           onTap: () async {},
           child: Container(
-            height: 214.h,
-            width: 215.h,
+            height: 240.h,
+            width: 220.h,
             decoration: BoxDecoration(
               color: allColors.canvasColor,
               borderRadius: BorderRadius.all(
@@ -37,7 +38,7 @@ class StreamLinedCard extends StatelessWidget {
               ),
             ),
             child: Padding(
-              padding: EdgeInsets.all(16.h),
+              padding: EdgeInsets.all(12.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -64,7 +65,7 @@ class StreamLinedCard extends StatelessWidget {
                                 .copyWith(
                                     color: allColors.textColor,
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 11.sp),
+                                    fontSize: 14),
                             textAlign: TextAlign.center,
                           ),
                           SizedBox(
@@ -89,23 +90,23 @@ class StreamLinedCard extends StatelessWidget {
                     height: 15.h,
                   ),
                   Text(
-                    title,
+                    title.capitalizeFirstLetter() ?? "",
                     style: Theme.of(context).textTheme.displaySmall!.copyWith(
                         color: allColors.textColor,
                         fontWeight: FontWeight.w500,
-                        fontSize: 14.sp),
-                    textAlign: TextAlign.justify,
-                  ),
+                        fontSize: 16),
+                   ),
                   SizedBox(
                     height: 10.h,
                   ),
                   Text(
-                    description,
+                    description.capitalizeFirstLetter() ?? "",
+                    maxLines: 4,
                     style: Theme.of(context).textTheme.displaySmall!.copyWith(
                         color: allColors.textColor,
                         fontWeight: FontWeight.w400,
-                        fontSize: 10.sp),
-                    textAlign: TextAlign.justify,
+                        
+                        fontSize: 13),
                   ),
                 ],
               ),

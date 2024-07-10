@@ -50,7 +50,7 @@ class _PaidDocListingItemsState extends State<PaidDocListingItems> {
                     color: allColors.textColor,
                     size: 18.sp,
                     align: TextAlign.center,
-                    text: widget.title.toUpperCase(),
+                    text: capitalizeFirst(widget.title),
                     weight: FontWeight.w500,
                     padding: EdgeInsets.only(top: 0.h)),
                 SizedBox(
@@ -114,7 +114,7 @@ class _PaidDocListingItemsState extends State<PaidDocListingItems> {
                                               color: allColors.textColor,
                                              size: 17.sp,
                                               align: TextAlign.start,
-                                              text: data.title.toUpperCase(),
+                                              text: capitalizeFirst(data.title),
                                               weight: FontWeight.w500,
                                               padding:
                                                   EdgeInsets.only(top: 05.h,bottom: 5.h))),
@@ -198,7 +198,7 @@ class _PaidDocListingItemsState extends State<PaidDocListingItems> {
                                                                 size: 17.sp,
                                                                 align: TextAlign
                                                                     .start,
-                                                                text: toPascalCase(
+                                                                text: capitalizeFirst(
                                                                     data.title),
                                                                 weight:
                                                                     FontWeight
@@ -284,7 +284,7 @@ class _PaidDocListingItemsState extends State<PaidDocListingItems> {
                                                               },
                                                               icon: SvgImagesAssetPath
                                                                   .documentSvg,
-                                                              text: toPascalCase(
+                                                              text: capitalizeFirst(
                                                                   data.title),
                                                               price: data
                                                                   .documentPrice);

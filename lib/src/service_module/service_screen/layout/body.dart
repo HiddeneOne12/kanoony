@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/src/service_module/trademark_module/trademark_screen/trademark_screen.dart';
 import '../../../../core/common_widgets/common_appbar.dart';
@@ -76,7 +77,7 @@ class _ServicesBodyState extends ConsumerState<ServicesBody> {
                               size: 20.sp,
                               text: dashboardVariables
                                       .staticData?.corporateService
-                                      ?.toUpperCase() ??
+                                      ?.capitalizeFirstLetter() ??
                                   '', 
                               weight: FontWeight.w500,
                               padding:
@@ -99,7 +100,7 @@ class _ServicesBodyState extends ConsumerState<ServicesBody> {
                                               .businessSetupRoute);
                                     },
                                     icon: SvgImagesAssetPath.businessSvg,
-                                    text: toPascalCase(dashboardVariables
+                                    text: capitalizeFirst(dashboardVariables
                                             .staticData?.setupABusiness ??
                                         '')),
                                 ServiceCard(
@@ -108,13 +109,13 @@ class _ServicesBodyState extends ConsumerState<ServicesBody> {
                                           .push(TradeMarkScreen.trademarkRoute);
                                     },
                                     icon: SvgImagesAssetPath.tradeMarkSvg,
-                                    text: toPascalCase(dashboardVariables
+                                    text: capitalizeFirst(dashboardVariables
                                             .staticData?.registerATrademark ??
                                         '')),
                                 ServiceCard(
                                     onTap: () {},
                                     icon: SvgImagesAssetPath.willSvg,
-                                    text: toPascalCase(dashboardVariables
+                                    text: capitalizeFirst(dashboardVariables
                                             .staticData?.registerAWill ??
                                         '')),
                                 ServiceCard(
@@ -123,7 +124,7 @@ class _ServicesBodyState extends ConsumerState<ServicesBody> {
                                           DocTranslateScreen.docTranslateRoute);
                                     },
                                     icon: SvgImagesAssetPath.documentSvg,
-                                    text: toPascalCase(dashboardVariables
+                                    text: capitalizeFirst(dashboardVariables
                                             .staticData?.translateADocument ??
                                         '')),
                                 ServiceCard(
@@ -132,7 +133,7 @@ class _ServicesBodyState extends ConsumerState<ServicesBody> {
                                           .push(GoldenVisaScreen.visaRoute);
                                     },
                                     icon: SvgImagesAssetPath.visaSvg,
-                                    text: toPascalCase(dashboardVariables
+                                    text: capitalizeFirst(dashboardVariables
                                             .staticData?.goldenVisa ??
                                         '')),
                               ],

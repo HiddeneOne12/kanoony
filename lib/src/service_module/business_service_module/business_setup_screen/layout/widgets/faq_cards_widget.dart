@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/common_widgets/common_text_widget.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 
 import '../../../../../../core/constants/static_constants/static_constants.dart';
 
@@ -67,7 +69,7 @@ class _FaqItemsState extends State<FaqItems> {
                                 color: allColors.textColor,
                                 size:16,
                                 align: TextAlign.start,
-                                text: widget.name.toUpperCase(),
+                                text: widget.name.capitalizeFirstLetter()??"",
                                 weight: FontWeight.w500,
                                 padding: EdgeInsets.only(top: 0.h))),
                         Padding(
@@ -99,7 +101,7 @@ class _FaqItemsState extends State<FaqItems> {
                         color: allColors.textColor,
                         size: 16,
                         align: TextAlign.justify,
-                        text: widget.description,
+                        text: widget.description.capitalizeFirstLetter()??"",
                         weight: FontWeight.w400,
                         padding: EdgeInsets.only(
                             bottom: 5.h,

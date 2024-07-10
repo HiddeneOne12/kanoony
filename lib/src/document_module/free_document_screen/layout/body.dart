@@ -114,7 +114,7 @@ class _FreeDocumentBodyState extends ConsumerState<FreeDocumentBody> {
                                         );
                                       },
                                       icon: SvgImagesAssetPath.documentSvg,
-                                      text: toPascalCase(data.title));
+                                      text: capitalizeFirst(data.title));
                                 },
                               ),
                             ),

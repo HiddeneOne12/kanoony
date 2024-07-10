@@ -43,9 +43,10 @@ class BusinessMainLandServiceCard extends StatelessWidget {
                   SizedBox(height: 20.h),
                   CommonTextWidget(
                       color: allColors.blackColor,
-                      size: 14.sp,
+                      size: 15,
                       text: text,
                       weight: FontWeight.w500,
+                      maxLine: 1,
                       padding: noPadding)
                 ],
               ),

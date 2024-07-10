@@ -181,10 +181,9 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                               : CommonTextWidget(
                                   color: allColors.textColor,
                                   size: 20.sp,
-                                  text: dashboardVariables
-                                          .staticData?.contractTemplates
-                                          ?.toUpperCase() ??
-                                      '',
+                                  text: capitalizeFirst(dashboardVariables
+                                          .staticData?.contractTemplates ??
+                                      ''),
                                   weight: FontWeight.w500,
                                   padding: EdgeInsets.only(
                                       left: 16.h,
@@ -246,8 +245,8 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                                     );
                                                   },
                                                   icon: icons[index],
-                                                  text:
-                                                      toPascalCase(data.title)),
+                                                  text: capitalizeFirst(
+                                                      data.title)),
                                             ),
                                           );
                                         },
@@ -260,10 +259,10 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                               : CommonTextWidget(
                                   color: allColors.textColor,
                                   size: 20.sp,
-                                  text: dashboardVariables
+                                  text: capitalizeFirst(dashboardVariables
                                           .staticData?.corporateService
-                                          ?.toUpperCase() ??
-                                      '',
+                                           ??
+                                      ''),
                                   weight: FontWeight.w500,
                                   padding: EdgeInsets.only(
                                       left: 16.h, right: 16.h, top: 10.h)),
@@ -293,9 +292,10 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                                   .businessSetupRoute);
                                         },
                                         icon: SvgImagesAssetPath.businessSvg,
-                                        text: toPascalCase(dashboardVariables
-                                                .staticData?.setupABusiness ??
-                                            '')),
+                                        text: capitalizeFirst(
+                                            dashboardVariables.staticData
+                                                    ?.setupABusiness ??
+                                                '')),
                                     ServiceCard(
                                         onTap: () {
                                           var variables = ref.watch(
@@ -310,10 +310,10 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                               TradeMarkScreen.trademarkRoute);
                                         },
                                         icon: SvgImagesAssetPath.tradeMarkSvg,
-                                        text: toPascalCase(dashboardVariables
-                                                .staticData
-                                                ?.registerATrademark ??
-                                            '')),
+                                        text: capitalizeFirst(
+                                            dashboardVariables.staticData
+                                                    ?.registerATrademark ??
+                                                '')),
                                     ServiceCard(
                                         onTap: () {
                                           var variables = ref.watch(
@@ -328,9 +328,10 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                               RegisterWillScreen.willRoute);
                                         },
                                         icon: SvgImagesAssetPath.willSvg,
-                                        text: toPascalCase(dashboardVariables
-                                                .staticData?.registerAWill ??
-                                            '')),
+                                        text: capitalizeFirst(
+                                            dashboardVariables.staticData
+                                                    ?.registerAWill ??
+                                                '')),
                                     ServiceCard(
                                         onTap: () {
                                           var variables = ref.watch(
@@ -346,10 +347,10 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                                   .docTranslateRoute);
                                         },
                                         icon: SvgImagesAssetPath.documentSvg,
-                                        text: toPascalCase(dashboardVariables
-                                                .staticData
-                                                ?.translateADocument ??
-                                            '')),
+                                        text: capitalizeFirst(
+                                            dashboardVariables.staticData
+                                                    ?.translateADocument ??
+                                                '')),
                                     ServiceCard(
                                         onTap: () {
                                           var variables = ref.watch(
@@ -364,9 +365,10 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                               .push(GoldenVisaScreen.visaRoute);
                                         },
                                         icon: SvgImagesAssetPath.visaSvg,
-                                        text: toPascalCase(dashboardVariables
-                                                .staticData?.goldenVisa ??
-                                            '')),
+                                        text: capitalizeFirst(
+                                            dashboardVariables
+                                                    .staticData?.goldenVisa ??
+                                                '')),
                                   ],
                                 ),
                           SizedBox(height: 10.h),
@@ -384,10 +386,10 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                       : CommonTextWidget(
                                           color: allColors.textColor,
                                           size: 20.sp,
-                                          text: dashboardVariables.staticData
+                                          text: capitalizeFirst(dashboardVariables.staticData
                                                   ?.contractTemplatePackages
-                                                  ?.toUpperCase() ??
-                                              '',
+                                                   ??
+                                              ''),
                                           weight: FontWeight.w500,
                                           padding: EdgeInsets.only(
                                               right: isArabic ? 0 : 20.h,

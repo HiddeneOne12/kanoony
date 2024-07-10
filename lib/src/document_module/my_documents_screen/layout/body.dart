@@ -80,7 +80,7 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                         variables2.isLoaded || variables2.content?.isEmpty == true
                             ? const SizedBox()
                             : Text(
-                                "MY DOCUMENTS",
+                                "My documents",
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelMedium!
@@ -142,7 +142,7 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                                                           color: allColors
                                                               .textColor,
                                                           size: 16,
-                                                          text: toPascalCase(
+                                                          text: capitalizeFirst(
                                                               variables2
                                                                   .content![
                                                                       index]

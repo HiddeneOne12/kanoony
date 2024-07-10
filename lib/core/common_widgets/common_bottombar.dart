@@ -45,35 +45,23 @@ class _CommonBottomBarState extends ConsumerState<CommonBottomBar> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            height: 22.h,
-                            width: 22.h,
-                            child: SvgPicture.asset(
-                              SvgImagesAssetPath.icHome,
-                              color: allColors.primaryColor,
-                            ),
-                          ),
+                          const Icon(Icons.home,size: 25,),
                           CommonTextWidget(
-                              color: allColors.primaryColor,
+                            height: 0.6,
+                              color: allColors.textColor,
                               size: 11,
                               text: StaticTextTranslations().home,
                               weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 5 .h))
+                              padding: EdgeInsets.only(top: 9.h))
                         ],
                       ),
                       icon: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            height: 22.h,
-                            width: 22.h,
-                            child: SvgPicture.asset(
-                              SvgImagesAssetPath.icHome,
-                              color: allColors.textColor,
-                            ),
-                          ),
+                          const Icon(Icons.home,size: 25,),
                           CommonTextWidget(
+                            height: 0.6,
                               color: allColors.textColor,
                               size: 11,
                               text: StaticTextTranslations().home,
@@ -82,44 +70,62 @@ class _CommonBottomBarState extends ConsumerState<CommonBottomBar> {
                         ],
                       )),
                   BottomNavigationBarItem(
-                      activeIcon: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                     
-                            child: SvgPicture.asset(
-                              SvgImagesAssetPath.willSvg,
-                              color: allColors.primaryColor,
+                      activeIcon: Padding(
+                        padding: const EdgeInsets.only(right: 15.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                                                        const SizedBox(height: 7,),
+
+                            SizedBox(
+                              height: 19,
+                              width: 19,
+                              child: SvgPicture.asset(
+                                SvgImagesAssetPath.willSvg,
+                                color: allColors.primaryColor,
+                                 height: 19,
+                              width: 19,
+                              ),
                             ),
-                          ),
-                          CommonTextWidget(
-                              color: allColors.primaryColor,
-                              size: 11,
-                              text: StaticTextTranslations().corporateServices,
-                              weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 9.h))
-                        ],
+                            CommonTextWidget(
+                                maxLine: 1,
+                                color: allColors.primaryColor,
+                                size: 11,
+                                 text:
+                                    StaticTextTranslations().corporateServices,
+                                weight: FontWeight.w400,
+                                padding: EdgeInsets.only(top: 7.h))
+                          ],
+                        ),
                       ),
-                      icon: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 20.h,
-                            width: 20.h,
-                            child: SvgPicture.asset(
-                              SvgImagesAssetPath.willSvg,
-                              color: allColors.textColor,
+                      icon: Padding(
+                        padding: const EdgeInsets.only(right: 15.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(height: 7,),
+                            SizedBox(
+                              height: 19,
+                              width: 19,
+                              child: SvgPicture.asset(
+                                SvgImagesAssetPath.willSvg,
+                                color: allColors.textColor,
+                                 height: 19,
+                              width: 19,
+                              ),
                             ),
-                          ),
-                          CommonTextWidget(
-                              color: allColors.textColor,
-                              size: 11,
-                              text: StaticTextTranslations().corporateServices,
-                              weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 9.h))
-                        ],
+                            CommonTextWidget(
+                                maxLine: 1,
+                                color: allColors.textColor,
+                                size: 11,
+                                 text:
+                                    StaticTextTranslations().corporateServices,
+                                weight: FontWeight.w400,
+                                padding: EdgeInsets.only(top: 7.h))
+                          ],
+                        ),
                       ),
                       label: ''),
                   BottomNavigationBarItem(
@@ -127,12 +133,15 @@ class _CommonBottomBarState extends ConsumerState<CommonBottomBar> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          const SizedBox(height: 3,),
                           SizedBox(
-                            height: 23.h,
-                            width: 23.h,
+                            height: 23,
+                            width: 23,
                             child: SvgPicture.asset(
                               SvgImagesAssetPath.paperSvg,
                               color: allColors.primaryColor,
+                               height: 23,
+                            width: 23,
                             ),
                           ),
                           CommonTextWidget(
@@ -140,19 +149,23 @@ class _CommonBottomBarState extends ConsumerState<CommonBottomBar> {
                               size: 11,
                               text: StaticTextTranslations().templatePackages,
                               weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 9.h))
+                              padding: EdgeInsets.only(top: 5.h))
                         ],
                       ),
                       icon: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                                                    const SizedBox(height: 3,),
+
                           SizedBox(
-                            height: 23.h,
-                            width: 23.h,
+                            height: 23,
+                            width: 23,
                             child: SvgPicture.asset(
                               SvgImagesAssetPath.paperSvg,
                               color: allColors.textColor,
+                               height: 23,
+                            width: 23,
                             ),
                           ),
                           CommonTextWidget(
@@ -160,7 +173,7 @@ class _CommonBottomBarState extends ConsumerState<CommonBottomBar> {
                               size: 11,
                               text: StaticTextTranslations().templatePackages,
                               weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 9.h))
+                              padding: EdgeInsets.only(top: 7.h))
                         ],
                       ),
                       label: ''),
@@ -186,7 +199,8 @@ class _CommonBottomBarState extends ConsumerState<CommonBottomBar> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          const SizedBox(height: 2,)
+,                          Icon(
                             Icons.dashboard_customize_outlined,
                             size: 23.h,
                             color: allColors.textColor,
@@ -196,11 +210,11 @@ class _CommonBottomBarState extends ConsumerState<CommonBottomBar> {
                               size: 11,
                               text: StaticTextTranslations().dashboard,
                               weight: FontWeight.w400,
-                              padding: EdgeInsets.only(top: 9.h))
+                              padding: EdgeInsets.only(top: 7.h))
                         ],
                       ),
                       label: ''),
-        ]
+                ],
       ),
     );
   }

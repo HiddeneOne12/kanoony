@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/src/document_module/document_details_screen/provider/doc_detail_provider.dart';
 
 import '../../../../../core/common_widgets/common_text_widget.dart';
@@ -65,7 +66,7 @@ class RelatedDocumentWidget extends ConsumerWidget {
                         color: allColors.textColor,
                         align: TextAlign.center,
                         size: 13,
-                        text: data?.title.toUpperCase() ?? '',
+                        text: capitalizeFirst(data?.title ?? ''),
                         maxLine: 3,
                         weight: FontWeight.w500,
                         padding: EdgeInsets.only(

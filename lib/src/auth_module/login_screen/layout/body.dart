@@ -169,7 +169,7 @@ class _LoginBodyState extends ConsumerState<LoginBody> {
                               .displayLarge!
                               .copyWith(
                                 fontWeight: FontWeight.w700,
-                                fontSize: 13.sp,
+                                fontSize: 16,
                                 color: allColors.canvasColor,
                               ),
                           onPressed: () async {

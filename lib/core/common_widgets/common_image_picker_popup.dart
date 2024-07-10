@@ -22,7 +22,7 @@ showImagePickupPopUp(
           titlePadding: EdgeInsets.only(top: 15.h, bottom: 10.h),
           contentPadding: EdgeInsets.all(0.h),
           title: Text(
-            "Pick Image",
+            "Pick image",
             style: Theme.of(context).textTheme.displayLarge!.copyWith(
                 fontSize: 17.sp,
                 fontWeight: FontWeight.w700,

@@ -5,6 +5,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/src/dashboard_screen/provider/dashboard_provider.dart';
 import 'package:kanoony/src/service_module/trademark_module/provider/trademark_provider.dart';
 
@@ -59,7 +60,7 @@ class _FooterWidgetState extends ConsumerState<FooterWidget> {
                     fontFamily: 'Tajawal'),
               },
               data: widget.variables.staticData
-                      ?.downloadUaeTrademarkLawNiceClassification?.toUpperCase() ??
+                      ?.downloadUaeTrademarkLawNiceClassification  ??
                   '',
             ),
           ),

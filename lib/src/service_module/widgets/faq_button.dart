@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 import '../../../core/common_widgets/common_text_widget.dart';
 import '../../../core/constants/object_constants/object_constants.dart';
 import '../../../core/constants/static_constants/static_constants.dart';
@@ -67,7 +68,7 @@ class _FaqButtonState extends ConsumerState<FaqButton> {
                       color: allColors.canvasColor,
                       size: 16.sp,
                       text:
-                          variables.staticData?.frequentlyAskedQuestions ?? '',
+                          variables.staticData?.frequentlyAskedQuestions.capitalizeFirstLetter() ?? '',
                       weight: FontWeight.w500,
                       align: TextAlign.start,
                       padding: noPadding,

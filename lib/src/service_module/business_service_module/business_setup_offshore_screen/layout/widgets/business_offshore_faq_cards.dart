@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 
 import '../../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../../core/constants/object_constants/object_constants.dart';
@@ -67,9 +68,9 @@ class _BusinessOffShoreFaqCardsState extends State<BusinessOffShoreFaqCards> {
                             flex: 10,
                             child: CommonTextWidget(
                                 color: allColors.textColor,
-                                size: 14.sp,
+                                size: 16,
                                 align: TextAlign.start,
-                                text: widget.name,
+                                text: widget.name.capitalizeFirstLetter() ??"",
                                 weight: FontWeight.w500,
                                 padding: EdgeInsets.only(
                                     left: isArabic ? 0 : 10.h,
@@ -87,7 +88,7 @@ class _BusinessOffShoreFaqCardsState extends State<BusinessOffShoreFaqCards> {
                                   ? Icons.keyboard_arrow_up
                                   : Icons.keyboard_arrow_down,
                               color: allColors.textColor,
-                              size: 13.h,
+                              size: 20.h,
                             ),
                           ),
                         ),
@@ -100,9 +101,9 @@ class _BusinessOffShoreFaqCardsState extends State<BusinessOffShoreFaqCards> {
                     ),
                     CommonTextWidget(
                         color: allColors.textColor,
-                        size: 11.sp,
+                        size: 16,
                         align: TextAlign.justify,
-                        text: widget.description,
+                        text: widget.description.capitalizeFirstLetter() ?? "",
                         weight: FontWeight.w400,
                         padding: EdgeInsets.only(
                             right: isArabic ? 0 : 20.h,

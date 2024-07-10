@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/src/service_module/business_service_module/business_setup_mainland_screen/layout/widgets/business_mainland_faq_cards.dart';
 import 'package:kanoony/src/service_module/widgets/cards_popup.dart';
 
@@ -64,7 +66,7 @@ class _BusinessSetupMainLandBodyState
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        height: 10.h,
+                        height: 20.h,
                       ),
                       Padding(
                         padding: EdgeInsets.only(
@@ -73,11 +75,12 @@ class _BusinessSetupMainLandBodyState
                         ),
                         child: const CallBackButton(),
                       ),
+                      SizedBox(height: 10,),
                       CommonTextWidget(
                         color: allColors.textColor,
                         size: 20.sp,
                         text: variables.staticData
-                                ?.whyChooseMainlandCompanyFormationInDubai?.toUpperCase() ??
+                                ?.whyChooseMainlandCompanyFormationInDubai.capitalizeFirstLetter() ??
                             '',
                         weight: FontWeight.w500,
                         align: TextAlign.start,
@@ -88,10 +91,10 @@ class _BusinessSetupMainLandBodyState
                       GridView.count(
                         crossAxisCount: 2,
                         shrinkWrap: true,
-                        childAspectRatio: 1.5,
+                        childAspectRatio: 1.4,
                         crossAxisSpacing: 7.h,
                         padding:
-                            EdgeInsets.only(left: 16.h, right: 16.h, top: 15.h),
+                            EdgeInsets.only(left: 16.h, right: 16.h, top: 12.h),
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
                           BusinessMainLandServiceCard(
@@ -268,9 +271,9 @@ class _BusinessSetupMainLandBodyState
                             CommonTextWidget(
                               color: allColors.canvasColor,
                               size: 20.sp,
-                              text: variables.staticData
-                                      ?.processForEstablishingAMainlandCompanyInDub?.toUpperCase() ??
-                                  '',
+                              text: capitalizeFirst(variables.staticData
+                                      ?.processForEstablishingAMainlandCompanyInDub ??
+                                  ''),
                               weight: FontWeight.w500,
                               align: TextAlign.start,
                               padding: EdgeInsets.only(

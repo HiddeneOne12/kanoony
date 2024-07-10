@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 
 import '../../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../../core/constants/object_constants/object_constants.dart';
@@ -52,9 +53,10 @@ class BusinessFreeZoneServiceCard extends StatelessWidget {
                     alignment: Alignment.center,
                     child: CommonTextWidget(
                         color: allColors.blackColor,
-                        size: 12.sp,
-                        text: text,
+                        size:14,
+                        text: text.capitalizeFirstLetter() ?? "",
                         weight: FontWeight.w500,
+                        maxLine: 1,
                         padding: noPadding),
                   )
                 ],

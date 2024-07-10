@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/common_widgets/common_payment_popup.dart';
 import 'package:kanoony/core/common_widgets/common_snackbar_widget.dart';
+import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 
 import 'package:kanoony/src/packages_screen/layout/widgets/package_cards.dart';
 import '../../../core/common_widgets/common_appbar.dart';
@@ -84,10 +85,10 @@ class _PackageBodyState extends ConsumerState<PackageBody> {
                           : CommonTextWidget(
                           color: allColors.textColor,
                           size: 20.sp,
-                          text: dashboardVariables
+                          text: capitalizeFirst(dashboardVariables
                                   .staticData?.contractTemplatePackages
-                                  ?.toUpperCase() ??
-                              '',
+                                  ??
+                              ''),
                           weight: FontWeight.w500,
                           padding: EdgeInsets.only(left: 16.h, right: 16.h)),
                       dashboardVariables.isLoaded

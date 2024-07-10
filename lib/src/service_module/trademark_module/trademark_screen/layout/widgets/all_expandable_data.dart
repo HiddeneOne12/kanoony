@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/src/dashboard_screen/provider/dashboard_provider.dart';
 
 import '../../../../../../core/common_widgets/common_text_widget.dart';
@@ -21,7 +22,7 @@ class AllExpandableData extends StatelessWidget {
           size: 18.sp,
           align: TextAlign.start,
           text:
-              variables.staticData?.trademarkRegistrationRequirementsInTheUae?.toUpperCase() ??
+              variables.staticData?.trademarkRegistrationRequirementsInTheUae?.capitalizeFirstLetter() ??
                   '',
           weight: FontWeight.w500,
           padding:
@@ -92,7 +93,7 @@ class AllExpandableData extends StatelessWidget {
           size: 18.sp,
           align: TextAlign.start,
           text: variables
-                  .staticData?.trademarkRegistrationForIndividualsBusinesses_?.toUpperCase() ??
+                  .staticData?.trademarkRegistrationForIndividualsBusinesses_?.capitalizeFirstLetter() ??
               '',
           weight: FontWeight.w500,
           padding:
