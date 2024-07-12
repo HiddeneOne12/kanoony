@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/constants/values.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/src/service_module/widgets/faq_button.dart';
@@ -25,8 +26,9 @@ class BusinessSetupFreeZoneBody extends ConsumerStatefulWidget {
       _BusinessSetupFreeZoneBodyState();
 }
 
-class _BusinessSetupFreeZoneBodyState
-    extends ConsumerState<BusinessSetupFreeZoneBody> {
+class _BusinessSetupFreeZoneBodyState extends ConsumerState<BusinessSetupFreeZoneBody> {
+  bool selectedItem = false;
+  bool bluePrintSelected = false;
   @override
   Widget build(BuildContext context) {
     var variables = ref.watch(allProviderList.dashboardProvider);
@@ -77,7 +79,9 @@ class _BusinessSetupFreeZoneBodyState
                       CommonTextWidget(
                         color: allColors.textColor,
                         size: 20.sp,
-                        text: variables.staticData?.keyFreeZonesInTheUae.capitalizeFirstLetter() ?? '',
+                        text: variables.staticData?.keyFreeZonesInTheUae
+                                .capitalizeFirstLetter() ??
+                            '',
                         weight: FontWeight.w500,
                         align: TextAlign.start,
                         padding:
@@ -134,112 +138,179 @@ class _BusinessSetupFreeZoneBodyState
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CommonTextWidget(
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.86,
+                                  child: CommonTextWidget(
+                                    color: allColors.textColor,
+                                    size: 20.sp,
+                                    text: capitalizeFirst(variables.staticData
+                                            ?.advantagesOfABusinessOdysseyInUaeFreeZones ??
+                                        ''),
+                                    weight: FontWeight.w500,
+                                    align: TextAlign.start,
+                                    padding: EdgeInsets.only(
+                                        left: 16.h, right: 16.h, top: 10.h),
+                                  ),
+                                ),
+                                const Spacer(),
+                                InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selectedItem = !selectedItem;
+                                      });
+                                    },
+                                    child: Icon(
+                                      selectedItem
+                                          ? Icons.keyboard_arrow_up
+                                          : Icons.keyboard_arrow_down,
+                                      color: allColors.textColor,
+                                      size: 25,
+                                    )),
+                                const SizedBox(
+                                  width: 20,
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            if (selectedItem) ...[
+                              BusinessOffShoreFaqCards(
+                                description: variables.staticData
+                                        ?.enjoyTheLibertyOf_100ForeignOwnershipWithout ??
+                                    '',
+                                name:
+                                    variables.staticData?.unbridledOwnership ??
+                                        '',
+                              ),
+                              BusinessOffShoreFaqCards(
+                                description: variables.staticData
+                                        ?.freelyTransferYourProfitsAndCapitalOutsideT ??
+                                    '',
+                                name: variables.staticData
+                                        ?.unrestrictedProfitMovements ??
+                                    '',
+                              ),
+                              BusinessOffShoreFaqCards(
+                                description: variables.staticData
+                                        ?.experienceZeroCustomsDutiesOnGoodsAndServic ??
+                                    '',
+                                name:
+                                    variables.staticData?.dutyfreeOperations ??
+                                        '',
+                              ),
+                              BusinessOffShoreFaqCards(
+                                description: variables.staticData
+                                        ?.sidestepLengthyBureaucraticProcessesWithAnEx ??
+                                    '',
+                                name: variables.staticData?.swiftSetup ?? '',
+                              ),
+                              BusinessOffShoreFaqCards(
+                                description: variables.staticData
+                                        ?.accessModernAmenitiesFromPlushOfficeSpacesT ??
+                                    '',
+                                name: variables.staticData
+                                        ?.stateoftheartInfrastructure ??
+                                    '',
+                              ),
+                              BusinessOffShoreFaqCards(
+                                description: variables.staticData
+                                        ?.engageInIndustrycentricZonesLikeMediaTechAn ??
+                                    '',
+                                name:
+                                    variables.staticData?.specializedHubs ?? '',
+                              ),
+                              BusinessOffShoreFaqCards(
+                                description: variables.staticData
+                                        ?.benefitFromAnInfluxOfGlobalTalentThanksTo_ ??
+                                    '',
+                                name: variables.staticData?.diverseTalentPool ??
+                                    '',
+                              ),
+                              BusinessOffShoreFaqCards(
+                                description: variables.staticData
+                                        ?.enjoyEnhancedBusinessDiscretionAndStakeholder ??
+                                    '',
+                                name: variables.staticData?.upheldPrivacy ?? '',
+                              ),
+                              BusinessOffShoreFaqCards(
+                                description: variables.staticData
+                                        ?.seamlesslyRenewBusinessLicensesEnsuringUninte ??
+                                    '',
+                                name: variables.staticData
+                                        ?.hasslefreeLicenseRenewals ??
+                                    '',
+                              ),
+                              BusinessOffShoreFaqCards(
+                                description: variables.staticData
+                                        ?.enjoyTheLibertyToMoveYourCapitalAndProfits ??
+                                    '',
+                                name: variables
+                                        .staticData?.fluidCapitalMovements ??
+                                    '',
+                              ),
+                              SizedBox(
+                                height: 15.h,
+                              ),
+                            ]
+                          ],
+                        ),
+                      ),
+                       SizedBox(
+                        height: 10.h,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.86,
+                            child: CommonTextWidget(
                               color: allColors.textColor,
                               size: 20.sp,
-                              text: capitalizeFirst(variables.staticData
-                                      ?.advantagesOfABusinessOdysseyInUaeFreeZones ??
-                                  ''),
+                              text: variables.staticData
+                                      ?.blueprintForEstablishingABusinessInUaeFree_
+                                      .capitalizeFirstLetter() ??
+                                  '',
                               weight: FontWeight.w500,
                               align: TextAlign.start,
                               padding: EdgeInsets.only(
                                   left: 16.h, right: 16.h, top: 10.h),
                             ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            BusinessOffShoreFaqCards(
-                              description: variables.staticData
-                                      ?.enjoyTheLibertyOf_100ForeignOwnershipWithout ??
-                                  '',
-                              name: variables.staticData?.unbridledOwnership ??
-                                  '',
-                            ),
-                            BusinessOffShoreFaqCards(
-                              description: variables.staticData
-                                      ?.freelyTransferYourProfitsAndCapitalOutsideT ??
-                                  '',
-                              name: variables.staticData
-                                      ?.unrestrictedProfitMovements ??
-                                  '',
-                            ),
-                            BusinessOffShoreFaqCards(
-                              description: variables.staticData
-                                      ?.experienceZeroCustomsDutiesOnGoodsAndServic ??
-                                  '',
-                              name: variables.staticData?.dutyfreeOperations ??
-                                  '',
-                            ),
-                            BusinessOffShoreFaqCards(
-                              description: variables.staticData
-                                      ?.sidestepLengthyBureaucraticProcessesWithAnEx ??
-                                  '',
-                              name: variables.staticData?.swiftSetup ?? '',
-                            ),
-                            BusinessOffShoreFaqCards(
-                              description: variables.staticData
-                                      ?.accessModernAmenitiesFromPlushOfficeSpacesT ??
-                                  '',
-                              name: variables.staticData
-                                      ?.stateoftheartInfrastructure ??
-                                  '',
-                            ),
-                            BusinessOffShoreFaqCards(
-                              description: variables.staticData
-                                      ?.engageInIndustrycentricZonesLikeMediaTechAn ??
-                                  '',
-                              name: variables.staticData?.specializedHubs ?? '',
-                            ),
-                            BusinessOffShoreFaqCards(
-                              description: variables.staticData
-                                      ?.benefitFromAnInfluxOfGlobalTalentThanksTo_ ??
-                                  '',
-                              name:
-                                  variables.staticData?.diverseTalentPool ?? '',
-                            ),
-                            BusinessOffShoreFaqCards(
-                              description: variables.staticData
-                                      ?.enjoyEnhancedBusinessDiscretionAndStakeholder ??
-                                  '',
-                              name: variables.staticData?.upheldPrivacy ?? '',
-                            ),
-                            BusinessOffShoreFaqCards(
-                              description: variables.staticData
-                                      ?.seamlesslyRenewBusinessLicensesEnsuringUninte ??
-                                  '',
-                              name: variables
-                                      .staticData?.hasslefreeLicenseRenewals ??
-                                  '',
-                            ),
-                            BusinessOffShoreFaqCards(
-                              description: variables.staticData
-                                      ?.enjoyTheLibertyToMoveYourCapitalAndProfits ??
-                                  '',
-                              name:
-                                  variables.staticData?.fluidCapitalMovements ??
-                                      '',
-                            ),
-                            SizedBox(
-                              height: 15.h,
-                            ),
-                          ],
-                        ),
+                          ),
+                          const Spacer(),
+                          InkWell(
+                              onTap: () {
+                                setState(() {
+                                  bluePrintSelected = !bluePrintSelected;
+                                });
+                              },
+                              child: Icon(
+                                bluePrintSelected
+                                    ? Icons.keyboard_arrow_up
+                                    : Icons.keyboard_arrow_down,
+                                color: allColors.textColor,
+                                size: 25,
+                              )),
+                          const SizedBox(
+                            width: 20,
+                          )
+                        ],
                       ),
-                      CommonTextWidget(
-                        color: allColors.textColor,
-                        size: 20.sp,
-                        text: variables.staticData
-                                ?.blueprintForEstablishingABusinessInUaeFree_.capitalizeFirstLetter() ??
-                            '',
-                        weight: FontWeight.w500,
-                        align: TextAlign.start,
-                        padding:
-                            EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      BluePrintCardListing(
+                     
+                      if (bluePrintSelected) ...[
+                        Container(
+                          margin: const EdgeInsets.all(14),
+                          decoration: BoxDecoration(
+                            color: allColors.canvasColor,
+                            borderRadius: kBorderRadius6,
+                            boxShadow: [
+                              BoxShadow(color: allColors.lightGreyColor,blurRadius: 10,offset: const Offset(0,3),spreadRadius: 1.9),
+                              
+                            ],
+                          ),
+                          child: Column(children: [BluePrintCardListing(
                         title: variables.staticData?.researchAndSelect ?? '',
                         description: variables.staticData
                                 ?.beginByIdentifyingWhichFreeZoneAlignsBestW ??
@@ -321,7 +392,9 @@ class _BusinessSetupFreeZoneBodyState
                         description: variables.staticData
                                 ?.contactOurExpertTeamTodayForPersonalizedGui ??
                             '',
-                      ),
+                      ),],),
+                        ),
+                      ],
                       SizedBox(
                         height: 10.h,
                       ),

@@ -26,6 +26,8 @@ class BusinessSetupBody extends ConsumerStatefulWidget {
 }
 
 class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
+  bool selectedItem = false;
+
   @override
   Widget build(BuildContext context) {
     var variables = ref.watch(allProviderList.dashboardProvider);
@@ -67,20 +69,17 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                         height: 10.h,
                       ),
                       CommonTextWidget(
-                        
                         color: allColors.textColor,
                         size: 18.sp,
-                        text:
-                            capitalizeFirst(variables.staticData?.yourDreamNeedsTheBestStart ??
+                        text: capitalizeFirst(
+                            variables.staticData?.yourDreamNeedsTheBestStart ??
                                 ''),
                         weight: FontWeight.w500,
                         align: TextAlign.start,
                         padding:
                             EdgeInsets.only(left: 16.h, right: 16.h, top: 15.h),
-                            
                       ),
                       CommonTextWidget(
-                        
                         color: allColors.textColor,
                         size: 16,
                         align: TextAlign.start,
@@ -135,21 +134,49 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                           variables.staticData?.learnMore ?? '',
                         ),
                       ),
-                      CommonTextWidget(
-                        color: allColors.textColor,
-                        size: 18.sp,
-                        text: variables.staticData
-                                ?.whyIsDubaiTheTopPickForSavvyBusinessLeade.capitalizeFirstLetter() ??
-                            '',
-                        weight: FontWeight.w500,
-                        align: TextAlign.start,
-                        padding:
-                            EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.87,
+                            child: CommonTextWidget(
+                              color: allColors.textColor,
+                              size: 18.sp,
+                              text: variables.staticData
+                                      ?.whyIsDubaiTheTopPickForSavvyBusinessLeade
+                                      .capitalizeFirstLetter() ??
+                                  '',
+                              weight: FontWeight.w500,
+                              align: TextAlign.start,
+                              padding: EdgeInsets.only(
+                                  left: 16.h, right: 16.h, top: 10.h),
+                            ),
+                          ),
+                          const Spacer(),
+                          InkWell(
+                              onTap: () {
+                                setState(() {
+                                  selectedItem = !selectedItem;
+                                });
+                              },
+                              child: Icon(
+                                 selectedItem
+                                  ? Icons.keyboard_arrow_up
+                                  : Icons.keyboard_arrow_down,
+                                color: allColors.textColor,
+                                size: 25,
+                              )),
+                          const SizedBox(
+                            width: 20,
+                          )
+                        ],
                       ),
                       SizedBox(
                         height: 10.h,
                       ),
-                      FaqItems(
+                      if(selectedItem)...[FaqItems(
                         name: variables.staticData?.taxIncentives_1 ?? '',
                         description: variables.staticData
                                 ?.oneOfThePrimaryLuresOfDubaiIsItsTaxfriend ??
@@ -192,7 +219,9 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                             '',
                         number: '',
                       ),
-                      const SizedBox(height: 10,),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       FaqButton(
                         onTap: () {
                           RoutesUtils.context.push(
@@ -208,9 +237,9 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                         },
                         isCallIcon: false,
                         backgroundColor: allColors.textColor,
-                      ),
+                      ),],
                       SizedBox(
-                        height: 20.h,
+                        height: 50.h,
                       )
                     ],
                   ),

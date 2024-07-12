@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/main.dart';
-
 import 'core/constants/object_constants/object_constants.dart';
 import 'core/helpers/logger.dart';
 import 'core/routing/routing_config.dart';
@@ -92,7 +91,7 @@ class _MyAppState extends State<MyApp> {
           child: MaterialApp.router(
             debugShowCheckedModeBanner: false,
             title: 'Kanoony',
-            theme: appTheme.lightTheme(),
+            theme: appTheme.lightTheme(context),
             routerConfig: routerConfigs,
           ),
         );

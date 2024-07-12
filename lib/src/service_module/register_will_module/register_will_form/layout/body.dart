@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/common_widgets/common_drop_down.dart';
 
 import '../../../../../core/common_widgets/common_appbar.dart';
 import '../../../../../core/common_widgets/common_button_widget.dart';
@@ -93,30 +94,44 @@ class _RegisterWillFormBodyState extends ConsumerState<RegisterWillFormBody> {
                           icon: Icons.message,
                           focusNode: provider.addressFocus,
                         ),
-                        TextFieldWidget(
-                          controller: provider.statusController,
-                          maxLines: 1,
-                          type: TextInputType.none,
-                          onTap: () {
-                            provider.showStatusPopupMenu();
+                        CommonDropDown(
+                          list: willVar.statusList,
+                          selectedValue: provider.statusController.text.isEmpty
+                              ? null
+                              : provider.statusController.text,
+                          onTextChanged: (p0) {
+                            provider.statusController.text = p0 ?? "";
+                            setState(() {});
                           },
-                          label: variables.staticData?.martialStatus ?? '',
-                          icon: Icons.keyboard_arrow_down,
-                          validator: TextFieldValidator.validateText,
-                          focusNode: FocusNode(),
+                          hintText: variables.staticData?.martialStatus ?? "Select",
                         ),
-                        TextFieldWidget(
-                          controller: provider.childrenController,
-                          maxLines: 1,
-                          type: TextInputType.none,
-                          onTap: () {
-                            provider.showNumberPopupMenu(true);
+                        const SizedBox(
+                          height: 10,
+                        ),
+                          CommonDropDown(
+                          list: willVar.numberList,
+                          selectedValue: provider.childrenController.text.isEmpty
+                              ? null
+                              : provider.childrenController.text,
+                          onTextChanged: (p0) {
+                            provider.childrenController.text = p0 ?? "";
+                            setState(() {});
                           },
-                          label: variables.staticData?.minorChildren ?? '',
-                          icon: Icons.keyboard_arrow_down,
-                          validator: TextFieldValidator.validateText,
-                          focusNode: FocusNode(),
+                          hintText: variables.staticData?.minorChildren ?? "Select",
                         ),
+                        SizedBox(height: 10,),
+                        // TextFieldWidget(
+                        //   controller: provider.childrenController,
+                        //   maxLines: 1,
+                        //   type: TextInputType.none,
+                        //   onTap: () {
+                        //     provider.showNumberPopupMenu(true);
+                        //   },
+                        //   label: variables.staticData?.minorChildren ?? '',
+                        //   icon: Icons.keyboard_arrow_down,
+                        //   validator: TextFieldValidator.validateText,
+                        //   focusNode: FocusNode(),
+                        // ),
                         TextFieldWidget(
                           controller: provider.emailController,
                           maxLines: 1,

@@ -65,9 +65,9 @@ dependencies:
   flutter_file_downloader: ^1.2.1
   marquee: ^2.2.3
   carousel_slider: ^4.2.1
-
-
-
+  dropdown_button2: ^2.3.9
+  flutter_gallery_3d: ^1.1.1
+  device_preview: ^1.2.0
 
 
 flutter_icons:
@@ -118,9 +118,13 @@ flutter:
     - family: Tajawal
       fonts:
         - asset: assets/fonts/Tajawal-Light.ttf
+          weight: 300
         - asset: assets/fonts/Tajawal-Regular.ttf
+          weight: 400
         - asset: assets/fonts/Tajawal-Bold.ttf
           weight: 600
+        - asset: assets/fonts/Tajawal-ExtraBold.ttf
+          weight: 700
         - asset: assets/fonts/Tajawal-Medium.ttf
           weight: 500
   #

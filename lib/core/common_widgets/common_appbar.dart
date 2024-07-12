@@ -1,5 +1,7 @@
 // ignore_for_file: must_be_immutable, prefer_const_constructors
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -58,7 +60,7 @@ class CommonAppBar extends StatelessWidget {
                   fit: BoxFit.cover,
                   image: AssetImage(PngImagePaths.appBarBackgroundImg))
               : null),
-      height: 100.h,
+      height: Platform.isIOS ? 125.h  : 100.h,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -171,7 +173,7 @@ class CommonAppBar extends StatelessWidget {
               ],
             ),
           ),
-
+    
           // Padding(
           //   padding: EdgeInsets.only(left: 16.h, right: 16.h, top: 40.h),
           //   child: Row(

@@ -70,46 +70,27 @@ class _BusinessOffShoreFaqCardsState extends State<BusinessOffShoreFaqCards> {
                                 color: allColors.textColor,
                                 size: 16,
                                 align: TextAlign.start,
-                                text: widget.name.capitalizeFirstLetter() ??"",
+                                text: widget.name.capitalizeFirstLetter() ?? "",
                                 weight: FontWeight.w500,
                                 padding: EdgeInsets.only(
                                     left: isArabic ? 0 : 10.h,
                                     right: isArabic ? 10.h : 0))),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 5.h),
-                          child: Container(
-                            height: 22.h,
-                            width: 22.h,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(50.r))),
-                            child: Icon(
-                              selectedItem
-                                  ? Icons.keyboard_arrow_up
-                                  : Icons.keyboard_arrow_down,
-                              color: allColors.textColor,
-                              size: 20.h,
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                   ),
-                  if (selectedItem) ...[
-                    SizedBox(
-                      height: 5.h,
-                    ),
-                    CommonTextWidget(
-                        color: allColors.textColor,
-                        size: 16,
-                        align: TextAlign.justify,
-                        text: widget.description.capitalizeFirstLetter() ?? "",
-                        weight: FontWeight.w400,
-                        padding: EdgeInsets.only(
-                            right: isArabic ? 0 : 20.h,
-                            bottom: 5.h,
-                            left: isArabic ? 20.h : 0))
-                  ],
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  CommonTextWidget(
+                      color: allColors.textColor,
+                      size: 16,
+                      align: TextAlign.justify,
+                      text: widget.description.capitalizeFirstLetter() ?? "",
+                      weight: FontWeight.w400,
+                      padding: EdgeInsets.only(
+                          right: isArabic ? 0 : 20.h,
+                          bottom: 5.h,
+                          left: isArabic ? 20.h : 0))
                 ],
               ),
             ))

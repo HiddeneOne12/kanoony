@@ -49,51 +49,17 @@ class _FaqItemsState extends State<FaqItems> {
                         selectedItem = !selectedItem;
                       });
                     },
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        // Expanded(
-                        //   flex: 1,
-                        //   child: CommonTextWidget(
-                        //       color: allColors.primaryColor,
-                        //       size: 14.sp,
-                        //       text: widget.number,
-                        //       align: TextAlign.start,
-                        //       weight: FontWeight.w700,
-                        //       padding: EdgeInsets.only(top: 0.h)),
-                        // ),
-                        Expanded(
-                            flex: 10,
-                            child: CommonTextWidget(
-                                color: allColors.textColor,
-                                size:16,
-                                align: TextAlign.start,
-                                text: widget.name.capitalizeFirstLetter()??"",
-                                weight: FontWeight.w500,
-                                padding: EdgeInsets.only(top: 0.h))),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 5.h),
-                          child: Container(
-                            height: 22.h,
-                            width: 22.h,
-                            decoration: BoxDecoration(
-                                color: allColors.darkGreyColor,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(50.r))),
-                            child: Icon(
-                              selectedItem
-                                  ? Icons.keyboard_arrow_up
-                                  : Icons.keyboard_arrow_down,
-                              color: allColors.textColor,
-                              size: 19.h,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    child: Expanded(
+                        flex: 10,
+                        child: CommonTextWidget(
+                            color: allColors.textColor,
+                            size:16,
+                            align: TextAlign.start,
+                            text: widget.name.capitalizeFirstLetter()??"",
+                            weight: FontWeight.w500,
+                            padding: EdgeInsets.only(top: 0.h))),
                   ),
-                  if (selectedItem) ...[
+                  
                     SizedBox(
                       height: 5.h,
                     ),
@@ -107,7 +73,7 @@ class _FaqItemsState extends State<FaqItems> {
                             bottom: 5.h,
                             right: isArabic ? 0 : 20.h,
                             left: isArabic ? 20.h : 0.h))
-                  ],
+                 
                 ],
               ),
             ))

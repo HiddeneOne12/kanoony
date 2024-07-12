@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+//TODO remove this class and use color from Theme Typogrpahy Extentions in whole app
 class ColorConstants {
   var textColor = const Color.fromRGBO(25, 59, 72, 1);
   var dividerColor = const Color.fromRGBO(0, 0, 0, 0.2);
@@ -17,6 +17,7 @@ class ColorConstants {
   var shimmerBaseColor = Colors.grey[300];
   var shimmerHighlightColor = Colors.grey[100];
   var greyTextColor = const Color.fromRGBO(135, 135, 135, 1);
+  var lightGreyColor = Color.fromARGB(255, 204, 201, 201);
   var darkGreyColor = const Color.fromRGBO(229, 235, 238, 1);
   var textFieldColor = const Color.fromRGBO(247, 245, 245, 1);
   var popUpTextFieldTextColor = const Color.fromRGBO(156, 156, 156, 1);

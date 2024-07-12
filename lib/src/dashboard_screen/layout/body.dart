@@ -1,4 +1,5 @@
 // ignore_for_file: annotate_overrides
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +11,9 @@ import 'package:kanoony/core/common_widgets/directionality_widget.dart';
 import 'package:kanoony/core/constants/image_paths/image_paths.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/constants/values.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/core/routing/routing_config.dart';
 import 'package:kanoony/src/dashboard_screen/layout/widgets/shimmer.dart';
@@ -178,18 +182,13 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                           SizedBox(height: 10.h),
                           dashboardVariables.areLoaded
                               ? const QuickLinksShimmer()
-                              : CommonTextWidget(
-                                  color: allColors.textColor,
-                                  size: 20.sp,
-                                  text: capitalizeFirst(dashboardVariables
-                                          .staticData?.contractTemplates ??
-                                      ''),
-                                  weight: FontWeight.w500,
-                                  padding: EdgeInsets.only(
-                                      left: 16.h,
-                                      right: 16.h,
-                                      bottom: 10.h,
-                                      top: 10.h)),
+                              : Padding(
+                                padding: kHeadlinePadding,
+                                child: Text(
+                                    dashboardVariables.staticData?.contractTemplates.capitalizeFirstLetter() ?? '',
+                                    style: context.headlineLargeSemiMediumBold,
+                                  ),
+                              ),
                           dashboardVariables.areLoaded
                               ? const QuickLinksShimmer()
                               : Column(
@@ -198,40 +197,42 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                     SizedBox(
                                       height: 15.h,
                                     ),
-                                    Container(
-                                      height: 110.h,
-                                      child: ListView.builder(
-                                        physics:
-                                            const AlwaysScrollableScrollPhysics(),
-                                        scrollDirection: Axis.horizontal,
-                                        controller: _scrollController,
-                                        shrinkWrap: true,
-                                        itemCount: dashboardVariables
-                                            .quickLinks!.length,
-                                        itemBuilder: (context, index) {
-                                          var data = dashboardVariables
-                                              .quickLinks![index];
 
-                                          return InkWell(
-                                            onTap: () {
-                                              RoutesUtils.context.push(
-                                                PaidDocumentScreen
-                                                    .paidDocumentRoute,
-                                                extra: {
-                                                  TextUtils.slug:
-                                                      data.slug.toString()
-                                                },
-                                              );
-                                              setState(() {
-                                                dashboardProvider
-                                                    .searchController
-                                                    .clear();
-                                                dashboardVariables.searchedDoc =
-                                                    [];
-                                              });
-                                            },
-                                            child: SizedBox(
-                                              width: 169.h,
+                                    CarouselSlider(
+                                      options: CarouselOptions(
+                                          height: 140.h,
+                                          viewportFraction: 0.3,
+                                          reverse: false,
+                                          autoPlay: false,
+                                          autoPlayInterval:
+                                              const Duration(seconds: 1),
+                                          autoPlayAnimationDuration:
+                                              const Duration(milliseconds: 800),
+                                          enlargeCenterPage: true,
+                                          scrollDirection: Axis.horizontal,
+                                          enlargeFactor: 0.3),
+                                      items: dashboardVariables.quickLinks
+                                          ?.map((data) {
+                                        return Builder(
+                                          builder: (BuildContext context) {
+                                            return InkWell(
+                                              onTap: () {
+                                                RoutesUtils.context.push(
+                                                  PaidDocumentScreen
+                                                      .paidDocumentRoute,
+                                                  extra: {
+                                                    TextUtils.slug:
+                                                        data.slug.toString()
+                                                  },
+                                                );
+                                                setState(() {
+                                                  dashboardProvider
+                                                      .searchController
+                                                      .clear();
+                                                  dashboardVariables
+                                                      .searchedDoc = [];
+                                                });
+                                              },
                                               child: ServiceCard(
                                                   isPng: true,
                                                   onTap: () {
@@ -247,22 +248,73 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                                   icon: icons[index],
                                                   text: capitalizeFirst(
                                                       data.title)),
-                                            ),
-                                          );
-                                        },
-                                      ),
-                                    ),
+                                            );
+                                          },
+                                        );
+                                      }).toList(),
+                                    )
+                                    // Container(
+                                    //   height: 110.h,
+                                    //   child: ListView.builder(
+                                    //     physics:
+                                    //         const AlwaysScrollableScrollPhysics(),
+                                    //     scrollDirection: Axis.horizontal,
+                                    //     controller: _scrollController,
+                                    //     shrinkWrap: true,
+                                    //     itemCount: dashboardVariables
+                                    //         .quickLinks!.length,
+                                    //     itemBuilder: (context, index) {
+                                    //       var data = dashboardVariables
+                                    //           .quickLinks![index];
+
+                                    //       return InkWell(
+                                    //         onTap: () {
+                                    //           RoutesUtils.context.push(
+                                    //             PaidDocumentScreen
+                                    //                 .paidDocumentRoute,
+                                    //             extra: {
+                                    //               TextUtils.slug:
+                                    //                   data.slug.toString()
+                                    //             },
+                                    //           );
+                                    //           setState(() {
+                                    //             dashboardProvider
+                                    //                 .searchController
+                                    //                 .clear();
+                                    //             dashboardVariables.searchedDoc =
+                                    //                 [];
+                                    //           });
+                                    //         },
+                                    //         child: SizedBox(
+                                    //           width: 169.h,
+                                    //           child: ServiceCard(
+                                    //               isPng: true,
+                                    //               onTap: () {
+                                    //                 RoutesUtils.context.push(
+                                    //                   PaidDocumentScreen
+                                    //                       .paidDocumentRoute,
+                                    //                   extra: {
+                                    //                     TextUtils.slug:
+                                    //                         data.slug.toString()
+                                    //                   },
+                                    //                 );
+                                    //               },
+                                    //               icon: icons[index],
+                                    //               text: capitalizeFirst(
+                                    //                   data.title)),
+                                    //         ),
+                                    //       );
+                                    //     },
+                                    //   ),
+                                    // ),
                                   ],
                                 ),
                           dashboardVariables.areLoaded
                               ? const QuickLinksShimmer()
                               : CommonTextWidget(
-                                  color: allColors.textColor,
+                                  color: context.onBackgroundColor,
                                   size: 20.sp,
-                                  text: capitalizeFirst(dashboardVariables
-                                          .staticData?.corporateService
-                                           ??
-                                      ''),
+                                  text: capitalizeFirst(dashboardVariables.staticData?.corporateService ?? ''),
                                   weight: FontWeight.w500,
                                   padding: EdgeInsets.only(
                                       left: 16.h, right: 16.h, top: 10.h)),
@@ -292,10 +344,9 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                                   .businessSetupRoute);
                                         },
                                         icon: SvgImagesAssetPath.businessSvg,
-                                        text: capitalizeFirst(
-                                            dashboardVariables.staticData
-                                                    ?.setupABusiness ??
-                                                '')),
+                                        text: capitalizeFirst(dashboardVariables
+                                                .staticData?.setupABusiness ??
+                                            '')),
                                     ServiceCard(
                                         onTap: () {
                                           var variables = ref.watch(
@@ -310,10 +361,10 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                               TradeMarkScreen.trademarkRoute);
                                         },
                                         icon: SvgImagesAssetPath.tradeMarkSvg,
-                                        text: capitalizeFirst(
-                                            dashboardVariables.staticData
-                                                    ?.registerATrademark ??
-                                                '')),
+                                        text: capitalizeFirst(dashboardVariables
+                                                .staticData
+                                                ?.registerATrademark ??
+                                            '')),
                                     ServiceCard(
                                         onTap: () {
                                           var variables = ref.watch(
@@ -328,10 +379,9 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                               RegisterWillScreen.willRoute);
                                         },
                                         icon: SvgImagesAssetPath.willSvg,
-                                        text: capitalizeFirst(
-                                            dashboardVariables.staticData
-                                                    ?.registerAWill ??
-                                                '')),
+                                        text: capitalizeFirst(dashboardVariables
+                                                .staticData?.registerAWill ??
+                                            '')),
                                     ServiceCard(
                                         onTap: () {
                                           var variables = ref.watch(
@@ -347,10 +397,10 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                                   .docTranslateRoute);
                                         },
                                         icon: SvgImagesAssetPath.documentSvg,
-                                        text: capitalizeFirst(
-                                            dashboardVariables.staticData
-                                                    ?.translateADocument ??
-                                                '')),
+                                        text: capitalizeFirst(dashboardVariables
+                                                .staticData
+                                                ?.translateADocument ??
+                                            '')),
                                     ServiceCard(
                                         onTap: () {
                                           var variables = ref.watch(
@@ -365,113 +415,40 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                               .push(GoldenVisaScreen.visaRoute);
                                         },
                                         icon: SvgImagesAssetPath.visaSvg,
-                                        text: capitalizeFirst(
-                                            dashboardVariables
-                                                    .staticData?.goldenVisa ??
-                                                '')),
+                                        text: capitalizeFirst(dashboardVariables
+                                                .staticData?.goldenVisa ??
+                                            '')),
                                   ],
                                 ),
                           SizedBox(height: 10.h),
                           Padding(
-                            padding: EdgeInsets.only(
-                                right: isArabic ? 0 : 16.h,
-                                left: isArabic ? 16.h : 0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  child: dashboardVariables.areLoaded
-                                      ? const QuickLinksShimmer()
-                                      : CommonTextWidget(
-                                          color: allColors.textColor,
-                                          size: 20.sp,
-                                          text: capitalizeFirst(dashboardVariables.staticData
-                                                  ?.contractTemplatePackages
-                                                   ??
-                                              ''),
-                                          weight: FontWeight.w500,
-                                          padding: EdgeInsets.only(
-                                              right: isArabic ? 0 : 20.h,
-                                              left: isArabic ? 135.h : 0)),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10.h),
-                                  child: InkWell(
-                                    onTap: () {
-                                      scrollBackward();
-                                    },
-                                    child: Container(
-                                      height: 25.h,
-                                      width: 25.h,
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                          color: allColors.primaryColor,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(50.r))),
-                                      child: Padding(
-                                        padding: EdgeInsets.only(
-                                            left: isArabic ? 0 : 3.h,
-                                            right: isArabic ? 3.h : 0),
-                                        child: Icon(
-                                          Icons.arrow_back_ios,
-                                          color: allColors.textColor,
-                                          size: 12.h,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 5.w,
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 9.h),
-                                  child: InkWell(
-                                    onTap: () {
-                                      scrollForward();
-                                      print("Scroll Sized:   " +
-                                          scrollController2.positions
-                                              .toString());
-                                    },
-                                    child: Container(
-                                      height: 25.h,
-                                      width: 25.h,
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                          color: allColors.primaryColor,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(50.r))),
-                                      child: Padding(
-                                        padding: EdgeInsets.only(
-                                            left: isArabic ? 0 : 3.h,
-                                            right: isArabic ? 3.h : 0),
-                                        child: Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: allColors.textColor,
-                                          size: 12.h,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
+                            padding: EdgeInsets.only(right: 16.h, left: 16.h),
+                            child: dashboardVariables.areLoaded
+                                ? const QuickLinksShimmer()
+                                : CommonTextWidget(
+                                    color: allColors.textColor,
+                                    size: 20.sp,
+                                    text: capitalizeFirst(dashboardVariables
+                                            .staticData
+                                            ?.contractTemplatePackages ??
+                                        ''),
+                                    weight: FontWeight.w500,
+                                    padding: EdgeInsets.only(
+                                        right: isArabic ? 0 : 20.h,
+                                        left: isArabic ? 135.h : 0)),
                           ),
                           SizedBox(height: 5.h),
                           dashboardVariables.isLoaded
                               ? const ShimmerPackageCard()
                               : SizedBox(
-                                  height: 291.h,
                                   child: ListView.builder(
                                     itemCount:
                                         dashboardVariables.allPackages.length,
                                     controller: scrollController2,
                                     padding: EdgeInsets.zero,
-                                    scrollDirection: Axis.horizontal,
                                     shrinkWrap: true,
                                     physics:
-                                        const AlwaysScrollableScrollPhysics(),
+                                        const NeverScrollableScrollPhysics(),
                                     itemBuilder: (context, index) {
                                       var data =
                                           dashboardVariables.allPackages[index];
