@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/constants/values.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/src/service_module/trademark_module/trademark_screen/trademark_screen.dart';
 import '../../../../core/common_widgets/common_appbar.dart';
@@ -59,38 +61,32 @@ class _ServicesBodyState extends ConsumerState<ServicesBody> {
                   fit: BoxFit.cover,
                 ),
               ),
-              Container(
-                padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).viewInsets.bottom),
-                height: 0.795.sh,
-                child: SingleChildScrollView(
+              SingleChildScrollView(
+                child: Padding(
+                  padding: kMainBodyPadding,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        height: 20.h,
+                        height: 10.h,
                       ),
                       dashboardVariables.isLoaded
                           ? const SizedBox.shrink()
-                          : CommonTextWidget(
-                              color: allColors.textColor,
-                              size: 20.sp,
-                              text: dashboardVariables
-                                      .staticData?.corporateService
+                          : Text(
+                              dashboardVariables.staticData?.corporateService
                                       ?.capitalizeFirstLetter() ??
-                                  '', 
-                              weight: FontWeight.w500,
-                              padding:
-                                  EdgeInsets.only(left: 16.h, right: 16.h)),
+                                  "",
+                              style: context.headlineLarge),
+                       
                       dashboardVariables.isLoaded
                           ? const GridShimmer()
                           : GridView.count(
                               crossAxisCount: 2,
                               shrinkWrap: true,
-                              childAspectRatio: 1.76,
-                              crossAxisSpacing: 7.h,
-                              padding: EdgeInsets.only(
-                                  left: 16.h, right: 16.h, top: 10.h),
+                              childAspectRatio: 1.6,
+                              crossAxisSpacing: 7.w,
+                              mainAxisSpacing: 7.h,
+                              padding: EdgeInsets.zero,
                               physics: const NeverScrollableScrollPhysics(),
                               children: [
                                 ServiceCard(
@@ -100,42 +96,47 @@ class _ServicesBodyState extends ConsumerState<ServicesBody> {
                                               .businessSetupRoute);
                                     },
                                     icon: SvgImagesAssetPath.businessSvg,
-                                    text: capitalizeFirst(dashboardVariables
-                                            .staticData?.setupABusiness ??
-                                        '')),
+                                    text: dashboardVariables
+                                            .staticData?.setupABusiness
+                                            .capitalizeFirstLetter() ??
+                                        ''),
                                 ServiceCard(
                                     onTap: () {
                                       RoutesUtils.context
                                           .push(TradeMarkScreen.trademarkRoute);
                                     },
                                     icon: SvgImagesAssetPath.tradeMarkSvg,
-                                    text: capitalizeFirst(dashboardVariables
-                                            .staticData?.registerATrademark ??
-                                        '')),
+                                    text: dashboardVariables
+                                            .staticData?.registerATrademark
+                                            .capitalizeFirstLetter() ??
+                                        ''),
                                 ServiceCard(
                                     onTap: () {},
                                     icon: SvgImagesAssetPath.willSvg,
-                                    text: capitalizeFirst(dashboardVariables
-                                            .staticData?.registerAWill ??
-                                        '')),
+                                    text: dashboardVariables
+                                            .staticData?.registerAWill
+                                            .capitalizeFirstLetter() ??
+                                        ''),
                                 ServiceCard(
                                     onTap: () {
                                       RoutesUtils.context.push(
                                           DocTranslateScreen.docTranslateRoute);
                                     },
                                     icon: SvgImagesAssetPath.documentSvg,
-                                    text: capitalizeFirst(dashboardVariables
-                                            .staticData?.translateADocument ??
-                                        '')),
+                                    text: dashboardVariables
+                                            .staticData?.translateADocument
+                                            .capitalizeFirstLetter() ??
+                                        ''),
                                 ServiceCard(
                                     onTap: () {
                                       RoutesUtils.context
                                           .push(GoldenVisaScreen.visaRoute);
                                     },
                                     icon: SvgImagesAssetPath.visaSvg,
-                                    text: capitalizeFirst(dashboardVariables
-                                            .staticData?.goldenVisa ??
-                                        '')),
+                                    text: dashboardVariables
+                                            .staticData?.goldenVisa
+                                            .capitalizeFirstLetter() ??
+                                        ''),
                               ],
                             ),
                       SizedBox(height: 20.h),

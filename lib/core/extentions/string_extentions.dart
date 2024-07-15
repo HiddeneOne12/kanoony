@@ -1,6 +1,6 @@
 extension StringExtension on String? {
-  String? capitalizeFirstLetter() {
-    if (this == null || this!.isEmpty) return this;
+  String capitalizeFirstLetter() {
+    if (this == null || this!.isEmpty) return '';
 
     // Trim leading spaces
     String trimmedText = this!.trimLeft();
@@ -29,5 +29,9 @@ extension StringExtension on String? {
     } else {
       return trimmedText[0].toUpperCase() + trimmedText.substring(1).toLowerCase();
     }
+  }
+   String upperCase() {
+    if (this == null || this!.isEmpty) return '';
+    return this?.toUpperCase()??"";
   }
 }

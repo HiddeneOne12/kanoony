@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 extension ThemeTypography on BuildContext {
   TextStyle? get displayLarge => Theme.of(this).textTheme.displayLarge;
@@ -25,6 +27,14 @@ extension ThemeTypography on BuildContext {
   TextStyle? get bodySmall => Theme.of(this).textTheme.bodySmall;
   TextStyle? get hintStyle => Theme.of(this).inputDecorationTheme.hintStyle;
   TextStyle? get labelStyle => Theme.of(this).inputDecorationTheme.labelStyle;
+
+  //HTML text theme style
+  Style get htmlParagraphStyle => Style(
+        color:  Theme.of(this).colorScheme.onSurface, // Use your defined color here
+        fontSize: FontSize(16.sp), // Use flutter_screenutil for responsive sizing
+        fontWeight: FontWeight.w400,
+        fontFamily: 'Tajawal',
+      );
 
   //Used For Text Colors
   Color get onPrimaryColor => Theme.of(this).colorScheme.onPrimary;

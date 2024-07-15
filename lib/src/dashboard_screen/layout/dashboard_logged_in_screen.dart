@@ -54,21 +54,7 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
     super.dispose();
   }
 
-  void scrollForward() {
-    scrollController.animateTo(
-      scrollController.offset + 500, // Scroll forward by 100 pixels
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
-  }
-
-  void scrollBackward() {
-    scrollController.animateTo(
-      scrollController.offset - 500, // Scroll backward by 100 pixels
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -184,97 +170,8 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                                       weight: FontWeight.w700,
                                       padding: EdgeInsets.only(
                                           left: 16.h, right: 16.h)),
-                                ] else ...[
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        right: isArabic ? 0 : 16.h,
-                                        left: isArabic ? 16.h : 0),
-                                    child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Expanded(
-                                          child: CommonTextWidget(
-                                              color: allColors.textColor,
-                                              size: 20.sp,
-                                              text: dashboardVariables
-                                                      .staticData
-                                                      ?.contractTemplatePackages.capitalizeFirstLetter()
-                                                       ??
-                                                  '',
-                                              weight: FontWeight.w500,
-                                              padding: EdgeInsets.only(
-                                                  right: isArabic ? 0 : 20.h,
-                                                  left: isArabic ? 135.h : 0)),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsets.only(bottom: 10.h),
-                                          child: InkWell(
-                                            onTap: () {
-                                              scrollBackward();
-                                            },
-                                            child: Container(
-                                              height: 25.h,
-                                              width: 25.h,
-                                              alignment: Alignment.center,
-                                              decoration: BoxDecoration(
-                                                  color: allColors.primaryColor,
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(
-                                                              50.r))),
-                                              child: Padding(
-                                                padding: EdgeInsets.only(
-                                                    left: isArabic ? 0 : 3.h,
-                                                    right: isArabic ? 3.h : 0),
-                                                child: Icon(
-                                                  Icons.arrow_back_ios,
-                                                  color: allColors.textColor,
-                                                  size: 12.h,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 5.w,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(bottom: 9.h),
-                                          child: InkWell(
-                                            onTap: () {
-                                              scrollForward();
-                                            },
-                                            child: Container(
-                                              height: 25.h,
-                                              width: 25.h,
-                                              alignment: Alignment.center,
-                                              decoration: BoxDecoration(
-                                                  color: allColors.primaryColor,
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(
-                                                              50.r))),
-                                              child: Padding(
-                                                padding: EdgeInsets.only(
-                                                    left: isArabic ? 0 : 3.h,
-                                                    right: isArabic ? 3.h : 0),
-                                                child: Icon(
-                                                  Icons.arrow_forward_ios,
-                                                  color: allColors.textColor,
-                                                  size: 12.h,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ],
+                                ] ,
+                                  
                                 userVariables.isLoading
                                     ? const ShimmerPackageCard()
                                     : userVariables.userProfile?.packageName ==

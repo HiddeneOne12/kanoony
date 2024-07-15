@@ -94,29 +94,29 @@ class AppTheme {
         buttonTheme: const ButtonThemeData(textTheme: ButtonTextTheme.normal),
         textTheme:  TextTheme(
           ///For Large Headings
-          displayLarge: TextStyle(fontSize: 28.0.sp, fontWeight: FontWeight.bold),
-          displayMedium: TextStyle(fontSize: 24.0.sp, fontWeight: FontWeight.bold),
-          displaySmall: TextStyle(fontSize: 22.0.sp, fontWeight: FontWeight.bold),
+          displayLarge: TextStyle(fontSize: 28.0.sp, fontWeight: FontWeight.bold,height: 1.17),
+          displayMedium: TextStyle(fontSize: 24.0.sp, fontWeight: FontWeight.bold,height: 1.17),
+          displaySmall: TextStyle(fontSize: 22.0.sp, fontWeight: FontWeight.bold,height: 1.17),
 
           ///For Headings
-          headlineLarge: TextStyle(fontSize: 20.0.sp, fontWeight: FontWeight.bold),
-          headlineMedium:TextStyle(fontSize: 18.0.sp, fontWeight: FontWeight.bold),
-          headlineSmall: TextStyle(fontSize: 16.0.sp, fontWeight: FontWeight.bold),
+          headlineLarge: TextStyle(fontSize: 20.0.sp, fontWeight: FontWeight.bold, height: 1.17),
+          headlineMedium:TextStyle(fontSize: 18.0.sp, fontWeight: FontWeight.bold, height: 1.17),
+          headlineSmall: TextStyle(fontSize: 16.0.sp, fontWeight: FontWeight.bold, height: 1.17),
 
           ///For Sub Headings
-          titleLarge: TextStyle(fontSize: 17.0.sp, fontWeight: FontWeight.w500),
-          titleMedium: TextStyle(fontSize: 16.0.sp, fontWeight: FontWeight.w500),
-          titleSmall: TextStyle(fontSize: 15.0.sp, fontWeight: FontWeight.w500),
+          titleLarge: TextStyle(fontSize: 20.0.sp, fontWeight: FontWeight.w500, height: 1.17),
+          titleMedium: TextStyle(fontSize: 17.0.sp, fontWeight: FontWeight.w500, height: 1.17),
+          titleSmall: TextStyle(fontSize: 15.0.sp, fontWeight: FontWeight.w500, height: 1.17),
 
           ///For Body Text
-          bodyLarge: TextStyle(fontSize: 16.0.sp),
-          bodyMedium: TextStyle(fontSize: 14.0.sp),
-          bodySmall: TextStyle(fontSize: 12.0.sp),
+          bodyLarge: TextStyle(fontSize: 16.0.sp, height: 1.17),
+          bodyMedium: TextStyle(fontSize: 14.0.sp,height: 1.17),
+          bodySmall: TextStyle(fontSize: 12.0.sp, height: 1.17),
 
           ///For label ans captions etc
-          labelLarge: TextStyle(fontSize: 14.0.sp, fontWeight: FontWeight.w500),
-          labelMedium: TextStyle(fontSize: 12.0.sp, fontWeight: FontWeight.w500),
-          labelSmall: TextStyle(fontSize: 11.0.sp, fontWeight: FontWeight.w500),
+          labelLarge: TextStyle(fontSize: 14.0.sp, fontWeight: FontWeight.w500, height: 1.17),
+          labelMedium: TextStyle(fontSize: 12.0.sp, fontWeight: FontWeight.w500, height: 1.17),
+          labelSmall: TextStyle(fontSize: 11.0.sp, fontWeight: FontWeight.w500, height: 1.17),
         ),
         textSelectionTheme: TextSelectionThemeData(
           selectionColor: const Color(0xff181E5B).withOpacity(0.4),

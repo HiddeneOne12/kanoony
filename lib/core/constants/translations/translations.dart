@@ -64,6 +64,8 @@ class StaticTextTranslations {
   String aboutUs = isArabic ? "معلومات عنا" : "About us";
   String package = isArabic ? "طَرد" : "Package";
   String contactUs = isArabic ? "اتصل بنا" : "Contact Us";
+    String quickLinks =  isArabic ? "روابط سريعة" : "Quick Links";
+
    String home = isArabic ? "بيت" : "Home";
     printCalled(){
       print("IsArabic or Nor" + isArabic.toString());

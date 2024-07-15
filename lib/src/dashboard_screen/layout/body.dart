@@ -1,12 +1,10 @@
 // ignore_for_file: annotate_overrides
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kanoony/core/common_widgets/appbar_textfield.dart';
 import 'package:kanoony/core/common_widgets/common_appbar.dart';
-import 'package:kanoony/core/common_widgets/common_text_widget.dart';
 import 'package:kanoony/core/common_widgets/directionality_widget.dart';
 import 'package:kanoony/core/constants/image_paths/image_paths.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
@@ -16,18 +14,20 @@ import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/core/routing/routing_config.dart';
+import 'package:kanoony/src/dashboard_screen/layout/widgets/home_carporate_services_widget.dart';
+import 'package:kanoony/src/dashboard_screen/layout/widgets/home_packages_widget.dart';
+import 'package:kanoony/src/dashboard_screen/layout/widgets/quick_links_widget.dart';
 import 'package:kanoony/src/dashboard_screen/layout/widgets/shimmer.dart';
 import 'package:kanoony/src/document_module/paid_document_screen/paid_doucment_screen.dart';
-import 'package:kanoony/src/service_module/document_translate_screen/document_translate_screen.dart';
 import 'package:kanoony/src/service_module/trademark_module/trademark_screen/trademark_screen.dart';
 import '../../../core/common_widgets/common_payment_popup.dart';
 import '../../../core/common_widgets/common_snackbar_widget.dart';
+import 'dart:ui' as Ui;
+
 import '../../service_module/business_service_module/business_setup_screen/business_setup_screen.dart';
-import '../../packages_screen/layout/widgets/package_cards.dart';
+import '../../service_module/document_translate_screen/document_translate_screen.dart';
 import '../../service_module/golden_visa_screen/golden_visa_screen.dart';
 import '../../service_module/register_will_module/register_will_screen/register_will_screen.dart';
-import '../../../core/common_widgets/service_cards.dart';
-import 'dart:ui' as Ui;
 
 class DashBoardBody extends ConsumerStatefulWidget {
   const DashBoardBody({super.key});
@@ -48,13 +48,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
   ];
   final ScrollController _scrollController = ScrollController();
   final ScrollController scrollController2 = ScrollController();
-  AnimationController? _animationController;
-  bool _scrollingForward = true;
   void initState() {
-    _animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 100))
-      ..addListener(_autoScroll)
-      ..repeat();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       //   if (userProfileHelper.userData.id.isNotEmpty) {
       await ref
@@ -85,53 +79,9 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
   int selectedIndex = -1;
   @override
   void dispose() {
-    _animationController!.dispose();
     _scrollController.dispose();
     scrollController2.dispose();
     super.dispose();
-  }
-
-  void scrollForward() {
-    scrollController2.animateTo(
-      scrollController2.offset + 500, // Scroll forward by 100 pixels
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
-  }
-
-  void scrollBackward() {
-    scrollController2.animateTo(
-      scrollController2.offset - 500, // Scroll backward by 100 pixels
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
-  }
-
-  void _autoScroll() {
-    if (_scrollController.hasClients) {
-      double maxScrollExtent = _scrollController.position.maxScrollExtent;
-      double minScrollExtent = _scrollController.position.minScrollExtent;
-      double currentOffset = _scrollController.offset;
-
-      if (_scrollingForward) {
-        if (currentOffset >= maxScrollExtent) {
-          _scrollingForward = false;
-        } else {
-          _scrollController.jumpTo(currentOffset + 1);
-        }
-      } else {
-        if (currentOffset <= minScrollExtent) {
-          _scrollingForward = true;
-        } else {
-          if (_scrollController.position.pixels >=
-              _scrollController.position.maxScrollExtent) {
-            _scrollController.jumpTo(0.0);
-          } else {
-            _scrollController.jumpTo(currentOffset - 1);
-          }
-        }
-      }
-    }
   }
 
   Widget build(BuildContext context) {
@@ -176,45 +126,54 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                   SizedBox(
                     height: 0.82.sh,
                     child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 10.h),
-                          dashboardVariables.areLoaded
-                              ? const QuickLinksShimmer()
-                              : Padding(
-                                padding: kHeadlinePadding,
-                                child: Text(
-                                    dashboardVariables.staticData?.contractTemplates.capitalizeFirstLetter() ?? '',
-                                    style: context.headlineLargeSemiMediumBold,
-                                  ),
-                              ),
-                          dashboardVariables.areLoaded
-                              ? const QuickLinksShimmer()
-                              : Column(
-                                  children: [
-                                    AppBarTemplateTextField(isFilter: false),
-                                    SizedBox(
-                                      height: 15.h,
+                      child: Padding(
+                        padding: kMainBodyPadding,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 10.h),
+                            dashboardVariables.areLoaded
+                                ? const QuickLinksShimmer()
+                                : Padding(
+                                    padding: kHeadlineBottomPadding,
+                                    child: Text(
+                                      dashboardVariables
+                                              .staticData?.contractTemplates
+                                              .upperCase() ??
+                                          '',
+                                      style: context.headlineLarge,
                                     ),
-
-                                    CarouselSlider(
-                                      options: CarouselOptions(
-                                          height: 140.h,
-                                          viewportFraction: 0.3,
-                                          reverse: false,
-                                          autoPlay: false,
-                                          autoPlayInterval:
-                                              const Duration(seconds: 1),
-                                          autoPlayAnimationDuration:
-                                              const Duration(milliseconds: 800),
-                                          enlargeCenterPage: true,
+                                  ),
+                            dashboardVariables.areLoaded
+                                ? const QuickLinksShimmer()
+                                : Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      AppBarTemplateTextField(isFilter: false),
+                                      Padding(
+                                        padding: kSubTitlePadding,
+                                        child: Text(
+                                          translation.quickLinks
+                                              .capitalizeFirstLetter(),
+                                          style: context.titleLarge,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 105.h,
+                                        child: ListView.builder(
+                                          physics:
+                                              const AlwaysScrollableScrollPhysics(),
                                           scrollDirection: Axis.horizontal,
-                                          enlargeFactor: 0.3),
-                                      items: dashboardVariables.quickLinks
-                                          ?.map((data) {
-                                        return Builder(
-                                          builder: (BuildContext context) {
+                                          controller: _scrollController,
+                                          padding: EdgeInsets.zero,
+                                          shrinkWrap: true,
+                                          itemCount: dashboardVariables
+                                              .quickLinks!.length,
+                                          itemBuilder: (context, index) {
+                                            var data = dashboardVariables
+                                                .quickLinks![index];
+
                                             return InkWell(
                                               onTap: () {
                                                 RoutesUtils.context.push(
@@ -233,7 +192,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                                       .searchedDoc = [];
                                                 });
                                               },
-                                              child: ServiceCard(
+                                              child: QuickLinkWidget(
                                                   isPng: true,
                                                   onTap: () {
                                                     RoutesUtils.context.push(
@@ -250,211 +209,43 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                                       data.title)),
                                             );
                                           },
-                                        );
-                                      }).toList(),
-                                    )
-                                    // Container(
-                                    //   height: 110.h,
-                                    //   child: ListView.builder(
-                                    //     physics:
-                                    //         const AlwaysScrollableScrollPhysics(),
-                                    //     scrollDirection: Axis.horizontal,
-                                    //     controller: _scrollController,
-                                    //     shrinkWrap: true,
-                                    //     itemCount: dashboardVariables
-                                    //         .quickLinks!.length,
-                                    //     itemBuilder: (context, index) {
-                                    //       var data = dashboardVariables
-                                    //           .quickLinks![index];
-
-                                    //       return InkWell(
-                                    //         onTap: () {
-                                    //           RoutesUtils.context.push(
-                                    //             PaidDocumentScreen
-                                    //                 .paidDocumentRoute,
-                                    //             extra: {
-                                    //               TextUtils.slug:
-                                    //                   data.slug.toString()
-                                    //             },
-                                    //           );
-                                    //           setState(() {
-                                    //             dashboardProvider
-                                    //                 .searchController
-                                    //                 .clear();
-                                    //             dashboardVariables.searchedDoc =
-                                    //                 [];
-                                    //           });
-                                    //         },
-                                    //         child: SizedBox(
-                                    //           width: 169.h,
-                                    //           child: ServiceCard(
-                                    //               isPng: true,
-                                    //               onTap: () {
-                                    //                 RoutesUtils.context.push(
-                                    //                   PaidDocumentScreen
-                                    //                       .paidDocumentRoute,
-                                    //                   extra: {
-                                    //                     TextUtils.slug:
-                                    //                         data.slug.toString()
-                                    //                   },
-                                    //                 );
-                                    //               },
-                                    //               icon: icons[index],
-                                    //               text: capitalizeFirst(
-                                    //                   data.title)),
-                                    //         ),
-                                    //       );
-                                    //     },
-                                    //   ),
-                                    // ),
-                                  ],
-                                ),
-                          dashboardVariables.areLoaded
-                              ? const QuickLinksShimmer()
-                              : CommonTextWidget(
-                                  color: context.onBackgroundColor,
-                                  size: 20.sp,
-                                  text: capitalizeFirst(dashboardVariables.staticData?.corporateService ?? ''),
-                                  weight: FontWeight.w500,
-                                  padding: EdgeInsets.only(
-                                      left: 16.h, right: 16.h, top: 10.h)),
-                          dashboardVariables.areLoaded
-                              ? const GridShimmer()
-                              : GridView.count(
-                                  crossAxisCount: 2,
-                                  shrinkWrap: true,
-                                  childAspectRatio: 1.76,
-                                  crossAxisSpacing: 7.h,
-                                  padding: EdgeInsets.only(
-                                      left: 15.h, right: 15.h, top: 10.h),
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  children: [
-                                    ServiceCard(
-                                        onTap: () async {
-                                          var variables = ref.watch(
-                                              allProviderList
-                                                  .dashboardProvider);
-                                          var provider = ref.read(
-                                              allProviderList
-                                                  .dashboardProvider.notifier);
-                                          provider.searchController.clear();
-                                          variables.searchedDoc = [];
-                                          RoutesUtils.context.push(
-                                              BusinessSetupScreen
-                                                  .businessSetupRoute);
-                                        },
-                                        icon: SvgImagesAssetPath.businessSvg,
-                                        text: capitalizeFirst(dashboardVariables
-                                                .staticData?.setupABusiness ??
-                                            '')),
-                                    ServiceCard(
-                                        onTap: () {
-                                          var variables = ref.watch(
-                                              allProviderList
-                                                  .dashboardProvider);
-                                          var provider = ref.read(
-                                              allProviderList
-                                                  .dashboardProvider.notifier);
-                                          provider.searchController.clear();
-                                          variables.searchedDoc = [];
-                                          RoutesUtils.context.push(
-                                              TradeMarkScreen.trademarkRoute);
-                                        },
-                                        icon: SvgImagesAssetPath.tradeMarkSvg,
-                                        text: capitalizeFirst(dashboardVariables
-                                                .staticData
-                                                ?.registerATrademark ??
-                                            '')),
-                                    ServiceCard(
-                                        onTap: () {
-                                          var variables = ref.watch(
-                                              allProviderList
-                                                  .dashboardProvider);
-                                          var provider = ref.read(
-                                              allProviderList
-                                                  .dashboardProvider.notifier);
-                                          provider.searchController.clear();
-                                          variables.searchedDoc = [];
-                                          RoutesUtils.context.push(
-                                              RegisterWillScreen.willRoute);
-                                        },
-                                        icon: SvgImagesAssetPath.willSvg,
-                                        text: capitalizeFirst(dashboardVariables
-                                                .staticData?.registerAWill ??
-                                            '')),
-                                    ServiceCard(
-                                        onTap: () {
-                                          var variables = ref.watch(
-                                              allProviderList
-                                                  .dashboardProvider);
-                                          var provider = ref.read(
-                                              allProviderList
-                                                  .dashboardProvider.notifier);
-                                          provider.searchController.clear();
-                                          variables.searchedDoc = [];
-                                          RoutesUtils.context.push(
-                                              DocTranslateScreen
-                                                  .docTranslateRoute);
-                                        },
-                                        icon: SvgImagesAssetPath.documentSvg,
-                                        text: capitalizeFirst(dashboardVariables
-                                                .staticData
-                                                ?.translateADocument ??
-                                            '')),
-                                    ServiceCard(
-                                        onTap: () {
-                                          var variables = ref.watch(
-                                              allProviderList
-                                                  .dashboardProvider);
-                                          var provider = ref.read(
-                                              allProviderList
-                                                  .dashboardProvider.notifier);
-                                          provider.searchController.clear();
-                                          variables.searchedDoc = [];
-                                          RoutesUtils.context
-                                              .push(GoldenVisaScreen.visaRoute);
-                                        },
-                                        icon: SvgImagesAssetPath.visaSvg,
-                                        text: capitalizeFirst(dashboardVariables
-                                                .staticData?.goldenVisa ??
-                                            '')),
-                                  ],
-                                ),
-                          SizedBox(height: 10.h),
-                          Padding(
-                            padding: EdgeInsets.only(right: 16.h, left: 16.h),
-                            child: dashboardVariables.areLoaded
-                                ? const QuickLinksShimmer()
-                                : CommonTextWidget(
-                                    color: allColors.textColor,
-                                    size: 20.sp,
-                                    text: capitalizeFirst(dashboardVariables
-                                            .staticData
-                                            ?.contractTemplatePackages ??
-                                        ''),
-                                    weight: FontWeight.w500,
-                                    padding: EdgeInsets.only(
-                                        right: isArabic ? 0 : 20.h,
-                                        left: isArabic ? 135.h : 0)),
-                          ),
-                          SizedBox(height: 5.h),
-                          dashboardVariables.isLoaded
-                              ? const ShimmerPackageCard()
-                              : SizedBox(
-                                  child: ListView.builder(
-                                    itemCount:
-                                        dashboardVariables.allPackages.length,
-                                    controller: scrollController2,
-                                    padding: EdgeInsets.zero,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                            dashboardVariables.areLoaded
+                                ? const SizedBox()
+                                : Padding(
+                                    padding: kSubTitlePadding,
+                                    child: Text(
+                                      dashboardVariables.staticData
+                                              ?.contractTemplatePackages
+                                              .capitalizeFirstLetter() ??
+                                          '',
+                                      style: context.titleLarge,
+                                    ),
+                                  ),
+                            dashboardVariables.areLoaded
+                                ? const  GridShimmer()
+                                : GridView.builder(
+                                    gridDelegate:
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2,
+                                      childAspectRatio: 1.76,
+                                      crossAxisSpacing: 7.h,
+                                    ),
                                     shrinkWrap: true,
+                                    padding: EdgeInsets.zero,
                                     physics:
                                         const NeverScrollableScrollPhysics(),
+                                    itemCount:
+                                        dashboardVariables.allPackages.length,
                                     itemBuilder: (context, index) {
                                       var data =
                                           dashboardVariables.allPackages[index];
                                       return SizedBox(
                                         width: 1.sw,
-                                        child: InkWell(
+                                        child: HomePackagesWidget(
                                           onTap: () async {
                                             selectedIndex = index;
                                             setState(() {});
@@ -510,78 +301,135 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                                   '');
                                             }
                                           },
-                                          child: PackageCard(
-                                            onTap: () async {
-                                              if (userProfileHelper
-                                                  .userData.id.isEmpty) {
-                                                await paymentPopUp(
-                                                    context,
-                                                    ref,
-                                                    data,
-                                                    userProfileHelper
-                                                            .userData.id.isEmpty
-                                                        ? true
-                                                        : false,
-                                                    '',
-                                                    true,
-                                                    '',
-                                                    '',
-                                                    '');
-                                                return;
-                                              }
-                                              if (userProfileHelper.userData
-                                                          .packageName !=
-                                                      "null" ||
-                                                  userProfileHelper.userData
-                                                              .remainingDocument !=
-                                                          "0" &&
-                                                      DateTime.now().isAfter(
-                                                          DateTime.tryParse(
-                                                                  userProfileHelper
-                                                                      .userData
-                                                                      .packageExpiry) ??
-                                                              DateTime.now())) {
-                                                showSnackBarMessage(
-                                                    content:
-                                                        "You have already subscribed a package!",
-                                                    backgroundColor:
-                                                        allColors.primaryColor,
-                                                    contentColor:
-                                                        allColors.canvasColor);
-                                              } else {
-                                                await paymentPopUp(
-                                                    context,
-                                                    ref,
-                                                    data,
-                                                    userProfileHelper
-                                                            .userData.id.isEmpty
-                                                        ? true
-                                                        : false,
-                                                    '',
-                                                    true,
-                                                    '',
-                                                    '',
-                                                    '');
-                                              }
-                                            },
-                                            fifty: dashboardVariables.staticData
-                                                    ?.saveMoreThan_50 ??
-                                                '',
-                                            price: data.price.toString(),
-                                            title: data.title,
-                                            description: data.description,
-                                            getItNow: dashboardVariables
-                                                    .staticData
-                                                    ?.monthlyAction ??
-                                                '',
-                                          ),
+                                          fifty: dashboardVariables.staticData
+                                                  ?.saveMoreThan_50 ??
+                                              '',
+                                          price: data.price.toString(),
+                                          title: data.title,
+                                          description: data.description,
                                         ),
                                       );
                                     },
                                   ),
-                                ),
-                          SizedBox(height: 50.h),
-                        ],
+
+                            dashboardVariables.areLoaded
+                                ? const SizedBox()
+                                : Padding(
+                                    padding: kHeadlineVerticalPadding,
+                                    child: Text(
+                                      dashboardVariables
+                                              .staticData?.corporateService
+                                              .upperCase() ??
+                                          '',
+                                      style: context.headlineLarge,
+                                    ),
+                                  ),
+                            dashboardVariables.areLoaded
+                                ? const GridShimmer()
+                                : ListView(
+                                  padding: EdgeInsets.zero,
+                                    shrinkWrap: true,
+                                     
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    children: [
+                                      HomeCarporateServicesWidget(
+                                          onTap: () async {
+                                            var variables = ref.watch(
+                                                allProviderList
+                                                    .dashboardProvider);
+                                            var provider = ref.read(
+                                                allProviderList
+                                                    .dashboardProvider
+                                                    .notifier);
+                                            provider.searchController.clear();
+                                            variables.searchedDoc = [];
+                                            RoutesUtils.context.push(
+                                                BusinessSetupScreen
+                                                    .businessSetupRoute);
+                                          },
+                                          text: 
+                                              dashboardVariables.staticData
+                                                      ?.setupABusiness.capitalizeFirstLetter() ??
+                                                  ''),
+                                      HomeCarporateServicesWidget(
+                                          onTap: () {
+                                            var variables = ref.watch(
+                                                allProviderList
+                                                    .dashboardProvider);
+                                            var provider = ref.read(
+                                                allProviderList
+                                                    .dashboardProvider
+                                                    .notifier);
+                                            provider.searchController.clear();
+                                            variables.searchedDoc = [];
+                                            RoutesUtils.context.push(
+                                                TradeMarkScreen.trademarkRoute);
+                                          },
+                                          text: 
+                                              dashboardVariables.staticData
+                                                      ?.registerATrademark.capitalizeFirstLetter() ??
+                                                  ''),
+                                      HomeCarporateServicesWidget(
+                                          onTap: () {
+                                            var variables = ref.watch(
+                                                allProviderList
+                                                    .dashboardProvider);
+                                            var provider = ref.read(
+                                                allProviderList
+                                                    .dashboardProvider
+                                                    .notifier);
+                                            provider.searchController.clear();
+                                            variables.searchedDoc = [];
+                                            RoutesUtils.context.push(
+                                                RegisterWillScreen.willRoute);
+                                          },
+                                          text: 
+                                              dashboardVariables.staticData
+                                                      ?.registerAWill.capitalizeFirstLetter() ??
+                                                  ''),
+                                      HomeCarporateServicesWidget(
+                                          onTap: () {
+                                            var variables = ref.watch(
+                                                allProviderList
+                                                    .dashboardProvider);
+                                            var provider = ref.read(
+                                                allProviderList
+                                                    .dashboardProvider
+                                                    .notifier);
+                                            provider.searchController.clear();
+                                            variables.searchedDoc = [];
+                                            RoutesUtils.context.push(
+                                                DocTranslateScreen
+                                                    .docTranslateRoute);
+                                          },
+                                           text:  
+                                              dashboardVariables.staticData
+                                                      ?.translateADocument.capitalizeFirstLetter() ??
+                                                  ''),
+                                      HomeCarporateServicesWidget(
+                                          onTap: () {
+                                            var variables = ref.watch(
+                                                allProviderList
+                                                    .dashboardProvider);
+                                            var provider = ref.read(
+                                                allProviderList
+                                                    .dashboardProvider
+                                                    .notifier);
+                                            provider.searchController.clear();
+                                            variables.searchedDoc = [];
+                                            RoutesUtils.context.push(
+                                                GoldenVisaScreen.visaRoute);
+                                          },
+                                           text: 
+                                              dashboardVariables
+                                                      .staticData?.goldenVisa.capitalizeFirstLetter() ??
+                                                  ''),
+                                    ],
+                                  ),
+                            SizedBox(height: 50.h),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -592,15 +440,5 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
         ),
       ),
     );
-  }
-
-  bool _isSubscribed(index) {
-    return selectedIndex == index &&
-            userProfileHelper.userData.id.isNotEmpty &&
-            userProfileHelper.userData.packageName != "null" ||
-        userProfileHelper.userData.remainingDocument != "0" &&
-            DateTime.now().isAfter(
-                DateTime.tryParse(userProfileHelper.userData.packageExpiry) ??
-                    DateTime.now());
   }
 }

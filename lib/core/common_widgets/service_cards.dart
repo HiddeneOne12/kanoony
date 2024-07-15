@@ -6,6 +6,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:kanoony/core/common_widgets/common_text_widget.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/constants/values.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 
 class ServiceCard extends StatelessWidget {
   final String icon;
@@ -25,10 +27,10 @@ class ServiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 7.h),
-      child: GestureDetector(
-        onTap: onTap,
+    return InkWell(
+      onTap: onTap,
+      child: SizedBox(
+        width: 140.w,
         child: Card(
           elevation: 0,
           color: allColors.canvasColor,
@@ -38,7 +40,7 @@ class ServiceCard extends StatelessWidget {
           ),
           child: Center(
             child: Padding(
-              padding: EdgeInsets.all(7.h),
+              padding: kContainerPadding,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -51,15 +53,21 @@ class ServiceCard extends StatelessWidget {
                             icon,
                           ),
                   ),
-                  SizedBox(height: 12.h),
-                  CommonTextWidget(
-                      maxLine: 1,
-                      color: allColors.textColor,
-                      size: 15,
-                      weight: FontWeight.w400,
-                      text: text,
-                      
-                      padding: noPadding)
+                  SizedBox(height: 14.h),
+                  // CommonTextWidget(
+                  //     maxLine: 1,
+                  //     color: allColors.textColor,
+                  //     size: 15,
+                  //     weight: FontWeight.w400,
+                  //     text: text,
+                  //     padding: noPadding),
+                  Text(
+                    text,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    style: context.bodyMedium,
+                    textAlign: TextAlign.center,
+                  )
                 ],
               ),
             ),

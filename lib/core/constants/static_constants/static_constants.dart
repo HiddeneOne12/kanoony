@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/src/dashboard_screen/layout/body.dart';
 import 'package:kanoony/src/dashboard_screen/layout/dashboard_logged_in_screen.dart';
-import 'package:kanoony/src/document_module/free_document_screen/layout/body.dart';
 import 'package:kanoony/src/packages_screen/layout/body.dart';
 import 'package:kanoony/src/service_module/service_screen/layout/body.dart';
 
