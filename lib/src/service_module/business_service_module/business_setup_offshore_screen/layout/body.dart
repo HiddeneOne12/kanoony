@@ -3,13 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
-import 'package:kanoony/core/helpers/pascal_case_converter.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import '../../../../../core/common_widgets/callback_button.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
 import '../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
+import '../../../../../core/constants/values.dart';
 import '../../../../../core/routing/routing_config.dart';
 import '../../../../faq_screen/faq_screen.dart';
 import '../../../widgets/cards_popup.dart';
@@ -28,6 +29,7 @@ class BusinessSetupOffshoreBody extends ConsumerStatefulWidget {
 
 class _BusinessSetupOffshoreBodyState
     extends ConsumerState<BusinessSetupOffshoreBody> {
+  bool selectedItem = false;
   @override
   Widget build(BuildContext context) {
     var variables = ref.watch(allProviderList.dashboardProvider);
@@ -65,38 +67,42 @@ class _BusinessSetupOffshoreBodyState
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(height: 30.h),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          variables.staticData?.offshoreCompanyformationInUae
+                                  .upperCase() ??
+                              '',
+                          style: context.headlineLarge,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      const Align(
+                        alignment: Alignment.center,
+                        child: CallBackButton(),
+                      ),
                       SizedBox(
-                        height: 20.h,
+                        height: 5.h,
                       ),
                       Padding(
-                        padding: EdgeInsets.only(
-                          left: isArabic ? 0 : 0.23.sw,
-                          right: isArabic ? 0.23.sw : 0,
+                        padding: kTitlePadding,
+                        child: Text(
+                          variables.staticData
+                                  ?.heresHowYouCanEffortlesslySetUpAnOffshore_
+                                  .capitalizeFirstLetter() ??
+                              '',
+                          style: context.headlineLarge
+                              ?.copyWith(fontWeight: FontWeight.w500),
+                          textAlign: TextAlign.start,
                         ),
-                        child: const CallBackButton(),
-                      ),
-                       SizedBox(
-                        height: 10.h,
-                      ),
-                      CommonTextWidget(
-                        color: allColors.textColor,
-                        size: 20.sp,
-                        text: variables.staticData
-                                ?.heresHowYouCanEffortlesslySetUpAnOffshore_.capitalizeFirstLetter()
-                                 ??
-                            '',
-                        weight: FontWeight.w500,
-                        align: TextAlign.start,
-                        padding:
-                            EdgeInsets.only(left: 16.h, right: 16.h, top: 12.h),
                       ),
                       GridView.count(
                         crossAxisCount: 2,
                         shrinkWrap: true,
                         childAspectRatio: 1.35,
                         crossAxisSpacing: 7.h,
-                        padding:
-                            EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
+                        padding: EdgeInsets.only(left: 16.h, right: 16.h),
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
                           BusinessOffshoreLandServiceCard(
@@ -119,8 +125,9 @@ class _BusinessSetupOffshoreBodyState
                                   '');
                             },
                             icon: PngImagePaths.agentImg,
-                            text: variables.staticData
-                                    ?.findATrustworthyRegisteredAgent ??
+                            text: variables
+                                    .staticData?.findATrustworthyRegisteredAgent
+                                    .capitalizeFirstLetter() ??
                                 '',
                           ),
                           BusinessOffshoreLandServiceCard(
@@ -132,7 +139,8 @@ class _BusinessSetupOffshoreBodyState
                                       '',
                                   PngImagePaths.companyTypeImg,
                                   variables.staticData
-                                          ?.determiningTheTypeAndStructureOfYourCompany ??
+                                          ?.determiningTheTypeAndStructureOfYourCompany
+                                          .capitalizeFirstLetter() ??
                                       '',
                                   true,
                                   false,
@@ -143,8 +151,8 @@ class _BusinessSetupOffshoreBodyState
                                   '');
                             },
                             icon: PngImagePaths.companyTypeImg,
-                            text: variables
-                                    .staticData?.determineYourCompanyType ??
+                            text: variables.staticData?.determineYourCompanyType
+                                    .capitalizeFirstLetter() ??
                                 '',
                           ),
                           BusinessOffshoreLandServiceCard(
@@ -168,7 +176,8 @@ class _BusinessSetupOffshoreBodyState
                             },
                             icon: PngImagePaths.companyNameImg,
                             text: variables
-                                    .staticData?.giveYourCompanyAUniqueName ??
+                                    .staticData?.giveYourCompanyAUniqueName
+                                    .capitalizeFirstLetter() ??
                                 '',
                           ),
                           BusinessOffshoreLandServiceCard(
@@ -199,7 +208,8 @@ class _BusinessSetupOffshoreBodyState
                                       '');
                             },
                             icon: PngImagePaths.vitalDocImg,
-                            text: variables.staticData?.gatherVitalDocuments ??
+                            text: variables.staticData?.gatherVitalDocuments
+                                    .capitalizeFirstLetter() ??
                                 '',
                           ),
                           BusinessOffshoreLandServiceCard(
@@ -222,9 +232,9 @@ class _BusinessSetupOffshoreBodyState
                                   '');
                             },
                             icon: PngImagePaths.companyRegisterImg,
-                            text:
-                                variables.staticData?.registeringYourCompany ??
-                                    '',
+                            text: variables.staticData?.registeringYourCompany
+                                    .capitalizeFirstLetter() ??
+                                '',
                           ),
                           BusinessOffshoreLandServiceCard(
                             onTap: () async {
@@ -247,7 +257,8 @@ class _BusinessSetupOffshoreBodyState
                             },
                             icon: PngImagePaths.offshoreBankImg,
                             text: variables
-                                    .staticData?.openAnOffshoreBankAccount ??
+                                    .staticData?.openAnOffshoreBankAccount
+                                    .capitalizeFirstLetter() ??
                                 '',
                           ),
                         ],
@@ -261,90 +272,113 @@ class _BusinessSetupOffshoreBodyState
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CommonTextWidget(
-                              color: allColors.textColor,
-                              size: 20.sp,
-                              text: variables.staticData
-                                      ?.benefitsOfRegisteringAnOffshoreCompany.capitalizeFirstLetter() ??
-                                  '',
-                              weight: FontWeight.w500,
-                              align: TextAlign.start,
-                              padding: EdgeInsets.only(
-                                  left: 16.h, right: 16.h, top: 10.h),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  selectedItem = !selectedItem;
+                                });
+                              },
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Padding(
+                                      padding: kTitlePadding2,
+                                      child: Text(
+                                        variables.staticData
+                                                ?.benefitsOfRegisteringAnOffshoreCompany
+                                                .capitalizeFirstLetter() ??
+                                            '',
+                                        style: context.headlineLarge?.copyWith(
+                                            fontWeight: FontWeight.w500),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ),
+                                  ),
+                                  Icon(
+                                    selectedItem
+                                        ? Icons.keyboard_arrow_up
+                                        : Icons.keyboard_arrow_down,
+                                    color: allColors.textColor,
+                                    size: 25,
+                                  ),
+                                  SizedBox(
+                                    width: 20.w,
+                                  )
+                                ],
+                              ),
                             ),
                             SizedBox(
                               height: 10.h,
                             ),
-                            BusinessOffShoreFaqCards(
-                              name: variables.staticData?.aTaxHeaven ?? '',
-                              description: variables.staticData
-                                      ?.uaeIsRecognizedGloballyAsATaxHavenTherefor ??
-                                  '',
-                            ),
-                            BusinessOffShoreFaqCards(
-                              name: variables
-                                      .staticData?.the100ForeignOwnership ??
-                                  '',
-                              description: variables.staticData
-                                      ?.theBestPartAboutOwningAnOffshoreCompanyIn_ ??
-                                  '',
-                            ),
-                            BusinessOffShoreFaqCards(
-                              name: variables.staticData?.confidentiality ?? '',
-                              description: variables.staticData
-                                      ?.whileFormingAnOffshoreCompanyConfidentiality_ ??
-                                  '',
-                            ),
-                            BusinessOffShoreFaqCards(
-                              name: variables
-                                      .staticData?.moreFlexibilityInBusiness ??
-                                  '',
-                              description: variables.staticData
-                                      ?.offshoreCompaniesInUaeEnjoyGreatFlexibility_ ??
-                                  '',
-                            ),
-                            BusinessOffShoreFaqCards(
-                              name:
-                                  variables.staticData?.accessToGlobalFunding ??
-                                      '',
-                              description: variables.staticData
-                                      ?.establishingAnOffshoreCompanyInUaeIsAGatew ??
-                                  '',
-                            ),
-                            BusinessOffShoreFaqCards(
-                              name: variables.staticData
-                                      ?.noMinimumCapitalRequirements ??
-                                  '',
-                              description: variables.staticData
-                                      ?.anotherSignificantAdvantageOfAnOffshoreBusin ??
-                                  '',
-                            ),
-                            BusinessOffShoreFaqCards(
-                              name: variables.staticData?.anEaseOfSetup ?? '',
-                              description: variables.staticData
-                                      ?.settingUpAnOffshoreBusinessInUaeRequiresMi ??
-                                  '',
-                            ),
-                            SizedBox(
-                              height: 15.h,
-                            ),
+                            if (selectedItem) ...[
+                              BusinessOffShoreFaqCards(
+                                name: variables.staticData?.aTaxHeaven ?? '',
+                                description: variables.staticData
+                                        ?.uaeIsRecognizedGloballyAsATaxHavenTherefor ??
+                                    '',
+                              ),
+                              BusinessOffShoreFaqCards(
+                                name: variables
+                                        .staticData?.the100ForeignOwnership ??
+                                    '',
+                                description: variables.staticData
+                                        ?.theBestPartAboutOwningAnOffshoreCompanyIn_ ??
+                                    '',
+                              ),
+                              BusinessOffShoreFaqCards(
+                                name:
+                                    variables.staticData?.confidentiality ?? '',
+                                description: variables.staticData
+                                        ?.whileFormingAnOffshoreCompanyConfidentiality_ ??
+                                    '',
+                              ),
+                              BusinessOffShoreFaqCards(
+                                name: variables.staticData
+                                        ?.moreFlexibilityInBusiness ??
+                                    '',
+                                description: variables.staticData
+                                        ?.offshoreCompaniesInUaeEnjoyGreatFlexibility_ ??
+                                    '',
+                              ),
+                              BusinessOffShoreFaqCards(
+                                name: variables
+                                        .staticData?.accessToGlobalFunding ??
+                                    '',
+                                description: variables.staticData
+                                        ?.establishingAnOffshoreCompanyInUaeIsAGatew ??
+                                    '',
+                              ),
+                              BusinessOffShoreFaqCards(
+                                name: variables.staticData
+                                        ?.noMinimumCapitalRequirements ??
+                                    '',
+                                description: variables.staticData
+                                        ?.anotherSignificantAdvantageOfAnOffshoreBusin ??
+                                    '',
+                              ),
+                              BusinessOffShoreFaqCards(
+                                name: variables.staticData?.anEaseOfSetup ?? '',
+                                description: variables.staticData
+                                        ?.settingUpAnOffshoreBusinessInUaeRequiresMi ??
+                                    '',
+                              ),
+                              SizedBox(
+                                height: 15.h,
+                              ),
+                            ],
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      CommonTextWidget(
-                        color: allColors.textColor,
-                        size: 20.sp,
-                        text: variables.staticData
-                                ?.streamlinedProcessWithMinimalCapitalAndSimpl.capitalizeFirstLetter() ??
-                            '',
-                        weight: FontWeight.w500,
-                        align: TextAlign.start,
-                        padding: EdgeInsets.only(
-                          left: 16.h,
-                          right: 16.h,
+                      Padding(
+                        padding: kTitlePadding2,
+                        child: Text(
+                          variables.staticData
+                                  ?.streamlinedProcessWithMinimalCapitalAndSimpl
+                                  .capitalizeFirstLetter() ??
+                              '',
+                          style: context.headlineLarge
+                              ?.copyWith(fontWeight: FontWeight.w500),
+                          textAlign: TextAlign.start,
                         ),
                       ),
                       Container(
@@ -361,7 +395,8 @@ class _BusinessSetupOffshoreBodyState
                                 img: PngImagePaths.companyNameImg,
                                 num: variables.staticData?.the01 ?? '',
                                 description: variables.staticData
-                                        ?.theNameSelectionPlaysAnIntegralRoleInTheP.capitalizeFirstLetter() ??
+                                        ?.theNameSelectionPlaysAnIntegralRoleInTheP
+                                        .capitalizeFirstLetter() ??
                                     '',
                                 title: variables.staticData
                                         ?.choosingAUniqueCompanyName ??
@@ -414,21 +449,24 @@ class _BusinessSetupOffshoreBodyState
                           ),
                         ),
                       ),
-                      FaqButton(
-                        onTap: () {
-                          RoutesUtils.context.push(
-                            FaqScreen.faqRoute,
-                            extra: {
-                              TextUtils.isBusiness: false,
-                              TextUtils.isFreeZone: false,
-                              TextUtils.isMainland: false,
-                              TextUtils.isOffshore: true,
-                              TextUtils.isTrademark: false
-                            },
-                          );
-                        },
-                        isCallIcon: false,
-                        backgroundColor: allColors.textColor,
+                      Padding(
+                        padding: EdgeInsets.only(left: 16.h, right: 16.h),
+                        child: FaqButton(
+                          onTap: () {
+                            RoutesUtils.context.push(
+                              FaqScreen.faqRoute,
+                              extra: {
+                                TextUtils.isBusiness: false,
+                                TextUtils.isFreeZone: false,
+                                TextUtils.isMainland: false,
+                                TextUtils.isOffshore: true,
+                                TextUtils.isTrademark: false
+                              },
+                            );
+                          },
+                          isCallIcon: false,
+                          backgroundColor: allColors.textColor,
+                        ),
                       ),
                       SizedBox(
                         height: 10.h,

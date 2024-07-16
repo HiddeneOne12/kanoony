@@ -22,7 +22,7 @@ class CommonImgButtonWidget extends StatefulWidget {
       {super.key,
       required this.padding,
       this.weight = FontWeight.w700,
-      this.fontSize = 16,
+      this.fontSize = 14,
       required this.fontColor,
       required this.height,
       required this.onTap,

@@ -2,8 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/constants/values.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/src/dashboard_screen/provider/dashboard_provider.dart';
-import '../../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../../core/constants/static_constants/static_constants.dart';
 import '../../../provider/register_will_provider.dart';
@@ -48,9 +49,9 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                 height: 43.h,
                 padding: EdgeInsets.all(5.h),
                 decoration: BoxDecoration(
-                    color: allColors.canvasColor,
-                    border: Border.all(color: allColors.canvasColor),
-                    borderRadius: BorderRadius.all(Radius.circular(6.r))),
+                    color: context.onPrimaryColor,
+                    border: Border.all(color: context.onPrimaryColor),
+                    borderRadius: kBorderRadius6),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -65,7 +66,7 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                               color: widget.willVar.selectedType ==
                                       widget.variables.staticData
                                           ?.oneWillRegistration
-                                  ? allColors.primaryColor
+                                  ? context.primaryColor
                                   : allColors.disabledColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(3.r))),
@@ -74,24 +75,23 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                                       .variables.staticData?.oneWillRegistration
                               ? Icon(
                                   Icons.check,
-                                  color: allColors.textColor,
+                                  color: context.onSurfaceColor,
                                   size: 14.h,
                                 )
                               : null),
                     ),
                     Flexible(
-                      child: CommonTextWidget(
-                          color: allColors.textColor,
-                          size: 14.sp,
-                          text: widget
-                                  .variables.staticData?.oneWillRegistration ??
-                              '',
-                          weight: FontWeight.w700,
-                          padding: EdgeInsets.only(
-                              left: isArabic ? 0 : 5.h,
-                              top: 5.h,
-                              right: isArabic ? 5.h : 0)),
-                    ),
+                        child: Padding(
+                      padding: EdgeInsets.only(
+                          left: isArabic ? 0 : 2.h,
+                          top: 5.h,
+                          right: isArabic ? 2.h : 0),
+                      child: Text(
+                        widget.variables.staticData?.oneWillRegistration ?? '',
+                        style: context.bodyMedium
+                            ?.copyWith(fontWeight: FontWeight.w700),
+                      ),
+                    )),
                   ],
                 ),
               ),
@@ -112,9 +112,9 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                 height: 43.h,
                 padding: EdgeInsets.only(top: 5.h, bottom: 5.h),
                 decoration: BoxDecoration(
-                    color: allColors.canvasColor,
-                    border: Border.all(color: allColors.canvasColor),
-                    borderRadius: BorderRadius.all(Radius.circular(6.r))),
+                    color: context.onPrimaryColor,
+                    border: Border.all(color: context.onPrimaryColor),
+                    borderRadius: kBorderRadius6),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -129,7 +129,7 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                               color: widget.willVar.selectedType ==
                                       widget.variables.staticData
                                           ?.mirrorWillRegistration
-                                  ? allColors.primaryColor
+                                  ? context.primaryColor
                                   : allColors.disabledColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(3.r))),
@@ -138,24 +138,24 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                                       ?.mirrorWillRegistration
                               ? Icon(
                                   Icons.check,
-                                  color: allColors.textColor,
+                                  color: context.onSurfaceColor,
                                   size: 14.h,
                                 )
                               : null),
                     ),
                     Flexible(
-                      child: CommonTextWidget(
-                          color: allColors.textColor,
-                          size: 14.sp,
-                          text: widget.variables.staticData
-                                  ?.mirrorWillRegistration ??
-                              '',
-                          weight: FontWeight.w700,
-                          padding: EdgeInsets.only(
-                              left: isArabic ? 0 : 5.h,
-                              top: 5.h,
-                              right: isArabic ? 5.h : 0)),
-                    ),
+                        child: Padding(
+                      padding: EdgeInsets.only(
+                          left: isArabic ? 0 : 5.h,
+                          top: 5.h,
+                          right: isArabic ? 5.h : 0),
+                      child: Text(
+                        widget.variables.staticData?.mirrorWillRegistration ??
+                            '',
+                        style: context.bodyMedium
+                            ?.copyWith(fontWeight: FontWeight.w700),
+                      ),
+                    )),
                   ],
                 ),
               ),

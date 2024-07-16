@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 
 import '../../../core/common_widgets/common_text_widget.dart';
 import '../../../core/constants/object_constants/object_constants.dart';
@@ -29,17 +30,17 @@ class PointsWidget extends StatelessWidget {
             width: 10.h,
           ),
           Flexible(
-            child: CommonTextWidget(
-                color: allColors.textColor,
-                size: 16,
-                align: TextAlign.justify,
-                text: point.capitalizeFirstLetter() ?? "",
-                weight: FontWeight.w400,
-                padding: EdgeInsets.only(
-                    right: isArabic ? 0 : 20.h,
-                    bottom: 0.h,
-                    left: isArabic ? 20.h : 0)),
-          ),
+              child: Padding(
+            padding: EdgeInsets.only(
+                right: isArabic ? 0 : 20.h,
+                bottom: 0.h,
+                left: isArabic ? 20.h : 0),
+            child: Text(
+              point.capitalizeFirstLetter() ?? "",
+              style: context.bodyMedium?.copyWith(fontWeight: FontWeight.w400),
+              textAlign: TextAlign.justify,
+            ),
+          )),
         ],
       ),
     );

@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/constants/values.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/src/dashboard_screen/provider/dashboard_provider.dart';
 import 'package:kanoony/src/service_module/trademark_module/provider/trademark_provider.dart';
 
@@ -50,9 +52,9 @@ class _TradeMarkTypeWidgetState extends State<TradeMarkTypeWidget> {
                 height: 43.h,
                 padding: EdgeInsets.all(5.h),
                 decoration: BoxDecoration(
-                    color: allColors.canvasColor,
-                    border: Border.all(color: allColors.canvasColor),
-                    borderRadius: BorderRadius.all(Radius.circular(6.r))),
+                    color: context.onPrimaryColor,
+                    border: Border.all(color: context.onPrimaryColor),
+                    borderRadius: kBorderRadius6),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -67,7 +69,7 @@ class _TradeMarkTypeWidgetState extends State<TradeMarkTypeWidget> {
                               color:
                                   widget.trademarkVar.selectedTrademarkType ==
                                           widget.variables.staticData?.wordMark
-                                      ? allColors.primaryColor
+                                      ? context.primaryColor
                                       : allColors.disabledColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(3.r))),
@@ -75,22 +77,23 @@ class _TradeMarkTypeWidgetState extends State<TradeMarkTypeWidget> {
                                   widget.variables.staticData?.wordMark
                               ? Icon(
                                   Icons.check,
-                                  color: allColors.textColor,
+                                  color: context.onSurfaceColor,
                                   size: 14.h,
                                 )
                               : null),
                     ),
                     Flexible(
-                      child: CommonTextWidget(
-                          color: allColors.textColor,
-                          size: 14.sp,
-                          text: widget.variables.staticData?.wordMark ?? '',
-                          weight: FontWeight.w700,
-                          padding: EdgeInsets.only(
-                              left: isArabic ? 0 : 5.h,
-                              top: 5.h,
-                              right: isArabic ? 5.h : 0)),
-                    ),
+                        child: Padding(
+                      padding: EdgeInsets.only(
+                          left: isArabic ? 0 : 5.h,
+                          top: 5.h,
+                          right: isArabic ? 5.h : 0),
+                      child: Text(
+                        widget.variables.staticData?.wordMark ?? '',
+                        style: context.bodyMedium
+                            ?.copyWith(fontWeight: FontWeight.w700),
+                      ),
+                    )),
                   ],
                 ),
               ),
@@ -111,9 +114,9 @@ class _TradeMarkTypeWidgetState extends State<TradeMarkTypeWidget> {
                 height: 43.h,
                 padding: EdgeInsets.only(top: 5.h, bottom: 5.h),
                 decoration: BoxDecoration(
-                    color: allColors.canvasColor,
-                    border: Border.all(color: allColors.canvasColor),
-                    borderRadius: BorderRadius.all(Radius.circular(6.r))),
+                    color: context.onPrimaryColor,
+                    border: Border.all(color: context.onPrimaryColor),
+                    borderRadius: kBorderRadius6),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -128,7 +131,7 @@ class _TradeMarkTypeWidgetState extends State<TradeMarkTypeWidget> {
                               color:
                                   widget.trademarkVar.selectedTrademarkType ==
                                           widget.variables.staticData?.logo
-                                      ? allColors.primaryColor
+                                      ? context.primaryColor
                                       : allColors.disabledColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(3.r))),
@@ -136,22 +139,23 @@ class _TradeMarkTypeWidgetState extends State<TradeMarkTypeWidget> {
                                   widget.variables.staticData?.logo
                               ? Icon(
                                   Icons.check,
-                                  color: allColors.textColor,
+                                  color: context.onSurfaceColor,
                                   size: 14.h,
                                 )
                               : null),
                     ),
                     Flexible(
-                      child: CommonTextWidget(
-                          color: allColors.textColor,
-                          size: 14.sp,
-                          text: widget.variables.staticData?.logo ?? '',
-                          weight: FontWeight.w700,
-                          padding: EdgeInsets.only(
-                              left: isArabic ? 0 : 5.h,
-                              top: 5.h,
-                              right: isArabic ? 5.h : 0)),
-                    ),
+                        child: Padding(
+                      padding: EdgeInsets.only(
+                          left: isArabic ? 0 : 5.h,
+                          top: 5.h,
+                          right: isArabic ? 5.h : 0),
+                      child: Text(
+                        widget.variables.staticData?.logo ?? '',
+                        style: context.bodyMedium
+                            ?.copyWith(fontWeight: FontWeight.w700),
+                      ),
+                    )),
                   ],
                 ),
               ),

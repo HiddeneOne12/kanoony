@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/common_widgets/common_drop_down.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 
 import '../../../../../core/common_widgets/common_appbar.dart';
 import '../../../../../core/common_widgets/common_button_widget.dart';
@@ -9,6 +10,7 @@ import '../../../../../core/common_widgets/common_sizebox_widget.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
+import '../../../../../core/constants/values.dart';
 import '../../../../../core/helpers/validators.dart';
 import '../../../widgets/textfield_widget.dart';
 import 'widgets/select_type_widget.dart';
@@ -72,6 +74,21 @@ class _RegisterWillFormBodyState extends ConsumerState<RegisterWillFormBody> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        SizedBox(height: 30.h),
+                        Padding(
+                          padding: kLeftRightPadding16,
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              variables.staticData?.submitAction!
+                                      .toUpperCase() ??
+                                  '',
+                              style: context.headlineLarge,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+
                         SizedBox(
                           height: 20.h,
                         ),
@@ -103,23 +120,28 @@ class _RegisterWillFormBodyState extends ConsumerState<RegisterWillFormBody> {
                             provider.statusController.text = p0 ?? "";
                             setState(() {});
                           },
-                          hintText: variables.staticData?.martialStatus ?? "Select",
+                          hintText:
+                              variables.staticData?.martialStatus ?? "Select",
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                          CommonDropDown(
+                        CommonDropDown(
                           list: willVar.numberList,
-                          selectedValue: provider.childrenController.text.isEmpty
-                              ? null
-                              : provider.childrenController.text,
+                          selectedValue:
+                              provider.childrenController.text.isEmpty
+                                  ? null
+                                  : provider.childrenController.text,
                           onTextChanged: (p0) {
                             provider.childrenController.text = p0 ?? "";
                             setState(() {});
                           },
-                          hintText: variables.staticData?.minorChildren ?? "Select",
+                          hintText:
+                              variables.staticData?.minorChildren ?? "Select",
                         ),
-                        SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10,
+                        ),
                         // TextFieldWidget(
                         //   controller: provider.childrenController,
                         //   maxLines: 1,

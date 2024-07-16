@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/src/service_module/business_service_module/business_setup_mainland_screen/layout/widgets/business_mainland_faq_cards.dart';
 import 'package:kanoony/src/service_module/widgets/cards_popup.dart';
@@ -13,6 +14,7 @@ import '../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
+import '../../../../../core/constants/values.dart';
 import '../../../../../core/routing/routing_config.dart';
 import '../../../../faq_screen/faq_screen.dart';
 import '../../../widgets/faq_button.dart';
@@ -28,6 +30,7 @@ class BusinessSetupMainLandBody extends ConsumerStatefulWidget {
 
 class _BusinessSetupMainLandBodyState
     extends ConsumerState<BusinessSetupMainLandBody> {
+  bool selectedItem = false;
   @override
   Widget build(BuildContext context) {
     var variables = ref.watch(allProviderList.dashboardProvider);
@@ -60,41 +63,44 @@ class _BusinessSetupMainLandBodyState
                 ),
               ),
               SizedBox(
-                height: 0.795.sh,
+                height: 0.8.sh,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        height: 20.h,
+                      SizedBox(height: 30.h),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          variables.staticData?.businessSetupInDubaiMainland
+                                  .upperCase() ??
+                              '',
+                          style: context.headlineLarge,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      const Align(
+                        alignment: Alignment.center,
+                        child: CallBackButton(),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(
-                          left: isArabic ? 0 : 0.23.sw,
-                          right: isArabic ? 0.23.sw : 0,
+                        padding: kTitlePadding,
+                        child: Text(
+                          variables.staticData
+                                  ?.whyChooseMainlandCompanyFormationInDubai
+                                  .capitalizeFirstLetter() ??
+                              '',
+                          style: context.headlineLarge
+                              ?.copyWith(fontWeight: FontWeight.w500),
+                          textAlign: TextAlign.start,
                         ),
-                        child: const CallBackButton(),
                       ),
-                      SizedBox(height: 10,),
-                      CommonTextWidget(
-                        color: allColors.textColor,
-                        size: 20.sp,
-                        text: variables.staticData
-                                ?.whyChooseMainlandCompanyFormationInDubai.capitalizeFirstLetter() ??
-                            '',
-                        weight: FontWeight.w500,
-                        align: TextAlign.start,
-                        padding:
-                            EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
-                      ),
-                    
                       GridView.count(
                         crossAxisCount: 2,
                         shrinkWrap: true,
                         childAspectRatio: 1.4,
                         crossAxisSpacing: 7.h,
-                        padding:
-                            EdgeInsets.only(left: 16.h, right: 16.h, top: 12.h),
+                        padding: EdgeInsets.only(left: 16.h, right: 16.h),
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
                           BusinessMainLandServiceCard(
@@ -115,7 +121,9 @@ class _BusinessSetupMainLandBodyState
                                   '');
                             },
                             icon: PngImagePaths.pinImg,
-                            text: variables.staticData?.primeSpot ?? '',
+                            text: variables.staticData?.primeSpot
+                                    .capitalizeFirstLetter() ??
+                                '',
                           ),
                           BusinessMainLandServiceCard(
                             onTap: () async {
@@ -135,7 +143,9 @@ class _BusinessSetupMainLandBodyState
                                   '');
                             },
                             icon: PngImagePaths.bigMarketImg,
-                            text: variables.staticData?.bigMarket ?? '',
+                            text: variables.staticData?.bigMarket
+                                    .capitalizeFirstLetter() ??
+                                '',
                           ),
                           BusinessMainLandServiceCard(
                             onTap: () async {
@@ -155,7 +165,9 @@ class _BusinessSetupMainLandBodyState
                                   '');
                             },
                             icon: PngImagePaths.noMoneyImg,
-                            text: variables.staticData?.noMoneyIssues ?? '',
+                            text: variables.staticData?.noMoneyIssues
+                                    .capitalizeFirstLetter() ??
+                                '',
                           ),
                           BusinessMainLandServiceCard(
                             onTap: () async {
@@ -175,7 +187,9 @@ class _BusinessSetupMainLandBodyState
                                   '');
                             },
                             icon: PngImagePaths.anyBusinessImg,
-                            text: variables.staticData?.doAnyBusiness ?? '',
+                            text: variables.staticData?.doAnyBusiness
+                                    .capitalizeFirstLetter() ??
+                                '',
                           ),
                           BusinessMainLandServiceCard(
                             onTap: () async {
@@ -195,7 +209,9 @@ class _BusinessSetupMainLandBodyState
                                   '');
                             },
                             icon: PngImagePaths.skilledWorkersImg,
-                            text: variables.staticData?.skilledWorkers ?? '',
+                            text: variables.staticData?.skilledWorkers
+                                    .capitalizeFirstLetter() ??
+                                '',
                           ),
                           BusinessMainLandServiceCard(
                             onTap: () async {
@@ -215,7 +231,9 @@ class _BusinessSetupMainLandBodyState
                                   '');
                             },
                             icon: PngImagePaths.taxBenefitsImg,
-                            text: variables.staticData?.taxBenefits ?? '',
+                            text: variables.staticData?.taxBenefits
+                                    .capitalizeFirstLetter() ??
+                                '',
                           ),
                           BusinessMainLandServiceCard(
                             onTap: () async {
@@ -235,7 +253,9 @@ class _BusinessSetupMainLandBodyState
                                   '');
                             },
                             icon: PngImagePaths.topAddressImg,
-                            text: variables.staticData?.topAddress ?? '',
+                            text: variables.staticData?.topAddress
+                                    .capitalizeFirstLetter() ??
+                                '',
                           ),
                           BusinessMainLandServiceCard(
                             onTap: () async {
@@ -255,7 +275,9 @@ class _BusinessSetupMainLandBodyState
                                   '');
                             },
                             icon: PngImagePaths.localTradingImg,
-                            text: variables.staticData?.localTrading ?? '',
+                            text: variables.staticData?.localTrading
+                                    .capitalizeFirstLetter() ??
+                                '',
                           ),
                         ],
                       ),
@@ -268,103 +290,137 @@ class _BusinessSetupMainLandBodyState
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CommonTextWidget(
-                              color: allColors.canvasColor,
-                              size: 20.sp,
-                              text: capitalizeFirst(variables.staticData
-                                      ?.processForEstablishingAMainlandCompanyInDub ??
-                                  ''),
-                              weight: FontWeight.w500,
-                              align: TextAlign.start,
-                              padding: EdgeInsets.only(
-                                  left: 16.h, right: 16.h, top: 10.h),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  selectedItem = !selectedItem;
+                                });
+                              },
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Padding(
+                                      padding: kTitlePadding2,
+                                      child: Text(
+                                        variables.staticData
+                                                ?.processForEstablishingAMainlandCompanyInDub
+                                                .capitalizeFirstLetter() ??
+                                            '',
+                                        style: context.headlineLarge?.copyWith(
+                                            fontWeight: FontWeight.w500,
+                                            color: context.onPrimaryColor),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ),
+                                  ),
+                                  InkWell(
+                                      child: Icon(
+                                    selectedItem
+                                        ? Icons.keyboard_arrow_up
+                                        : Icons.keyboard_arrow_down,
+                                    color: context.onPrimaryColor,
+                                    size: 25,
+                                  )),
+                                  const SizedBox(
+                                    width: 20,
+                                  )
+                                ],
+                              ),
                             ),
-                           
                             SizedBox(
                               height: 10.h,
                             ),
-                            BusinessMainLandFaqItems(
-                              title: variables.staticData
-                                      ?.natureAndLegalStructureSelection ??
-                                  '',
-                              description: variables.staticData
-                                      ?.defineTheSpecificBusinessActivityYouWishTo_ ??
-                                  '',
-                            ),
-                            BusinessMainLandFaqItems(
-                              title:
-                                  variables.staticData?.tradeNameApproval ?? '',
-                              description: variables.staticData
-                                      ?.proposeADistinctiveTradeNameForYourBusiness ??
-                                  '',
-                            ),
-                            BusinessMainLandFaqItems(
-                              title: variables.staticData?.preliminaryConsent ??
-                                  '',
-                              description: variables.staticData
-                                      ?.presentTheRequiredDocumentationToTheDedOrT ??
-                                  '',
-                            ),
-                            BusinessMainLandFaqItems(
-                              title: variables.staticData
-                                      ?.memorandumOfAssociationMoaCompilation ??
-                                  '',
-                              description: variables.staticData
-                                      ?.craftAComprehensiveMoaDetailingVitalComponen ??
-                                  '',
-                            ),
-                            BusinessMainLandFaqItems(
-                              title: variables
-                                      .staticData?.businessLocationSelection ??
-                                  '',
-                              description: variables.staticData
-                                      ?.sourceAFittingWorkspaceThatAdheresToTheSti ??
-                                  '',
-                            ),
-                            BusinessMainLandFaqItems(
-                              title:
-                                  variables.staticData?.tenancyAgreement ?? '',
-                              description: variables.staticData
-                                      ?.secureATenancyAgreementForYourChosenPremise ??
-                                  '',
-                            ),
-                            BusinessMainLandFaqItems(
-                              title: variables.staticData
-                                      ?.acquisitionOfSupplementaryApprovals ??
-                                  '',
-                              description: variables.staticData
-                                      ?.dependingOnYourChosenBusinessDomainAdditiona ??
-                                  '',
-                            ),
-                            BusinessMainLandFaqItems(
-                              title: variables.staticData?.licensingProcedure ??
-                                  '',
-                              description: variables.staticData
-                                      ?.furnishAllRequisiteDocumentsAndProceedToApp ??
-                                  '',
-                            ),
-                            SizedBox(
-                              height: 15.h,
-                            ),
-                            FaqButton(
-                              onTap: () {
-                                RoutesUtils.context.push(
-                                  FaqScreen.faqRoute,
-                                  extra: {
-                                    TextUtils.isBusiness: false,
-                                    TextUtils.isFreeZone: false,
-                                    TextUtils.isMainland: true,
-                                    TextUtils.isOffshore: false,
-                                    TextUtils.isTrademark: false
+                            if (selectedItem) ...[
+                              BusinessMainLandFaqItems(
+                                title: variables.staticData
+                                        ?.natureAndLegalStructureSelection ??
+                                    '',
+                                description: variables.staticData
+                                        ?.defineTheSpecificBusinessActivityYouWishTo_ ??
+                                    '',
+                              ),
+                              BusinessMainLandFaqItems(
+                                title:
+                                    variables.staticData?.tradeNameApproval ??
+                                        '',
+                                description: variables.staticData
+                                        ?.proposeADistinctiveTradeNameForYourBusiness ??
+                                    '',
+                              ),
+                              BusinessMainLandFaqItems(
+                                title:
+                                    variables.staticData?.preliminaryConsent ??
+                                        '',
+                                description: variables.staticData
+                                        ?.presentTheRequiredDocumentationToTheDedOrT ??
+                                    '',
+                              ),
+                              BusinessMainLandFaqItems(
+                                title: variables.staticData
+                                        ?.memorandumOfAssociationMoaCompilation ??
+                                    '',
+                                description: variables.staticData
+                                        ?.craftAComprehensiveMoaDetailingVitalComponen ??
+                                    '',
+                              ),
+                              BusinessMainLandFaqItems(
+                                title: variables.staticData
+                                        ?.businessLocationSelection ??
+                                    '',
+                                description: variables.staticData
+                                        ?.sourceAFittingWorkspaceThatAdheresToTheSti ??
+                                    '',
+                              ),
+                              BusinessMainLandFaqItems(
+                                title: variables.staticData?.tenancyAgreement ??
+                                    '',
+                                description: variables.staticData
+                                        ?.secureATenancyAgreementForYourChosenPremise ??
+                                    '',
+                              ),
+                              BusinessMainLandFaqItems(
+                                title: variables.staticData
+                                        ?.acquisitionOfSupplementaryApprovals ??
+                                    '',
+                                description: variables.staticData
+                                        ?.dependingOnYourChosenBusinessDomainAdditiona ??
+                                    '',
+                              ),
+                              BusinessMainLandFaqItems(
+                                title:
+                                    variables.staticData?.licensingProcedure ??
+                                        '',
+                                description: variables.staticData
+                                        ?.furnishAllRequisiteDocumentsAndProceedToApp ??
+                                    '',
+                              ),
+                              SizedBox(
+                                height: 15.h,
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsets.only(left: 16.h, right: 16.h),
+                                child: FaqButton(
+                                  onTap: () {
+                                    RoutesUtils.context.push(
+                                      FaqScreen.faqRoute,
+                                      extra: {
+                                        TextUtils.isBusiness: false,
+                                        TextUtils.isFreeZone: false,
+                                        TextUtils.isMainland: true,
+                                        TextUtils.isOffshore: false,
+                                        TextUtils.isTrademark: false
+                                      },
+                                    );
                                   },
-                                );
-                              },
-                              isCallIcon: false,
-                              backgroundColor: allColors.primaryColor,
-                            ),
-                            SizedBox(
-                              height: 15.h,
-                            ),
+                                  isCallIcon: false,
+                                  backgroundColor: allColors.primaryColor,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 15.h,
+                              ),
+                            ],
                           ],
                         ),
                       )

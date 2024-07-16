@@ -71,76 +71,100 @@ class AppTheme {
   // Color tealClr = const Color(0xff4DCBC5);
   // Color greenClr = const Color.fromARGB(255, 108, 197, 112);
   double kButtonHeight = 48.h;
-  ThemeData lightTheme(BuildContext context){
+  ThemeData lightTheme(BuildContext context) {
     final theme = Theme.of(context);
     return ThemeData(
-        fontFamily: 'Tajawal',
-        appBarTheme: AppBarTheme(
-          backgroundColor: const Color(0xffA6CB3B),
-          elevation: 0,
-          iconTheme: IconThemeData(
-            color: Colors.white,
-            size: 20.w,
-          ),
-        ),
-        primaryColor: const Color(0xff181E5B),
-        canvasColor: Colors.white,
-        disabledColor: const Color(0xFF9BAFB8),
+      fontFamily: 'Tajawal',
+      appBarTheme: AppBarTheme(
+        backgroundColor: const Color(0xffA6CB3B),
+        elevation: 0,
         iconTheme: IconThemeData(
-          color: allColors.canvasColor,
+          color: Colors.white,
           size: 20.w,
         ),
-        cardColor: allColors.canvasColor,
-        buttonTheme: const ButtonThemeData(textTheme: ButtonTextTheme.normal),
-        textTheme:  TextTheme(
-          ///For Large Headings
-          displayLarge: TextStyle(fontSize: 28.0.sp, fontWeight: FontWeight.bold,height: 1.17),
-          displayMedium: TextStyle(fontSize: 24.0.sp, fontWeight: FontWeight.bold,height: 1.17),
-          displaySmall: TextStyle(fontSize: 22.0.sp, fontWeight: FontWeight.bold,height: 1.17),
+      ),
+      primaryColor: const Color(0xff181E5B),
+      canvasColor: Colors.white,
+      disabledColor: const Color(0xFF9BAFB8),
+      iconTheme: IconThemeData(
+        color: allColors.canvasColor,
+        size: 20.w,
+      ),
+      cardColor: allColors.canvasColor,
+      buttonTheme: const ButtonThemeData(textTheme: ButtonTextTheme.normal),
+      textTheme: TextTheme(
+        ///For Large Headings
+        displayLarge: TextStyle(
+            fontSize: 28.0.sp, fontWeight: FontWeight.bold, height: 1.17),
+        displayMedium: TextStyle(
+            fontSize: 24.0.sp, fontWeight: FontWeight.bold, height: 1.17),
+        displaySmall: TextStyle(
+            fontSize: 22.0.sp, fontWeight: FontWeight.bold, height: 1.17),
 
-          ///For Headings
-          headlineLarge: TextStyle(fontSize: 20.0.sp, fontWeight: FontWeight.bold, height: 1.17),
-          headlineMedium:TextStyle(fontSize: 18.0.sp, fontWeight: FontWeight.bold, height: 1.17),
-          headlineSmall: TextStyle(fontSize: 16.0.sp, fontWeight: FontWeight.bold, height: 1.17),
+        ///For Headings
+        headlineLarge: TextStyle(
+            fontSize: 20.0.sp, fontWeight: FontWeight.bold, height: 1.17),
+        headlineMedium: TextStyle(
+            fontSize: 18.0.sp, fontWeight: FontWeight.bold, height: 1.17),
+        headlineSmall: TextStyle(
+            fontSize: 16.0.sp, fontWeight: FontWeight.bold, height: 1.17),
 
-          ///For Sub Headings
-          titleLarge: TextStyle(fontSize: 20.0.sp, fontWeight: FontWeight.w500, height: 1.17),
-          titleMedium: TextStyle(fontSize: 17.0.sp, fontWeight: FontWeight.w500, height: 1.17),
-          titleSmall: TextStyle(fontSize: 15.0.sp, fontWeight: FontWeight.w500, height: 1.17),
+        ///For Sub Headings
+        titleLarge: TextStyle(
+            fontSize: 20.0.sp, fontWeight: FontWeight.w500, height: 1.17),
+        titleMedium: TextStyle(
+            fontSize: 17.0.sp, fontWeight: FontWeight.w500, height: 1.17),
+        titleSmall: TextStyle(
+            fontSize: 15.0.sp, fontWeight: FontWeight.w500, height: 1.17),
 
-          ///For Body Text
-          bodyLarge: TextStyle(fontSize: 16.0.sp, height: 1.17),
-          bodyMedium: TextStyle(fontSize: 14.0.sp,height: 1.17),
-          bodySmall: TextStyle(fontSize: 12.0.sp, height: 1.17),
-
-          ///For label ans captions etc
-          labelLarge: TextStyle(fontSize: 14.0.sp, fontWeight: FontWeight.w500, height: 1.17),
-          labelMedium: TextStyle(fontSize: 12.0.sp, fontWeight: FontWeight.w500, height: 1.17),
-          labelSmall: TextStyle(fontSize: 11.0.sp, fontWeight: FontWeight.w500, height: 1.17),
+        ///For Body Text
+        bodyLarge: TextStyle(
+          fontSize: 16.0.sp,
+          height: 1.17,
+          fontWeight: FontWeight.w400,
         ),
-        textSelectionTheme: TextSelectionThemeData(
-          selectionColor: const Color(0xff181E5B).withOpacity(0.4),
-          selectionHandleColor: const Color(0xff181E5B),
-          cursorColor: const Color(0xff181E5B),
+        bodyMedium: TextStyle(
+          fontSize: 14.0.sp,
+          height: 1.17,
+          fontWeight: FontWeight.w500,
         ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.resolveWith((states) {
-                  if (states.contains(MaterialState.disabled)) {
-                    return const Color(0xff181E5B).withOpacity(0.1);
-                  } else {
-                    return const Color(0xff181E5B);
-                  }
-                }),
-                foregroundColor: MaterialStateProperty.all(Colors.white),
-                shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.r))),
-                minimumSize: MaterialStateProperty.all(
-                    Size(double.infinity, kButtonHeight)))),
-        scaffoldBackgroundColor: Colors.white,
-        dividerColor: const Color(0xFFe6e6e6),
-        cardTheme: const CardTheme(color: Colors.white),
-          colorScheme: theme.colorScheme.copyWith(
+        bodySmall: TextStyle(
+          fontSize: 12.0.sp,
+          height: 1.17,
+          fontWeight: FontWeight.w400,
+        ),
+
+        ///For label ans captions etc
+        labelLarge: TextStyle(
+            fontSize: 16.0.sp, fontWeight: FontWeight.w500, height: 1.17),
+        labelMedium: TextStyle(
+            fontSize: 12.0.sp, fontWeight: FontWeight.w500, height: 1.17),
+        labelSmall: TextStyle(
+            fontSize: 11.0.sp, fontWeight: FontWeight.w400, height: 1.17),
+      ),
+      textSelectionTheme: TextSelectionThemeData(
+        selectionColor: const Color(0xff181E5B).withOpacity(0.4),
+        selectionHandleColor: const Color(0xff181E5B),
+        cursorColor: const Color(0xff181E5B),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.resolveWith((states) {
+                if (states.contains(MaterialState.disabled)) {
+                  return const Color(0xff181E5B).withOpacity(0.1);
+                } else {
+                  return const Color(0xff181E5B);
+                }
+              }),
+              foregroundColor: MaterialStateProperty.all(Colors.white),
+              shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.r))),
+              minimumSize: MaterialStateProperty.all(
+                  Size(double.infinity, kButtonHeight)))),
+      scaffoldBackgroundColor: Colors.white,
+      dividerColor: const Color(0xFFe6e6e6),
+      cardTheme: const CardTheme(color: Colors.white),
+      colorScheme: theme.colorScheme.copyWith(
           surface: surfaceColor,
           onSurface: textColor,
           error: errorColor,
@@ -152,5 +176,6 @@ class AppTheme {
           onPrimary: whiteColor,
           onError: errorColor,
           shadow: boxShadowColor.withOpacity(0.2)),
-      );
-}}
+    );
+  }
+}

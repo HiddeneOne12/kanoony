@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/constants/values.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
-
-import '../../../../../../core/common_widgets/common_text_widget.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import '../../../../../../core/constants/object_constants/object_constants.dart';
-import '../../../../../../core/constants/static_constants/static_constants.dart';
+
 
 class BusinessFreeZoneServiceCard extends StatelessWidget {
   final String icon;
@@ -24,10 +24,10 @@ class BusinessFreeZoneServiceCard extends StatelessWidget {
         onTap: onTap,
         child: Card(
           elevation: 0,
-          color: allColors.canvasColor,
-          surfaceTintColor: allColors.canvasColor,
+          color: context.onPrimaryColor,
+          surfaceTintColor: context.onPrimaryColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.r),
+            borderRadius: kBorderRadius6,
           ),
           child: Center(
             child: Padding(
@@ -46,18 +46,16 @@ class BusinessFreeZoneServiceCard extends StatelessWidget {
                   ),
                   Container(
                     height: 26.h,
-                  
                     decoration: BoxDecoration(
                         color: allColors.lightBlueColor,
-                        borderRadius: BorderRadius.all(Radius.circular(6.r))),
+                        borderRadius: kBorderRadius6),
                     alignment: Alignment.center,
-                    child: CommonTextWidget(
-                        color: allColors.blackColor,
-                        size:14,
-                        text: text.capitalizeFirstLetter() ?? "",
-                        weight: FontWeight.w500,
-                        maxLine: 1,
-                        padding: noPadding),
+                    child: Text(
+                      text.capitalizeFirstLetter() ?? "",
+                      style: context.bodyMedium,
+                      maxLines: 1,
+                      textAlign: TextAlign.center,
+                    ),
                   )
                 ],
               ),

@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/constants/values.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import '../../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../../core/constants/static_constants/static_constants.dart';
@@ -22,10 +24,10 @@ class BusinessMainLandServiceCard extends StatelessWidget {
         onTap: onTap,
         child: Card(
           elevation: 0,
-          color: allColors.canvasColor,
-          surfaceTintColor: allColors.canvasColor,
+          color: context.onPrimaryColor,
+          surfaceTintColor: context.onPrimaryColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.r),
+            borderRadius: kBorderRadius10,
           ),
           child: Center(
             child: Padding(
@@ -41,13 +43,12 @@ class BusinessMainLandServiceCard extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 20.h),
-                  CommonTextWidget(
-                      color: allColors.blackColor,
-                      size: 15,
-                      text: text,
-                      weight: FontWeight.w500,
-                      maxLine: 1,
-                      padding: noPadding)
+                  Text(
+                    text,
+                    style: context.titleSmall
+                        ?.copyWith(color: allColors.blackColor),
+                    textAlign: TextAlign.start,
+                  ),
                 ],
               ),
             ),

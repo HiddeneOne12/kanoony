@@ -78,6 +78,7 @@ class PngImagePaths {
   static const String step2Img = 'assets/images/step2.png';
   static const String step31Img = 'assets/images/step3.png';
   static const String testatorImg = 'assets/images/testator.png';
+  static const String buildImg = 'assets/images/build.png';
 }
 
 class SvgImagesAssetPath {
@@ -98,4 +99,5 @@ class SvgImagesAssetPath {
   static const String favDocSvg = 'assets/svgs/fav_docSvg.svg';
   static const String fullWillSvg = 'assets/svgs/full_willSvg.svg';
   static const String icHome = 'assets/svgs/ic_home.svg';
+  static const String assetSvg = 'assets/svgs/assetSvg.svg';
 }

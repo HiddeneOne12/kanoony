@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/constants/values.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/src/dashboard_screen/provider/dashboard_provider.dart';
 import 'package:kanoony/src/service_module/trademark_module/provider/trademark_provider.dart';
 
@@ -34,8 +36,7 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          EdgeInsets.only(left: 16.h, right: 16.h, top: 20.h, bottom: 15.h),
+      padding: EdgeInsets.only(left: 16.h, right: 16.h, bottom: 15.h),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -51,16 +52,16 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                 height: 43.h,
                 padding: EdgeInsets.all(5.h),
                 decoration: BoxDecoration(
-                    color: allColors.canvasColor,
-                    border: Border.all(color: allColors.canvasColor),
-                    borderRadius: BorderRadius.all(Radius.circular(6.r))),
+                    color: context.onPrimaryColor,
+                    border: Border.all(color: context.onPrimaryColor),
+                    borderRadius: kBorderRadius6),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
                       padding: EdgeInsets.only(
-                          left: isArabic ? 0 : 10.h,
-                          right: isArabic ? 10.h : 0.h),
+                          left: isArabic ? 0 : 5.h,
+                          right: isArabic ? 5.h : 0.h),
                       child: Container(
                           height: 17.h,
                           width: 17.h,
@@ -68,7 +69,7 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                               color: widget.trademarkVar.selectedType ==
                                       widget.variables.staticData
                                           ?.registerATrademark
-                                  ? allColors.primaryColor
+                                  ? context.primaryColor
                                   : allColors.disabledColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(3.r))),
@@ -77,24 +78,24 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                                       .variables.staticData?.registerATrademark
                               ? Icon(
                                   Icons.check,
-                                  color: allColors.textColor,
+                                  color: context.onSurfaceColor,
                                   size: 14.h,
                                 )
                               : null),
                     ),
-                    Flexible(
-                      child: CommonTextWidget(
-                          color: allColors.textColor,
-                          size: 14.sp,
-                          text:
-                              widget.variables.staticData?.registerATrademark ??
-                                  '',
-                          weight: FontWeight.w700,
-                          padding: EdgeInsets.only(
-                              left: isArabic ? 0 : 5.h,
-                              top: 5.h,
-                              right: isArabic ? 5.h : 0)),
-                    ),
+                      Flexible(
+                        child: Padding(
+                      padding: EdgeInsets.only(
+                          left: isArabic ? 0 : 2.h,
+                          top: 5.h,
+                          right: isArabic ? 2.h : 0),
+                      child: Text(
+                        widget.variables.staticData?.registerATrademark ?? '',
+                        style: context.bodyMedium
+                            ?.copyWith(fontWeight: FontWeight.w700),textAlign: TextAlign.start,
+                      ),
+                    )),
+                     
                   ],
                 ),
               ),
@@ -115,9 +116,9 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                 height: 43.h,
                 padding: EdgeInsets.only(top: 5.h, bottom: 5.h),
                 decoration: BoxDecoration(
-                    color: allColors.canvasColor,
-                    border: Border.all(color: allColors.canvasColor),
-                    borderRadius: BorderRadius.all(Radius.circular(6.r))),
+                    color: context.onPrimaryColor,
+                    border: Border.all(color: context.onPrimaryColor),
+                    borderRadius: kBorderRadius6),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -132,7 +133,7 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                               color: widget.trademarkVar.selectedType ==
                                       widget.variables.staticData
                                           ?.searchATrademark
-                                  ? allColors.primaryColor
+                                  ? context.primaryColor
                                   : allColors.disabledColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(3.r))),
@@ -140,23 +141,23 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                                   widget.variables.staticData?.searchATrademark
                               ? Icon(
                                   Icons.check,
-                                  color: allColors.textColor,
+                                  color: context.onSurfaceColor,
                                   size: 14.h,
                                 )
                               : null),
                     ),
                     Flexible(
-                      child: CommonTextWidget(
-                          color: allColors.textColor,
-                          size: 14.sp,
-                          text: widget.variables.staticData?.searchATrademark ??
-                              '',
-                          weight: FontWeight.w700,
-                          padding: EdgeInsets.only(
-                              left: isArabic ? 0 : 5.h,
-                              top: 5.h,
-                              right: isArabic ? 5.h : 0)),
-                    ),
+                        child: Padding(
+                      padding: EdgeInsets.only(
+                          left: isArabic ? 0 : 5.h,
+                          top: 5.h,
+                          right: isArabic ? 5.h : 0),
+                      child: Text(
+                        widget.variables.staticData?.searchATrademark ?? '',
+                        style: context.bodyMedium
+                            ?.copyWith(fontWeight: FontWeight.w700),
+                      ),
+                    )),
                   ],
                 ),
               ),
