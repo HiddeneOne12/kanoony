@@ -95,52 +95,91 @@ class AppTheme {
       textTheme: TextTheme(
         ///For Large Headings
         displayLarge: TextStyle(
-            fontSize: 28.0.sp, fontWeight: FontWeight.bold, height: 1.17),
+            letterSpacing: 0.1,
+            fontSize: 28.0.sp,
+            fontWeight: FontWeight.bold,
+            height: 1.17),
         displayMedium: TextStyle(
-            fontSize: 24.0.sp, fontWeight: FontWeight.bold, height: 1.17),
+            letterSpacing: 0.1,
+            fontSize: 24.0.sp,
+            fontWeight: FontWeight.bold,
+            height: 1.17),
         displaySmall: TextStyle(
-            fontSize: 22.0.sp, fontWeight: FontWeight.bold, height: 1.17),
+            letterSpacing: 0.1,
+            fontSize: 22.0.sp,
+            fontWeight: FontWeight.bold,
+            height: 1.17),
 
         ///For Headings
         headlineLarge: TextStyle(
-            fontSize: 20.0.sp, fontWeight: FontWeight.bold, height: 1.17),
+            letterSpacing: 0.1,
+            fontSize: 20.0.sp,
+            fontWeight: FontWeight.bold,
+            height: 1.17),
         headlineMedium: TextStyle(
-            fontSize: 18.0.sp, fontWeight: FontWeight.bold, height: 1.17),
+            letterSpacing: 0.1,
+            fontSize: 18.0.sp,
+            fontWeight: FontWeight.bold,
+            height: 1.17),
         headlineSmall: TextStyle(
-            fontSize: 16.0.sp, fontWeight: FontWeight.bold, height: 1.17),
+            letterSpacing: 0.1,
+            fontSize: 16.0.sp,
+            fontWeight: FontWeight.bold,
+            height: 1.17),
 
         ///For Sub Headings
         titleLarge: TextStyle(
-            fontSize: 20.0.sp, fontWeight: FontWeight.w500, height: 1.17),
+            letterSpacing: 0.1,
+            fontSize: 20.0.sp,
+            fontWeight: FontWeight.w500,
+            height: 1.17),
         titleMedium: TextStyle(
-            fontSize: 17.0.sp, fontWeight: FontWeight.w500, height: 1.17),
+            letterSpacing: 0.1,
+            fontSize: 17.0.sp,
+            fontWeight: FontWeight.w500,
+            height: 1.17),
         titleSmall: TextStyle(
-            fontSize: 15.0.sp, fontWeight: FontWeight.w500, height: 1.17),
+            letterSpacing: 0.1,
+            fontSize: 15.0.sp,
+            fontWeight: FontWeight.w500,
+            height: 1.17),
 
         ///For Body Text
         bodyLarge: TextStyle(
           fontSize: 16.0.sp,
-          height: 1.17,
+          height: 1.30,
+          letterSpacing: 0.1,
           fontWeight: FontWeight.w400,
         ),
         bodyMedium: TextStyle(
           fontSize: 14.0.sp,
+          letterSpacing: 0.1,
           height: 1.17,
           fontWeight: FontWeight.w500,
         ),
         bodySmall: TextStyle(
           fontSize: 12.0.sp,
+          letterSpacing: 0.1,
           height: 1.17,
           fontWeight: FontWeight.w400,
         ),
 
         ///For label ans captions etc
         labelLarge: TextStyle(
-            fontSize: 16.0.sp, fontWeight: FontWeight.w500, height: 1.17),
+            letterSpacing: 0.1,
+            fontSize: 16.0.sp,
+            fontWeight: FontWeight.w500,
+            height: 1.17),
         labelMedium: TextStyle(
-            fontSize: 12.0.sp, fontWeight: FontWeight.w500, height: 1.17),
+            letterSpacing: 0.1,
+            fontSize: 12.0.sp,
+            fontWeight: FontWeight.w500,
+            height: 1.17),
         labelSmall: TextStyle(
-            fontSize: 11.0.sp, fontWeight: FontWeight.w400, height: 1.17),
+            letterSpacing: 0.1,
+            fontSize: 11.0.sp,
+            fontWeight: FontWeight.w400,
+            height: 1.17),
       ),
       textSelectionTheme: TextSelectionThemeData(
         selectionColor: const Color(0xff181E5B).withOpacity(0.4),

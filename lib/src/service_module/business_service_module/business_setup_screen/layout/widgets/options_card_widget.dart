@@ -24,9 +24,8 @@ Widget buildOptionCard(
                   padding: kInsideCardPadding,
                   child: Text(
                     description,
-                    style: context.bodyMedium
-                        ?.copyWith(fontWeight: FontWeight.w400),
-                    maxLines: 3,
+                    style: context.bodyLarge,
+                    maxLines: 4,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
                   ),
@@ -36,7 +35,7 @@ Widget buildOptionCard(
                   width: MediaQuery.sizeOf(context).width.w,
                   height: 43.h,
                   decoration: BoxDecoration(
-                      color: allColors.textColor,
+                      color: context.onSurfaceColor,
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(10.r),
                           topLeft: Radius.zero,
@@ -58,9 +57,9 @@ Widget buildOptionCard(
         ),
         Positioned(
           top: 0,
-          left: 85.h,
-          bottom: 120.h,
-          right: 85.h,
+          left: 75.h,
+          bottom: 160.h,
+          right: 75.h,
           child: Container(
               width: 212.h,
               alignment: Alignment.center,

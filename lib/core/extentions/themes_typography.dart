@@ -10,9 +10,18 @@ extension ThemeTypography on BuildContext {
   TextStyle? get headlineLarge => Theme.of(this).textTheme.headlineLarge;
   TextStyle? get headlineMedium => Theme.of(this).textTheme.headlineMedium;
   TextStyle? get headlineSmall => Theme.of(this).textTheme.headlineSmall;
-  TextStyle? get headlineLargeSemiMediumBold => Theme.of(this).textTheme.headlineLarge!.copyWith(fontWeight: FontWeight.w500);
-  TextStyle? get headlineMediumSemiMediumBold => Theme.of(this).textTheme.headlineMedium!.copyWith(fontWeight: FontWeight.w500);
-  TextStyle? get headlineSmallSemiMediumBold => Theme.of(this).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500);
+  TextStyle? get headlineLargeSemiMediumBold => Theme.of(this)
+      .textTheme
+      .headlineLarge!
+      .copyWith(fontWeight: FontWeight.w500);
+  TextStyle? get headlineMediumSemiMediumBold => Theme.of(this)
+      .textTheme
+      .headlineMedium!
+      .copyWith(fontWeight: FontWeight.w500);
+  TextStyle? get headlineSmallSemiMediumBold => Theme.of(this)
+      .textTheme
+      .headlineSmall!
+      .copyWith(fontWeight: FontWeight.w500);
 
   TextStyle? get titleLarge => Theme.of(this).textTheme.titleLarge;
   TextStyle? get titleMedium => Theme.of(this).textTheme.titleMedium;
@@ -30,11 +39,22 @@ extension ThemeTypography on BuildContext {
 
   //HTML text theme style
   Style get htmlParagraphStyle => Style(
-        color:  Theme.of(this).colorScheme.onSurface, // Use your defined color here
-        fontSize: FontSize(16.sp), // Use flutter_screenutil for responsive sizing
+        color:
+            Theme.of(this).colorScheme.onSurface, // Use your defined color here
+        fontSize:
+            FontSize(16.sp), // Use flutter_screenutil for responsive sizing
         fontWeight: FontWeight.w400,
         fontFamily: 'Tajawal',
       );
+  Style get htmlTitleStyle => Style(
+      color:
+          Theme.of(this).colorScheme.onSurface, // Use your defined color here
+      margin: Margins.zero,
+      padding: HtmlPaddings.zero,
+      textAlign: TextAlign.start,
+      fontSize: FontSize(16.sp),
+      fontWeight: FontWeight.w500,
+      fontFamily: 'Tajawal');
 
   //Used For Text Colors
   Color get onPrimaryColor => Theme.of(this).colorScheme.onPrimary;

@@ -15,6 +15,7 @@ EdgeInsets kAllPadding9 = const EdgeInsets.all(9);
 EdgeInsets kAllPadding18 = const EdgeInsets.all(18);
 EdgeInsets kMainBodyPadding =
     const EdgeInsets.symmetric(horizontal: 18, vertical: 18);
+EdgeInsets kTopBottom20Padding = const EdgeInsets.only(top: 20, bottom: 20);
 EdgeInsets kContainerPadding = const EdgeInsets.all(9);
 EdgeInsets kHeadlinePadding =
     const EdgeInsets.only(left: 18, right: 18, bottom: 9, top: 28);

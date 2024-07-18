@@ -69,25 +69,23 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 18.h),
+                        SizedBox(height: 40.h),
                         Padding(
                           padding: kHeadlineBottomPadding,
-                          child: Align(
-                            child: Text(
-                              variables.staticData?.businessSetupInUae
-                                      .upperCase() ??
-                                  '',
-                              style: context.headlineLarge,
-                              textAlign: TextAlign.center,
-                            ),
+                          child: Text(
+                            variables.staticData?.businessSetupInUae
+                                    .upperCase() ??
+                                '',
+                            style: context.headlineMedium,
+                            textAlign: TextAlign.start,
                           ),
                         ),
                         Text(
                           variables.staticData
                                   ?.enteringTheBusinessWorldOfTheUnitedArabEmi ??
                               '',
-                          style: context.bodyMedium,
-                          textAlign: TextAlign.justify,
+                          style: context.bodyLarge,
+                          textAlign: TextAlign.start,
                         ),
                         const Align(
                             alignment: Alignment.center,
@@ -95,22 +93,22 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                         Padding(
                           padding: kHeadlineBottomPadding,
                           child: Text(
-                            capitalizeFirst(variables
-                                    .staticData?.yourDreamNeedsTheBestStart ??
-                                ''),
+                            variables.staticData?.yourDreamNeedsTheBestStart
+                                    .capitalizeFirstLetter() ??
+                                '',
                             style: context.titleMedium,
                             textAlign: TextAlign.start,
                           ),
                         ),
-                        Padding(
-                          padding: kHeadlineBottomPadding,
-                          child: Text(
-                            variables.staticData
-                                    ?.theUnitedArabEmiratesUaeOffersADiverseRang ??
-                                '',
-                            style: context.bodyMedium,
-                            textAlign: TextAlign.justify,
-                          ),
+                        Text(
+                          variables.staticData
+                                  ?.theUnitedArabEmiratesUaeOffersADiverseRang ??
+                              '',
+                          style: context.bodyLarge,
+                          textAlign: TextAlign.start,
+                        ),
+                        SizedBox(
+                          height: 20.h,
                         ),
                         InkWell(
                           onTap: () {
@@ -126,7 +124,9 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                             variables.staticData?.learnMore ?? '',
                           ),
                         ),
-                        SizedBox(height: 10.h),
+                        SizedBox(
+                          height: 20.h,
+                        ),
                         InkWell(
                           onTap: () {
                             RoutesUtils.context.push(BusinessSetupMainLandScreen
@@ -141,7 +141,9 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                             variables.staticData?.learnMore ?? '',
                           ),
                         ),
-                        SizedBox(height: 10.h),
+                        SizedBox(
+                          height: 20.h,
+                        ),
                         InkWell(
                           onTap: () {
                             RoutesUtils.context.push(BusinessSetupOffshoreScreen
@@ -157,7 +159,7 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                           ),
                         ),
                         SizedBox(
-                          height: 10.h,
+                          height: 20.h,
                         ),
                         InkWell(
                           onTap: () {

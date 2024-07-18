@@ -51,22 +51,8 @@ class FaqItems extends StatelessWidget {
                       padding: kBottomPadding5,
                       child: Html(
                         style: {
-                          "span": Style(
-                              margin: Margins.zero,
-                              padding: HtmlPaddings.zero,
-                              textAlign: TextAlign.start,
-                              color: allColors.textColor,
-                              fontSize: FontSize(17.sp),
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Tajawal'),
-                          "body": Style(
-                              color: allColors.textColor,
-                              margin: Margins.zero,
-                              padding: HtmlPaddings.zero,
-                              textAlign: TextAlign.start,
-                              fontSize: FontSize(17.sp),
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Tajawal'),
+                          "span": context.htmlTitleStyle,
+                          "body": context.htmlTitleStyle,
                         },
                         data: name.capitalizeFirstLetter(),
                       ),
@@ -102,13 +88,21 @@ class FaqItems extends StatelessWidget {
                         bottom: 5.h,
                         right: isArabic ? 0 : 20.h,
                         left: isArabic ? 20.h : 0.h),
-                    child: Text(
-                      description.capitalizeFirstLetter() ?? "",
-                      style: isTrade
-                          ? context.bodyMedium
-                              ?.copyWith(fontWeight: FontWeight.w400)
-                          : context.labelSmall,
+                    child: RichText(
                       textAlign: TextAlign.start,
+                      text: TextSpan(
+                        text: description.capitalizeFirstLetter() ?? "",
+                        style: isTrade
+                            ? context.bodyMedium
+                            : context.titleSmall?.copyWith(
+                                fontWeight: FontWeight.w400, height: 1.4.sp),
+                      ),
+                      //
+                      // style: isTrade
+                      //     ? context.bodyMedium
+                      //     : context.titleSmall?.copyWith(
+                      //         fontWeight: FontWeight.w400, height: 1.4.sp),
+                      // textAlign: TextAlign.start,
                     ),
                   ),
                 ],
