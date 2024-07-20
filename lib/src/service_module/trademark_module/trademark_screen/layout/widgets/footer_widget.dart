@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/src/dashboard_screen/provider/dashboard_provider.dart';
 import 'package:kanoony/src/service_module/trademark_module/provider/trademark_provider.dart';
 
@@ -33,59 +34,50 @@ class _FooterWidgetState extends ConsumerState<FooterWidget> {
     return Container(
       height: 200.h,
       decoration: BoxDecoration(
-          color: allColors.primaryColor,
+          color: context.primaryColor,
           image: const DecorationImage(
-              image: AssetImage(PngImagePaths.buildingImg))),
+              image: AssetImage(
+            PngImagePaths.buildImg,
+          ))),
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
+            padding: EdgeInsets.only(left: 16.h, right: 16.h, top: 20.h),
             child: Html(
               style: {
-                "span": Style(
-                    margin: Margins.zero,
-                    padding: HtmlPaddings.zero,
-                    textAlign: TextAlign.center,
-                    color: allColors.textColor,
-                    fontSize: FontSize(18.sp),
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Tajawal'),
-                "body": Style(
-                    color: allColors.textColor,
-                    margin: Margins.zero,
-                    padding: HtmlPaddings.zero,
-                    textAlign: TextAlign.center,
-                    fontSize: FontSize(18.sp),
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Tajawal'),
+                "span": context.htmlTitleStyle,
+                "body": context.htmlTitleStyle,
               },
               data: widget.variables.staticData
-                      ?.downloadUaeTrademarkLawNiceClassification  ??
+                      ?.downloadUaeTrademarkLawNiceClassification
+                      .capitalizeFirstLetter() ??
                   '',
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 33.h, right: 33.h, top: 10.h),
+            padding: EdgeInsets.only(left: 33.h, right: 33.h, top: 20.h),
             child: Row(
               children: [
                 Expanded(
                   child: CommonImgButtonWidget(
                       padding: noPadding,
-                      fontColor: allColors.canvasColor,
+                      fontColor: context.onPrimaryColor,
                       height: 36.h,
                       onTap: () {
                         widget.provider.downloadFile(
                             'https://kanoony.com/trad/images/New-Trademark-Law-UAE.docx');
                       },
-                      backgroundColor: allColors.textColor,
-                      borderColor: allColors.textColor,
+                      backgroundColor: context.onSurfaceColor,
+                      borderColor: context.onSurfaceColor,
                       radius: 6.r,
                       icon: Icon(
                         Icons.download,
-                        color: allColors.canvasColor,
+                        color: context.onPrimaryColor,
                         size: 16.h,
                       ),
-                      text: widget.variables.staticData?.trademarkLaw ?? '',
+                      text: widget.variables.staticData?.trademarkLaw
+                              .capitalizeFirstLetter() ??
+                          '',
                       isLoading: variable.isLoading2),
                 ),
                 SizedBox(
@@ -94,45 +86,49 @@ class _FooterWidgetState extends ConsumerState<FooterWidget> {
                 Expanded(
                   child: CommonImgButtonWidget(
                       padding: noPadding,
-                      fontColor: allColors.canvasColor,
+                      fontColor: context.onPrimaryColor,
                       height: 36.h,
                       onTap: () {
                         widget.provider.downloadFile(
                             'https://kanoony.com/trad/images/12th-Edition-of%20Nice-Classification-Class-Headings.pdf');
                       },
-                      backgroundColor: allColors.textColor,
-                      borderColor: allColors.textColor,
+                      backgroundColor: context.onSurfaceColor,
+                      borderColor: context.onSurfaceColor,
                       radius: 6.r,
                       icon: Icon(
                         Icons.download,
-                        color: allColors.canvasColor,
+                        color: context.onPrimaryColor,
                         size: 16.h,
                       ),
-                      text:
-                          widget.variables.staticData?.niceClassification ?? '',
+                      text: widget.variables.staticData?.niceClassification
+                              .capitalizeFirstLetter() ??
+                          '',
                       isLoading: variable.isLoading),
                 )
               ],
             ),
           ),
           SizedBox(
-            height: 20.h,
+            height: 10.h,
           ),
-          FaqButton(
-            onTap: () {
-              RoutesUtils.context.push(
-                FaqScreen.faqRoute,
-                extra: {
-                  TextUtils.isBusiness: false,
-                  TextUtils.isFreeZone: false,
-                  TextUtils.isMainland: false,
-                  TextUtils.isOffshore: false,
-                  TextUtils.isTrademark: true
-                },
-              );
-            },
-            isCallIcon: false,
-            backgroundColor: allColors.textColor,
+          Padding(
+            padding: EdgeInsets.only(left: 33.h, right: 33.h),
+            child: FaqButton(
+              onTap: () {
+                RoutesUtils.context.push(
+                  FaqScreen.faqRoute,
+                  extra: {
+                    TextUtils.isBusiness: false,
+                    TextUtils.isFreeZone: false,
+                    TextUtils.isMainland: false,
+                    TextUtils.isOffshore: false,
+                    TextUtils.isTrademark: true
+                  },
+                );
+              },
+              isCallIcon: false,
+              backgroundColor: context.onSurfaceColor,
+            ),
           ),
         ],
       ),

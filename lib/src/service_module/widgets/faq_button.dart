@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/constants/values.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
-import '../../../core/common_widgets/common_text_widget.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import '../../../core/constants/object_constants/object_constants.dart';
-import '../../../core/constants/static_constants/static_constants.dart';
 
 
 class FaqButton extends ConsumerStatefulWidget {
@@ -30,51 +30,46 @@ class _FaqButtonState extends ConsumerState<FaqButton> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Padding(
-          padding: EdgeInsets.only(left: 16.h, right: 16.h),
-          child: InkWell(
-            onTap: widget.onTap,
-            child: Container(
-              height: 40.h,
-              decoration: BoxDecoration(
-                  color: widget.backgroundColor,
-                  borderRadius: BorderRadius.all(Radius.circular(8.r))),
-              child: Padding(
-                padding: EdgeInsets.only(top: 5.h),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 5.h),
-                      child: Container(
-                        height: 17.h,
-                        width: 17.h,
-                        decoration: BoxDecoration(
-                            color: allColors.canvasColor,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(40.r))),
-                        child: Icon(
-                          Icons.question_mark_outlined,
-                          size: 14.h,
-                          color: allColors.textColor,
-                        ),
+        InkWell(
+          onTap: widget.onTap,
+          child: Container(
+            height: 40.h,
+            decoration: BoxDecoration(
+                color: widget.backgroundColor, borderRadius: kBorderRadius8),
+            child: Padding(
+              padding: EdgeInsets.only(top: 5.h),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 5.h),
+                    child: Container(
+                      height: 17.h,
+                      width: 17.h,
+                      decoration: BoxDecoration(
+                          color: allColors.canvasColor,
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(40.r))),
+                      child: Icon(
+                        Icons.question_mark_outlined,
+                        size: 14.h,
+                        color: context.onSurfaceColor,
                       ),
                     ),
-                    SizedBox(
-                      width: 5.w,
-                    ),
-                    CommonTextWidget(
-                      color: allColors.canvasColor,
-                      size: 16.sp,
-                      text:
-                          variables.staticData?.frequentlyAskedQuestions.capitalizeFirstLetter() ?? '',
-                      weight: FontWeight.w500,
-                      align: TextAlign.start,
-                      padding: noPadding,
-                    ),
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    width: 5.w,
+                  ),
+                  Text(
+                    variables.staticData?.frequentlyAskedQuestions
+                            .capitalizeFirstLetter() ??
+                        '',
+                    style: context.labelLarge
+                        ?.copyWith(color: context.onPrimaryColor),
+                    textAlign: TextAlign.start,
+                  ),
+                ],
               ),
             ),
           ),

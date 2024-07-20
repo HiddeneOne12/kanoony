@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/constants/values.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/src/document_module/document_details_screen/provider/doc_detail_provider.dart';
 
@@ -31,9 +33,9 @@ class _DescriptionWidgetState extends ConsumerState<DescriptionWidget> {
           padding:
               EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h, bottom: 5.h),
           decoration: BoxDecoration(
-            color: allColors.canvasColor,
-            border: Border.all(color: allColors.canvasColor, width: 1.w),
-            borderRadius: BorderRadius.circular(10.r),
+            color: context.onPrimaryColor,
+            border: Border.all(color: context.onPrimaryColor, width: 1.w),
+            borderRadius: kBorderRadius10,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,9 +57,8 @@ class _DescriptionWidgetState extends ConsumerState<DescriptionWidget> {
                             color: allColors.textColor,
                             size: 18.sp,
                             align: TextAlign.start,
-                            text: capitalizeFirst(dashboard.staticData?.description
-                                     ??
-                                ''),
+                            text: capitalizeFirst(
+                                dashboard.staticData?.description ?? ''),
                             weight: FontWeight.w500,
                             padding: EdgeInsets.only(left: 0.h, right: 0.h))),
                     Padding(

@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import '../static_constants/static_constants.dart';
 
 class StaticTextTranslations {
@@ -68,7 +70,9 @@ class StaticTextTranslations {
 
    String home = isArabic ? "بيت" : "Home";
     printCalled(){
-      print("IsArabic or Nor" + isArabic.toString());
+      if (kDebugMode) {
+        print("IsArabic or Nor$isArabic");
+      }
     }
    String corporateServices = isArabic ? "خدمات للشركات" : "Corporate services";
    String templatePackages = isArabic ? "حزم القالب" : "Template packages";

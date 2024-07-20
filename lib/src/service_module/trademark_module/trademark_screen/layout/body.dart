@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/core/routing/routing_config.dart';
 import 'package:kanoony/src/service_module/trademark_module/register_trademark_screen/register_trademark_screen.dart';
 import 'package:kanoony/src/service_module/trademark_module/trademark_screen/layout/widgets/all_expandable_data.dart';
@@ -13,10 +14,13 @@ import 'package:kanoony/src/service_module/trademark_module/trademark_screen/lay
 
 import '../../../../../core/common_widgets/callback_button.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
-import '../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
+import '../../../../../core/constants/values.dart';
+import '../../../business_service_module/business_setup_screen/layout/widgets/faq_cards_widget.dart';
+import '../../../widgets/common_container.dart';
+import 'widgets/divider.dart';
 
 class TradeMarkBody extends ConsumerStatefulWidget {
   const TradeMarkBody({super.key});
@@ -63,19 +67,37 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                 ),
               ),
               SizedBox(
-                height: 0.795.sh,
+                height: 0.81.sh,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        height: 10.h,
+                      SizedBox(height: 40.h),
+                      Padding(
+                        padding: kLeftRightPadding16,
+                        child: Text(
+                          variables.staticData?.trademarkRegistration
+                                  .upperCase() ??
+                              '',
+                          style: context.headlineMedium,
+                          textAlign: TextAlign.start,
+                        ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(
-                          left: isArabic ? 0 : 0.23.sw,
-                          right: isArabic ? 0.23.sw : 0,
+                        padding: kTitlePadding2,
+                        child: Text(
+                          variables.staticData
+                                  ?.theUaesStrictTrademarkRegistrationSystemAids
+                                  .capitalizeFirstLetter() ??
+                              '',
+                          style: context.bodyMedium?.copyWith(
+                              color: appTheme.blackColor,
+                              fontWeight: FontWeight.w400),
+                          textAlign: TextAlign.justify,
                         ),
+                      ),
+                      Align(
+                        alignment: Alignment.center,
                         child: ClickHereButton(
                           onTap: () {
                             RoutesUtils.context
@@ -83,136 +105,199 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                           },
                         ),
                       ),
-                      CommonTextWidget(
-                        color: allColors.lightTextColor,
-                        size: 16  ,
-                        align: TextAlign.start,
-                        text: variables.staticData
-                                ?.theUaesStrictTrademarkRegistrationSystemAids.capitalizeFirstLetter() ??
-                            '',
-                        weight: FontWeight.w400,
-                        padding:
-                            EdgeInsets.only(left: 16.h, right: 16.h, top: 15.h),
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                    
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      CommonTextWidget(
-                        color: allColors.lightTextColor,
-                        size: 18.sp,
-                        align: TextAlign.center,
-                        text: variables.staticData
-                                ?.benefitsOfTrademarkRegistrationInUae ??
-                            '',
-                        weight: FontWeight.w500,
-                        padding: EdgeInsets.only(
-                            left: 16.h, right: 16.h, top: 10.h, bottom: 10.h),
-                      ),
-                      BenefitItem(
-                          icon: SvgImagesAssetPath.safeguardSvg,
-                          text: variables
-                                  .staticData?.safeguardsYourBusinessIdentity ??
-                              ''),
-                      BenefitItem(
-                          icon: SvgImagesAssetPath.protectsSvg,
-                          text: variables.staticData
-                                  ?.itProtectsYouAgainstOthersUsingTheSameOrS ??
-                              ''),
-                      BenefitItem(
-                          icon: SvgImagesAssetPath.proofSvg,
-                          text: variables.staticData
-                                  ?.itProvidesSolidProofOfYourLegallyProtected_ ??
-                              ''),
-                      BenefitItem(
-                          icon: SvgImagesAssetPath.lawSvg,
-                          text: variables.staticData
-                                  ?.itRemovesTheNeedToRelyOnCommonLawRights ??
-                              ''),
-                      BenefitItem(
-                          icon: SvgImagesAssetPath.lawSvg,
-                          text: variables.staticData
-                                  ?.itIsAnAssetAndItsValueGrowsOverTime ??
-                              ''),
-                      BenefitItem(
-                          icon: SvgImagesAssetPath.licenseSvg,
-                          text: variables.staticData
-                                  ?.itCanBeLicensedFranchisedOrSold ??
-                              ''),
                       Padding(
-                        padding: EdgeInsets.only(left: 16.h, right: 16.h),
+                        padding: kLeftRightPadding16,
+                        child: FaqItems(
+                          isTrade: true,
+                          name:
+                              variables.staticData?.uaeTrademarkRegistration ??
+                                  '',
+                          description: variables.staticData
+                                  ?.uaeForYearsHasBeenFollowingAStrictTrademar
+                                  .capitalizeFirstLetter() ??
+                              '',
+                          number: '',
+                        ),
+                      ),
+                      SizedBox(
+                        height: 11.h,
+                      ),
+                      Padding(
+                        padding: kLeftRightPadding16,
+                        child: FaqItems(
+                          isTrade: true,
+                          name: variables
+                                  .staticData?.trademarkRegisterationInUae
+                                  .capitalizeFirstLetter() ??
+                              '',
+                          description: variables.staticData
+                                  ?.trademarkRegistrationInTheUaeIsImportantFor
+                                  .capitalizeFirstLetter() ??
+                              '',
+                          number: '',
+                          isHtml: true,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      Padding(
+                        padding: kTitlePadding,
+                        child: Text(
+                          variables.staticData
+                                  ?.benefitsOfTrademarkRegistrationInUae
+                                  .capitalizeFirstLetter() ??
+                              '',
+                          style: context.titleMedium,
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      CommonContainer(
+                        containerBorderColor: appTheme.dividerColor,
+                        containerColor: appTheme.transparentColor,
+                        widget: Column(
+                          children: [
+                            BenefitItem(
+                                icon: SvgImagesAssetPath.safeguardSvg,
+                                text: variables.staticData
+                                        ?.safeguardsYourBusinessIdentity ??
+                                    ''),
+                            const DividerWidget(),
+                            BenefitItem(
+                                icon: SvgImagesAssetPath.protectsSvg,
+                                text: variables.staticData
+                                        ?.itProtectsYouAgainstOthersUsingTheSameOrS ??
+                                    ''),
+                            const DividerWidget(),
+                            BenefitItem(
+                                icon: SvgImagesAssetPath.proofSvg,
+                                text: variables.staticData
+                                        ?.itProvidesSolidProofOfYourLegallyProtected_ ??
+                                    ''),
+                            const DividerWidget(),
+                            BenefitItem(
+                                icon: SvgImagesAssetPath.lawSvg,
+                                text: variables.staticData
+                                        ?.itRemovesTheNeedToRelyOnCommonLawRights ??
+                                    ''),
+                            const DividerWidget(),
+                            BenefitItem(
+                                icon: SvgImagesAssetPath.assetSvg,
+                                text: variables.staticData
+                                        ?.itIsAnAssetAndItsValueGrowsOverTime ??
+                                    ''),
+                            const DividerWidget(),
+                            BenefitItem(
+                                icon: SvgImagesAssetPath.licenseSvg,
+                                text: variables.staticData
+                                        ?.itCanBeLicensedFranchisedOrSold ??
+                                    ''),
+                            SizedBox(
+                              height: 10.h,
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      Padding(
+                        padding: kLeftRightPadding16,
                         child: Html(
                           style: {
-                            "span": Style(
-                                margin: Margins.zero,
-                                padding: HtmlPaddings.zero,
-                                color: allColors.textColor,
-                                fontSize: FontSize(18.sp),
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Tajawal'),
-                            "body": Style(
-                                color: allColors.textColor,
-                                margin: Margins.zero,
-                                padding: HtmlPaddings.zero,
-                                fontSize: FontSize(18.sp),
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Tajawal'),
+                            "span": context.htmlTitleStyle,
+                            "body": context.htmlTitleStyle,
                           },
                           data: variables.staticData
-                                  ?.documentsRequiredForTrademarkRegistrationInU??
+                                  ?.documentsRequiredForTrademarkRegistrationInU
+                                  .capitalizeFirstLetter() ??
                               '',
                         ),
                       ),
-                      RequiredDocCards(
-                          icon: PngImagePaths.attornyImg,
-                          text: variables.staticData
-                                  ?.powerOfAttorneyAppointingUsToActAndApplyO ??
-                              ''),
-                      RequiredDocCards(
-                          icon: PngImagePaths.visaImg,
-                          text: variables
-                                  .staticData?.copyOfPassportOfTheApplicants ??
-                              ''),
-                      RequiredDocCards(
-                          icon: PngImagePaths.license2Img,
-                          text: variables.staticData
-                                  ?.copyOfTradeLicenseInCaseOfCorporateApplica ??
-                              ''),
-                      RequiredDocCards(
-                          icon: PngImagePaths.companyNameImg,
-                          text: variables
-                                  .staticData?.artworkOfTheBrandNameOrLogo ??
-                              ''),
-                      CommonTextWidget(
-                        color: allColors.lightTextColor,
-                        size: 18.sp,
-                        align: TextAlign.center,
-                        text: variables.staticData
-                                ?.trademarkRegistrationInThreeSteps?.capitalizeFirstLetter() ??
-                            '',
-                        weight: FontWeight.w500,
-                        padding: EdgeInsets.only(
-                            left: 16.h, right: 16.h, top: 10.h, bottom: 10.h),
+                      SizedBox(
+                        height: 10.h,
                       ),
-                      BenefitItem(
-                          isSteps: true,
-                          icon: PngImagePaths.applicationImg,
-                          text: variables
-                                  .staticData?.filingOfTrademarkApplication ??
-                              ''),
-                      BenefitItem(
-                          isSteps: true,
-                          icon: PngImagePaths.examinationImg,
-                          text: variables
-                                  .staticData?.step_02ApplicationExamination ??
-                              ''),
-                      BenefitItem(
-                          isSteps: true,
-                          icon: PngImagePaths.certificateImg,
-                          text: 'Registration Certificate'),
+                      CommonContainer(
+                        containerBorderColor: context.primaryColor,
+                        containerColor: context.primaryColor,
+                        widget: Column(
+                          children: [
+                            RequiredDocCards(
+                                icon: PngImagePaths.attornyImg,
+                                text: variables.staticData
+                                        ?.powerOfAttorneyAppointingUsToActAndApplyO ??
+                                    ''),
+                            const DividerWidget(),
+                            RequiredDocCards(
+                                icon: PngImagePaths.visaImg,
+                                text: variables.staticData
+                                        ?.copyOfPassportOfTheApplicants ??
+                                    ''),
+                            const DividerWidget(),
+                            RequiredDocCards(
+                                icon: PngImagePaths.license2Img,
+                                text: variables.staticData
+                                        ?.copyOfTradeLicenseInCaseOfCorporateApplica ??
+                                    ''),
+                            const DividerWidget(),
+                            RequiredDocCards(
+                                icon: PngImagePaths.companyNameImg,
+                                text: variables.staticData
+                                        ?.artworkOfTheBrandNameOrLogo ??
+                                    ''),
+                            SizedBox(
+                              height: 10.h,
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      Padding(
+                        padding: kTitlePadding,
+                        child: Text(
+                          variables
+                                  .staticData?.trademarkRegistrationInThreeSteps
+                                  .capitalizeFirstLetter() ??
+                              '',
+                          style: context.titleMedium
+                              ?.copyWith(color: appTheme.lightTextColor),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      CommonContainer(
+                        containerBorderColor: appTheme.dividerColor,
+                        containerColor: appTheme.transparentColor,
+                        widget: Column(
+                          children: [
+                            BenefitItem(
+                                isSteps: true,
+                                icon: PngImagePaths.applicationImg,
+                                text: variables.staticData
+                                        ?.filingOfTrademarkApplication ??
+                                    ''),
+                            const DividerWidget(),
+                            BenefitItem(
+                                isSteps: true,
+                                icon: PngImagePaths.examinationImg,
+                                text: variables.staticData
+                                        ?.step_02ApplicationExamination ??
+                                    ''),
+                            const DividerWidget(),
+                            BenefitItem(
+                                isSteps: true,
+                                icon: PngImagePaths.certificateImg,
+                                text: 'Registration Certificate'),
+                            SizedBox(
+                              height: 10.h,
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
                       AllExpandableData(
                         variables: variables,
                       ),

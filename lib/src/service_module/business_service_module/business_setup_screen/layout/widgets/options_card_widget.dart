@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kanoony/core/common_widgets/common_text_widget.dart';
-import 'package:kanoony/core/constants/object_constants/object_constants.dart';
-import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/constants/values.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 
-Widget buildOptionCard(BuildContext context, String title, String description,String more) {
+Widget buildOptionCard(
+    BuildContext context, String title, String description, String more) {
   return Padding(
-    padding: EdgeInsets.only(left: 16.h, right: 16.h, bottom: 5.h),
+    padding: kHeadlineBottomPadding,
     child: Stack(
       clipBehavior: Clip.none,
       children: [
@@ -15,39 +15,39 @@ Widget buildOptionCard(BuildContext context, String title, String description,St
           padding: EdgeInsets.only(top: 20.h),
           child: Container(
             decoration: BoxDecoration(
-                border: Border.all(color: allColors.textColor, width: 1.w),
-                borderRadius: BorderRadius.all(Radius.circular(10.r))),
+                border: Border.all(color: context.onSurfaceColor, width: 1.w),
+                borderRadius: kBorderRadius10),
             child: Column(
               children: [
-                CommonTextWidget(
-                 
-                    color: allColors.textColor,
-                     size: 16,
-                    text: description,
-                    weight: FontWeight.w400,
-                    align: TextAlign.center,
-                    maxLine: 3,
-                    padding: EdgeInsets.only(
-                        top: 40.h, bottom: 15.h, left: 16.h, right: 16.h)),
+                Padding(
+                  padding: kInsideCardPadding,
+                  child: Text(
+                    description,
+                    style: context.bodyLarge,
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
                 Container(
                   alignment: Alignment.center,
                   width: MediaQuery.sizeOf(context).width.w,
                   height: 43.h,
                   decoration: BoxDecoration(
-                      color: allColors.textColor,
+                      color: context.onSurfaceColor,
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(10.r),
                           topLeft: Radius.zero,
                           topRight: Radius.zero,
                           bottomRight: Radius.circular(10.r))),
                   child: Padding(
-                    padding: EdgeInsets.only(top: 5),
-                    child: CommonTextWidget(
-                        color: allColors.canvasColor,
-                        size: 16.sp,
-                        text: more,
-                        weight: FontWeight.w700,
-                        padding: noPadding),
+                    padding: kTopPadding5,
+                    child: Text(
+                      more,
+                      style: context.headlineSmall
+                          ?.copyWith(color: context.onPrimaryColor),
+                      textAlign: TextAlign.start,
+                    ),
                   ),
                 ),
               ],
@@ -56,20 +56,23 @@ Widget buildOptionCard(BuildContext context, String title, String description,St
         ),
         Positioned(
           top: 0,
-          left: 85.h,
+          left: 75.h,
+          bottom: 160.h,
+          right: 75.h,
           child: Container(
-              height: 44.h,
               width: 212.h,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  color: allColors.primaryColor,
-                  borderRadius: BorderRadius.all(Radius.circular(6.r))),
-              child: CommonTextWidget(
-                  color: allColors.canvasColor,
-                  size: 16.sp,
-                  text: capitalizeFirst(title),
-                  weight: FontWeight.w700,
-                  padding: EdgeInsets.only(top: 5.h))),
+                  color: context.primaryColor, borderRadius: kBorderRadius6),
+              child: Padding(
+                padding: kTopPadding5,
+                child: Text(
+                  capitalizeFirst(title),
+                  style: context.headlineSmall
+                      ?.copyWith(color: context.onPrimaryColor),
+                  textAlign: TextAlign.start,
+                ),
+              )),
         ),
       ],
     ),

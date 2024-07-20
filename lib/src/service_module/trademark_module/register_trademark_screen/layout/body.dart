@@ -3,12 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
 import '../../../../../core/common_widgets/common_button_widget.dart';
 import '../../../../../core/common_widgets/common_sizebox_widget.dart';
-import '../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
+import '../../../../../core/constants/values.dart';
 import '../../../../../core/helpers/validators.dart';
 import 'widgets/product_or_service_widget.dart';
 import 'widgets/select_type_widget.dart';
@@ -74,18 +75,34 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        SizedBox(height: 40.h),
+                        Padding(
+                          padding: kLeftRightPadding16,
+                          child: Text(
+                            variables.staticData?.registerOrSearchYourTrademark
+                                    .upperCase() ??
+                                '',
+                            style: context.headlineMedium,
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
                         SelectTypeWidget(
                           trademarkVar: trademarkVar,
                           variables: variables,
                         ),
-                        CommonTextWidget(
-                            color: allColors.textColor,
-                            size: 18.sp,
-                            text: variables.staticData?.applicantContactDetails
-                                    ?.capitalizeFirstLetter() ??
+                        Padding(
+                          padding: kLeftRightPadding16,
+                          child: Text(
+                            variables.staticData?.applicantContactDetails
+                                    .capitalizeFirstLetter() ??
                                 '',
-                            weight: FontWeight.w500,
-                            padding: EdgeInsets.only(left: 16.h, right: 16.h)),
+                            style: context.titleMedium,
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
                         SizedBox(
                           height: 15.h,
                         ),
@@ -116,15 +133,19 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                           validator: TextFieldValidator.validatePhone,
                           focusNode: provider.phoneFocus,
                         ),
-                        CommonTextWidget(
-                            color: allColors.textColor,
-                            size: 18.sp,
-                            text: variables.staticData?.trademarkOwner
-                                    ?.capitalizeFirstLetter() ??
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        Padding(
+                          padding: kLeftRightPadding16,
+                          child: Text(
+                            variables.staticData?.trademarkOwner
+                                    .capitalizeFirstLetter() ??
                                 '',
-                            weight: FontWeight.w500,
-                            padding: EdgeInsets.only(
-                                left: 16.h, right: 16.h, top: 5.h)),
+                            style: context.titleMedium,
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
                         SizedBox(
                           height: 15.h,
                         ),
@@ -141,15 +162,19 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                           validator: TextFieldValidator.validateText,
                           focusNode: FocusNode(),
                         ),
-                        CommonTextWidget(
-                            color: allColors.textColor,
-                            size: 18.sp,
-                            text: variables.staticData?.designatedCountry
-                                    ?.capitalizeFirstLetter() ??
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        Padding(
+                          padding: kLeftRightPadding16,
+                          child: Text(
+                            variables.staticData?.designatedCountry
+                                    .capitalizeFirstLetter() ??
                                 '',
-                            weight: FontWeight.w500,
-                            padding: EdgeInsets.only(
-                                left: 16.h, right: 16.h, top: 5.h)),
+                            style: context.titleMedium,
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
                         SizedBox(
                           height: 15.h,
                         ),
@@ -166,13 +191,19 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                           validator: TextFieldValidator.validateText,
                           focusNode: FocusNode(),
                         ),
-                        CommonTextWidget(
-                            color: allColors.textColor,
-                            size: 18.sp,
-                            text: variables.staticData?.trademarkName ?? '',
-                            weight: FontWeight.w500,
-                            padding: EdgeInsets.only(
-                                left: 16.h, right: 16.h, top: 5.h)),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        Padding(
+                          padding: kLeftRightPadding16,
+                          child: Text(
+                            variables.staticData?.trademarkName
+                                    .capitalizeFirstLetter() ??
+                                '',
+                            style: context.titleMedium,
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
                         SizedBox(
                           height: 15.h,
                         ),
@@ -189,15 +220,19 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                           trademarkVar: trademarkVar,
                           variables: variables,
                         ),
-                        CommonTextWidget(
-                            color: allColors.textColor,
-                            size: 18.sp,
-                            text: variables.staticData?.trademarkType
-                                    ?.capitalizeFirstLetter() ??
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        Padding(
+                          padding: kLeftRightPadding16,
+                          child: Text(
+                            variables.staticData?.trademarkType
+                                    .capitalizeFirstLetter() ??
                                 '',
-                            weight: FontWeight.w500,
-                            padding: EdgeInsets.only(
-                                left: 16.h, right: 16.h, top: 5.h)),
+                            style: context.titleMedium,
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
                         SizedBox(
                           height: 15.h,
                         ),
@@ -205,15 +240,19 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                           trademarkVar: trademarkVar,
                           variables: variables,
                         ),
-                        CommonTextWidget(
-                            color: allColors.textColor,
-                            size: 18.sp,
-                            text: variables.staticData?.attachFile
-                                    ?.capitalizeFirstLetter() ??
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        Padding(
+                          padding: kLeftRightPadding16,
+                          child: Text(
+                            variables.staticData?.attachFile
+                                    .capitalizeFirstLetter() ??
                                 '',
-                            weight: FontWeight.w500,
-                            padding: EdgeInsets.only(
-                                left: 16.h, right: 16.h, top: 5.h)),
+                            style: context.titleMedium,
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
                         SizedBox(
                           height: 15.h,
                         ),
@@ -230,16 +269,19 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                           // validator: TextFieldValidator.validateText,
                           focusNode: FocusNode(),
                         ),
-                        CommonTextWidget(
-                            color: allColors.textColor,
-                            size: 18.sp,
-                            text: variables
-                                    .staticData?.describeYourProductOrService
-                                    ?.capitalizeFirstLetter() ??
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        Padding(
+                          padding: kLeftRightPadding16,
+                          child: Text(
+                            variables.staticData?.describeYourProductOrService
+                                    .capitalizeFirstLetter() ??
                                 '',
-                            weight: FontWeight.w500,
-                            padding: EdgeInsets.only(
-                                left: 16.h, right: 16.h, top: 5.h)),
+                            style: context.titleMedium,
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
                         SizedBox(
                           height: 15.h,
                         ),
@@ -253,19 +295,15 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                           icon: Icons.message,
                           focusNode: provider.messageFocus,
                         ),
-                        CommonSizeBoxWidget(height: 10.h, width: 0),
+                        CommonSizeBoxWidget(height: 20.h, width: 0),
                         CommonButton(
                             loadingNotifier: trademarkVar.isLoading,
                             height: 40.h,
-                            padding: EdgeInsets.only(left: 16.h, right: 16.h),
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayLarge!
-                                .copyWith(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 14.sp,
-                                    color: allColors.canvasColor),
-                            backgroundColor: allColors.primaryColor,
+                            padding: kLeftRightPadding16,
+                            style: context.bodyMedium?.copyWith(
+                                fontWeight: FontWeight.w700,
+                                color: context.onPrimaryColor),
+                            backgroundColor: context.primaryColor,
                             text: variables.staticData?.submit ?? '',
                             onPressed: () async {
                               FocusScope.of(context).unfocus();

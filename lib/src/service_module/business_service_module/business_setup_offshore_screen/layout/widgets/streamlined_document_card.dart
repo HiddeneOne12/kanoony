@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/constants/values.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
-
-import '../../../../../../core/constants/object_constants/object_constants.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 
 class StreamLinedCard extends StatelessWidget {
   String step;
@@ -32,11 +32,7 @@ class StreamLinedCard extends StatelessWidget {
             height: 240.h,
             width: 220.h,
             decoration: BoxDecoration(
-              color: allColors.canvasColor,
-              borderRadius: BorderRadius.all(
-                Radius.circular(10.r),
-              ),
-            ),
+                color: context.onPrimaryColor, borderRadius: kBorderRadius10),
             child: Padding(
               padding: EdgeInsets.all(12.h),
               child: Column(
@@ -59,13 +55,9 @@ class StreamLinedCard extends StatelessWidget {
                         children: [
                           Text(
                             step,
-                            style: Theme.of(context)
-                                .textTheme
-                                .displaySmall!
-                                .copyWith(
-                                    color: allColors.textColor,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14),
+                            style: context.bodyMedium?.copyWith(
+                                fontWeight: FontWeight.w400,
+                                color: context.onSurfaceColor),
                             textAlign: TextAlign.center,
                           ),
                           SizedBox(
@@ -73,13 +65,8 @@ class StreamLinedCard extends StatelessWidget {
                           ),
                           Text(
                             num,
-                            style: Theme.of(context)
-                                .textTheme
-                                .displaySmall!
-                                .copyWith(
-                                    color: allColors.primaryColor,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 19.sp),
+                            style: context.headlineMedium
+                                ?.copyWith(color: context.primaryColor),
                             textAlign: TextAlign.center,
                           ),
                         ],
@@ -90,23 +77,18 @@ class StreamLinedCard extends StatelessWidget {
                     height: 15.h,
                   ),
                   Text(
-                    title.capitalizeFirstLetter() ?? "",
-                    style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                        color: allColors.textColor,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16),
-                   ),
+                    title.capitalizeFirstLetter(),
+                    style: context.labelLarge,
+                    textAlign: TextAlign.start,
+                  ),
                   SizedBox(
                     height: 10.h,
                   ),
                   Text(
-                    description.capitalizeFirstLetter() ?? "",
+                    description.capitalizeFirstLetter(),
+                    style: context.labelSmall?.copyWith(fontSize: 13),
+                    textAlign: TextAlign.start,
                     maxLines: 4,
-                    style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                        color: allColors.textColor,
-                        fontWeight: FontWeight.w400,
-                        
-                        fontSize: 13),
                   ),
                 ],
               ),

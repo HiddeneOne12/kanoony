@@ -3,8 +3,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../core/common_widgets/common_text_widget.dart';
+import 'package:kanoony/core/constants/values.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import '../../../core/constants/object_constants/object_constants.dart';
 
 class GoldenVisaPoints extends StatelessWidget {
@@ -18,25 +19,27 @@ class GoldenVisaPoints extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(bottom: 5.h),
+          padding: kBottomPadding9,
           child: Icon(
             Icons.circle,
-            size: 4.h,
-            color: allColors.textColor,
+            size: 5.h,
+            color: appTheme.blackColor,
           ),
         ),
         SizedBox(
-          width: 5.w,
+          width: 5.h,
         ),
         Flexible(
-          child: CommonTextWidget(
-              color: allColors.textColor,
-              size: 16,
-              align: TextAlign.start,
-              text: title,
-              weight: FontWeight.w400,
-              padding: EdgeInsets.only(bottom: 2.h)),
-        ),
+            child: Padding(
+          padding: EdgeInsets.only(
+            bottom: 2.h,
+          ),
+          child: Text(
+            title.capitalizeFirstLetter(),
+            style: context.bodyLarge?.copyWith(fontWeight: FontWeight.w400),
+            textAlign: TextAlign.start,
+          ),
+        )),
       ],
     );
   }

@@ -3,9 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:kanoony/core/common_widgets/common_text_widget.dart';
-import 'package:kanoony/core/constants/object_constants/object_constants.dart';
-import 'package:kanoony/core/constants/static_constants/static_constants.dart';
 import 'package:kanoony/core/constants/values.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
 

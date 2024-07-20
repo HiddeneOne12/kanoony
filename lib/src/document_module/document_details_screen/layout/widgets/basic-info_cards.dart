@@ -31,8 +31,7 @@ class BasicInfoCards extends StatelessWidget {
                 text: name,
                 weight: FontWeight.w500,
                 maxLine: 1,
-                padding:
-                    EdgeInsets.only(right: 20.h,    left: 20.h)),
+                padding: EdgeInsets.only(right: 20.h, left: 20.h)),
             CommonTextWidget(
                 color: allColors.textColor,
                 size: 16,

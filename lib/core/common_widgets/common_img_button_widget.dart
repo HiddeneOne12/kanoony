@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../constants/object_constants/object_constants.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'common_text_widget.dart';
 
 class CommonImgButtonWidget extends StatefulWidget {
@@ -22,7 +22,7 @@ class CommonImgButtonWidget extends StatefulWidget {
       {super.key,
       required this.padding,
       this.weight = FontWeight.w700,
-      this.fontSize = 16,
+      this.fontSize = 14,
       required this.fontColor,
       required this.height,
       required this.onTap,
@@ -59,8 +59,8 @@ class _CommonImgButtonWidgetState extends State<CommonImgButtonWidget> {
                   height: 15.h,
                   width: 15.h,
                   child: CircularProgressIndicator(
-                    backgroundColor: allColors.textColor,
-                    color: allColors.canvasColor,
+                    backgroundColor: context.onSurfaceColor,
+                    color: context.onPrimaryColor,
                     strokeWidth: 2.w,
                   ),
                 )

@@ -7,6 +7,8 @@ import 'package:kanoony/core/common_widgets/common_text_widget.dart';
 import 'package:kanoony/core/constants/image_paths/image_paths.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/core/routing/routing_config.dart';
 import 'package:kanoony/src/document_module/document_details_screen/document_details_screen.dart';
@@ -77,18 +79,21 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        variables2.isLoaded || variables2.content?.isEmpty == true
+                        SizedBox(
+                          height: 40.h,
+                        ),
+                        variables2.isLoaded ||
+                                variables2.content?.isEmpty == true
                             ? const SizedBox()
                             : Text(
-                                "My documents",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelMedium!
-                                    .copyWith(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w700),
+                                variables.staticData?.myDocuments.upperCase() ??
+                                    '',
+                                style: context.headlineLarge,
+                                textAlign: TextAlign.start,
                               ),
-                          SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10.h,
+                        ),
                         variables2.isLoaded
                             ? const ShimmerFaqCard()
                             : ListView.builder(
@@ -114,7 +119,8 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                                     child: Container(
                                       margin: EdgeInsets.only(bottom: 15),
                                       height: 55,
-                                      padding: EdgeInsets.symmetric(horizontal :3 , vertical: 6),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 3, vertical: 6),
                                       width: MediaQuery.sizeOf(context).width.w,
                                       decoration: BoxDecoration(
                                           color: allColors.canvasColor,
@@ -138,7 +144,7 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                                                   children: [
                                                     Flexible(
                                                       child: CommonTextWidget(
-                                                        maxLine: 1,
+                                                          maxLine: 1,
                                                           color: allColors
                                                               .textColor,
                                                           size: 16,
@@ -177,9 +183,9 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                                               },
                                               child: Image.asset(
                                                 PngImagePaths.wordImg,
-                                                 height: 26.h,
-                                              width: 26.h,
-                                              fit: BoxFit.cover,
+                                                height: 26.h,
+                                                width: 26.h,
+                                                fit: BoxFit.cover,
                                               ),
                                             ),
                                           ),
@@ -200,9 +206,8 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                                                 },
                                                 child: Icon(
                                                   Icons.picture_as_pdf,
-                                                  color:
-                                                      allColors.errorColor,
-                                                      size: 26,
+                                                  color: allColors.errorColor,
+                                                  size: 26,
                                                 ),
                                               ),
                                             ),
@@ -226,8 +231,8 @@ class _MyDocumentBodyState extends ConsumerState<MyDocumentBody> {
                                             child: Image.asset(
                                               PngImagePaths.binImg,
                                               height: 18,
-                                            width: 18,
-                                            fit: BoxFit.cover,
+                                              width: 18,
+                                              fit: BoxFit.cover,
                                             ),
                                           ),
                                           SizedBox(

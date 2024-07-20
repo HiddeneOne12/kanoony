@@ -4,11 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kanoony/core/constants/values.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
-import 'package:kanoony/core/helpers/pascal_case_converter.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
+import 'package:kanoony/src/service_module/widgets/common_container.dart';
 import 'package:kanoony/src/service_module/widgets/faq_button.dart';
 import '../../../../../core/common_widgets/callback_button.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
-import '../../../../../core/common_widgets/common_text_widget.dart';
+import '../../../../../core/common_widgets/common_divider.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
@@ -26,7 +27,8 @@ class BusinessSetupFreeZoneBody extends ConsumerStatefulWidget {
       _BusinessSetupFreeZoneBodyState();
 }
 
-class _BusinessSetupFreeZoneBodyState extends ConsumerState<BusinessSetupFreeZoneBody> {
+class _BusinessSetupFreeZoneBodyState
+    extends ConsumerState<BusinessSetupFreeZoneBody> {
   bool selectedItem = false;
   bool bluePrintSelected = false;
   @override
@@ -66,34 +68,37 @@ class _BusinessSetupFreeZoneBodyState extends ConsumerState<BusinessSetupFreeZon
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        height: 10.h,
+                      SizedBox(height: 40.h),
+                      Padding(
+                        padding: kLeftRightPadding16,
+                        child: Text(
+                          variables.staticData?.freezoneBusinessSetupInUae
+                                  .upperCase() ??
+                              '',
+                          style: context.headlineMedium,
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      const Align(
+                        alignment: Alignment.center,
+                        child: CallBackButton(),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(
-                          left: isArabic ? 0 : 0.23.sw,
-                          right: isArabic ? 0.23.sw : 0,
+                        padding: kTitlePadding,
+                        child: Text(
+                          variables.staticData?.keyFreeZonesInTheUae
+                                  .capitalizeFirstLetter() ??
+                              '',
+                          style: context.titleMedium,
+                          textAlign: TextAlign.start,
                         ),
-                        child: const CallBackButton(),
-                      ),
-                      CommonTextWidget(
-                        color: allColors.textColor,
-                        size: 20.sp,
-                        text: variables.staticData?.keyFreeZonesInTheUae
-                                .capitalizeFirstLetter() ??
-                            '',
-                        weight: FontWeight.w500,
-                        align: TextAlign.start,
-                        padding:
-                            EdgeInsets.only(left: 16.h, right: 16.h, top: 15.h),
                       ),
                       GridView.count(
                         crossAxisCount: 2,
                         shrinkWrap: true,
                         childAspectRatio: 1.4,
                         crossAxisSpacing: 7.h,
-                        padding:
-                            EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
+                        padding: EdgeInsets.only(left: 16.h, right: 16.h),
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
                           BusinessFreeZoneServiceCard(
@@ -130,289 +135,431 @@ class _BusinessSetupFreeZoneBodyState extends ConsumerState<BusinessSetupFreeZon
                         ],
                       ),
                       SizedBox(
-                        height: 10.h,
+                        height: 20.h,
                       ),
                       Container(
                         width: MediaQuery.sizeOf(context).width.sw,
-                        color: allColors.primaryColor,
+                        color: context.primaryColor,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.86,
-                                  child: CommonTextWidget(
-                                    color: allColors.textColor,
-                                    size: 20.sp,
-                                    text: capitalizeFirst(variables.staticData
-                                            ?.advantagesOfABusinessOdysseyInUaeFreeZones ??
-                                        ''),
-                                    weight: FontWeight.w500,
-                                    align: TextAlign.start,
-                                    padding: EdgeInsets.only(
-                                        left: 16.h, right: 16.h, top: 10.h),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  selectedItem = !selectedItem;
+                                });
+                              },
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: Padding(
+                                      padding: kTitlePadding2,
+                                      child: Text(
+                                        variables.staticData
+                                                ?.advantagesOfABusinessOdysseyInUaeFreeZones
+                                                .capitalizeFirstLetter() ??
+                                            '',
+                                        style: context.titleMedium,
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                const Spacer(),
-                                InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        selectedItem = !selectedItem;
-                                      });
-                                    },
-                                    child: Icon(
-                                      selectedItem
-                                          ? Icons.keyboard_arrow_up
-                                          : Icons.keyboard_arrow_down,
-                                      color: allColors.textColor,
-                                      size: 25,
-                                    )),
-                                const SizedBox(
-                                  width: 20,
-                                )
-                              ],
+                                  InkWell(
+                                      child: Icon(
+                                    selectedItem
+                                        ? Icons.keyboard_arrow_up
+                                        : Icons.keyboard_arrow_down,
+                                    color: allColors.textColor,
+                                    size: 25,
+                                  )),
+                                  const SizedBox(
+                                    width: 20,
+                                  )
+                                ],
+                              ),
                             ),
                             SizedBox(
                               height: 10.h,
                             ),
                             if (selectedItem) ...[
-                              BusinessOffShoreFaqCards(
-                                description: variables.staticData
-                                        ?.enjoyTheLibertyOf_100ForeignOwnershipWithout ??
-                                    '',
-                                name:
-                                    variables.staticData?.unbridledOwnership ??
-                                        '',
-                              ),
-                              BusinessOffShoreFaqCards(
-                                description: variables.staticData
-                                        ?.freelyTransferYourProfitsAndCapitalOutsideT ??
-                                    '',
-                                name: variables.staticData
-                                        ?.unrestrictedProfitMovements ??
-                                    '',
-                              ),
-                              BusinessOffShoreFaqCards(
-                                description: variables.staticData
-                                        ?.experienceZeroCustomsDutiesOnGoodsAndServic ??
-                                    '',
-                                name:
-                                    variables.staticData?.dutyfreeOperations ??
-                                        '',
-                              ),
-                              BusinessOffShoreFaqCards(
-                                description: variables.staticData
-                                        ?.sidestepLengthyBureaucraticProcessesWithAnEx ??
-                                    '',
-                                name: variables.staticData?.swiftSetup ?? '',
-                              ),
-                              BusinessOffShoreFaqCards(
-                                description: variables.staticData
-                                        ?.accessModernAmenitiesFromPlushOfficeSpacesT ??
-                                    '',
-                                name: variables.staticData
-                                        ?.stateoftheartInfrastructure ??
-                                    '',
-                              ),
-                              BusinessOffShoreFaqCards(
-                                description: variables.staticData
-                                        ?.engageInIndustrycentricZonesLikeMediaTechAn ??
-                                    '',
-                                name:
-                                    variables.staticData?.specializedHubs ?? '',
-                              ),
-                              BusinessOffShoreFaqCards(
-                                description: variables.staticData
-                                        ?.benefitFromAnInfluxOfGlobalTalentThanksTo_ ??
-                                    '',
-                                name: variables.staticData?.diverseTalentPool ??
-                                    '',
-                              ),
-                              BusinessOffShoreFaqCards(
-                                description: variables.staticData
-                                        ?.enjoyEnhancedBusinessDiscretionAndStakeholder ??
-                                    '',
-                                name: variables.staticData?.upheldPrivacy ?? '',
-                              ),
-                              BusinessOffShoreFaqCards(
-                                description: variables.staticData
-                                        ?.seamlesslyRenewBusinessLicensesEnsuringUninte ??
-                                    '',
-                                name: variables.staticData
-                                        ?.hasslefreeLicenseRenewals ??
-                                    '',
-                              ),
-                              BusinessOffShoreFaqCards(
-                                description: variables.staticData
-                                        ?.enjoyTheLibertyToMoveYourCapitalAndProfits ??
-                                    '',
-                                name: variables
-                                        .staticData?.fluidCapitalMovements ??
-                                    '',
-                              ),
+                              CommonContainer(
+                                  widget: Column(
+                                    children: [
+                                      BusinessOffShoreFaqCards(
+                                        description: variables.staticData
+                                                ?.enjoyTheLibertyOf_100ForeignOwnershipWithout ??
+                                            '',
+                                        name: variables.staticData
+                                                ?.unbridledOwnership ??
+                                            '',
+                                      ),
+                                      CommonDivider(
+                                        color: context.onSurfaceColor,
+                                        topHeight: 10,
+                                        bottomHeight: 17,
+                                      ),
+                                      BusinessOffShoreFaqCards(
+                                        description: variables.staticData
+                                                ?.freelyTransferYourProfitsAndCapitalOutsideT ??
+                                            '',
+                                        name: variables.staticData
+                                                ?.unrestrictedProfitMovements ??
+                                            '',
+                                      ),
+                                      CommonDivider(
+                                        color: context.onSurfaceColor,
+                                        topHeight: 10,
+                                        bottomHeight: 17,
+                                      ),
+                                      BusinessOffShoreFaqCards(
+                                        description: variables.staticData
+                                                ?.experienceZeroCustomsDutiesOnGoodsAndServic ??
+                                            '',
+                                        name: variables.staticData
+                                                ?.dutyfreeOperations ??
+                                            '',
+                                      ),
+                                      CommonDivider(
+                                        color: context.onSurfaceColor,
+                                        topHeight: 10,
+                                        bottomHeight: 17,
+                                      ),
+                                      BusinessOffShoreFaqCards(
+                                        description: variables.staticData
+                                                ?.sidestepLengthyBureaucraticProcessesWithAnEx ??
+                                            '',
+                                        name:
+                                            variables.staticData?.swiftSetup ??
+                                                '',
+                                      ),
+                                      CommonDivider(
+                                        color: context.onSurfaceColor,
+                                        topHeight: 10,
+                                        bottomHeight: 17,
+                                      ),
+                                      BusinessOffShoreFaqCards(
+                                        description: variables.staticData
+                                                ?.accessModernAmenitiesFromPlushOfficeSpacesT ??
+                                            '',
+                                        name: variables.staticData
+                                                ?.stateoftheartInfrastructure ??
+                                            '',
+                                      ),
+                                      CommonDivider(
+                                        color: context.onSurfaceColor,
+                                        topHeight: 10,
+                                        bottomHeight: 17,
+                                      ),
+                                      BusinessOffShoreFaqCards(
+                                        description: variables.staticData
+                                                ?.engageInIndustrycentricZonesLikeMediaTechAn ??
+                                            '',
+                                        name: variables
+                                                .staticData?.specializedHubs ??
+                                            '',
+                                      ),
+                                      CommonDivider(
+                                        color: context.onSurfaceColor,
+                                        topHeight: 10,
+                                        bottomHeight: 17,
+                                      ),
+                                      BusinessOffShoreFaqCards(
+                                        description: variables.staticData
+                                                ?.benefitFromAnInfluxOfGlobalTalentThanksTo_ ??
+                                            '',
+                                        name: variables.staticData
+                                                ?.diverseTalentPool ??
+                                            '',
+                                      ),
+                                      CommonDivider(
+                                        color: context.onSurfaceColor,
+                                        topHeight: 10,
+                                        bottomHeight: 17,
+                                      ),
+                                      BusinessOffShoreFaqCards(
+                                        description: variables.staticData
+                                                ?.enjoyEnhancedBusinessDiscretionAndStakeholder ??
+                                            '',
+                                        name: variables
+                                                .staticData?.upheldPrivacy ??
+                                            '',
+                                      ),
+                                      CommonDivider(
+                                        color: context.onSurfaceColor,
+                                        topHeight: 10,
+                                        bottomHeight: 17,
+                                      ),
+                                      BusinessOffShoreFaqCards(
+                                        description: variables.staticData
+                                                ?.seamlesslyRenewBusinessLicensesEnsuringUninte ??
+                                            '',
+                                        name: variables.staticData
+                                                ?.hasslefreeLicenseRenewals ??
+                                            '',
+                                      ),
+                                      CommonDivider(
+                                        color: context.onSurfaceColor,
+                                        topHeight: 10,
+                                        bottomHeight: 17,
+                                      ),
+                                      BusinessOffShoreFaqCards(
+                                        description: variables.staticData
+                                                ?.enjoyTheLibertyToMoveYourCapitalAndProfits ??
+                                            '',
+                                        name: variables.staticData
+                                                ?.fluidCapitalMovements ??
+                                            '',
+                                      ),
+                                      SizedBox(
+                                        height: 10.h,
+                                      )
+                                    ],
+                                  ),
+                                  containerColor: appTheme.transparentColor,
+                                  containerBorderColor: context.onSurfaceColor),
                               SizedBox(
-                                height: 15.h,
+                                height: 20.h,
                               ),
                             ]
                           ],
                         ),
                       ),
-                       SizedBox(
-                        height: 10.h,
+                      SizedBox(
+                        height: 20.h,
                       ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.86,
-                            child: CommonTextWidget(
-                              color: allColors.textColor,
-                              size: 20.sp,
-                              text: variables.staticData
-                                      ?.blueprintForEstablishingABusinessInUaeFree_
-                                      .capitalizeFirstLetter() ??
-                                  '',
-                              weight: FontWeight.w500,
-                              align: TextAlign.start,
-                              padding: EdgeInsets.only(
-                                  left: 16.h, right: 16.h, top: 10.h),
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            bluePrintSelected = !bluePrintSelected;
+                          });
+                        },
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: kLeftRightPadding16,
+                                child: Text(
+                                  variables.staticData
+                                          ?.blueprintForEstablishingABusinessInUaeFree_
+                                          .capitalizeFirstLetter() ??
+                                      '',
+                                  style: context.titleMedium,
+                                  textAlign: TextAlign.start,
+                                ),
+                              ),
                             ),
-                          ),
-                          const Spacer(),
-                          InkWell(
-                              onTap: () {
-                                setState(() {
-                                  bluePrintSelected = !bluePrintSelected;
-                                });
-                              },
-                              child: Icon(
-                                bluePrintSelected
-                                    ? Icons.keyboard_arrow_up
-                                    : Icons.keyboard_arrow_down,
-                                color: allColors.textColor,
-                                size: 25,
-                              )),
-                          const SizedBox(
-                            width: 20,
-                          )
-                        ],
-                      ),
-                     
-                      if (bluePrintSelected) ...[
-                        Container(
-                          margin: const EdgeInsets.all(14),
-                          decoration: BoxDecoration(
-                            color: allColors.canvasColor,
-                            borderRadius: kBorderRadius6,
-                            boxShadow: [
-                              BoxShadow(color: allColors.lightGreyColor,blurRadius: 10,offset: const Offset(0,3),spreadRadius: 1.9),
-                              
-                            ],
-                          ),
-                          child: Column(children: [BluePrintCardListing(
-                        title: variables.staticData?.researchAndSelect ?? '',
-                        description: variables.staticData
-                                ?.beginByIdentifyingWhichFreeZoneAlignsBestW ??
-                            '',
-                      ),
-                      BluePrintCardListing(
-                        title: variables
-                                .staticData?.decideOnNatureOfTheLegalEntity ??
-                            '',
-                        description: variables.staticData
-                                ?.willYouBeSettingUpAsAnIndividualABranchO ??
-                            '',
-                      ),
-                      BluePrintCardListing(
-                        title: variables.staticData?.chooseABusinessName ?? '',
-                        description: variables.staticData
-                                ?.yourBusinessNameShouldNotOnlyReflectYourBr ??
-                            '',
-                      ),
-                      BluePrintCardListing(
-                        title: variables.staticData?.prepareDocumentation ?? '',
-                        description: variables.staticData
-                                ?.collateAllRequiredDocumentsWhichTypicallyInc ??
-                            '',
-                      ),
-                      BluePrintCardListing(
-                        title: variables.staticData?.licenseApplication ?? '',
-                        description: variables.staticData
-                                ?.applyForTheBusinessLicenseRelevantToYourAc ??
-                            '',
-                      ),
-                      BluePrintCardListing(
-                        title:
-                            variables.staticData?.officeSpace_Infrastructure ??
-                                '',
-                        description: variables.staticData
-                                ?.basedOnYourBusinessSizeAndRequirementsChoos ??
-                            '',
-                      ),
-                      BluePrintCardListing(
-                        title: variables.staticData?.getApprovals ?? '',
-                        description: variables.staticData
-                                ?.apartFromTheStandardFreeZoneAuthoritysAppro ??
-                            '',
-                      ),
-                      BluePrintCardListing(
-                        title: variables.staticData?.feesPayment ?? '',
-                        description: variables.staticData
-                                ?.uponApprovalYouWillBeRequiredToPayTheRele ??
-                            '',
-                      ),
-                      BluePrintCardListing(
-                        title:
-                            variables.staticData?.collectBusinessLicense ?? '',
-                        description: variables.staticData
-                                ?.withPaymentsClearedYouCanNowCollectYourBus ??
-                            '',
-                      ),
-                      BluePrintCardListing(
-                        title:
-                            variables.staticData?.openACorporateBankAccount ??
-                                '',
-                        description: variables.staticData
-                                ?.withYourLicenseInHandApproachOneOfUaesNum ??
-                            '',
-                      ),
-                      BluePrintCardListing(
-                        title:
-                            variables.staticData?.finalizeVisasAndImmigration ??
-                                '',
-                        description: variables.staticData
-                                ?.ifYourePlanningToRelocateOrHaveEmployeesIn ??
-                            '',
-                      ),
-                      BluePrintCardListing(
-                        title: variables.staticData
-                                ?.turnYourBusinessVisionIntoRealityInAUaeFr ??
-                            '',
-                        description: variables.staticData
-                                ?.contactOurExpertTeamTodayForPersonalizedGui ??
-                            '',
-                      ),],),
+                            Icon(
+                              bluePrintSelected
+                                  ? Icons.keyboard_arrow_up
+                                  : Icons.keyboard_arrow_down,
+                              color: allColors.textColor,
+                              size: 25,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            )
+                          ],
                         ),
-                      ],
+                      ),
                       SizedBox(
                         height: 10.h,
                       ),
-                      FaqButton(
-                          onTap: () {
-                            RoutesUtils.context.push(
-                              FaqScreen.faqRoute,
-                              extra: {
-                                TextUtils.isBusiness: false,
-                                TextUtils.isFreeZone: true,
-                                TextUtils.isMainland: false,
-                                TextUtils.isOffshore: false,
-                                TextUtils.isTrademark: false
-                              },
-                            );
-                          },
-                          backgroundColor: allColors.textColor,
-                          isCallIcon: false),
+                      if (bluePrintSelected) ...[
+                        Container(
+                          margin: kLeftRightPadding16,
+                          padding: kLeftRightPadding16,
+                          decoration: BoxDecoration(
+                            color: context.onPrimaryColor,
+                            borderRadius: kBorderRadius6,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: allColors.lightGreyColor,
+                                  blurRadius: 10,
+                                  offset: const Offset(0, 3),
+                                  spreadRadius: 1.9),
+                            ],
+                          ),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 10.h,
+                              ),
+                              BluePrintCardListing(
+                                title:
+                                    variables.staticData?.researchAndSelect ??
+                                        '',
+                                description: variables.staticData
+                                        ?.beginByIdentifyingWhichFreeZoneAlignsBestW ??
+                                    '',
+                              ),
+                              CommonDivider(
+                                color: context.onSurfaceColor,
+                                topHeight: 9,
+                                bottomHeight: 17,
+                              ),
+                              BluePrintCardListing(
+                                title: variables.staticData
+                                        ?.decideOnNatureOfTheLegalEntity ??
+                                    '',
+                                description: variables.staticData
+                                        ?.willYouBeSettingUpAsAnIndividualABranchO ??
+                                    '',
+                              ),
+                              CommonDivider(
+                                color: context.onSurfaceColor,
+                                topHeight: 9,
+                                bottomHeight: 17,
+                              ),
+                              BluePrintCardListing(
+                                title:
+                                    variables.staticData?.chooseABusinessName ??
+                                        '',
+                                description: variables.staticData
+                                        ?.yourBusinessNameShouldNotOnlyReflectYourBr ??
+                                    '',
+                              ),
+                              CommonDivider(
+                                color: context.onSurfaceColor,
+                                topHeight: 9,
+                                bottomHeight: 17,
+                              ),
+                              BluePrintCardListing(
+                                title: variables
+                                        .staticData?.prepareDocumentation ??
+                                    '',
+                                description: variables.staticData
+                                        ?.collateAllRequiredDocumentsWhichTypicallyInc ??
+                                    '',
+                              ),
+                              CommonDivider(
+                                color: context.onSurfaceColor,
+                                topHeight: 9,
+                                bottomHeight: 17,
+                              ),
+                              BluePrintCardListing(
+                                title:
+                                    variables.staticData?.licenseApplication ??
+                                        '',
+                                description: variables.staticData
+                                        ?.applyForTheBusinessLicenseRelevantToYourAc ??
+                                    '',
+                              ),
+                              CommonDivider(
+                                color: context.onSurfaceColor,
+                                topHeight: 9,
+                                bottomHeight: 17,
+                              ),
+                              BluePrintCardListing(
+                                title: variables.staticData
+                                        ?.officeSpace_Infrastructure ??
+                                    '',
+                                description: variables.staticData
+                                        ?.basedOnYourBusinessSizeAndRequirementsChoos ??
+                                    '',
+                              ),
+                              CommonDivider(
+                                color: context.onSurfaceColor,
+                                topHeight: 9,
+                                bottomHeight: 17,
+                              ),
+                              BluePrintCardListing(
+                                title: variables.staticData?.getApprovals ?? '',
+                                description: variables.staticData
+                                        ?.apartFromTheStandardFreeZoneAuthoritysAppro ??
+                                    '',
+                              ),
+                              CommonDivider(
+                                color: context.onSurfaceColor,
+                                topHeight: 9,
+                                bottomHeight: 17,
+                              ),
+                              BluePrintCardListing(
+                                title: variables.staticData?.feesPayment ?? '',
+                                description: variables.staticData
+                                        ?.uponApprovalYouWillBeRequiredToPayTheRele ??
+                                    '',
+                              ),
+                              CommonDivider(
+                                color: context.onSurfaceColor,
+                                topHeight: 9,
+                                bottomHeight: 17,
+                              ),
+                              BluePrintCardListing(
+                                title: variables
+                                        .staticData?.collectBusinessLicense ??
+                                    '',
+                                description: variables.staticData
+                                        ?.withPaymentsClearedYouCanNowCollectYourBus ??
+                                    '',
+                              ),
+                              CommonDivider(
+                                color: context.onSurfaceColor,
+                                topHeight: 9,
+                                bottomHeight: 17,
+                              ),
+                              BluePrintCardListing(
+                                title: variables.staticData
+                                        ?.openACorporateBankAccount ??
+                                    '',
+                                description: variables.staticData
+                                        ?.withYourLicenseInHandApproachOneOfUaesNum ??
+                                    '',
+                              ),
+                              CommonDivider(
+                                color: context.onSurfaceColor,
+                                topHeight: 9,
+                                bottomHeight: 17,
+                              ),
+                              BluePrintCardListing(
+                                title: variables.staticData
+                                        ?.finalizeVisasAndImmigration ??
+                                    '',
+                                description: variables.staticData
+                                        ?.ifYourePlanningToRelocateOrHaveEmployeesIn ??
+                                    '',
+                              ),
+                              CommonDivider(
+                                color: context.onSurfaceColor,
+                                topHeight: 9,
+                                bottomHeight: 17,
+                              ),
+                              BluePrintCardListing(
+                                title: variables.staticData
+                                        ?.turnYourBusinessVisionIntoRealityInAUaeFr ??
+                                    '',
+                                description: variables.staticData
+                                        ?.contactOurExpertTeamTodayForPersonalizedGui ??
+                                    '',
+                              ),
+                              SizedBox(
+                                height: 10.h,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      Padding(
+                        padding: kTitlePadding,
+                        child: FaqButton(
+                            onTap: () {
+                              RoutesUtils.context.push(
+                                FaqScreen.faqRoute,
+                                extra: {
+                                  TextUtils.isBusiness: false,
+                                  TextUtils.isFreeZone: true,
+                                  TextUtils.isMainland: false,
+                                  TextUtils.isOffshore: false,
+                                  TextUtils.isTrademark: false
+                                },
+                              );
+                            },
+                            backgroundColor: allColors.textColor,
+                            isCallIcon: false),
+                      ),
                       SizedBox(
                         height: 10.h,
                       ),

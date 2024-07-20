@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
-
-import '../../../core/common_widgets/common_text_widget.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import '../../../core/constants/image_paths/image_paths.dart';
 import '../../../core/constants/object_constants/object_constants.dart';
 
@@ -45,87 +44,66 @@ cardsPopUp(context, title, icon, description, isOffshore, moreKeys, item1,
                 ),
                 Padding(
                   padding: EdgeInsets.all(25.h),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 42.h,
-                        width: 42.h,
-                        child: Image.asset(
-                          icon,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 42.h,
+                          width: 42.h,
+                          child: Image.asset(
+                            icon,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      CommonTextWidget(
-                          color: allColors.textColor,
-                          size: 18.sp,
-                          text: title,
-                          align: TextAlign.start,
-                          weight: FontWeight.w700,
-                          padding: noPadding),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            right: isArabic ? 0 : 0.65.sw,
-                            left: isArabic ? 0.65.sw : 0),
-                        child: Divider(
-                          color: allColors.primaryColor,
-                          thickness: 1.w,
+                        SizedBox(
+                          height: 20.h,
                         ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      CommonTextWidget(
-                          color: allColors.textColor,
-                          size: 12.sp,
-                          text: description,
-                          align: TextAlign.justify,
-                          weight: FontWeight.w400,
-                          padding: noPadding),
-                      if (moreKeys) ...[
+                        Text(
+                          title,
+                          style: context.headlineMedium,
+                          textAlign: TextAlign.start,
+                        ),
                         SizedBox(
                           height: 10.h,
                         ),
-                        CommonTextWidget(
-                            color: allColors.textColor,
-                            size: 12.sp,
-                            text: item1,
-                            align: TextAlign.justify,
-                            weight: FontWeight.w400,
-                            padding: noPadding),
-                        CommonTextWidget(
-                            color: allColors.textColor,
-                            size: 12.sp,
-                            text: item2,
-                            align: TextAlign.justify,
-                            weight: FontWeight.w400,
-                            padding: noPadding),
-                        CommonTextWidget(
-                            color: allColors.textColor,
-                            size: 12.sp,
-                            text: item3,
-                            align: TextAlign.justify,
-                            weight: FontWeight.w400,
-                            padding: noPadding),
-                        CommonTextWidget(
-                            color: allColors.textColor,
-                            size: 12.sp,
-                            text: item4,
-                            align: TextAlign.justify,
-                            weight: FontWeight.w400,
-                            padding: noPadding),
-                        CommonTextWidget(
-                            color: allColors.textColor,
-                            size: 12.sp,
-                            text: item5,
-                            align: TextAlign.justify,
-                            weight: FontWeight.w400,
-                            padding: noPadding),
+                        Text(
+                          description,
+                          style: context.bodySmall,
+                          textAlign: TextAlign.justify,
+                        ),
+                        if (moreKeys) ...[
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Text(
+                            item1,
+                            style: context.bodySmall,
+                            textAlign: TextAlign.justify,
+                          ),
+                          Text(
+                            item2,
+                            style: context.bodySmall,
+                            textAlign: TextAlign.justify,
+                          ),
+                          Text(
+                            item3,
+                            style: context.bodySmall,
+                            textAlign: TextAlign.justify,
+                          ),
+                          Text(
+                            item4,
+                            style: context.bodySmall,
+                            textAlign: TextAlign.justify,
+                          ),
+                          Text(
+                            item5,
+                            style: context.bodySmall,
+                            textAlign: TextAlign.justify,
+                          ),
+                        ],
                       ],
-                    ],
+                    ),
                   ),
                 )
               ]),

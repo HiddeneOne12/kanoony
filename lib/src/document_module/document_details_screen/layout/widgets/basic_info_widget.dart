@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:kanoony/core/constants/values.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import '../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../core/constants/object_constants/object_constants.dart';
 import '../../provider/doc_detail_provider.dart';
@@ -26,21 +28,22 @@ class _BasicInfoWidgetState extends ConsumerState<BasicInfoWidget> {
         DateTime.tryParse(widget.variables.content?.documentUpdatedAt ?? '') ??
             DateTime.now());
     return Padding(
-        padding:
-            EdgeInsets.only(left: 16.h, right: 16.h, bottom: 0.h, top: 10.h),
+        padding: kLeftRightPadding16,
         child: Container(
           alignment: Alignment.center,
-          padding:
-              EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h, bottom: 0.h),
+          padding: kLeftRightPadding16,
           decoration: BoxDecoration(
-            color: allColors.canvasColor,
-            border: Border.all(color: allColors.canvasColor, width: 1.w),
-            borderRadius: BorderRadius.circular(10.r),
+            color: context.onPrimaryColor,
+            border: Border.all(color: context.onPrimaryColor, width: 1.w),
+            borderRadius: kBorderRadius10,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              SizedBox(
+                height: 10.h,
+              ),
               InkWell(
                 onTap: () {
                   setState(() {
@@ -52,14 +55,12 @@ class _BasicInfoWidgetState extends ConsumerState<BasicInfoWidget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Expanded(
-                        flex: 10,
-                        child: CommonTextWidget(
-                            color: allColors.textColor,
-                            size: 18.sp,
-                            align: TextAlign.start,
-                            text: dashboard.staticData?.basicInfo ?? '',
-                            weight: FontWeight.w700,
-                            padding: EdgeInsets.only(left: 0.h, right: 0.h))),
+                      flex: 10,
+                      child: Text(
+                        dashboard.staticData?.basicInfo ?? '',
+                        style: context.titleMedium,
+                      ),
+                    ),
                     Padding(
                       padding: EdgeInsets.only(bottom: 5.h),
                       child: Container(
@@ -72,7 +73,7 @@ class _BasicInfoWidgetState extends ConsumerState<BasicInfoWidget> {
                           selectedBasicInfo
                               ? Icons.keyboard_arrow_up
                               : Icons.keyboard_arrow_down,
-                          color: allColors.textColor,
+                          color: context.onSurfaceColor,
                           size: 20.h,
                         ),
                       ),
@@ -120,8 +121,8 @@ class _BasicInfoWidgetState extends ConsumerState<BasicInfoWidget> {
                     height: 70.h,
                     width: MediaQuery.sizeOf(context).width.sw,
                     decoration: BoxDecoration(
-                        color: allColors.textFieldColor,
-                        borderRadius: BorderRadius.all(Radius.circular(10.r))),
+                        color: appTheme.textFieldColor,
+                        borderRadius: kBorderRadius10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -142,7 +143,8 @@ class _BasicInfoWidgetState extends ConsumerState<BasicInfoWidget> {
                               if (widget.variables.content?.englishattachment !=
                                   'null') ...[
                                 Container(
-                                padding: EdgeInsets.symmetric(vertical: 2,horizontal: 15),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 2, horizontal: 15),
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(
                                       color: allColors.primaryColor,
@@ -164,7 +166,8 @@ class _BasicInfoWidgetState extends ConsumerState<BasicInfoWidget> {
                               if (widget.variables.content?.arabicattachment !=
                                   'null') ...[
                                 Container(
-                                padding: EdgeInsets.symmetric(vertical: 2,horizontal: 15),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 2, horizontal: 15),
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(
                                       color: allColors.primaryColor,
@@ -186,8 +189,8 @@ class _BasicInfoWidgetState extends ConsumerState<BasicInfoWidget> {
                               if (widget.variables.content?.combineattacment !=
                                   'null') ...[
                                 Container(
-                                  padding: EdgeInsets.symmetric(vertical: 2,horizontal: 15),
-                                  
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 2, horizontal: 15),
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(
                                       color: allColors.primaryColor,

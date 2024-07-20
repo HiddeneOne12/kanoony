@@ -5,6 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/constants/values.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/src/faq_screen/layout/widgets/faq_cardlising.dart';
 import 'package:kanoony/src/faq_screen/layout/widgets/is_freezone_widget.dart';
 import 'package:kanoony/src/faq_screen/layout/widgets/is_offshore_widget.dart';
@@ -87,7 +90,21 @@ class _FaqBodyState extends ConsumerState<FaqBody> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                          height: 16.h,
+                          height: 40.h,
+                        ),
+                        Padding(
+                          padding: kLeftRightPadding16,
+                          child: Text(
+                            dashboardVariables
+                                    .staticData?.frequentlyAskedQuestions
+                                    ?.upperCase() ??
+                                '',
+                            style: context.headlineLarge,
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10.h,
                         ),
                         if (widget.isBusiness) ...[
                           isBusinessWidget(

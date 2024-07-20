@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:kanoony/core/common_widgets/common_button_widget.dart';
 import 'package:kanoony/core/constants/translations/translations.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
-import 'package:kanoony/core/helpers/pascal_case_converter.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/src/auth_module/login_screen/login_screen.dart';
 import 'package:kanoony/src/dashboard_screen/layout/widgets/shimmer.dart';
 import 'dart:ui' as Ui;
@@ -17,6 +17,7 @@ import '../../../core/common_widgets/common_text_widget.dart';
 import '../../../core/constants/image_paths/image_paths.dart';
 import '../../../core/constants/object_constants/object_constants.dart';
 import '../../../core/constants/static_constants/static_constants.dart';
+import '../../../core/constants/values.dart';
 import '../../../core/routing/routing_config.dart';
 import '../../favorite_screen/favorite_screen.dart';
 import '../../document_module/my_documents_screen/my_document_screen.dart';
@@ -53,8 +54,6 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
     scrollController.dispose();
     super.dispose();
   }
-
- 
 
   @override
   Widget build(BuildContext context) {
@@ -100,24 +99,20 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(height: 20.h),
-                                CommonTextWidget(
-                                    color: allColors.textColor,
-                                    size: 20.sp,
-                                    text:
-                                        'Hello ${capitalizeFirst(userProfileHelper.userData.name)}',
-                                    weight: FontWeight.w700,
-                                    padding: EdgeInsets.only(
-                                        left: 16.h, right: 16.h)),
+                                SizedBox(
+                                  height: 40.h,
+                                ),
                                 Padding(
-                                  padding: EdgeInsets.only(
-                                      left: isArabic ? 0.91.sw : 16.h,
-                                      right: isArabic ? 16.h : 0.91.sw),
-                                  child: Divider(
-                                    height: 1.h,
-                                    color: allColors.primaryColor,
-                                    thickness: 1.w,
+                                  padding: kLeftRightPadding16,
+                                  child: Text(
+                                    StaticTextTranslations()
+                                        .dashboard
+                                        .upperCase(),
+                                    style: context.headlineLarge,
                                   ),
+                                ),
+                                SizedBox(
+                                  height: 10.h,
                                 ),
                                 dashboardVariables.areLoaded
                                     ? const GridShimmer()
@@ -127,7 +122,7 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                                         childAspectRatio: 1.76,
                                         crossAxisSpacing: 7.h,
                                         padding: EdgeInsets.only(
-                                            left: 16.h, right: 16.h, top: 5.h),
+                                            left: 16.h, right: 16.h),
                                         physics:
                                             const NeverScrollableScrollPhysics(),
                                         children: [
@@ -156,22 +151,38 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                                                   ''),
                                         ],
                                       ),
-                                SizedBox(height: 10.h),
+                                SizedBox(height: 20.h),
                                 if (userProfileHelper.userData.packageName !=
                                     'null') ...[
-                                userVariables.isLoading
-                                    ? const SizedBox.shrink() :  CommonTextWidget(
-                                      color: allColors.textColor,
-                                      size: 20.sp,
-                                      text: capitalizeFirst(dashboardVariables
-                                              .staticData?.currentPackage
-                                              ??
-                                          ''),
-                                      weight: FontWeight.w700,
-                                      padding: EdgeInsets.only(
-                                          left: 16.h, right: 16.h)),
-                                ] ,
-                                  
+                                  userVariables.isLoading
+                                      ? const SizedBox.shrink()
+                                      : Padding(
+                                          padding: kLeftRightPadding16,
+                                          child: Text(
+                                            dashboardVariables
+                                                    .staticData?.currentPackage
+                                                    ?.capitalizeFirstLetter() ??
+                                                '',
+                                            style: context.titleMedium,
+                                          ),
+                                        )
+                                ] else ...[
+                                  userVariables.isLoading
+                                      ? const SizedBox.shrink()
+                                      : Padding(
+                                          padding: kLeftRightPadding16,
+                                          child: Text(
+                                            dashboardVariables
+                                                    .staticData?.package
+                                                    ?.capitalizeFirstLetter() ??
+                                                '',
+                                            style: context.titleMedium,
+                                          ),
+                                        )
+                                ],
+                                SizedBox(
+                                  height: 10.h,
+                                ),
                                 userVariables.isLoading
                                     ? const ShimmerPackageCard()
                                     : userVariables.userProfile?.packageName ==
@@ -478,8 +489,10 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                 ],
               ));
   }
-      bool _isSubscribed() {
-    return userProfileHelper.userData.id.isNotEmpty  && userProfileHelper.userData.packageName != "null" ||
+
+  bool _isSubscribed() {
+    return userProfileHelper.userData.id.isNotEmpty &&
+            userProfileHelper.userData.packageName != "null" ||
         userProfileHelper.userData.remainingDocument != "0" &&
             DateTime.now().isAfter(
                 DateTime.tryParse(userProfileHelper.userData.packageExpiry) ??

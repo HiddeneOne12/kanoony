@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kanoony/core/common_widgets/common_text_widget.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
-import 'package:kanoony/core/helpers/pascal_case_converter.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/core/routing/routing_config.dart';
 import 'package:kanoony/src/service_module/business_service_module/business_setup_freezone_screen/business_setup_freezone_screen.dart';
 import 'package:kanoony/src/service_module/business_service_module/business_setup_mainland_screen/business_setup_mainland_screen.dart';
 import 'package:kanoony/src/service_module/business_service_module/business_setup_offshore_screen/business_setup_offshore_screen.dart';
 import 'package:kanoony/src/service_module/widgets/faq_button.dart';
+import '../../../../../core/common_widgets/callback_button.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
+import '../../../../../core/constants/values.dart';
 import '../../../../faq_screen/faq_screen.dart';
 import 'widgets/faq_cards_widget.dart';
 import 'widgets/options_card_widget.dart';
@@ -60,188 +61,208 @@ class _BusinessSetupBodyState extends ConsumerState<BusinessSetupBody> {
                 ),
               ),
               SizedBox(
-                height: 0.795.sh,
+                height: 0.8.sh,
                 child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      CommonTextWidget(
-                        color: allColors.textColor,
-                        size: 18.sp,
-                        text: capitalizeFirst(
-                            variables.staticData?.yourDreamNeedsTheBestStart ??
-                                ''),
-                        weight: FontWeight.w500,
-                        align: TextAlign.start,
-                        padding:
-                            EdgeInsets.only(left: 16.h, right: 16.h, top: 15.h),
-                      ),
-                      CommonTextWidget(
-                        color: allColors.textColor,
-                        size: 16,
-                        align: TextAlign.start,
-                        text: variables.staticData
-                                ?.theUnitedArabEmiratesUaeOffersADiverseRang ??
-                            '',
-                        weight: FontWeight.w400,
-                        padding: EdgeInsets.only(
-                            left: 16.h, right: 16.h, top: 10.h, bottom: 10.h),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          RoutesUtils.context.push(
-                              BusinessSetupFreeZoneScreen.businessSetupRoute);
-                        },
-                        child: buildOptionCard(
-                          context,
-                          variables.staticData?.freezone ?? '',
-                          variables.staticData
-                                  ?.ifYouAreSeekingSpecializedPrivilegesAndAMo ??
-                              '',
-                          variables.staticData?.learnMore ?? '',
-                        ),
-                      ),
-                      SizedBox(height: 10.h),
-                      InkWell(
-                        onTap: () {
-                          RoutesUtils.context.push(BusinessSetupMainLandScreen
-                              .businessSetupMainLandRoute);
-                        },
-                        child: buildOptionCard(
-                          context,
-                          variables.staticData?.mainland ?? '',
-                          variables.staticData
-                                  ?.stepIntoTheCoreOfTheUaesBusinessEnvironmen ??
-                              '',
-                          variables.staticData?.learnMore ?? '',
-                        ),
-                      ),
-                      SizedBox(height: 10.h),
-                      InkWell(
-                        onTap: () {
-                          RoutesUtils.context.push(BusinessSetupOffshoreScreen
-                              .businessSetupOffshoreRoute);
-                        },
-                        child: buildOptionCard(
-                          context,
-                          variables.staticData?.offshore ?? '',
-                          variables.staticData
-                                  ?.forThoseWithAVisionBeyondTheLocalHorizons_ ??
-                              '',
-                          variables.staticData?.learnMore ?? '',
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.87,
-                            child: CommonTextWidget(
-                              color: allColors.textColor,
-                              size: 18.sp,
-                              text: variables.staticData
-                                      ?.whyIsDubaiTheTopPickForSavvyBusinessLeade
-                                      .capitalizeFirstLetter() ??
-                                  '',
-                              weight: FontWeight.w500,
-                              align: TextAlign.start,
-                              padding: EdgeInsets.only(
-                                  left: 16.h, right: 16.h, top: 10.h),
-                            ),
+                  child: Padding(
+                    padding: kMainBodyPadding,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 40.h),
+                        Padding(
+                          padding: kHeadlineBottomPadding,
+                          child: Text(
+                            variables.staticData?.businessSetupInUae
+                                    .upperCase() ??
+                                '',
+                            style: context.headlineMedium,
+                            textAlign: TextAlign.start,
                           ),
-                          const Spacer(),
-                          InkWell(
-                              onTap: () {
-                                setState(() {
-                                  selectedItem = !selectedItem;
-                                });
-                              },
-                              child: Icon(
-                                 selectedItem
-                                  ? Icons.keyboard_arrow_up
-                                  : Icons.keyboard_arrow_down,
+                        ),
+                        Text(
+                          variables.staticData
+                                  ?.enteringTheBusinessWorldOfTheUnitedArabEmi ??
+                              '',
+                          style: context.bodyLarge,
+                          textAlign: TextAlign.start,
+                        ),
+                        const Align(
+                            alignment: Alignment.center,
+                            child: CallBackButton()),
+                        Padding(
+                          padding: kHeadlineBottomPadding,
+                          child: Text(
+                            variables.staticData?.yourDreamNeedsTheBestStart
+                                    .capitalizeFirstLetter() ??
+                                '',
+                            style: context.titleMedium,
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                        Text(
+                          variables.staticData
+                                  ?.theUnitedArabEmiratesUaeOffersADiverseRang ??
+                              '',
+                          style: context.bodyLarge,
+                          textAlign: TextAlign.start,
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            RoutesUtils.context.push(
+                                BusinessSetupFreeZoneScreen.businessSetupRoute);
+                          },
+                          child: buildOptionCard(
+                            context,
+                            variables.staticData?.freezone ?? '',
+                            variables.staticData
+                                    ?.ifYouAreSeekingSpecializedPrivilegesAndAMo ??
+                                '',
+                            variables.staticData?.learnMore ?? '',
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            RoutesUtils.context.push(BusinessSetupMainLandScreen
+                                .businessSetupMainLandRoute);
+                          },
+                          child: buildOptionCard(
+                            context,
+                            variables.staticData?.mainland ?? '',
+                            variables.staticData
+                                    ?.stepIntoTheCoreOfTheUaesBusinessEnvironmen ??
+                                '',
+                            variables.staticData?.learnMore ?? '',
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            RoutesUtils.context.push(BusinessSetupOffshoreScreen
+                                .businessSetupOffshoreRoute);
+                          },
+                          child: buildOptionCard(
+                            context,
+                            variables.staticData?.offshore ?? '',
+                            variables.staticData
+                                    ?.forThoseWithAVisionBeyondTheLocalHorizons_ ??
+                                '',
+                            variables.staticData?.learnMore ?? '',
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              selectedItem = !selectedItem;
+                            });
+                          },
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  variables.staticData
+                                          ?.whyIsDubaiTheTopPickForSavvyBusinessLeade
+                                          .capitalizeFirstLetter() ??
+                                      '',
+                                  style: context.titleMedium,
+                                  textAlign: TextAlign.start,
+                                ),
+                              ),
+                              Icon(
+                                selectedItem
+                                    ? Icons.keyboard_arrow_up
+                                    : Icons.keyboard_arrow_down,
                                 color: allColors.textColor,
                                 size: 25,
-                              )),
+                              ),
+                              SizedBox(
+                                width: 20.w,
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        if (selectedItem) ...[
+                          FaqItems(
+                            name: variables.staticData?.taxIncentives_1 ?? '',
+                            description: variables.staticData
+                                    ?.oneOfThePrimaryLuresOfDubaiIsItsTaxfriend ??
+                                '',
+                            number: '',
+                          ),
+                          FaqItems(
+                            name: variables.staticData
+                                    ?.strategicGeographicalLocation_2 ??
+                                '',
+                            description: variables.staticData
+                                    ?.dubaisPositioningIsNothingShortOfStrategicB ??
+                                '',
+                            number: '',
+                          ),
+                          FaqItems(
+                            name: variables
+                                    .staticData?.worldclassInfrastructure_3 ??
+                                '',
+                            description: variables.staticData
+                                    ?.dubaiDoesntJustProvideABusinessfriendlyEnvir ??
+                                '',
+                            number: '',
+                          ),
+                          FaqItems(
+                            name: variables
+                                    .staticData?.diverseEconomicLandscape_4 ??
+                                '',
+                            description: variables.staticData
+                                    ?.contraryToThePrevalentPerceptionDubaisEconom ??
+                                '',
+                            number: '',
+                          ),
+                          FaqItems(
+                            name: variables.staticData
+                                    ?.streamlinedBusinessIncorporation_5 ??
+                                '',
+                            description: variables.staticData
+                                    ?.dubaiUnderstandsTheValueOfTimeForBusinessL ??
+                                '',
+                            number: '',
+                          ),
                           const SizedBox(
-                            width: 20,
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      if(selectedItem)...[FaqItems(
-                        name: variables.staticData?.taxIncentives_1 ?? '',
-                        description: variables.staticData
-                                ?.oneOfThePrimaryLuresOfDubaiIsItsTaxfriend ??
-                            '',
-                        number: '',
-                      ),
-                      FaqItems(
-                        name: variables
-                                .staticData?.strategicGeographicalLocation_2 ??
-                            '',
-                        description: variables.staticData
-                                ?.dubaisPositioningIsNothingShortOfStrategicB ??
-                            '',
-                        number: '',
-                      ),
-                      FaqItems(
-                        name:
-                            variables.staticData?.worldclassInfrastructure_3 ??
-                                '',
-                        description: variables.staticData
-                                ?.dubaiDoesntJustProvideABusinessfriendlyEnvir ??
-                            '',
-                        number: '',
-                      ),
-                      FaqItems(
-                        name:
-                            variables.staticData?.diverseEconomicLandscape_4 ??
-                                '',
-                        description: variables.staticData
-                                ?.contraryToThePrevalentPerceptionDubaisEconom ??
-                            '',
-                        number: '',
-                      ),
-                      FaqItems(
-                        name: variables.staticData
-                                ?.streamlinedBusinessIncorporation_5 ??
-                            '',
-                        description: variables.staticData
-                                ?.dubaiUnderstandsTheValueOfTimeForBusinessL ??
-                            '',
-                        number: '',
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      FaqButton(
-                        onTap: () {
-                          RoutesUtils.context.push(
-                            FaqScreen.faqRoute,
-                            extra: {
-                              TextUtils.isBusiness: true,
-                              TextUtils.isFreeZone: false,
-                              TextUtils.isMainland: false,
-                              TextUtils.isOffshore: false,
-                              TextUtils.isTrademark: false
+                            height: 10,
+                          ),
+                          FaqButton(
+                            onTap: () {
+                              RoutesUtils.context.push(
+                                FaqScreen.faqRoute,
+                                extra: {
+                                  TextUtils.isBusiness: true,
+                                  TextUtils.isFreeZone: false,
+                                  TextUtils.isMainland: false,
+                                  TextUtils.isOffshore: false,
+                                  TextUtils.isTrademark: false
+                                },
+                              );
                             },
-                          );
-                        },
-                        isCallIcon: false,
-                        backgroundColor: allColors.textColor,
-                      ),],
-                      SizedBox(
-                        height: 50.h,
-                      )
-                    ],
+                            isCallIcon: false,
+                            backgroundColor: context.onSurfaceColor,
+                          ),
+                        ],
+                        SizedBox(
+                          height: 50.h,
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),

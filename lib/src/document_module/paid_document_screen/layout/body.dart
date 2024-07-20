@@ -78,7 +78,7 @@ class _PaidDocumentBodyState extends ConsumerState<PaidDocumentBody> {
                       child: const ShimmerFaqCard(),
                     )
                   : PaidDocListingItems(
-                      height: 0.795,
+                      height: 0.8,
                       title: variables.title ?? '',
                       list: variables.content,
                     ),
