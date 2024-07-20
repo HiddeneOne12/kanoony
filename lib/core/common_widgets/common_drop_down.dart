@@ -1,4 +1,4 @@
- import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 
@@ -8,7 +8,11 @@ class CommonDropDown extends StatefulWidget {
   final List<String> list;
   final String hintText;
   const CommonDropDown(
-      {super.key, this.selectedValue, this.onTextChanged, required this.list, required this.hintText});
+      {super.key,
+      this.selectedValue,
+      this.onTextChanged,
+      required this.list,
+      required this.hintText});
 
   @override
   State<CommonDropDown> createState() => _CommonDropDownState();
@@ -19,20 +23,19 @@ class _CommonDropDownState extends State<CommonDropDown> {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.symmetric( horizontal: 14),
+        padding: const EdgeInsets.symmetric(horizontal: 14),
         child: DropdownButtonHideUnderline(
-          
           child: DropdownButton2<String>(
             isExpanded: true,
-            hint:   Row(
+            hint: Row(
               children: [
                 Expanded(
                   child: Text(
                     widget.hintText,
                     style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: allColors.textColor,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w700,
+                      color: appTheme.blackColor,
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -44,7 +47,10 @@ class _CommonDropDownState extends State<CommonDropDown> {
               return widget.list.map((item) {
                 return Text(
                   item,
-                  style: Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 16,fontWeight: FontWeight.w500),
+                  style: Theme.of(context)
+                      .textTheme
+                      .displaySmall!
+                      .copyWith(fontSize: 16, fontWeight: FontWeight.w500),
                 );
               }).toList();
             },
@@ -86,7 +92,7 @@ class _CommonDropDownState extends State<CommonDropDown> {
               ),
               elevation: 0,
             ),
-            iconStyleData:   IconStyleData(
+            iconStyleData: IconStyleData(
               icon: const Icon(
                 Icons.keyboard_arrow_down,
               ),
@@ -100,7 +106,6 @@ class _CommonDropDownState extends State<CommonDropDown> {
                 borderRadius: BorderRadius.circular(4),
                 color: allColors.canvasColor,
               ),
-              
             ),
             menuItemStyleData: const MenuItemStyleData(
               height: 40,

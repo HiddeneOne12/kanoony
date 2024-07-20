@@ -4,15 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/common_widgets/common_payment_popup.dart';
-import 'package:kanoony/core/common_widgets/common_snackbar_widget.dart';
 import 'package:kanoony/core/constants/values.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
-import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 
 import 'package:kanoony/src/packages_screen/layout/widgets/package_cards.dart';
 import '../../../core/common_widgets/common_appbar.dart';
-import '../../../core/common_widgets/common_text_widget.dart';
 import '../../../core/constants/image_paths/image_paths.dart';
 import '../../../core/constants/object_constants/object_constants.dart';
 import '../../../core/constants/static_constants/static_constants.dart';
@@ -39,6 +36,7 @@ class _PackageBodyState extends ConsumerState<PackageBody> {
     });
     super.initState();
   }
+
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -80,20 +78,27 @@ class _PackageBodyState extends ConsumerState<PackageBody> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      
                       dashboardVariables.isLoaded
-                          ? const SizedBox.shrink() :
-                          Text(dashboardVariables
-                                  .staticData?.contractTemplatePackages.capitalizeFirstLetter()
-                                  ??
-                              '',style: context.headlineLarge,),
-                          const SizedBox(height: 8,),
+                          ? const SizedBox.shrink()
+                          : SizedBox(
+                              height: 40.h,
+                            ),
+                      Text(
+                        dashboardVariables.staticData?.package.upperCase() ??
+                            '',
+                        style: context.headlineLarge,
+                        textAlign: TextAlign.start,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       dashboardVariables.isLoaded
                           ? const ShimmerPackageCard()
                           : SizedBox(
-                            height: 570.h,
-                            child: ListView.builder(
-                                itemCount: dashboardVariables.allPackages.length,
+                              height: 570.h,
+                              child: ListView.builder(
+                                itemCount:
+                                    dashboardVariables.allPackages.length,
                                 shrinkWrap: true,
                                 padding: const EdgeInsets.only(bottom: 30),
                                 physics: const AlwaysScrollableScrollPhysics(),
@@ -103,74 +108,78 @@ class _PackageBodyState extends ConsumerState<PackageBody> {
                                       dashboardVariables.allPackages[index];
                                   return InkWell(
                                     child: PackageCard(
-                                        onTap: () async {
-                                          if (userProfileHelper
-                                              .userData.id.isEmpty) {
-                                            await paymentPopUp(
-                                                context,
-                                                ref,
-                                                data,
+                                      onTap: () async {
+                                        if (userProfileHelper
+                                            .userData.id.isEmpty) {
+                                          await paymentPopUp(
+                                              context,
+                                              ref,
+                                              data,
+                                              userProfileHelper
+                                                      .userData.id.isEmpty
+                                                  ? true
+                                                  : false,
+                                              '',
+                                              true,
+                                              '',
+                                              '',
+                                              '');
+                                          return;
+                                        }
+                                        if (userProfileHelper
+                                                        .userData.packageId ==
+                                                    dashboardVariables
+                                                        .allPackages[index]
+                                                        .packgeId &&
                                                 userProfileHelper
-                                                        .userData.id.isEmpty
-                                                    ? true
-                                                    : false,
-                                                '',
-                                                true,
-                                                '',
-                                                '',
-                                                '');
-                                            return;
-                                          }
-                                          if (userProfileHelper.userData.packageId == dashboardVariables.allPackages[index].packgeId && userProfileHelper
-                                                      .userData.packageName !=
-                                                  "null" ||
-                                              userProfileHelper.userData
-                                                          .remainingDocument !=
-                                                      "0" &&
-                                                  DateTime.now().isAfter(
-                                                      DateTime.tryParse(
-                                                              userProfileHelper
-                                                                  .userData
-                                                                  .packageExpiry) ??
-                                                          DateTime.now())) {
-                                            // showSnackBarMessage(
-                                            //     content:
-                                            //         "You have already subscribed a package!",
-                                            //     backgroundColor:
-                                            //         allColors.primaryColor,
-                                            //     contentColor:
-                                            //         allColors.canvasColor);
-                                          } else {
-                                            await paymentPopUp(
-                                                context,
-                                                ref,
-                                                data,
-                                                userProfileHelper
-                                                        .userData.id.isEmpty
-                                                    ? true
-                                                    : false,
-                                                '',
-                                                true,
-                                                '',
-                                                '',
-                                                '');
-                                          }
-                                        },
-                                        fifty: dashboardVariables
-                                                .staticData?.saveMoreThan_50 ??
-                                            '',
-                                        price: data.price.toString(),
-                                        title: data.title,
-                                        description: data.description,
-                                        getItNow: dashboardVariables
-                                                .staticData?.monthlyAction ??
-                                            '',
-                                            ),
+                                                        .userData.packageName !=
+                                                    "null" ||
+                                            userProfileHelper.userData
+                                                        .remainingDocument !=
+                                                    "0" &&
+                                                DateTime.now().isAfter(
+                                                    DateTime.tryParse(
+                                                            userProfileHelper
+                                                                .userData
+                                                                .packageExpiry) ??
+                                                        DateTime.now())) {
+                                          // showSnackBarMessage(
+                                          //     content:
+                                          //         "You have already subscribed a package!",
+                                          //     backgroundColor:
+                                          //         allColors.primaryColor,
+                                          //     contentColor:
+                                          //         allColors.canvasColor);
+                                        } else {
+                                          await paymentPopUp(
+                                              context,
+                                              ref,
+                                              data,
+                                              userProfileHelper
+                                                      .userData.id.isEmpty
+                                                  ? true
+                                                  : false,
+                                              '',
+                                              true,
+                                              '',
+                                              '',
+                                              '');
+                                        }
+                                      },
+                                      fifty: dashboardVariables
+                                              .staticData?.saveMoreThan_50 ??
+                                          '',
+                                      price: data.price.toString(),
+                                      title: data.title,
+                                      description: data.description,
+                                      getItNow: dashboardVariables
+                                              .staticData?.monthlyAction ??
+                                          '',
+                                    ),
                                   );
                                 },
                               ),
-                          ),
-                      
+                            ),
                     ],
                   ),
                 ),
@@ -181,8 +190,10 @@ class _PackageBodyState extends ConsumerState<PackageBody> {
       ),
     );
   }
-     bool _isSubscribed() {
-    return userProfileHelper.userData.id.isNotEmpty  && userProfileHelper.userData.packageName != "null" ||
+
+  bool _isSubscribed() {
+    return userProfileHelper.userData.id.isNotEmpty &&
+            userProfileHelper.userData.packageName != "null" ||
         userProfileHelper.userData.remainingDocument != "0" &&
             DateTime.now().isAfter(
                 DateTime.tryParse(userProfileHelper.userData.packageExpiry) ??

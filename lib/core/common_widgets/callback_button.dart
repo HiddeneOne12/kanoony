@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/core/routing/routing_config.dart';
 import 'package:kanoony/src/document_module/free_document_screen/free_document_screen.dart';
@@ -12,7 +13,7 @@ import '../../src/service_module/widgets/request_callback_popup.dart';
 import '../constants/object_constants/object_constants.dart';
 import '../constants/static_constants/static_constants.dart';
 import '../constants/values.dart';
-import '../helpers/pascal_case_converter.dart';
+  
 import 'common_text_widget.dart';
 
 class CallBackButton extends ConsumerStatefulWidget {
@@ -55,19 +56,13 @@ class _CallBackButtonState extends ConsumerState<CallBackButton> {
                 width: 5.w,
               ),
               Text(
-                capitalizeFirst(variables.staticData?.requestACallBack ?? ''),
+                variables.staticData?.requestACallBack
+                        .capitalizeFirstLetter() ??
+                    '',
                 style:
                     context.labelLarge?.copyWith(color: context.onPrimaryColor),
                 textAlign: TextAlign.center,
               ),
-              // CommonTextWidget(
-              //   color: allColors.canvasColor,
-              //   size: 16.sp,
-              //   text: variables.staticData?.requestACallBack ?? '',
-              //   weight: FontWeight.w500,
-              //   align: TextAlign.start,
-              //   padding: noPadding,
-              // ),
             ],
           ),
         ),
@@ -134,7 +129,7 @@ class _ClickHereButtonState extends ConsumerState<ClickHereButton> {
   Widget build(BuildContext context) {
     var variables = ref.watch(allProviderList.dashboardProvider);
     return Padding(
-      padding: EdgeInsets.only(left: 16.h, right: 16.h),
+      padding: kButtonPadding,
       child: InkWell(
         onTap: widget.onTap,
         child: Container(

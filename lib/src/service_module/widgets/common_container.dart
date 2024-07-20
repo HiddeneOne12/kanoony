@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kanoony/core/constants/object_constants/object_constants.dart';
+
 
 import '../../../core/constants/values.dart';
 

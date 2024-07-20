@@ -7,7 +7,6 @@ import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/src/dashboard_screen/provider/dashboard_provider.dart';
 import 'package:kanoony/src/service_module/trademark_module/provider/trademark_provider.dart';
 
-import '../../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../../core/constants/static_constants/static_constants.dart';
 
@@ -70,7 +69,7 @@ class _TradeMarkTypeWidgetState extends State<TradeMarkTypeWidget> {
                                   widget.trademarkVar.selectedTrademarkType ==
                                           widget.variables.staticData?.wordMark
                                       ? context.primaryColor
-                                      : allColors.disabledColor,
+                                      : appTheme.disabledColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(3.r))),
                           child: widget.trademarkVar.selectedTrademarkType ==
@@ -132,7 +131,7 @@ class _TradeMarkTypeWidgetState extends State<TradeMarkTypeWidget> {
                                   widget.trademarkVar.selectedTrademarkType ==
                                           widget.variables.staticData?.logo
                                       ? context.primaryColor
-                                      : allColors.disabledColor,
+                                      : appTheme.disabledColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(3.r))),
                           child: widget.trademarkVar.selectedTrademarkType ==

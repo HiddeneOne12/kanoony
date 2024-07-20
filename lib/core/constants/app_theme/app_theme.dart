@@ -12,6 +12,7 @@ class AppTheme {
   var textColor = const Color.fromRGBO(25, 59, 72, 1);
   var dividerColor = const Color.fromRGBO(0, 0, 0, 0.2);
   var lightTextColor = const Color.fromRGBO(0, 0, 0, 1);
+  
   var blackColor = Colors.black;
   var whiteColor = Colors.white;
   var blueColor = const Color.fromRGBO(13, 110, 253, 1);

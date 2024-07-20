@@ -4,9 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
+import 'package:kanoony/src/service_module/widgets/common_container.dart';
 import '../../../../../core/common_widgets/callback_button.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
-import '../../../../../core/common_widgets/common_text_widget.dart';
+import '../../../../../core/common_widgets/common_divider.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
@@ -67,23 +68,20 @@ class _BusinessSetupOffshoreBodyState
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 30.h),
-                      Align(
-                        alignment: Alignment.center,
+                      SizedBox(height: 40.h),
+                      Padding(
+                        padding: kLeftRightPadding16,
                         child: Text(
                           variables.staticData?.offshoreCompanyformationInUae
                                   .upperCase() ??
                               '',
-                          style: context.headlineLarge,
-                          textAlign: TextAlign.center,
+                          style: context.headlineMedium,
+                          textAlign: TextAlign.start,
                         ),
                       ),
                       const Align(
                         alignment: Alignment.center,
                         child: CallBackButton(),
-                      ),
-                      SizedBox(
-                        height: 5.h,
                       ),
                       Padding(
                         padding: kTitlePadding,
@@ -92,8 +90,7 @@ class _BusinessSetupOffshoreBodyState
                                   ?.heresHowYouCanEffortlesslySetUpAnOffshore_
                                   .capitalizeFirstLetter() ??
                               '',
-                          style: context.headlineLarge
-                              ?.copyWith(fontWeight: FontWeight.w500),
+                          style: context.titleMedium,
                           textAlign: TextAlign.start,
                         ),
                       ),
@@ -272,6 +269,9 @@ class _BusinessSetupOffshoreBodyState
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            SizedBox(
+                              height: 10.h,
+                            ),
                             InkWell(
                               onTap: () {
                                 setState(() {
@@ -282,14 +282,13 @@ class _BusinessSetupOffshoreBodyState
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding: kTitlePadding2,
+                                      padding: kLeftRightPadding16,
                                       child: Text(
                                         variables.staticData
                                                 ?.benefitsOfRegisteringAnOffshoreCompany
                                                 .capitalizeFirstLetter() ??
                                             '',
-                                        style: context.headlineLarge?.copyWith(
-                                            fontWeight: FontWeight.w500),
+                                        style: context.titleMedium,
                                         textAlign: TextAlign.start,
                                       ),
                                     ),
@@ -311,80 +310,127 @@ class _BusinessSetupOffshoreBodyState
                               height: 10.h,
                             ),
                             if (selectedItem) ...[
-                              BusinessOffShoreFaqCards(
-                                name: variables.staticData?.aTaxHeaven ?? '',
-                                description: variables.staticData
-                                        ?.uaeIsRecognizedGloballyAsATaxHavenTherefor ??
-                                    '',
-                              ),
-                              BusinessOffShoreFaqCards(
-                                name: variables
-                                        .staticData?.the100ForeignOwnership ??
-                                    '',
-                                description: variables.staticData
-                                        ?.theBestPartAboutOwningAnOffshoreCompanyIn_ ??
-                                    '',
-                              ),
-                              BusinessOffShoreFaqCards(
-                                name:
-                                    variables.staticData?.confidentiality ?? '',
-                                description: variables.staticData
-                                        ?.whileFormingAnOffshoreCompanyConfidentiality_ ??
-                                    '',
-                              ),
-                              BusinessOffShoreFaqCards(
-                                name: variables.staticData
-                                        ?.moreFlexibilityInBusiness ??
-                                    '',
-                                description: variables.staticData
-                                        ?.offshoreCompaniesInUaeEnjoyGreatFlexibility_ ??
-                                    '',
-                              ),
-                              BusinessOffShoreFaqCards(
-                                name: variables
-                                        .staticData?.accessToGlobalFunding ??
-                                    '',
-                                description: variables.staticData
-                                        ?.establishingAnOffshoreCompanyInUaeIsAGatew ??
-                                    '',
-                              ),
-                              BusinessOffShoreFaqCards(
-                                name: variables.staticData
-                                        ?.noMinimumCapitalRequirements ??
-                                    '',
-                                description: variables.staticData
-                                        ?.anotherSignificantAdvantageOfAnOffshoreBusin ??
-                                    '',
-                              ),
-                              BusinessOffShoreFaqCards(
-                                name: variables.staticData?.anEaseOfSetup ?? '',
-                                description: variables.staticData
-                                        ?.settingUpAnOffshoreBusinessInUaeRequiresMi ??
-                                    '',
-                              ),
+                              CommonContainer(
+                                  widget: Column(
+                                    children: [
+                                      BusinessOffShoreFaqCards(
+                                        name:
+                                            variables.staticData?.aTaxHeaven ??
+                                                '',
+                                        description: variables.staticData
+                                                ?.uaeIsRecognizedGloballyAsATaxHavenTherefor ??
+                                            '',
+                                      ),
+                                      CommonDivider(
+                                        color: context.onSurfaceColor,
+                                        topHeight: 9,
+                                        bottomHeight: 17,
+                                      ),
+                                      BusinessOffShoreFaqCards(
+                                        name: variables.staticData
+                                                ?.the100ForeignOwnership ??
+                                            '',
+                                        description: variables.staticData
+                                                ?.theBestPartAboutOwningAnOffshoreCompanyIn_ ??
+                                            '',
+                                      ),
+                                      CommonDivider(
+                                        color: context.onSurfaceColor,
+                                        topHeight: 9,
+                                        bottomHeight: 17,
+                                      ),
+                                      BusinessOffShoreFaqCards(
+                                        name: variables
+                                                .staticData?.confidentiality ??
+                                            '',
+                                        description: variables.staticData
+                                                ?.whileFormingAnOffshoreCompanyConfidentiality_ ??
+                                            '',
+                                      ),
+                                      CommonDivider(
+                                        color: context.onSurfaceColor,
+                                        topHeight: 9,
+                                        bottomHeight: 17,
+                                      ),
+                                      BusinessOffShoreFaqCards(
+                                        name: variables.staticData
+                                                ?.moreFlexibilityInBusiness ??
+                                            '',
+                                        description: variables.staticData
+                                                ?.offshoreCompaniesInUaeEnjoyGreatFlexibility_ ??
+                                            '',
+                                      ),
+                                      CommonDivider(
+                                        color: context.onSurfaceColor,
+                                        topHeight: 9,
+                                        bottomHeight: 17,
+                                      ),
+                                      BusinessOffShoreFaqCards(
+                                        name: variables.staticData
+                                                ?.accessToGlobalFunding ??
+                                            '',
+                                        description: variables.staticData
+                                                ?.establishingAnOffshoreCompanyInUaeIsAGatew ??
+                                            '',
+                                      ),
+                                      CommonDivider(
+                                        color: context.onSurfaceColor,
+                                        topHeight: 9,
+                                        bottomHeight: 17,
+                                      ),
+                                      BusinessOffShoreFaqCards(
+                                        name: variables.staticData
+                                                ?.noMinimumCapitalRequirements ??
+                                            '',
+                                        description: variables.staticData
+                                                ?.anotherSignificantAdvantageOfAnOffshoreBusin ??
+                                            '',
+                                      ),
+                                      CommonDivider(
+                                        color: context.onSurfaceColor,
+                                        topHeight: 9,
+                                        bottomHeight: 17,
+                                      ),
+                                      BusinessOffShoreFaqCards(
+                                        name: variables
+                                                .staticData?.anEaseOfSetup ??
+                                            '',
+                                        description: variables.staticData
+                                                ?.settingUpAnOffshoreBusinessInUaeRequiresMi ??
+                                            '',
+                                      ),
+                                      SizedBox(
+                                        height: 10.h,
+                                      ),
+                                    ],
+                                  ),
+                                  containerColor: appTheme.transparentColor,
+                                  containerBorderColor: context.onSurfaceColor),
                               SizedBox(
-                                height: 15.h,
+                                height: 20.h,
                               ),
                             ],
                           ],
                         ),
                       ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
                       Padding(
-                        padding: kTitlePadding2,
+                        padding: kLeftRightPadding16,
                         child: Text(
                           variables.staticData
                                   ?.streamlinedProcessWithMinimalCapitalAndSimpl
                                   .capitalizeFirstLetter() ??
                               '',
-                          style: context.headlineLarge
-                              ?.copyWith(fontWeight: FontWeight.w500),
+                          style: context.titleMedium,
                           textAlign: TextAlign.start,
                         ),
                       ),
                       Container(
                         height: 235.h,
                         padding: EdgeInsets.only(
-                            left: 16.h, right: 16.h, top: 10.h, bottom: 10.h),
+                            left: 16.h, right: 16.h, top: 10.h, bottom: 20.h),
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(

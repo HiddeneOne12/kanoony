@@ -9,12 +9,10 @@ import 'package:kanoony/src/service_module/widgets/expandable_card.dart';
 
 import '../../../../../core/common_widgets/callback_button.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
-import '../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
 import '../../../../../core/constants/values.dart';
-import '../../../../../core/helpers/pascal_case_converter.dart';
 import '../../../../../core/routing/routing_config.dart';
 import '../../../trademark_module/trademark_screen/layout/widgets/divider.dart';
 import '../../../widgets/common_container.dart';
@@ -74,21 +72,33 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 30.h),
+                      SizedBox(height: 40.h),
                       Padding(
                         padding: kLeftRightPadding16,
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            variables.staticData?.willRegistrationInDubai
-                                    .upperCase() ??
-                                '',
-                            style: context.headlineLarge,
-                            textAlign: TextAlign.center,
-                          ),
+                        child: Text(
+                          variables.staticData?.willRegistrationInDubai
+                                  .upperCase() ??
+                              '',
+                          style: context.headlineMedium,
+                          textAlign: TextAlign.start,
                         ),
                       ),
-                      SizedBox(height: 10.h),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Padding(
+                        padding: kLeftRightPadding16,
+                        child: Text(
+                          variables.staticData
+                                  ?.aWillIsOneOfTheMostImportantDocumentsThat
+                                  .capitalizeFirstLetter() ??
+                              '',
+                          style: context.bodyLarge?.copyWith(
+                            color: allColors.lightTextColor,
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                      ),
                       Align(
                         alignment: Alignment.center,
                         child: ClickHereButton(
@@ -98,35 +108,17 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                           },
                         ),
                       ),
-                      SizedBox(height: 10.h),
-                      Padding(
-                        padding: kTitlePadding2,
-                        child: Text(
-                          variables.staticData
-                                  ?.aWillIsOneOfTheMostImportantDocumentsThat
-                                  .capitalizeFirstLetter() ??
-                              '',
-                          style: context.bodyMedium?.copyWith(
-                              color: allColors.lightTextColor,
-                              fontWeight: FontWeight.w400),
-                          textAlign: TextAlign.justify,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
                       Container(
                         width: MediaQuery.sizeOf(context).width.sw,
                         color: allColors.textColor,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
+                            SizedBox(
+                              height: 20.h,
+                            ),
                             Padding(
-                              padding: EdgeInsets.only(
-                                  left: 30.h,
-                                  right: 30.h,
-                                  top: 15.h,
-                                  bottom: 15.h),
+                              padding: kLeftRightPadding16,
                               child: InkWell(
                                 onTap: () {
                                   setState(() {
@@ -144,7 +136,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                                         style: context.titleMedium?.copyWith(
                                           color: context.onPrimaryColor,
                                         ),
-                                        textAlign: TextAlign.center,
+                                        textAlign: TextAlign.start,
                                       ),
                                     ),
                                     Icon(
@@ -161,10 +153,12 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                                 ),
                               ),
                             ),
+                            SizedBox(
+                              height: isExpanded ? 10.h : 20.h,
+                            ),
                             if (isExpanded) ...[
                               Padding(
-                                padding: EdgeInsets.only(
-                                    left: 40.h, right: 40.h, bottom: 10.h),
+                                padding: kLeftRightPadding16,
                                 child: Text(
                                   variables.staticData
                                           ?.currentlyItIsPossibleToRegisterFive_5Differ
@@ -173,11 +167,11 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                                   style: context.bodyMedium?.copyWith(
                                       color: context.onPrimaryColor,
                                       fontWeight: FontWeight.w400),
-                                  textAlign: TextAlign.center,
+                                  textAlign: TextAlign.start,
                                 ),
                               ),
                               SizedBox(
-                                height: 10.h,
+                                height: 14.h,
                               ),
                               Padding(
                                 padding: kLeftRightPadding16,
@@ -242,11 +236,10 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                                 ),
                               ),
                               SizedBox(
-                                height: 10.h,
+                                height: 20.h,
                               ),
                               Padding(
-                                padding: EdgeInsets.only(
-                                    left: 40.h, right: 40.h, bottom: 10.h),
+                                padding: kLeftRightPadding16,
                                 child: Text(
                                   variables.staticData
                                           ?.difcMirrorWillsAreAlsoAvailableInTheEvent_
@@ -255,25 +248,32 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                                   style: context.bodyMedium?.copyWith(
                                       color: context.onPrimaryColor,
                                       fontWeight: FontWeight.w400),
-                                  textAlign: TextAlign.center,
+                                  textAlign: TextAlign.start,
                                 ),
+                              ),
+                              SizedBox(
+                                height: 20.h,
                               ),
                             ],
                           ],
                         ),
                       ),
                       SizedBox(
-                        height: 10.h,
+                        height: 20.h,
                       ),
                       Padding(
-                        padding: kTitlePadding,
+                        padding: kLeftRightPadding16,
                         child: Text(
-                          capitalizeFirst(variables.staticData
-                                  ?.whatAreTheInformationTypicallyRequestedToRe ??
-                              ''),
+                          variables.staticData
+                                  ?.whatAreTheInformationTypicallyRequestedToRe
+                                  .capitalizeFirstLetter() ??
+                              '',
                           style: context.titleMedium,
-                          textAlign: TextAlign.center,
+                          textAlign: TextAlign.start,
                         ),
+                      ),
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CommonContainer(
                         containerBorderColor: allColors.dividerColor,
@@ -335,15 +335,20 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                         ),
                       ),
                       SizedBox(
-                        height: 10.h,
+                        height: 20.h,
                       ),
                       Padding(
-                        padding: kTitlePadding,
+                        padding: kLeftRightPadding16,
                         child: Text(
-                          capitalizeFirst(variables.staticData?.ourSteps ?? ''),
+                          variables.staticData?.ourSteps
+                                  .capitalizeFirstLetter() ??
+                              '',
                           style: context.titleMedium,
                           textAlign: TextAlign.start,
                         ),
+                      ),
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CommonContainer(
                         containerBorderColor: context.primaryColor,
@@ -377,7 +382,7 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                         ),
                       ),
                       SizedBox(
-                        height: 10.h,
+                        height: 20.h,
                       ),
                       Container(
                         width: MediaQuery.sizeOf(context).width.sw,
@@ -401,12 +406,12 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                                   children: [
                                     Expanded(
                                       child: Text(
-                                        capitalizeFirst(
-                                            variables.staticData?.pricing ??
-                                                ''),
+                                        variables.staticData?.pricing
+                                                .capitalizeFirstLetter() ??
+                                            '',
                                         style: context.titleMedium?.copyWith(
                                             color: context.onPrimaryColor),
-                                        textAlign: TextAlign.center,
+                                        textAlign: TextAlign.start,
                                       ),
                                     ),
                                     Icon(
@@ -500,17 +505,20 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                         ),
                       ),
                       SizedBox(
-                        height: 10.h,
+                        height: 20.h,
                       ),
                       Padding(
-                        padding: kTitlePadding,
+                        padding: kLeftRightPadding16,
                         child: Text(
-                          capitalizeFirst(variables.staticData?.timeline
+                          variables.staticData?.timeline
                                   .capitalizeFirstLetter() ??
-                              ''),
+                              '',
                           style: context.titleMedium,
                           textAlign: TextAlign.start,
                         ),
+                      ),
+                      SizedBox(
+                        height: 10.h,
                       ),
                       CommonContainer(
                         containerBorderColor: allColors.dividerColor,
@@ -548,6 +556,9 @@ class _RegisterWillBodyState extends ConsumerState<RegisterWillBody> {
                             )
                           ],
                         ),
+                      ),
+                      SizedBox(
+                        height: 20.h,
                       ),
                     ],
                   ),

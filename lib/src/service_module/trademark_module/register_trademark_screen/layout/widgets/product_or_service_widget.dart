@@ -6,7 +6,6 @@ import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/src/dashboard_screen/provider/dashboard_provider.dart';
 import 'package:kanoony/src/service_module/trademark_module/provider/trademark_provider.dart';
 
-import '../../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../../core/constants/static_constants/static_constants.dart';
 import '../../../../../../core/constants/values.dart';
@@ -68,7 +67,7 @@ class _ProductOrServiceWidgetState extends State<ProductOrServiceWidget> {
                                           .selectedServiceOrProduct ==
                                       widget.variables.staticData?.product
                                   ? context.primaryColor
-                                  : allColors.disabledColor,
+                                  : appTheme.disabledColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(3.r))),
                           child: widget.trademarkVar.selectedServiceOrProduct ==
@@ -130,7 +129,7 @@ class _ProductOrServiceWidgetState extends State<ProductOrServiceWidget> {
                                           .selectedServiceOrProduct ==
                                       widget.variables.staticData?.service
                                   ? context.primaryColor
-                                  : allColors.disabledColor,
+                                  : appTheme.disabledColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(3.r))),
                           child: widget.trademarkVar.selectedServiceOrProduct ==

@@ -89,6 +89,6 @@ class UserProfileService {
           backgroundColor: allColors.errorColor);
       return left('Failed to connect to the server: $e');
     }
-    return null;
+    
   }
 }

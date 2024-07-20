@@ -3,10 +3,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/constants/values.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
-
-import '../../../core/common_widgets/common_text_widget.dart';
 import '../../../core/constants/object_constants/object_constants.dart';
 
 class GoldenVisaPoints extends StatelessWidget {
@@ -19,10 +18,13 @@ class GoldenVisaPoints extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Icon(
-          Icons.circle,
-          size: 7.h,
-          color: allColors.errorColor,
+        Padding(
+          padding: kBottomPadding9,
+          child: Icon(
+            Icons.circle,
+            size: 5.h,
+            color: appTheme.blackColor,
+          ),
         ),
         SizedBox(
           width: 5.h,
@@ -33,9 +35,9 @@ class GoldenVisaPoints extends StatelessWidget {
             bottom: 2.h,
           ),
           child: Text(
-            title.capitalizeFirstLetter() ?? "",
-            style: context.bodyMedium?.copyWith(fontWeight: FontWeight.w400),
-            textAlign: TextAlign.justify,
+            title.capitalizeFirstLetter(),
+            style: context.bodyLarge?.copyWith(fontWeight: FontWeight.w400),
+            textAlign: TextAlign.start,
           ),
         )),
       ],

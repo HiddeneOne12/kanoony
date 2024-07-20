@@ -3,12 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
-import 'package:kanoony/core/helpers/pascal_case_converter.dart';
-import 'package:kanoony/src/service_module/document_translate_screen/layout/widgets/operation_cards.dart';
 
 import '../../../../core/common_widgets/callback_button.dart';
 import '../../../../core/common_widgets/common_appbar.dart';
-import '../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../core/constants/static_constants/static_constants.dart';
@@ -29,8 +26,8 @@ class DocTranslateBody extends ConsumerStatefulWidget {
 }
 
 class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
-  @override
   bool isExpanded = false;
+  @override
   Widget build(BuildContext context) {
     var variables = ref.watch(allProviderList.dashboardProvider);
     return Directionality(
@@ -72,26 +69,22 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        color: allColors.scaffoldColor,
+                        color: appTheme.scaffoldColor,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(height: 30.h),
+                            SizedBox(height: 40.h),
                             Padding(
                               padding: kLeftRightPadding16,
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  variables.staticData
-                                          ?.legalTranslationServiceInUae!
-                                          .toUpperCase() ??
-                                      '',
-                                  style: context.headlineLarge,
-                                  textAlign: TextAlign.center,
-                                ),
+                              child: Text(
+                                variables.staticData
+                                        ?.legalTranslationServiceInUae!
+                                        .upperCase() ??
+                                    '',
+                                style: context.headlineMedium,
+                                textAlign: TextAlign.start,
                               ),
                             ),
-                            SizedBox(height: 10.h),
                             Align(
                               alignment: Alignment.center,
                               child: ClickHereButton(
@@ -101,11 +94,8 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                                 },
                               ),
                             ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
                             Padding(
-                              padding: kTitlePadding2,
+                              padding: kLeftRightPadding16,
                               child: Text(
                                 variables
                                         .staticData?.ourLegalTranslationServices
@@ -115,24 +105,27 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                                 textAlign: TextAlign.start,
                               ),
                             ),
+                            SizedBox(
+                              height: 10.h,
+                            ),
                             Padding(
-                              padding: kTitlePadding2,
+                              padding: kLeftRightPadding16,
                               child: Text(
                                 variables.staticData
                                         ?.kanoonyOffersLegalTranslationServicesForAVa
                                         .capitalizeFirstLetter() ??
                                     '',
                                 style: context.bodyMedium?.copyWith(
-                                    color: allColors.lightTextColor,
+                                    color: appTheme.lightTextColor,
                                     fontWeight: FontWeight.w400),
                                 textAlign: TextAlign.start,
                               ),
                             ),
                             SizedBox(
-                              height: 10.h,
+                              height: 20.h,
                             ),
                             CommonContainer(
-                              containerBorderColor: allColors.dividerColor,
+                              containerBorderColor: appTheme.dividerColor,
                               containerColor: context.onPrimaryColor,
                               widget: Column(
                                 children: [
@@ -268,11 +261,13 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                         width: MediaQuery.sizeOf(context).width.sw,
                         color: context.onSurfaceColor,
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            SizedBox(
+                              height: 20.h,
+                            ),
                             Padding(
-                              padding: EdgeInsets.only(
-                                  left: 30.h, right: 30.h, top: 15.h),
+                              padding: kLeftRightPadding16,
                               child: InkWell(
                                 onTap: () {
                                   setState(() {
@@ -289,7 +284,7 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                                             '',
                                         style: context.titleMedium?.copyWith(
                                             color: context.onPrimaryColor),
-                                        textAlign: TextAlign.center,
+                                        textAlign: TextAlign.start,
                                       ),
                                     ),
                                     Icon(
@@ -299,15 +294,12 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                                       color: context.onPrimaryColor,
                                       size: 25,
                                     ),
-                                    SizedBox(
-                                      width: 20.w,
-                                    )
                                   ],
                                 ),
                               ),
                             ),
                             SizedBox(
-                              height: 10.h,
+                              height: isExpanded ? 10.h : 20.h,
                             ),
                             if (isExpanded) ...[
                               CommonContainer(
@@ -349,9 +341,8 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                                       )
                                     ],
                                   ),
-                                  containerColor: allColors.transparentColor,
-                                  containerBorderColor:
-                                      allColors.scaffoldColor),
+                                  containerColor: appTheme.transparentColor,
+                                  containerBorderColor: appTheme.scaffoldColor),
                               SizedBox(
                                 height: 20.h,
                               )
@@ -360,16 +351,16 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                         ),
                       ),
                       SizedBox(
-                        height: 10.h,
+                        height: 20.h,
                       ),
                       Padding(
-                        padding: kTitlePadding2,
+                        padding: kLeftRightPadding16,
                         child: Text(
                           variables.staticData?.theFlowOfOurOperation
                                   .capitalizeFirstLetter() ??
                               '',
                           style: context.titleMedium
-                              ?.copyWith(color: allColors.lightTextColor),
+                              ?.copyWith(color: appTheme.blackColor),
                           textAlign: TextAlign.start,
                         ),
                       ),
@@ -377,8 +368,8 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                         height: 10.h,
                       ),
                       CommonContainer(
-                        containerBorderColor: allColors.dividerColor,
-                        containerColor: allColors.transparentColor,
+                        containerBorderColor: appTheme.dividerColor,
+                        containerColor: appTheme.transparentColor,
                         widget: Column(
                           children: [
                             InfoForWillItem(
@@ -442,28 +433,9 @@ class _DocTranslateBodyState extends ConsumerState<DocTranslateBody> {
                           ],
                         ),
                       ),
-                      // GridView.count(
-                      //   crossAxisCount: 2,
-                      //   shrinkWrap: true,
-                      //   childAspectRatio: 1.5,
-                      //   crossAxisSpacing: 7.h,
-                      //   padding:
-                      //       EdgeInsets.only(left: 15.h, right: 15.h, top: 10.h),
-                      //   physics: const NeverScrollableScrollPhysics(),
-                      //   children: [
-
-                      //     OperationCards(
-                      //         num: '4',
-                      //         title: ),
-                      //     OperationCards(
-                      //         num: '5',
-                      //         title: ),
-                      //     OperationCards(
-                      //         num: '6',
-                      //         title:
-                      //            ),
-                      //   ],
-                      // ),
+                      SizedBox(
+                        height: 20.h,
+                      )
                     ],
                   ),
                 ),

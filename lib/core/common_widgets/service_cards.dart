@@ -59,7 +59,7 @@ class ServiceCard extends StatelessWidget {
                     padding: EdgeInsets.only(left: 16.h, right: 16.h, top: 5.h),
                     child: Text(
                       text.capitalizeFirstLetter(),
-                      style: context.labelLarge
+                      style: context.bodyLarge
                           ?.copyWith(color: allColors.lightTextColor),
                       textAlign: TextAlign.start,
                     ),

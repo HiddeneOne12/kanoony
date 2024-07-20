@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/constants/values.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
 
-import '../../../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../../core/constants/static_constants/static_constants.dart';
 
@@ -16,10 +16,7 @@ class StepCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
-        left: 16.h,
-        right: 16.h,
-      ),
+      padding: kLeftRightPadding16,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -44,8 +41,8 @@ class StepCards extends StatelessWidget {
             padding: EdgeInsets.only(left: 16.h, right: 16.h, top: 5.h),
             child: Text(
               text,
-              style: context.headlineMedium
-                  ?.copyWith(color: allColors.lightTextColor),
+              style:
+                  context.bodyLarge?.copyWith(color: appTheme.lightTextColor),
             ),
           )),
         ],

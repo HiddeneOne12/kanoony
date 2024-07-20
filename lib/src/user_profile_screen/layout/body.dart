@@ -7,11 +7,13 @@ import 'package:kanoony/core/common_widgets/common_appbar.dart';
 import 'package:kanoony/core/common_widgets/common_button_widget.dart';
 import 'package:kanoony/core/common_widgets/common_image_picker_popup.dart';
 import 'package:kanoony/core/common_widgets/common_sizebox_widget.dart';
-import 'package:kanoony/core/common_widgets/common_text_widget.dart';
 import 'package:kanoony/core/common_widgets/common_textfield_widget.dart';
 import 'package:kanoony/core/constants/image_paths/image_paths.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/constants/values.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/core/routing/routing_config.dart';
 import 'package:kanoony/src/user_profile_screen/layout/widgets/network_image.dart';
 
@@ -71,6 +73,19 @@ class _UserProfileBodyState extends ConsumerState<UserProfileBody> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        height: 40.h,
+                      ),
+                      Padding(
+                        padding: kLeftRightPadding16,
+                        child: Text(
+                          dashboard.staticData?.editProfile.upperCase() ?? '',
+                          style: context.headlineLarge,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
                       Row(
                         children: [
                           Expanded(

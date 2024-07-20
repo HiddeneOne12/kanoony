@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/constants/values.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
-import '../../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../../core/constants/object_constants/object_constants.dart';
-import '../../../../../../core/constants/static_constants/static_constants.dart';
 
 class BusinessMainLandServiceCard extends StatelessWidget {
   final String icon;
@@ -46,7 +44,7 @@ class BusinessMainLandServiceCard extends StatelessWidget {
                   Text(
                     text,
                     style: context.titleSmall
-                        ?.copyWith(color: allColors.blackColor),
+                        ?.copyWith(color: appTheme.blackColor),
                     textAlign: TextAlign.start,
                   ),
                 ],

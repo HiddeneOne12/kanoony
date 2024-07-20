@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kanoony/core/constants/values.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 
 import '../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../core/constants/object_constants/object_constants.dart';
@@ -34,8 +36,8 @@ class _FaqCardState extends State<FaqCard> {
           padding:
               EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h, bottom: 5.h),
           decoration: BoxDecoration(
-            color: allColors.canvasColor,
-            borderRadius: BorderRadius.circular(6.r),
+            color: context.onPrimaryColor,
+            borderRadius: kBorderRadius6,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,30 +67,28 @@ class _FaqCardState extends State<FaqCard> {
                     ],
                     Expanded(
                         flex: 10,
-                        child: CommonTextWidget(
-                            color: allColors.textColor,
-                            size: 16,
-                            align: TextAlign.start,
-                            text: widget.questions,
-                            weight: FontWeight.w500,
-                            padding: EdgeInsets.only(top: 0.h))),
+                        child: Text(
+                          widget.questions,
+                          style: context.titleMedium,
+                          textAlign: TextAlign.start,
+                        )),
                     SizedBox(
                       width: 10.w,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(bottom: 5.h),
+                      padding: kBottomPadding5,
                       child: Container(
                         height: 22.h,
                         width: 22.h,
                         decoration: BoxDecoration(
-                            color: allColors.darkGreyColor,
+                            color: appTheme.darkGreyColor,
                             borderRadius:
                                 BorderRadius.all(Radius.circular(50.r))),
                         child: Icon(
                           isSelected
                               ? Icons.keyboard_arrow_up
                               : Icons.keyboard_arrow_down,
-                          color: allColors.textColor,
+                          color: context.onSurfaceColor,
                           size: 13.h,
                         ),
                       ),
@@ -99,12 +99,8 @@ class _FaqCardState extends State<FaqCard> {
               if (isSelected) ...[
                 Html(
                   style: {
-                    "p": Style(
-                        padding: HtmlPaddings.only(left: 0, right: 0),
-                        color: allColors.textColor,
-                        fontSize: FontSize(16),
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Tajawal'),
+                    "p": context.htmlParagraphStyle,
+                    //   "body": context.htmlParagraphStyle,
                   },
                   data: widget.answer,
                 ),

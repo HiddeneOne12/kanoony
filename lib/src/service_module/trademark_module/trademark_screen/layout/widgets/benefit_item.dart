@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
 
-import '../../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../../core/constants/static_constants/static_constants.dart';
 import '../../../../../../core/constants/values.dart';
-import '../../../../../../core/helpers/pascal_case_converter.dart';
 
 class BenefitItem extends StatelessWidget {
   final String icon;
@@ -42,9 +41,9 @@ class BenefitItem extends StatelessWidget {
               child: Padding(
                 padding: kBenefitCardPadding,
                 child: Text(
-                  capitalizeFirst(text),
-                  style: context.headlineMedium
-                      ?.copyWith(color: allColors.lightTextColor),
+                  text.capitalizeFirstLetter(),
+                  style:
+                      context.bodyLarge?.copyWith(color: appTheme.blackColor),
                   textAlign: TextAlign.start,
                 ),
               ),
@@ -67,9 +66,9 @@ class BenefitItem extends StatelessWidget {
               child: Padding(
                 padding: kBenefitCardPadding,
                 child: Text(
-                  capitalizeFirst(text),
-                  style: context.bodyLarge
-                      ?.copyWith(color: allColors.lightTextColor),
+                  text.capitalizeFirstLetter(),
+                  style:
+                      context.bodyLarge?.copyWith(color: appTheme.blackColor),
                   textAlign: TextAlign.start,
                 ),
               ),

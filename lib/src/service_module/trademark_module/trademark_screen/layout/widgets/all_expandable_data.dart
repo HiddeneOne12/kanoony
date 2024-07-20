@@ -24,7 +24,6 @@ class _AllExpandableDataState extends State<AllExpandableData> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         InkWell(
           onTap: () {
@@ -33,9 +32,9 @@ class _AllExpandableDataState extends State<AllExpandableData> {
             });
           },
           child: Padding(
-            padding: kLeftRightPadding50,
+            padding: kLeftRightPadding16,
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Flexible(
                   child: Text(
@@ -47,7 +46,7 @@ class _AllExpandableDataState extends State<AllExpandableData> {
                     ),
                     style: context.titleMedium
                         ?.copyWith(color: allColors.lightTextColor),
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                   ),
                 ),
                 Icon(
@@ -63,6 +62,9 @@ class _AllExpandableDataState extends State<AllExpandableData> {
               ],
             ),
           ),
+        ),
+        SizedBox(
+          height: 20.h,
         ),
         if (isRequirements) ...[
           ExpandableCards(
@@ -139,21 +141,19 @@ class _AllExpandableDataState extends State<AllExpandableData> {
             });
           },
           child: Padding(
-            padding: kLeftRightPadding50,
+            padding: kLeftRightPadding16,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Flexible(
+                Expanded(
                   child: Text(
-                    capitalizeFirst(
-                      widget.variables.staticData
-                              ?.trademarkRegistrationForIndividualsBusinesses_
-                              ?.capitalizeFirstLetter() ??
-                          '',
-                    ),
+                    widget.variables.staticData
+                            ?.trademarkRegistrationForIndividualsBusinesses_
+                            ?.capitalizeFirstLetter() ??
+                        '',
                     style: context.titleMedium
                         ?.copyWith(color: allColors.lightTextColor),
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                   ),
                 ),
                 Icon(
@@ -169,6 +169,9 @@ class _AllExpandableDataState extends State<AllExpandableData> {
               ],
             ),
           ),
+        ),
+        SizedBox(
+          height: 20.h,
         ),
         if (isRegister) ...[
           ExpandableCards(

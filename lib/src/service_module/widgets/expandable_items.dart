@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
-import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 
 class ExpandableItems extends StatefulWidget {
   String title;
@@ -38,11 +38,11 @@ class _ExpandableItemsState extends State<ExpandableItems> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              capitalizeFirst(widget.title),
+              widget.title.capitalizeFirstLetter(),
               style: context.titleMedium?.copyWith(
                   color: widget.isVisa
                       ? context.onSurfaceColor
-                      : allColors.scaffoldColor),
+                      : appTheme.scaffoldColor),
               textAlign: TextAlign.start,
             ),
             SizedBox(
@@ -55,11 +55,11 @@ class _ExpandableItemsState extends State<ExpandableItems> {
                     left: isArabic ? 20.h : 0,
                     bottom: 5.h),
                 child: Text(
-                  capitalizeFirst(widget.description),
-                  style: context.bodyMedium?.copyWith(
+                  widget.description.capitalizeFirstLetter(),
+                  style: context.bodyLarge?.copyWith(
                       color: widget.isVisa
                           ? context.onSurfaceColor
-                          : allColors.scaffoldColor,
+                          : appTheme.scaffoldColor,
                       fontWeight: FontWeight.w400),
                   textAlign: TextAlign.start,
                 ),
@@ -71,9 +71,9 @@ class _ExpandableItemsState extends State<ExpandableItems> {
                       left: isArabic ? 20.h : 0,
                       bottom: 5.h),
                   child: Text(
-                    capitalizeFirst(widget.p2),
+                    widget.p2.capitalizeFirstLetter(),
                     style: context.bodyMedium?.copyWith(
-                        color: allColors.scaffoldColor,
+                        color: appTheme.scaffoldColor,
                         fontWeight: FontWeight.w400),
                     textAlign: TextAlign.start,
                   ),
@@ -84,9 +84,9 @@ class _ExpandableItemsState extends State<ExpandableItems> {
                       left: isArabic ? 20.h : 0,
                       bottom: 5.h),
                   child: Text(
-                    capitalizeFirst(widget.p3),
+                    widget.p3.capitalizeFirstLetter(),
                     style: context.bodyMedium?.copyWith(
-                        color: allColors.scaffoldColor,
+                        color: appTheme.scaffoldColor,
                         fontWeight: FontWeight.w400),
                     textAlign: TextAlign.start,
                   ),
@@ -94,10 +94,9 @@ class _ExpandableItemsState extends State<ExpandableItems> {
               ]
             ] else ...[
               Text(
-                capitalizeFirst(widget.description),
-                style: context.bodyMedium?.copyWith(
-                    color: allColors.scaffoldColor,
-                    fontWeight: FontWeight.w400),
+                widget.description.capitalizeFirstLetter(),
+                style: context.bodyLarge?.copyWith(
+                    color: appTheme.scaffoldColor, fontWeight: FontWeight.w400),
                 textAlign: TextAlign.start,
               ),
             ],

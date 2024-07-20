@@ -6,8 +6,6 @@ import 'package:kanoony/core/constants/values.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
 
-import '../../../../../../core/constants/object_constants/object_constants.dart';
-
 class StreamLinedCard extends StatelessWidget {
   String step;
   String num;
@@ -79,7 +77,7 @@ class StreamLinedCard extends StatelessWidget {
                     height: 15.h,
                   ),
                   Text(
-                    title.capitalizeFirstLetter() ?? '',
+                    title.capitalizeFirstLetter(),
                     style: context.labelLarge,
                     textAlign: TextAlign.start,
                   ),
@@ -87,12 +85,11 @@ class StreamLinedCard extends StatelessWidget {
                     height: 10.h,
                   ),
                   Text(
-                    description.capitalizeFirstLetter() ?? '',
+                    description.capitalizeFirstLetter(),
                     style: context.labelSmall?.copyWith(fontSize: 13),
                     textAlign: TextAlign.start,
                     maxLines: 4,
                   ),
-                 
                 ],
               ),
             ),

@@ -3,6 +3,8 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/constants/values.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 
 import '../../../core/common_widgets/common_appbar.dart';
 import '../../../core/common_widgets/content_shimmer.dart';
@@ -61,17 +63,28 @@ class _TermsOfUseBodyState extends ConsumerState<TermsOfUseBody> {
                   ),
                 ),
                 SizedBox(
-                  height: 0.7.sh,
+                  height: 0.8.sh,
                   child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        variables.isLoaded
-                            ? Padding(
-                                padding: EdgeInsets.only(top: 20.h),
-                                child: const ContentShimmer(),
-                              )
-                            : Html(
+                    child: variables.isLoaded
+                        ? Padding(
+                            padding: EdgeInsets.only(top: 20.h),
+                            child: const ContentShimmer(),
+                          )
+                        : Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height: 40.h,
+                              ),
+                              Padding(
+                                padding: kLeftRightPadding16,
+                                child: Text(
+                                  'TERMS OF USE',
+                                  style: context.headlineLarge,
+                                  textAlign: TextAlign.start,
+                                ),
+                              ),
+                              Html(
                                 style: {
                                   "p": Style(
                                       padding: HtmlPaddings.only(
@@ -83,11 +96,11 @@ class _TermsOfUseBodyState extends ConsumerState<TermsOfUseBody> {
                                 },
                                 data: variables.content,
                               ),
-                        SizedBox(
-                          height: 50.h,
-                        ),
-                      ],
-                    ),
+                              SizedBox(
+                                height: 50.h,
+                              ),
+                            ],
+                          ),
                   ),
                 ),
               ],

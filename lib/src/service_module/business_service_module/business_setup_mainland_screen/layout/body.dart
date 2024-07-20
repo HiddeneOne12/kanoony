@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/common_widgets/common_divider.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
-import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/src/service_module/business_service_module/business_setup_mainland_screen/layout/widgets/business_mainland_faq_cards.dart';
 import 'package:kanoony/src/service_module/widgets/cards_popup.dart';
-
+import 'package:kanoony/src/service_module/widgets/common_container.dart';
 import '../../../../../core/common_widgets/callback_button.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
-import '../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
@@ -68,15 +67,15 @@ class _BusinessSetupMainLandBodyState
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 30.h),
-                      Align(
-                        alignment: Alignment.center,
+                      SizedBox(height: 40.h),
+                      Padding(
+                        padding: kLeftRightPadding16,
                         child: Text(
                           variables.staticData?.businessSetupInDubaiMainland
                                   .upperCase() ??
                               '',
-                          style: context.headlineLarge,
-                          textAlign: TextAlign.center,
+                          style: context.headlineMedium,
+                          textAlign: TextAlign.start,
                         ),
                       ),
                       const Align(
@@ -90,8 +89,7 @@ class _BusinessSetupMainLandBodyState
                                   ?.whyChooseMainlandCompanyFormationInDubai
                                   .capitalizeFirstLetter() ??
                               '',
-                          style: context.headlineLarge
-                              ?.copyWith(fontWeight: FontWeight.w500),
+                          style: context.titleMedium,
                           textAlign: TextAlign.start,
                         ),
                       ),
@@ -290,6 +288,9 @@ class _BusinessSetupMainLandBodyState
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            SizedBox(
+                              height: 10.h,
+                            ),
                             InkWell(
                               onTap: () {
                                 setState(() {
@@ -306,8 +307,7 @@ class _BusinessSetupMainLandBodyState
                                                 ?.processForEstablishingAMainlandCompanyInDub
                                                 .capitalizeFirstLetter() ??
                                             '',
-                                        style: context.headlineLarge?.copyWith(
-                                            fontWeight: FontWeight.w500,
+                                        style: context.titleMedium?.copyWith(
                                             color: context.onPrimaryColor),
                                         textAlign: TextAlign.start,
                                       ),
@@ -331,71 +331,118 @@ class _BusinessSetupMainLandBodyState
                               height: 10.h,
                             ),
                             if (selectedItem) ...[
-                              BusinessMainLandFaqItems(
-                                title: variables.staticData
-                                        ?.natureAndLegalStructureSelection ??
-                                    '',
-                                description: variables.staticData
-                                        ?.defineTheSpecificBusinessActivityYouWishTo_ ??
-                                    '',
-                              ),
-                              BusinessMainLandFaqItems(
-                                title:
-                                    variables.staticData?.tradeNameApproval ??
-                                        '',
-                                description: variables.staticData
-                                        ?.proposeADistinctiveTradeNameForYourBusiness ??
-                                    '',
-                              ),
-                              BusinessMainLandFaqItems(
-                                title:
-                                    variables.staticData?.preliminaryConsent ??
-                                        '',
-                                description: variables.staticData
-                                        ?.presentTheRequiredDocumentationToTheDedOrT ??
-                                    '',
-                              ),
-                              BusinessMainLandFaqItems(
-                                title: variables.staticData
-                                        ?.memorandumOfAssociationMoaCompilation ??
-                                    '',
-                                description: variables.staticData
-                                        ?.craftAComprehensiveMoaDetailingVitalComponen ??
-                                    '',
-                              ),
-                              BusinessMainLandFaqItems(
-                                title: variables.staticData
-                                        ?.businessLocationSelection ??
-                                    '',
-                                description: variables.staticData
-                                        ?.sourceAFittingWorkspaceThatAdheresToTheSti ??
-                                    '',
-                              ),
-                              BusinessMainLandFaqItems(
-                                title: variables.staticData?.tenancyAgreement ??
-                                    '',
-                                description: variables.staticData
-                                        ?.secureATenancyAgreementForYourChosenPremise ??
-                                    '',
-                              ),
-                              BusinessMainLandFaqItems(
-                                title: variables.staticData
-                                        ?.acquisitionOfSupplementaryApprovals ??
-                                    '',
-                                description: variables.staticData
-                                        ?.dependingOnYourChosenBusinessDomainAdditiona ??
-                                    '',
-                              ),
-                              BusinessMainLandFaqItems(
-                                title:
-                                    variables.staticData?.licensingProcedure ??
-                                        '',
-                                description: variables.staticData
-                                        ?.furnishAllRequisiteDocumentsAndProceedToApp ??
-                                    '',
-                              ),
+                              CommonContainer(
+                                  widget: Column(children: [
+                                    SizedBox(
+                                      height: 16.h,
+                                    ),
+                                    BusinessMainLandFaqItems(
+                                      title: variables.staticData
+                                              ?.natureAndLegalStructureSelection ??
+                                          '',
+                                      description: variables.staticData
+                                              ?.defineTheSpecificBusinessActivityYouWishTo_ ??
+                                          '',
+                                    ),
+                                    CommonDivider(
+                                      color: appTheme.borderColor,
+                                      topHeight: 10,
+                                      bottomHeight: 17,
+                                    ),
+                                    BusinessMainLandFaqItems(
+                                      title: variables
+                                              .staticData?.tradeNameApproval ??
+                                          '',
+                                      description: variables.staticData
+                                              ?.proposeADistinctiveTradeNameForYourBusiness ??
+                                          '',
+                                    ),
+                                    CommonDivider(
+                                      color: appTheme.borderColor,
+                                      topHeight: 10,
+                                      bottomHeight: 17,
+                                    ),
+                                    BusinessMainLandFaqItems(
+                                      title: variables
+                                              .staticData?.preliminaryConsent ??
+                                          '',
+                                      description: variables.staticData
+                                              ?.presentTheRequiredDocumentationToTheDedOrT ??
+                                          '',
+                                    ),
+                                    CommonDivider(
+                                      color: appTheme.borderColor,
+                                      topHeight: 10,
+                                      bottomHeight: 17,
+                                    ),
+                                    BusinessMainLandFaqItems(
+                                      title: variables.staticData
+                                              ?.memorandumOfAssociationMoaCompilation ??
+                                          '',
+                                      description: variables.staticData
+                                              ?.craftAComprehensiveMoaDetailingVitalComponen ??
+                                          '',
+                                    ),
+                                    CommonDivider(
+                                      color: appTheme.borderColor,
+                                      topHeight: 10,
+                                      bottomHeight: 17,
+                                    ),
+                                    BusinessMainLandFaqItems(
+                                      title: variables.staticData
+                                              ?.businessLocationSelection ??
+                                          '',
+                                      description: variables.staticData
+                                              ?.sourceAFittingWorkspaceThatAdheresToTheSti ??
+                                          '',
+                                    ),
+                                    CommonDivider(
+                                      color: appTheme.borderColor,
+                                      topHeight: 10,
+                                      bottomHeight: 17,
+                                    ),
+                                    BusinessMainLandFaqItems(
+                                      title: variables
+                                              .staticData?.tenancyAgreement ??
+                                          '',
+                                      description: variables.staticData
+                                              ?.secureATenancyAgreementForYourChosenPremise ??
+                                          '',
+                                    ),
+                                    CommonDivider(
+                                      color: appTheme.borderColor,
+                                      topHeight: 10,
+                                      bottomHeight: 17,
+                                    ),
+                                    BusinessMainLandFaqItems(
+                                      title: variables.staticData
+                                              ?.acquisitionOfSupplementaryApprovals ??
+                                          '',
+                                      description: variables.staticData
+                                              ?.dependingOnYourChosenBusinessDomainAdditiona ??
+                                          '',
+                                    ),
+                                    CommonDivider(
+                                      color: appTheme.borderColor,
+                                      topHeight: 10,
+                                      bottomHeight: 17,
+                                    ),
+                                    BusinessMainLandFaqItems(
+                                      title: variables
+                                              .staticData?.licensingProcedure ??
+                                          '',
+                                      description: variables.staticData
+                                              ?.furnishAllRequisiteDocumentsAndProceedToApp ??
+                                          '',
+                                    ),
+                                    SizedBox(
+                                      height: 13.h,
+                                    )
+                                  ]),
+                                  containerColor: context.onSurfaceColor,
+                                  containerBorderColor: context.onPrimaryColor),
                               SizedBox(
-                                height: 15.h,
+                                height: 20.h,
                               ),
                               Padding(
                                 padding:

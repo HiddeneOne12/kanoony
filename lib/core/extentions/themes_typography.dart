@@ -39,6 +39,11 @@ extension ThemeTypography on BuildContext {
 
   //HTML text theme style
   Style get htmlParagraphStyle => Style(
+        margin: Margins.zero,
+        letterSpacing: 0.1,
+        height: Height(1.17),
+        padding: HtmlPaddings.zero,
+        textAlign: TextAlign.start,
         color:
             Theme.of(this).colorScheme.onSurface, // Use your defined color here
         fontSize:

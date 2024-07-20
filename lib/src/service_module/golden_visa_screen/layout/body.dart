@@ -70,15 +70,29 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 30.h),
+                      SizedBox(height: 40.h),
                       Padding(
-                        padding: kHeadlineBottomPadding,
-                        child: Align(
-                          child: Text(
-                            variables.staticData?.goldenVisa.upperCase() ?? '',
-                            style: context.headlineLarge,
-                            textAlign: TextAlign.center,
-                          ),
+                        padding: kLeftRightPadding16,
+                        child: Text(
+                          variables.staticData?.goldenVisa.upperCase() ?? '',
+                          style: context.headlineMedium,
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Padding(
+                        padding: kLeftRightPadding16,
+                        child: Text(
+                          variables.staticData
+                                  ?.theUaesGoldenVisaGrantsEligibleExpatriatesI
+                                  .capitalizeFirstLetter() ??
+                              '',
+                          style: context.bodyMedium?.copyWith(
+                              color: appTheme.blackColor,
+                              fontWeight: FontWeight.w400),
+                          textAlign: TextAlign.justify,
                         ),
                       ),
                       Align(
@@ -90,48 +104,40 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                           },
                         ),
                       ),
-                      SizedBox(height: 10.h),
-                      Padding(
-                        padding: kTitlePadding2,
-                        child: Text(
-                          variables.staticData
-                                  ?.theUaesGoldenVisaGrantsEligibleExpatriatesI
-                                  .capitalizeFirstLetter() ??
-                              '',
-                          style: context.bodyMedium?.copyWith(
-                              color: allColors.lightTextColor,
-                              fontWeight: FontWeight.w400),
-                          textAlign: TextAlign.justify,
-                        ),
-                      ),
-                      SizedBox(height: 10.h),
                       Container(
                         width: MediaQuery.sizeOf(context).width.sw,
-                        color: allColors.visaColor,
+                        color: appTheme.visaColor,
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: EdgeInsets.only(top: 15.h),
-                              child: InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    isVisaExpanded = !isVisaExpanded;
-                                  });
-                                },
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  isVisaExpanded = !isVisaExpanded;
+                                });
+                              },
+                              child: Padding(
+                                padding: kLeftRightPadding16,
                                 child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Flexible(
-                                      child: Text(
-                                        variables.staticData?.goldenVisaBenefits
-                                                .capitalizeFirstLetter() ??
-                                            '',
-                                        style: context.titleMedium?.copyWith(
-                                          color: context.onPrimaryColor,
+                                    Expanded(
+                                      child: Padding(
+                                        padding: kTopPadding5,
+                                        child: Text(
+                                          variables.staticData
+                                                  ?.goldenVisaBenefits
+                                                  .capitalizeFirstLetter() ??
+                                              '',
+                                          style: context.titleMedium?.copyWith(
+                                            color: context.onPrimaryColor,
+                                          ),
+                                          textAlign: TextAlign.start,
                                         ),
-                                        textAlign: TextAlign.center,
                                       ),
                                     ),
                                     SizedBox(
@@ -144,15 +150,12 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                                       color: context.onPrimaryColor,
                                       size: 25,
                                     ),
-                                    SizedBox(
-                                      width: 20.w,
-                                    ),
                                   ],
                                 ),
                               ),
                             ),
                             SizedBox(
-                              height: 15.h,
+                              height: isVisaExpanded ? 10.h : 20.h,
                             ),
                             if (isVisaExpanded) ...[
                               CommonContainer(
@@ -216,7 +219,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                                       ),
                                     ],
                                   ),
-                                  containerColor: allColors.transparentColor,
+                                  containerColor: appTheme.transparentColor,
                                   containerBorderColor: context.onPrimaryColor),
                               SizedBox(
                                 height: 20.h,
@@ -226,7 +229,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                         ),
                       ),
                       SizedBox(
-                        height: 10.h,
+                        height: 20.h,
                       ),
                       Padding(
                         padding: kLeftRightPadding16,
@@ -238,17 +241,22 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                           },
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text(
-                                variables.staticData
-                                        ?.categories_EligibilityRequirements
-                                        .capitalizeFirstLetter() ??
-                                    '',
-                                style: context.titleMedium?.copyWith(
-                                  color: allColors.lightTextColor,
+                              Expanded(
+                                child: Padding(
+                                  padding: kTopPadding5,
+                                  child: Text(
+                                    variables.staticData
+                                            ?.categories_EligibilityRequirements
+                                            .capitalizeFirstLetter() ??
+                                        '',
+                                    style: context.titleMedium?.copyWith(
+                                      color: appTheme.lightTextColor,
+                                    ),
+                                    textAlign: TextAlign.start,
+                                  ),
                                 ),
-                                textAlign: TextAlign.start,
                               ),
                               Icon(
                                 isReqExpanded
@@ -261,10 +269,10 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: isReqExpanded ? 10.h : 20.h,
+                      ),
                       if (isReqExpanded) ...[
-                        SizedBox(
-                          height: 10.h,
-                        ),
                         CommonContainer(
                             widget: Column(
                               children: [
@@ -334,20 +342,20 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                                 ),
                               ],
                             ),
-                            containerColor: allColors.transparentColor,
+                            containerColor: appTheme.transparentColor,
                             containerBorderColor: context.onSurfaceColor),
+                        SizedBox(
+                          height: 20.h,
+                        ),
                       ],
-                      SizedBox(
-                        height: 10.h,
-                      ),
                       Container(
                         width: MediaQuery.sizeOf(context).width.sw,
-                        color: allColors.errorColor,
+                        color: appTheme.errorColor,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              height: 15.h,
+                              height: 20.h,
                             ),
                             Padding(
                               padding: kLeftRightPadding16,
@@ -359,17 +367,22 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                                 },
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      variables.staticData
-                                              ?.goldenVisasForPropertyOwnersScenarios
-                                              .capitalizeFirstLetter() ??
-                                          '',
-                                      style: context.titleMedium?.copyWith(
-                                        color: context.onPrimaryColor,
+                                    Expanded(
+                                      child: Padding(
+                                        padding: kTopPadding5,
+                                        child: Text(
+                                          variables.staticData
+                                                  ?.goldenVisasForPropertyOwnersScenarios
+                                                  .capitalizeFirstLetter() ??
+                                              '',
+                                          style: context.titleMedium?.copyWith(
+                                            color: context.onPrimaryColor,
+                                          ),
+                                          textAlign: TextAlign.start,
+                                        ),
                                       ),
-                                      textAlign: TextAlign.start,
                                     ),
                                     Icon(
                                       isExpanded
@@ -383,7 +396,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                               ),
                             ),
                             SizedBox(
-                              height: 15.h,
+                              height: isExpanded ? 10.h : 20.h,
                             ),
                             if (isExpanded) ...[
                               CommonContainer(
@@ -438,7 +451,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                                       Divider(
                                         thickness: 1.w,
                                         height: 1.h,
-                                        color: allColors.dividerColor,
+                                        color: appTheme.dividerColor,
                                       ),
                                       ExpandableCards(
                                         isVisa: true,
@@ -492,7 +505,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                                       Divider(
                                         thickness: 1.w,
                                         height: 1.h,
-                                        color: allColors.dividerColor,
+                                        color: appTheme.dividerColor,
                                       ),
                                       ExpandableCards(
                                         isVisa: true,
@@ -504,9 +517,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                                             '',
                                         isSeven: false,
                                         isThree: false,
-                                        point1: variables.staticData
-                                                ?.the10yearGoldenVisa ??
-                                            '',
+                                        point1: '',
                                         point2: variables.staticData
                                                 ?.the10yearGoldenVisa ??
                                             '',
@@ -552,7 +563,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                                       Divider(
                                         thickness: 1.w,
                                         height: 1.h,
-                                        color: allColors.dividerColor,
+                                        color: appTheme.dividerColor,
                                       ),
                                       ExpandableCards(
                                         isVisa: true,
@@ -599,7 +610,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                                       Divider(
                                         thickness: 1.w,
                                         height: 1.h,
-                                        color: allColors.dividerColor,
+                                        color: appTheme.dividerColor,
                                       ),
                                       ExpandableCards(
                                         isVisa: true,
@@ -653,7 +664,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                                       Divider(
                                         thickness: 1.w,
                                         height: 1.h,
-                                        color: allColors.dividerColor,
+                                        color: appTheme.dividerColor,
                                       ),
                                       ExpandableCards(
                                         isPadding: true,
@@ -666,9 +677,7 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                                             '',
                                         isSeven: false,
                                         isThree: false,
-                                        point1: variables
-                                                .staticData?.the2yearVisa ??
-                                            '',
+                                        point1: '',
                                         point2: variables
                                                 .staticData?.the2yearVisa ??
                                             '',
@@ -721,14 +730,14 @@ class _GoldenVisaBodyState extends ConsumerState<GoldenVisaBody> {
                                   containerColor: context.onPrimaryColor,
                                   containerBorderColor: context.onPrimaryColor),
                               SizedBox(
-                                height: 10.h,
+                                height: 20.h,
                               )
                             ],
                           ],
                         ),
                       ),
                       SizedBox(
-                        height: 15.h,
+                        height: 20.h,
                       ),
                       ExpandableCards(
                         isVisa: false,

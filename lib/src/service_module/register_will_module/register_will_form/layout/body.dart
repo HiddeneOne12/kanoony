@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/common_widgets/common_drop_down.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
 
 import '../../../../../core/common_widgets/common_appbar.dart';
@@ -74,18 +75,14 @@ class _RegisterWillFormBodyState extends ConsumerState<RegisterWillFormBody> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 30.h),
+                        SizedBox(height: 40.h),
                         Padding(
                           padding: kLeftRightPadding16,
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              variables.staticData?.submitAction!
-                                      .toUpperCase() ??
-                                  '',
-                              style: context.headlineLarge,
-                              textAlign: TextAlign.center,
-                            ),
+                          child: Text(
+                            variables.staticData?.submitAction!.upperCase() ??
+                                '',
+                            style: context.headlineLarge,
+                            textAlign: TextAlign.start,
                           ),
                         ),
 
@@ -140,7 +137,7 @@ class _RegisterWillFormBodyState extends ConsumerState<RegisterWillFormBody> {
                               variables.staticData?.minorChildren ?? "Select",
                         ),
                         SizedBox(
-                          height: 10,
+                          height: 10.h,
                         ),
                         // TextFieldWidget(
                         //   controller: provider.childrenController,
@@ -236,20 +233,17 @@ class _RegisterWillFormBodyState extends ConsumerState<RegisterWillFormBody> {
                           variables: variables,
                         ),
                         SizedBox(
-                          height: 15.h,
+                          height: 20.h,
                         ),
                         CommonButton(
                             loadingNotifier: willVar.isLoading,
                             height: 40.h,
-                            padding: EdgeInsets.only(left: 16.h, right: 16.h),
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayLarge!
-                                .copyWith(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 14.sp,
-                                    color: allColors.canvasColor),
-                            backgroundColor: allColors.primaryColor,
+                            padding: kLeftRightPadding16,
+                            style: context.titleMedium!.copyWith(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 14.sp,
+                                color: context.onPrimaryColor),
+                            backgroundColor: context.primaryColor,
                             text: variables.staticData?.submit ?? '',
                             onPressed: () async {
                               FocusScope.of(context).unfocus();

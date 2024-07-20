@@ -13,29 +13,28 @@ class BluePrintCardListing extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              title.capitalizeFirstLetter() ?? '',
-              style: context.labelLarge,
-              textAlign: TextAlign.start,
-            ),
-            SizedBox(
-              height: 5.h,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 10.h, right: 10.h, bottom: 5.h),
-              child: Text(
-                description.capitalizeFirstLetter() ?? "",
-                style: context.bodyLarge,
-                textAlign: TextAlign.start,
-              ),
-            ),
-          ],
-        ));
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Text(
+          title.capitalizeFirstLetter(),
+          style: context.titleMedium,
+          textAlign: TextAlign.start,
+        ),
+        SizedBox(
+          height: 10.h,
+        ),
+        Text(
+          description.capitalizeFirstLetter(),
+          style: context.bodyMedium?.copyWith(
+              fontWeight: FontWeight.w400,
+              color: context.onSurfaceColor,
+              letterSpacing: 0.1,
+              height: 1.4.sp),
+          textAlign: TextAlign.start,
+        ),
+      ],
+    );
   }
 }

@@ -131,7 +131,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(height: 10.h),
+                            SizedBox(height: 40.h),
                             dashboardVariables.areLoaded
                                 ? const QuickLinksShimmer()
                                 : Padding(
@@ -226,7 +226,7 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                     ),
                                   ),
                             dashboardVariables.areLoaded
-                                ? const  GridShimmer()
+                                ? const GridShimmer()
                                 : GridView.builder(
                                     gridDelegate:
                                         SliverGridDelegateWithFixedCrossAxisCount(
@@ -311,7 +311,6 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                       );
                                     },
                                   ),
-
                             dashboardVariables.areLoaded
                                 ? const SizedBox()
                                 : Padding(
@@ -327,9 +326,8 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                             dashboardVariables.areLoaded
                                 ? const GridShimmer()
                                 : ListView(
-                                  padding: EdgeInsets.zero,
+                                    padding: EdgeInsets.zero,
                                     shrinkWrap: true,
-                                     
                                     physics:
                                         const NeverScrollableScrollPhysics(),
                                     children: [
@@ -348,10 +346,10 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                                 BusinessSetupScreen
                                                     .businessSetupRoute);
                                           },
-                                          text: 
-                                              dashboardVariables.staticData
-                                                      ?.setupABusiness.capitalizeFirstLetter() ??
-                                                  ''),
+                                          text: dashboardVariables
+                                                  .staticData?.setupABusiness
+                                                  .capitalizeFirstLetter() ??
+                                              ''),
                                       HomeCarporateServicesWidget(
                                           onTap: () {
                                             var variables = ref.watch(
@@ -366,10 +364,10 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                             RoutesUtils.context.push(
                                                 TradeMarkScreen.trademarkRoute);
                                           },
-                                          text: 
-                                              dashboardVariables.staticData
-                                                      ?.registerATrademark.capitalizeFirstLetter() ??
-                                                  ''),
+                                          text: dashboardVariables.staticData
+                                                  ?.registerATrademark
+                                                  .capitalizeFirstLetter() ??
+                                              ''),
                                       HomeCarporateServicesWidget(
                                           onTap: () {
                                             var variables = ref.watch(
@@ -384,10 +382,10 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                             RoutesUtils.context.push(
                                                 RegisterWillScreen.willRoute);
                                           },
-                                          text: 
-                                              dashboardVariables.staticData
-                                                      ?.registerAWill.capitalizeFirstLetter() ??
-                                                  ''),
+                                          text: dashboardVariables
+                                                  .staticData?.registerAWill
+                                                  .capitalizeFirstLetter() ??
+                                              ''),
                                       HomeCarporateServicesWidget(
                                           onTap: () {
                                             var variables = ref.watch(
@@ -403,10 +401,10 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                                 DocTranslateScreen
                                                     .docTranslateRoute);
                                           },
-                                           text:  
-                                              dashboardVariables.staticData
-                                                      ?.translateADocument.capitalizeFirstLetter() ??
-                                                  ''),
+                                          text: dashboardVariables.staticData
+                                                  ?.translateADocument
+                                                  .capitalizeFirstLetter() ??
+                                              ''),
                                       HomeCarporateServicesWidget(
                                           onTap: () {
                                             var variables = ref.watch(
@@ -421,10 +419,10 @@ class _DashBoardBodyState extends ConsumerState<DashBoardBody>
                                             RoutesUtils.context.push(
                                                 GoldenVisaScreen.visaRoute);
                                           },
-                                           text: 
-                                              dashboardVariables
-                                                      .staticData?.goldenVisa.capitalizeFirstLetter() ??
-                                                  ''),
+                                          text: dashboardVariables
+                                                  .staticData?.goldenVisa
+                                                  .capitalizeFirstLetter() ??
+                                              ''),
                                     ],
                                   ),
                             SizedBox(height: 50.h),

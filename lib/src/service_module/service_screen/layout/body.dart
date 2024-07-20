@@ -7,10 +7,8 @@ import 'package:go_router/go_router.dart';
 import 'package:kanoony/core/constants/values.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
-import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/src/service_module/trademark_module/trademark_screen/trademark_screen.dart';
 import '../../../../core/common_widgets/common_appbar.dart';
-import '../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../core/constants/static_constants/static_constants.dart';
@@ -63,21 +61,23 @@ class _ServicesBodyState extends ConsumerState<ServicesBody> {
               ),
               SingleChildScrollView(
                 child: Padding(
-                  padding: kMainBodyPadding,
+                  padding: kLeftRightPadding16,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        height: 10.h,
+                        height: 40.h,
                       ),
                       dashboardVariables.isLoaded
                           ? const SizedBox.shrink()
                           : Text(
                               dashboardVariables.staticData?.corporateService
-                                      ?.capitalizeFirstLetter() ??
+                                      ?.upperCase() ??
                                   "",
                               style: context.headlineLarge),
-                       
+                      SizedBox(
+                        height: 10.h,
+                      ),
                       dashboardVariables.isLoaded
                           ? const GridShimmer()
                           : GridView.count(

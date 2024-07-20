@@ -37,6 +37,10 @@ EdgeInsets kRightPadding9 = const EdgeInsets.only(right: 9);
 EdgeInsets kRightPadding18 = const EdgeInsets.only(right: 18);
 EdgeInsets kTopPadding9 = const EdgeInsets.only(top: 9);
 EdgeInsets kLeftRightPadding16 = const EdgeInsets.only(left: 16, right: 16);
+EdgeInsets kButtonPadding =
+    const EdgeInsets.only(left: 16, right: 16, top: 20, bottom: 20);
+EdgeInsets kDividerPadding =
+    const EdgeInsets.only(left: 16, right: 16, top: 210, bottom: 26);
 EdgeInsets kLeftRightPadding26 = const EdgeInsets.only(left: 26, right: 26);
 EdgeInsets kLeftRightPadding50 =
     const EdgeInsets.only(left: 50, right: 50, bottom: 10);

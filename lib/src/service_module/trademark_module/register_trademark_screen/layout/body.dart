@@ -7,11 +7,9 @@ import 'package:kanoony/core/extentions/themes_typography.dart';
 import '../../../../../core/common_widgets/common_appbar.dart';
 import '../../../../../core/common_widgets/common_button_widget.dart';
 import '../../../../../core/common_widgets/common_sizebox_widget.dart';
-import '../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
 import '../../../../../core/constants/values.dart';
-import '../../../../../core/helpers/pascal_case_converter.dart';
 import '../../../../../core/helpers/validators.dart';
 import 'widgets/product_or_service_widget.dart';
 import 'widgets/select_type_widget.dart';
@@ -77,19 +75,19 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 30.h),
+                        SizedBox(height: 40.h),
                         Padding(
-                          padding: kHeadlineBottomPadding,
-                          child: Align(
-                            child: Text(
-                              variables
-                                      .staticData?.registerOrSearchYourTrademark
-                                      .upperCase() ??
-                                  '',
-                              style: context.headlineLarge,
-                              textAlign: TextAlign.center,
-                            ),
+                          padding: kLeftRightPadding16,
+                          child: Text(
+                            variables.staticData?.registerOrSearchYourTrademark
+                                    .upperCase() ??
+                                '',
+                            style: context.headlineMedium,
+                            textAlign: TextAlign.start,
                           ),
+                        ),
+                        SizedBox(
+                          height: 10.h,
                         ),
                         SelectTypeWidget(
                           trademarkVar: trademarkVar,
@@ -98,9 +96,9 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                         Padding(
                           padding: kLeftRightPadding16,
                           child: Text(
-                            capitalizeFirst(
-                                variables.staticData?.applicantContactDetails ??
-                                    ''),
+                            variables.staticData?.applicantContactDetails
+                                    .capitalizeFirstLetter() ??
+                                '',
                             style: context.titleMedium,
                             textAlign: TextAlign.start,
                           ),
@@ -141,8 +139,9 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                         Padding(
                           padding: kLeftRightPadding16,
                           child: Text(
-                            capitalizeFirst(
-                                variables.staticData?.trademarkOwner ?? ''),
+                            variables.staticData?.trademarkOwner
+                                    .capitalizeFirstLetter() ??
+                                '',
                             style: context.titleMedium,
                             textAlign: TextAlign.start,
                           ),
@@ -169,8 +168,9 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                         Padding(
                           padding: kLeftRightPadding16,
                           child: Text(
-                            capitalizeFirst(
-                                variables.staticData?.designatedCountry ?? ''),
+                            variables.staticData?.designatedCountry
+                                    .capitalizeFirstLetter() ??
+                                '',
                             style: context.titleMedium,
                             textAlign: TextAlign.start,
                           ),
@@ -197,8 +197,9 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                         Padding(
                           padding: kLeftRightPadding16,
                           child: Text(
-                            capitalizeFirst(
-                                variables.staticData?.trademarkName ?? ''),
+                            variables.staticData?.trademarkName
+                                    .capitalizeFirstLetter() ??
+                                '',
                             style: context.titleMedium,
                             textAlign: TextAlign.start,
                           ),
@@ -225,8 +226,9 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                         Padding(
                           padding: kLeftRightPadding16,
                           child: Text(
-                            capitalizeFirst(
-                                variables.staticData?.trademarkType ?? ''),
+                            variables.staticData?.trademarkType
+                                    .capitalizeFirstLetter() ??
+                                '',
                             style: context.titleMedium,
                             textAlign: TextAlign.start,
                           ),
@@ -244,8 +246,9 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                         Padding(
                           padding: kLeftRightPadding16,
                           child: Text(
-                            capitalizeFirst(
-                                variables.staticData?.attachFile ?? ''),
+                            variables.staticData?.attachFile
+                                    .capitalizeFirstLetter() ??
+                                '',
                             style: context.titleMedium,
                             textAlign: TextAlign.start,
                           ),
@@ -272,9 +275,9 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                         Padding(
                           padding: kLeftRightPadding16,
                           child: Text(
-                            capitalizeFirst(variables
-                                    .staticData?.describeYourProductOrService ??
-                                ''),
+                            variables.staticData?.describeYourProductOrService
+                                    .capitalizeFirstLetter() ??
+                                '',
                             style: context.titleMedium,
                             textAlign: TextAlign.start,
                           ),
@@ -292,18 +295,14 @@ class _RegisterTradeMarkBodyState extends ConsumerState<RegisterTradeMarkBody> {
                           icon: Icons.message,
                           focusNode: provider.messageFocus,
                         ),
-                        CommonSizeBoxWidget(height: 10.h, width: 0),
+                        CommonSizeBoxWidget(height: 20.h, width: 0),
                         CommonButton(
                             loadingNotifier: trademarkVar.isLoading,
                             height: 40.h,
                             padding: kLeftRightPadding16,
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayLarge!
-                                .copyWith(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 14.sp,
-                                    color: context.onPrimaryColor),
+                            style: context.bodyMedium?.copyWith(
+                                fontWeight: FontWeight.w700,
+                                color: context.onPrimaryColor),
                             backgroundColor: context.primaryColor,
                             text: variables.staticData?.submit ?? '',
                             onPressed: () async {

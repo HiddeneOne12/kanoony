@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kanoony/core/helpers/pascal_case_converter.dart';
-
+import 'package:kanoony/core/constants/values.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import '../../../../core/common_widgets/appbar_textfield.dart';
-import '../../../../core/common_widgets/callback_button.dart';
 import '../../../../core/common_widgets/common_appbar.dart';
-import '../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../core/constants/static_constants/static_constants.dart';
@@ -81,71 +80,56 @@ class _MenuDocumentBodyState extends ConsumerState<MenuDocumentBody> {
                 ),
               ),
               SizedBox(
-                height: 0.795.sh,
+                height: 0.8.sh,
                 child: SingleChildScrollView(
+                  padding: kLeftRightPadding16,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        height: 20.h,
+                        height: 40.h,
                       ),
-                      CommonTextWidget(
-                          color: allColors.textColor,
-                          size: 18.sp,
-                          align: TextAlign.center,
-                          text: capitalizeFirst(variables.title ?? ''),
-                          weight: FontWeight.w500,
-                          padding: EdgeInsets.only(top: 0.h)),
+                      Text(
+                        variables.title.upperCase(),
+                        style: context.headlineLarge,
+                        textAlign: TextAlign.start,
+                      ),
                       SizedBox(
-                        height: 15.h,
+                        height: 10.h,
                       ),
                       AppBarTemplateTextField(isFilter: false),
                       SizedBox(
-                        height: 15.h,
+                        height: 20.h,
                       ),
-
-                      // Padding(
-                      //   padding: EdgeInsets.only(
-                      //     left: isArabic ? 0 : 0.23.sw,
-                      //     right: isArabic ? 0.23.sw : 0,
-                      //   ),
-                      //   child: const FreeTemplateButton(),
-                      // ),
-                      // SizedBox(
-                      //   height: 10.h,
-                      // ),
                       variables.isLoaded
                           ? const GridShimmer()
-                          : Padding(
-                              padding: EdgeInsets.only(left: 16.h, right: 16.h),
-                              child: GridView.builder(
-                                physics: const NeverScrollableScrollPhysics(),
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  childAspectRatio: 1.5,
-                                  crossAxisSpacing: 7.h,
-                                ),
-                                shrinkWrap: true,
-                                itemCount: variables.content!.length,
-                                padding: EdgeInsets.all(0.h),
-                                itemBuilder: (context, index) {
-                                  var data = variables.content![index];
-                                  return DocCard(
-                                      price: data.documentPrice,
-                                      onTap: () async {
-                                        RoutesUtils.context.push(
-                                          DocumentDetailScreen
-                                              .documentDetailRoute,
-                                          extra: {
-                                            TextUtils.slug: data.slug.toString()
-                                          },
-                                        );
-                                      },
-                                      icon: SvgImagesAssetPath.documentSvg,
-                                      text: capitalizeFirst(data.title));
-                                },
+                          : GridView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio: 1.5,
+                                crossAxisSpacing: 7.h,
                               ),
+                              shrinkWrap: true,
+                              itemCount: variables.content!.length,
+                              padding: EdgeInsets.all(0.h),
+                              itemBuilder: (context, index) {
+                                var data = variables.content![index];
+                                return DocCard(
+                                    price: data.documentPrice,
+                                    onTap: () async {
+                                      RoutesUtils.context.push(
+                                        DocumentDetailScreen
+                                            .documentDetailRoute,
+                                        extra: {
+                                          TextUtils.slug: data.slug.toString()
+                                        },
+                                      );
+                                    },
+                                    icon: SvgImagesAssetPath.documentSvg,
+                                    text: data.title.capitalizeFirstLetter());
+                              },
                             ),
                       SizedBox(
                         height: 10.h,

@@ -76,7 +76,7 @@ class _DocumentDetailBodyState extends ConsumerState<DocumentDetailBody> {
               Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                height: 0.795.sh,
+                height: 0.8.sh,
                 child: SingleChildScrollView(
                   child: variables2.isLoaded || variables.isLoading
                       ? Padding(
@@ -89,17 +89,32 @@ class _DocumentDetailBodyState extends ConsumerState<DocumentDetailBody> {
                             NameWidget(
                               variable: variables2,
                             ),
+                            SizedBox(
+                              height: 20.h,
+                            ),
                             BasicInfoWidget(
                               variables: variables2,
+                            ),
+                            SizedBox(
+                              height: 20.h,
                             ),
                             DescriptionWidget(
                               variable: variables2,
                             ),
+                            SizedBox(
+                              height: 20.h,
+                            ),
                             SummeryWidget(
                               variable: variables2,
                             ),
+                            SizedBox(
+                              height: 20.h,
+                            ),
                             RelatedDocumentWidget(
                               variable: variables2,
+                            ),
+                            SizedBox(
+                              height: 20.h,
                             ),
                           ],
                         ),

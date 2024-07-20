@@ -7,7 +7,6 @@ import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
 import '../../../../../../core/constants/object_constants/object_constants.dart';
 
-
 class BusinessFreeZoneServiceCard extends StatelessWidget {
   final String icon;
   final String text;
@@ -47,11 +46,11 @@ class BusinessFreeZoneServiceCard extends StatelessWidget {
                   Container(
                     height: 26.h,
                     decoration: BoxDecoration(
-                        color: allColors.lightBlueColor,
+                        color: appTheme.lightBlueColor,
                         borderRadius: kBorderRadius6),
                     alignment: Alignment.center,
                     child: Text(
-                      text.capitalizeFirstLetter() ?? "",
+                      text.capitalizeFirstLetter(),
                       style: context.bodyMedium,
                       maxLines: 1,
                       textAlign: TextAlign.center,

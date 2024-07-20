@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanoony/core/constants/values.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/src/document_module/document_details_screen/provider/doc_detail_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../core/common_widgets/common_confirmation_dialog.dart';
 import '../../../../../core/common_widgets/common_download_popup.dart';
-import '../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
 import '../../../../../core/routing/routing_config.dart';
@@ -23,18 +25,19 @@ class NameWidget extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     var dashboard = ref.watch(allProviderList.dashboardProvider);
     return Padding(
-      padding: EdgeInsets.only(right: 16.h, top: 16.h, left: 16.h),
+      padding: kLeftRightPadding16,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          CommonTextWidget(
-              color: allColors.textColor,
-              size: 18.sp,
-              text: variable.content?.title ?? '',
-              weight: FontWeight.w500,
-              align: TextAlign.start,
-              padding: EdgeInsets.only(left: 0.h, right: 0.h, top: 5.h)),
+          SizedBox(
+            height: 40.h,
+          ),
+          Text(
+            variable.content?.title.upperCase() ?? '',
+            style: context.headlineLarge,
+            textAlign: TextAlign.start,
+          ),
           SizedBox(
             height: 10.h,
           ),
@@ -48,19 +51,19 @@ class NameWidget extends ConsumerWidget {
                     padding: EdgeInsets.only(left: 2.h, right: 2.h),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: allColors.textColor,
+                      color: context.onSurfaceColor,
                       borderRadius: BorderRadius.all(Radius.circular(0.r)),
                     ),
-                    child: CommonTextWidget(
-                        color: allColors.canvasColor,
-                        size: 16.sp,
-                        text: variable.content?.documentPrice == '0'
+                    child: Padding(
+                      padding: kTopPadding5,
+                      child: Text(
+                        variable.content?.documentPrice == '0'
                             ? "FREE"
                             : '${variable.content?.documentPrice} AED + VAT',
-                        weight: FontWeight.w600,
-                        align: TextAlign.center,
-                        padding:
-                            EdgeInsets.only(left: 0.h, right: 0.h, top: 5.h)),
+                        style: context.headlineSmall
+                            ?.copyWith(color: context.onPrimaryColor),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -97,17 +100,17 @@ class NameWidget extends ConsumerWidget {
                     padding: EdgeInsets.only(left: 2.h, right: 2.h),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: allColors.primaryColor,
+                      color: context.primaryColor,
                       borderRadius: BorderRadius.all(Radius.circular(0.r)),
                     ),
-                    child: CommonTextWidget(
-                        color: allColors.canvasColor,
-                        size: 16.sp,
-                        text: dashboard.staticData?.downloadNow ?? '',
-                        weight: FontWeight.w600,
-                        align: TextAlign.center,
-                        padding:
-                            EdgeInsets.only(left: 0.h, right: 0.h, top: 5.h)),
+                    child: Padding(
+                      padding: kTopPadding5,
+                      child: Text(
+                        dashboard.staticData?.downloadNow ?? '',
+                        style: context.headlineSmall
+                            ?.copyWith(color: context.onPrimaryColor),
+                      ),
+                    ),
                   ),
                 ),
               ),

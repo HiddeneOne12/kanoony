@@ -18,7 +18,6 @@ import '../../../../../core/constants/image_paths/image_paths.dart';
 import '../../../../../core/constants/object_constants/object_constants.dart';
 import '../../../../../core/constants/static_constants/static_constants.dart';
 import '../../../../../core/constants/values.dart';
-import '../../../../../core/helpers/pascal_case_converter.dart';
 import '../../../business_service_module/business_setup_screen/layout/widgets/faq_cards_widget.dart';
 import '../../../widgets/common_container.dart';
 import 'widgets/divider.dart';
@@ -73,17 +72,28 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 30.h),
+                      SizedBox(height: 40.h),
                       Padding(
-                        padding: kHeadlineBottomPadding,
-                        child: Align(
-                          child: Text(
-                            variables.staticData?.trademarkRegistration
-                                    .upperCase() ??
-                                '',
-                            style: context.headlineLarge,
-                            textAlign: TextAlign.center,
-                          ),
+                        padding: kLeftRightPadding16,
+                        child: Text(
+                          variables.staticData?.trademarkRegistration
+                                  .upperCase() ??
+                              '',
+                          style: context.headlineMedium,
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      Padding(
+                        padding: kTitlePadding2,
+                        child: Text(
+                          variables.staticData
+                                  ?.theUaesStrictTrademarkRegistrationSystemAids
+                                  .capitalizeFirstLetter() ??
+                              '',
+                          style: context.bodyMedium?.copyWith(
+                              color: appTheme.blackColor,
+                              fontWeight: FontWeight.w400),
+                          textAlign: TextAlign.justify,
                         ),
                       ),
                       Align(
@@ -94,9 +104,6 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                                 .push(RegisterTradeMarkScreen.trademarkRoute);
                           },
                         ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
                       ),
                       Padding(
                         padding: kLeftRightPadding16,
@@ -113,7 +120,7 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                         ),
                       ),
                       SizedBox(
-                        height: 10.h,
+                        height: 11.h,
                       ),
                       Padding(
                         padding: kLeftRightPadding16,
@@ -131,35 +138,23 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                           isHtml: true,
                         ),
                       ),
-                      Padding(
-                        padding: kTitlePadding2,
-                        child: Text(
-                          variables.staticData
-                                  ?.theUaesStrictTrademarkRegistrationSystemAids
-                                  .capitalizeFirstLetter() ??
-                              '',
-                          style: context.bodyMedium?.copyWith(
-                              color: allColors.lightTextColor,
-                              fontWeight: FontWeight.w400),
-                          textAlign: TextAlign.justify,
-                        ),
-                      ),
                       SizedBox(
-                        height: 10.h,
+                        height: 20.h,
                       ),
                       Padding(
                         padding: kTitlePadding,
                         child: Text(
-                          capitalizeFirst(variables.staticData
-                                  ?.benefitsOfTrademarkRegistrationInUae ??
-                              ''),
+                          variables.staticData
+                                  ?.benefitsOfTrademarkRegistrationInUae
+                                  .capitalizeFirstLetter() ??
+                              '',
                           style: context.titleMedium,
                           textAlign: TextAlign.start,
                         ),
                       ),
                       CommonContainer(
-                        containerBorderColor: allColors.dividerColor,
-                        containerColor: allColors.transparentColor,
+                        containerBorderColor: appTheme.dividerColor,
+                        containerColor: appTheme.transparentColor,
                         widget: Column(
                           children: [
                             BenefitItem(
@@ -204,26 +199,14 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                         ),
                       ),
                       SizedBox(
-                        height: 10.h,
+                        height: 20.h,
                       ),
                       Padding(
                         padding: kLeftRightPadding16,
                         child: Html(
                           style: {
-                            "span": Style(
-                                margin: Margins.zero,
-                                padding: HtmlPaddings.zero,
-                                color: allColors.textColor,
-                                fontSize: FontSize(18.sp),
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Tajawal'),
-                            "body": Style(
-                                color: allColors.textColor,
-                                margin: Margins.zero,
-                                padding: HtmlPaddings.zero,
-                                fontSize: FontSize(18.sp),
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Tajawal'),
+                            "span": context.htmlTitleStyle,
+                            "body": context.htmlTitleStyle,
                           },
                           data: variables.staticData
                                   ?.documentsRequiredForTrademarkRegistrationInU
@@ -269,22 +252,23 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                         ),
                       ),
                       SizedBox(
-                        height: 10.h,
+                        height: 20.h,
                       ),
                       Padding(
                         padding: kTitlePadding,
                         child: Text(
-                          capitalizeFirst(variables.staticData
-                                  ?.trademarkRegistrationInThreeSteps ??
-                              ''),
+                          variables
+                                  .staticData?.trademarkRegistrationInThreeSteps
+                                  .capitalizeFirstLetter() ??
+                              '',
                           style: context.titleMedium
-                              ?.copyWith(color: allColors.lightTextColor),
+                              ?.copyWith(color: appTheme.lightTextColor),
                           textAlign: TextAlign.start,
                         ),
                       ),
                       CommonContainer(
-                        containerBorderColor: allColors.dividerColor,
-                        containerColor: allColors.transparentColor,
+                        containerBorderColor: appTheme.dividerColor,
+                        containerColor: appTheme.transparentColor,
                         widget: Column(
                           children: [
                             BenefitItem(
@@ -312,7 +296,7 @@ class _TradeMarkBodyState extends ConsumerState<TradeMarkBody> {
                         ),
                       ),
                       SizedBox(
-                        height: 10.h,
+                        height: 20.h,
                       ),
                       AllExpandableData(
                         variables: variables,

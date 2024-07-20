@@ -7,6 +7,8 @@ import 'package:kanoony/core/common_widgets/common_text_widget.dart';
 import 'package:kanoony/core/constants/image_paths/image_paths.dart';
 import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 
 import '../../../core/routing/routing_config.dart';
@@ -72,14 +74,26 @@ class _FavoriteBodyState extends ConsumerState<FavoriteBody> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        variables2.isLoaded || variables2.content?.isEmpty == true
+                        SizedBox(
+                          height: 40.h,
+                        ),
+                        variables2.isLoaded ||
+                                variables2.content?.isEmpty == true
                             ? const SizedBox()
-                            : Text("Favorites",style: Theme.of(context).textTheme.labelMedium!.copyWith(fontSize: 18,fontWeight: FontWeight.w700),),
-                        const SizedBox(height: 10,),
+                            : Text(
+                                variables.staticData?.myFavorites
+                                        ?.upperCase() ??
+                                    '',
+                                style: context.headlineLarge,
+                                textAlign: TextAlign.start,
+                              ),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         variables2.isLoaded
                             ? const ShimmerFaqCard()
                             : ListView.builder(
-                              padding: EdgeInsets.zero,
+                                padding: EdgeInsets.zero,
                                 itemCount: variables2
                                     .content?.length, // Length of the data list
                                 shrinkWrap: true,
@@ -88,17 +102,21 @@ class _FavoriteBodyState extends ConsumerState<FavoriteBody> {
                                   return InkWell(
                                     onTap: () async {
                                       RoutesUtils.context.push(
-                                        DocumentDetailScreen.documentDetailRoute,
+                                        DocumentDetailScreen
+                                            .documentDetailRoute,
                                         extra: {
                                           TextUtils.slug: variables2
-                                              .content![index].documentsLang.slug
+                                              .content![index]
+                                              .documentsLang
+                                              .slug
                                               .toString()
                                         },
                                       );
                                     },
                                     child: Container(
                                       margin: EdgeInsets.only(bottom: 12),
-                                      padding: EdgeInsets.symmetric(horizontal: 3 ,vertical: 6),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 3, vertical: 6),
                                       width: MediaQuery.sizeOf(context).width.w,
                                       decoration: BoxDecoration(
                                           color: allColors.canvasColor,

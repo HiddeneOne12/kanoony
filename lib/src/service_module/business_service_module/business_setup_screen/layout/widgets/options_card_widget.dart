@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kanoony/core/constants/object_constants/object_constants.dart';
 import 'package:kanoony/core/constants/values.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/core/helpers/pascal_case_converter.dart';

@@ -67,7 +67,7 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                                       widget.variables.staticData
                                           ?.oneWillRegistration
                                   ? context.primaryColor
-                                  : allColors.disabledColor,
+                                  : appTheme.disabledColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(3.r))),
                           child: widget.willVar.selectedType ==
@@ -130,7 +130,7 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                                       widget.variables.staticData
                                           ?.mirrorWillRegistration
                                   ? context.primaryColor
-                                  : allColors.disabledColor,
+                                  : appTheme.disabledColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(3.r))),
                           child: widget.willVar.selectedType ==

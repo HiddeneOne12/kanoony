@@ -1,6 +1,6 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -28,7 +28,7 @@ class PaidDocumentScreen extends ConsumerWidget {
           variable.searchedDoc = [];
         },
         child: Scaffold(
-          backgroundColor: allColors.scaffoldColor,
+          backgroundColor: appTheme.scaffoldColor,
           drawer: AppMenuProfileDrawer().appProfileDrawer(context, ref),
           endDrawer: AppEndProfileDrawer().appEndDrawer(context, ref),
           resizeToAvoidBottomInset: false,

@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kanoony/core/common_widgets/common_button_widget.dart';
 import 'package:kanoony/core/constants/translations/translations.dart';
+import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
-import 'package:kanoony/core/helpers/pascal_case_converter.dart';
 import 'package:kanoony/src/auth_module/login_screen/login_screen.dart';
 import 'package:kanoony/src/dashboard_screen/layout/widgets/shimmer.dart';
 import 'dart:ui' as Ui;
@@ -99,22 +99,20 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                SizedBox(
+                                  height: 40.h,
+                                ),
                                 Padding(
-                                  padding: kHeadlineBottomPadding,
+                                  padding: kLeftRightPadding16,
                                   child: Text(
-                                    'Hello ${capitalizeFirst(userProfileHelper.userData.name)}',
+                                    StaticTextTranslations()
+                                        .dashboard
+                                        .upperCase(),
                                     style: context.headlineLarge,
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: isArabic ? 0.91.sw : 16.h,
-                                      right: isArabic ? 16.h : 0.91.sw),
-                                  child: Divider(
-                                    height: 1.h,
-                                    color: allColors.primaryColor,
-                                    thickness: 1.w,
-                                  ),
+                                SizedBox(
+                                  height: 10.h,
                                 ),
                                 dashboardVariables.areLoaded
                                     ? const GridShimmer()
@@ -124,7 +122,7 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                                         childAspectRatio: 1.76,
                                         crossAxisSpacing: 7.h,
                                         padding: EdgeInsets.only(
-                                            left: 16.h, right: 16.h, top: 5.h),
+                                            left: 16.h, right: 16.h),
                                         physics:
                                             const NeverScrollableScrollPhysics(),
                                         children: [
@@ -153,22 +151,38 @@ class _LoggedInDashboardBodyState extends ConsumerState<LoggedInDashboardBody> {
                                                   ''),
                                         ],
                                       ),
-                                SizedBox(height: 10.h),
+                                SizedBox(height: 20.h),
                                 if (userProfileHelper.userData.packageName !=
                                     'null') ...[
                                   userVariables.isLoading
                                       ? const SizedBox.shrink()
-                                      : CommonTextWidget(
-                                          color: allColors.textColor,
-                                          size: 20.sp,
-                                          text: capitalizeFirst(
-                                              dashboardVariables.staticData
-                                                      ?.currentPackage ??
-                                                  ''),
-                                          weight: FontWeight.w700,
-                                          padding: EdgeInsets.only(
-                                              left: 16.h, right: 16.h)),
+                                      : Padding(
+                                          padding: kLeftRightPadding16,
+                                          child: Text(
+                                            dashboardVariables
+                                                    .staticData?.currentPackage
+                                                    ?.capitalizeFirstLetter() ??
+                                                '',
+                                            style: context.titleMedium,
+                                          ),
+                                        )
+                                ] else ...[
+                                  userVariables.isLoading
+                                      ? const SizedBox.shrink()
+                                      : Padding(
+                                          padding: kLeftRightPadding16,
+                                          child: Text(
+                                            dashboardVariables
+                                                    .staticData?.package
+                                                    ?.capitalizeFirstLetter() ??
+                                                '',
+                                            style: context.titleMedium,
+                                          ),
+                                        )
                                 ],
+                                SizedBox(
+                                  height: 10.h,
+                                ),
                                 userVariables.isLoading
                                     ? const ShimmerPackageCard()
                                     : userVariables.userProfile?.packageName ==

@@ -7,8 +7,6 @@ import 'package:kanoony/core/constants/values.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
 import 'package:kanoony/src/dashboard_screen/provider/dashboard_provider.dart';
 import 'package:kanoony/src/service_module/trademark_module/provider/trademark_provider.dart';
-
-import '../../../../../../core/common_widgets/common_text_widget.dart';
 import '../../../../../../core/constants/object_constants/object_constants.dart';
 
 class SelectTypeWidget extends StatefulWidget {
@@ -70,7 +68,7 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                                       widget.variables.staticData
                                           ?.registerATrademark
                                   ? context.primaryColor
-                                  : allColors.disabledColor,
+                                  : appTheme.disabledColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(3.r))),
                           child: widget.trademarkVar.selectedType ==
@@ -83,7 +81,7 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                                 )
                               : null),
                     ),
-                      Flexible(
+                    Flexible(
                         child: Padding(
                       padding: EdgeInsets.only(
                           left: isArabic ? 0 : 2.h,
@@ -92,10 +90,10 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                       child: Text(
                         widget.variables.staticData?.registerATrademark ?? '',
                         style: context.bodyMedium
-                            ?.copyWith(fontWeight: FontWeight.w700),textAlign: TextAlign.start,
+                            ?.copyWith(fontWeight: FontWeight.w700),
+                        textAlign: TextAlign.start,
                       ),
                     )),
-                     
                   ],
                 ),
               ),
@@ -134,7 +132,7 @@ class _SelectTypeWidgetState extends State<SelectTypeWidget> {
                                       widget.variables.staticData
                                           ?.searchATrademark
                                   ? context.primaryColor
-                                  : allColors.disabledColor,
+                                  : appTheme.disabledColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(3.r))),
                           child: widget.trademarkVar.selectedType ==

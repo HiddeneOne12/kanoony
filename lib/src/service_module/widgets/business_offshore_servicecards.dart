@@ -5,10 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/constants/values.dart';
 import 'package:kanoony/core/extentions/string_extentions.dart';
 import 'package:kanoony/core/extentions/themes_typography.dart';
-
-import '../../../core/common_widgets/common_text_widget.dart';
 import '../../../core/constants/object_constants/object_constants.dart';
-import '../../../core/constants/static_constants/static_constants.dart';
 
 class BusinessOffshoreLandServiceCard extends StatelessWidget {
   final String icon;
@@ -46,7 +43,7 @@ class BusinessOffshoreLandServiceCard extends StatelessWidget {
                   ),
                   SizedBox(height: 10.h),
                   Text(
-                    text.capitalizeFirstLetter() ?? "",
+                    text.capitalizeFirstLetter() ,
                     style: context.titleSmall
                         ?.copyWith(color: allColors.blackColor),
                     maxLines: 2,

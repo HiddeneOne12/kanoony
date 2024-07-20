@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kanoony/core/constants/image_paths/image_paths.dart';
 import 'package:kanoony/core/constants/static_constants/static_constants.dart';
+import 'package:kanoony/core/constants/values.dart';
+import 'package:kanoony/core/extentions/themes_typography.dart';
 
 import '../../../core/common_widgets/common_appbar.dart';
 import '../../../core/common_widgets/content_shimmer.dart';
@@ -63,28 +65,31 @@ class _PrivacyBodyState extends ConsumerState<PrivacyBody> {
                     bottom: MediaQuery.of(context).viewInsets.bottom),
                 height: 0.795.sh,
                 child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      variables.isLoaded
-                          ? Padding(
-                              padding: EdgeInsets.only(top: 20.h),
-                              child: const ContentShimmer(),
-                            )
-                          : Html(
+                  padding: kLeftRightPadding16,
+                  child: variables.isLoaded
+                      ? Padding(
+                          padding: EdgeInsets.only(top: 40.h),
+                          child: const ContentShimmer(),
+                        )
+                      : Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 40.h,
+                            ),
+                            Text(
+                              'PRIVACY POLICY',
+                              style: context.headlineLarge,
+                              textAlign: TextAlign.start,
+                            ),
+                            Html(
                               style: {
-                                "p": Style(
-                                    padding: HtmlPaddings.only(
-                                        left: 5.h, right: 5.h),
-                                    color: allColors.textColor,
-                                    fontSize: FontSize(16),
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'Tajawal'),
+                                "p": context.htmlTitleStyle,
                               },
                               data: variables.content,
                             ),
-                    ],
-                  ),
+                          ],
+                        ),
                 ),
               ),
             ],

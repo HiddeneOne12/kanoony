@@ -42,25 +42,11 @@ class _FooterWidgetState extends ConsumerState<FooterWidget> {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 16.h, right: 16.h, top: 10.h),
+            padding: EdgeInsets.only(left: 16.h, right: 16.h, top: 20.h),
             child: Html(
               style: {
-                "span": Style(
-                    margin: Margins.zero,
-                    padding: HtmlPaddings.zero,
-                    textAlign: TextAlign.center,
-                    color: allColors.textColor,
-                    fontSize: FontSize(17.sp),
-                    fontWeight: FontWeight.w500,
-                    fontFamily: 'Tajawal'),
-                "body": Style(
-                    color: allColors.textColor,
-                    margin: Margins.zero,
-                    padding: HtmlPaddings.zero,
-                    textAlign: TextAlign.center,
-                    fontSize: FontSize(17.sp),
-                    fontWeight: FontWeight.w500,
-                    fontFamily: 'Tajawal'),
+                "span": context.htmlTitleStyle,
+                "body": context.htmlTitleStyle,
               },
               data: widget.variables.staticData
                       ?.downloadUaeTrademarkLawNiceClassification
@@ -69,7 +55,7 @@ class _FooterWidgetState extends ConsumerState<FooterWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 33.h, right: 33.h, top: 10.h),
+            padding: EdgeInsets.only(left: 33.h, right: 33.h, top: 20.h),
             child: Row(
               children: [
                 Expanded(
